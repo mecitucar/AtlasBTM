@@ -1,11 +1,12 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { MapPin, ExternalLink } from "lucide-react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const projects = [
   {
@@ -77,8 +78,8 @@ const categories = [
 export function ProjectsPage() {
   const t = useTranslations("projects");
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filtered =
@@ -86,29 +87,45 @@ export function ProjectsPage() {
       ? projects
       : projects.filter((p) => p.sector === activeCategory);
 
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const label = heroRef.current!.querySelector(".hero-label");
+    const title = heroRef.current!.querySelector(".hero-title");
+    const line = heroRef.current!.querySelector(".hero-line");
+
+    tl.from(label, { y: 30, opacity: 0, duration: 0.6 }, 0.2);
+    tl.from(title, { y: 40, opacity: 0, clipPath: "inset(100% 0% 0% 0%)", duration: 0.8 }, 0.35);
+    tl.from(line, { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
+  }, { scope: heroRef });
+
+  useEffect(() => {
+    if (!gridRef.current) return;
+    const cards = gridRef.current.querySelectorAll(".project-card");
+    gsap.fromTo(cards,
+      { y: 40, opacity: 0, scale: 0.95 },
+      { y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out" }
+    );
+  }, [activeCategory]);
+
   return (
     <>
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0 gradient-atlas" />
         <LogoWatermark className="top-1/2 right-0 -translate-y-1/2 translate-x-1/3 text-white" />
         <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium">
+          <div>
+            <span className="hero-label text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium block">
               {t("title")}
             </span>
-            <h1 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 leading-tight max-w-[600px]">
+            <h1 className="hero-title font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 leading-tight max-w-[600px]">
               {t("subtitle")}
             </h1>
-            <div className="w-16 h-[3px] bg-atlas-red mt-8" />
-          </motion.div>
+            <div className="hero-line w-16 h-[3px] bg-atlas-red mt-8" />
+          </div>
         </div>
       </section>
 
-      <section ref={ref} className="py-24 lg:py-32 bg-background">
+      <section className="py-24 lg:py-32 bg-background">
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
           <div className="flex flex-wrap gap-2 mb-12">
             {categories.map((cat) => (
@@ -126,14 +143,11 @@ export function ProjectsPage() {
             ))}
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group bg-white border border-atlas-warm/60 overflow-hidden hover:shadow-lg hover:border-atlas-charcoal/10 transition-all"
+              <div
+                key={`${activeCategory}-${i}`}
+                className="project-card group bg-white border border-atlas-warm/60 overflow-hidden hover:shadow-lg hover:border-atlas-charcoal/10 transition-all"
               >
                 <div className="aspect-[16/10] bg-atlas-sand relative overflow-hidden">
                   <Image
@@ -157,7 +171,7 @@ export function ProjectsPage() {
                     {project.location[locale]}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

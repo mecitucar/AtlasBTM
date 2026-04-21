@@ -1,45 +1,103 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { useRef } from "react";
 import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 export function ContactPage() {
   const t = useTranslations("contact");
+  const heroRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const infoRef = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const label = heroRef.current!.querySelector(".hero-label");
+    const title = heroRef.current!.querySelector(".hero-title");
+    const line = heroRef.current!.querySelector(".hero-line");
+
+    tl.from(label, { y: 30, opacity: 0, duration: 0.6 }, 0.2);
+    tl.from(title, { y: 40, opacity: 0, clipPath: "inset(100% 0% 0% 0%)", duration: 0.8 }, 0.35);
+    tl.from(line, { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
+  }, { scope: heroRef });
+
+  useGSAP(() => {
+    if (formRef.current) {
+      const items = formRef.current.querySelectorAll(".form-reveal");
+      gsap.from(items, {
+        y: 30,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.06,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: formRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    if (infoRef.current) {
+      gsap.from(infoRef.current, {
+        x: 60,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: infoRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+        },
+      });
+
+      const infoItems = infoRef.current.querySelectorAll(".info-item");
+      gsap.from(infoItems, {
+        x: 30,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: infoRef.current,
+          start: "top 75%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  }, { scope: formRef });
 
   return (
     <>
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0 gradient-atlas" />
         <LogoWatermark className="top-1/2 right-0 -translate-y-1/2 translate-x-1/3 text-white" />
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
-            <span className="text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium">
+          <div>
+            <span className="hero-label text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium block">
               {t("title")}
             </span>
-            <h1 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-bold text-white mt-4 leading-tight max-w-[600px]">
+            <h1 className="hero-title font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-bold text-white mt-4 leading-tight max-w-[600px]">
               {t("subtitle")}
             </h1>
-            <div className="w-16 h-[2px] bg-white/30 mt-8" />
-          </motion.div>
+            <div className="hero-line w-16 h-[2px] bg-white/30 mt-8" />
+          </div>
         </div>
       </section>
 
       <section className="py-24 lg:py-32 bg-background">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <h2 className="font-[var(--font-heading)] text-[24px] font-bold text-atlas-navy mb-8">
+            <div ref={formRef} className="lg:col-span-7">
+              <h2 className="form-reveal font-[var(--font-heading)] text-[24px] font-bold text-atlas-navy mb-8">
                 {t("form.send")}
               </h2>
 
               <form className="space-y-6">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="form-reveal grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[13px] font-medium text-atlas-navy mb-2 tracking-wide uppercase">
                       {t("form.name")}
@@ -60,7 +118,7 @@ export function ContactPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="form-reveal grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <div>
                     <label className="block text-[13px] font-medium text-atlas-navy mb-2 tracking-wide uppercase">
                       {t("form.email")}
@@ -81,7 +139,7 @@ export function ContactPage() {
                   </div>
                 </div>
 
-                <div>
+                <div className="form-reveal">
                   <label className="block text-[13px] font-medium text-atlas-navy mb-2 tracking-wide uppercase">
                     {t("form.subject")}
                   </label>
@@ -91,7 +149,7 @@ export function ContactPage() {
                   />
                 </div>
 
-                <div>
+                <div className="form-reveal">
                   <label className="block text-[13px] font-medium text-atlas-navy mb-2 tracking-wide uppercase">
                     {t("form.message")}
                   </label>
@@ -103,7 +161,7 @@ export function ContactPage() {
 
                 <button
                   type="submit"
-                  className="inline-flex items-center gap-2 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wide uppercase transition-colors"
+                  className="form-reveal inline-flex items-center gap-2 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wide uppercase transition-colors"
                 >
                   <Send className="w-4 h-4" />
                   {t("form.send")}
@@ -111,14 +169,14 @@ export function ContactPage() {
               </form>
             </div>
 
-            <div className="lg:col-span-5">
+            <div ref={infoRef} className="lg:col-span-5">
               <div className="lg:sticky lg:top-28 space-y-6">
                 <div className="bg-white border border-atlas-warm/60 rounded-sm p-8">
                   <h3 className="font-[var(--font-heading)] font-semibold text-[18px] text-atlas-navy mb-6">
                     {t("info.phone")} & {t("info.email")}
                   </h3>
                   <div className="space-y-5">
-                    <div className="flex items-start gap-4">
+                    <div className="info-item flex items-start gap-4">
                       <div className="w-10 h-10 bg-atlas-sand rounded-sm flex items-center justify-center shrink-0">
                         <Phone className="w-5 h-5 text-atlas-navy" />
                       </div>
@@ -132,7 +190,7 @@ export function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="info-item flex items-start gap-4">
                       <div className="w-10 h-10 bg-atlas-sand rounded-sm flex items-center justify-center shrink-0">
                         <Mail className="w-5 h-5 text-atlas-navy" />
                       </div>
@@ -155,7 +213,7 @@ export function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="info-item flex items-start gap-4">
                       <div className="w-10 h-10 bg-atlas-sand rounded-sm flex items-center justify-center shrink-0">
                         <MapPin className="w-5 h-5 text-atlas-navy" />
                       </div>
@@ -169,7 +227,7 @@ export function ContactPage() {
                       </div>
                     </div>
 
-                    <div className="flex items-start gap-4">
+                    <div className="info-item flex items-start gap-4">
                       <div className="w-10 h-10 bg-atlas-sand rounded-sm flex items-center justify-center shrink-0">
                         <Clock className="w-5 h-5 text-atlas-navy" />
                       </div>

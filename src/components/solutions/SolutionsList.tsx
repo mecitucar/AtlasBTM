@@ -1,8 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import {
   Container,
@@ -13,6 +12,8 @@ import {
   ChevronRight,
   Download,
 } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const solutions = [
   {
@@ -64,12 +65,38 @@ const solutions = [
 
 export function SolutionsList() {
   const t = useTranslations("solutions");
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
+  useGSAP(() => {
+    const sidebar = container.current!.querySelectorAll(".sidebar-btn");
+    if (sidebar) {
+      gsap.from(sidebar, {
+        x: -40,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sidebar[0],
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  }, { scope: container });
+
+  useEffect(() => {
+    if (!contentRef.current) return;
+    gsap.fromTo(contentRef.current,
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
+    );
+  }, [activeIndex]);
+
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-background">
+    <section ref={container} className="py-24 lg:py-32 bg-background">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           <div className="lg:col-span-4">
@@ -78,13 +105,10 @@ export function SolutionsList() {
                 const Icon = sol.icon;
                 const isActive = activeIndex === i;
                 return (
-                  <motion.button
+                  <button
                     key={sol.key}
-                    initial={{ opacity: 0, x: -16 }}
-                    animate={isInView ? { opacity: 1, x: 0 } : {}}
-                    transition={{ duration: 0.4, delay: i * 0.06 }}
                     onClick={() => setActiveIndex(i)}
-                    className={`w-full flex items-center gap-4 p-4 rounded-sm text-left transition-all ${
+                    className={`sidebar-btn w-full flex items-center gap-4 p-4 rounded-sm text-left transition-all ${
                       isActive
                         ? "bg-white border border-atlas-navy/10 shadow-sm"
                         : "hover:bg-white/60"
@@ -113,19 +137,14 @@ export function SolutionsList() {
                     {isActive && (
                       <ChevronRight className="w-4 h-4 text-atlas-navy ml-auto" />
                     )}
-                  </motion.button>
+                  </button>
                 );
               })}
             </div>
           </div>
 
           <div className="lg:col-span-8">
-            <motion.div
-              key={activeIndex}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
-            >
+            <div ref={contentRef} key={activeIndex}>
               <div className="aspect-[16/9] bg-atlas-sand rounded-sm mb-8 border border-atlas-warm overflow-hidden relative">
                 <Image
                   src={solutions[activeIndex].mainImage}
@@ -177,7 +196,7 @@ export function SolutionsList() {
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

@@ -2,36 +2,66 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { ArrowRight, ImageIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const solutions = [
   {
     key: "worksite",
-    image: null,
+    image: "/images/containers/camp-1.webp",
+    alt: "Camp de chantier modulaire Atlas - deploiement rapide",
   },
   {
     key: "multipurpose",
-    image: null,
+    image: "/images/containers/finished-2.webp",
+    alt: "Batiments polyvalents modulaires Atlas",
   },
 ];
 
 export function SolutionsPreview() {
   const t = useTranslations("solutions");
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".sol-heading", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: { trigger: ".sol-heading", start: "top 85%" },
+    });
+
+    const cards = container.current!.querySelectorAll(".sol-card");
+    cards.forEach((card, i) => {
+      gsap.from(card, {
+        y: 60,
+        opacity: 0,
+        duration: 0.9,
+        delay: i * 0.2,
+        ease: "power3.out",
+        scrollTrigger: { trigger: card, start: "top 88%" },
+      });
+
+      const img = card.querySelector(".sol-img");
+      if (img) {
+        gsap.from(img, {
+          scale: 1.2,
+          duration: 1.2,
+          ease: "power3.out",
+          scrollTrigger: { trigger: card, start: "top 88%" },
+        });
+      }
+    });
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-background">
+    <section ref={container} className="py-24 lg:py-32 bg-background">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
+        <div className="sol-heading text-center mb-16">
           <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
             Solutions
           </span>
@@ -41,22 +71,23 @@ export function SolutionsPreview() {
               : "Atlas offers you high quality solutions"}
           </h2>
           <div className="w-16 h-[3px] bg-atlas-red mt-6 mx-auto" />
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {solutions.map((sol, i) => (
-            <motion.div
-              key={sol.key}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
-            >
+          {solutions.map((sol) => (
+            <div key={sol.key} className="sol-card">
               <Link
                 href="/solutions"
-                className="group block bg-white border border-atlas-warm/60 overflow-hidden hover:shadow-xl hover:border-atlas-red/20 transition-all"
+                className="group block bg-white border border-atlas-warm/60 overflow-hidden hover:shadow-xl hover:border-atlas-red/20 transition-all duration-500"
               >
-                <div className="aspect-[16/9] bg-atlas-warm/20 flex items-center justify-center">
-                  <ImageIcon className="w-12 h-12 text-atlas-charcoal/8" />
+                <div className="aspect-[16/9] overflow-hidden relative">
+                  <Image
+                    src={sol.image}
+                    alt={sol.alt}
+                    fill
+                    className="sol-img object-cover group-hover:scale-105 transition-transform duration-700"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
                 </div>
                 <div className="p-8">
                   <h3 className="font-[var(--font-heading)] font-black text-[22px] text-atlas-charcoal mb-3 tracking-tight">
@@ -71,7 +102,7 @@ export function SolutionsPreview() {
                   </span>
                 </div>
               </Link>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

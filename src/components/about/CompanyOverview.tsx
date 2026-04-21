@@ -1,9 +1,10 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Building2, MapPin, Wrench, Globe } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const highlights = [
   {
@@ -30,22 +31,37 @@ const highlights = [
 
 export function CompanyOverview() {
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = container.current!.querySelectorAll(".overview-card");
+    if (cards) {
+      gsap.from(cards, {
+        y: 50,
+        opacity: 0,
+        scale: 0.9,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "back.out(1.2)",
+        scrollTrigger: {
+          trigger: cards[0],
+          start: "top 88%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-white border-b border-atlas-warm">
+    <section ref={container} className="py-24 lg:py-32 bg-white border-b border-atlas-warm">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {highlights.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="bg-atlas-sand/40 border border-atlas-warm/60 p-7 rounded-sm"
+                className="overview-card bg-atlas-sand/40 border border-atlas-warm/60 p-7 rounded-sm"
               >
                 <div className="w-11 h-11 gradient-atlas rounded-sm flex items-center justify-center mb-5">
                   <Icon className="w-5 h-5 text-white" />
@@ -56,7 +72,7 @@ export function CompanyOverview() {
                 <p className="text-[15px] text-atlas-slate leading-relaxed">
                   {item.desc[locale]}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

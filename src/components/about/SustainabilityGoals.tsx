@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Leaf, Recycle, Sun, Droplets } from "lucide-react";
 
@@ -42,18 +43,31 @@ const goals = [
 
 export function SustainabilityGoals() {
   const t = useTranslations("about.sustainability");
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const heading = container.current?.querySelector(".sustain-heading");
+    if (heading) {
+      gsap.from(heading, {
+        y: 30, opacity: 0, clipPath: "inset(0 100% 0 0)", duration: 0.8, ease: "power3.out",
+        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const cards = container.current?.querySelectorAll(".sustain-card");
+    if (cards?.length) {
+      gsap.from(cards, {
+        y: 50, opacity: 0, scale: 0.9, rotateX: 8, duration: 0.6, stagger: 0.1,
+        ease: "back.out(1.5)",
+        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-atlas-sand/30">
+    <section ref={container} className="py-24 lg:py-32 bg-atlas-sand/30">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
+        <div className="sustain-heading mb-16">
           <span className="text-[13px] tracking-[0.2em] uppercase text-atlas-green font-semibold">
             {t("title")}
           </span>
@@ -61,18 +75,15 @@ export function SustainabilityGoals() {
             {t("subtitle")}
           </h2>
           <div className="w-16 h-[2px] bg-atlas-green mt-6" />
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {goals.map((goal, i) => {
             const Icon = goal.icon;
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-                className="bg-white border border-atlas-warm/60 p-8 rounded-sm flex gap-6"
+                className="sustain-card bg-white border border-atlas-warm/60 p-8 rounded-sm flex gap-6"
               >
                 <div className="w-12 h-12 bg-atlas-green/10 rounded-sm flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-atlas-green" />
@@ -85,7 +96,7 @@ export function SustainabilityGoals() {
                     {goal.desc.fr}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

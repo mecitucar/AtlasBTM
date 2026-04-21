@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ShieldCheck, Award, CheckCircle, FileCheck } from "lucide-react";
 
@@ -12,27 +13,29 @@ const certificates = [
 ];
 
 export function CertificatesBand() {
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const items = container.current?.querySelectorAll(".cert-band-item");
+    if (items?.length) {
+      gsap.from(items, {
+        x: -30, opacity: 0, scale: 0.9, duration: 0.55, stagger: 0.1,
+        ease: "back.out(1.7)",
+        scrollTrigger: { trigger: items[0], start: "top 90%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="bg-atlas-sand/50 border-y border-atlas-warm">
+    <section ref={container} className="bg-atlas-sand/50 border-y border-atlas-warm">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12 py-16">
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
-        >
-          {certificates.map((cert, i) => {
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
+          {certificates.map((cert) => {
             const Icon = cert.icon;
             return (
-              <motion.div
+              <div
                 key={cert.name}
-                initial={{ opacity: 0, y: 16 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="flex items-center gap-4"
+                className="cert-band-item flex items-center gap-4"
               >
                 <div className="w-12 h-12 bg-white border border-atlas-warm rounded-sm flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-atlas-navy" />
@@ -45,10 +48,10 @@ export function CertificatesBand() {
                     {cert.desc}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

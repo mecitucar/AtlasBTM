@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   FileText,
@@ -10,8 +9,9 @@ import {
   Truck,
   Wrench,
   HeadphonesIcon,
-  ArrowRight,
 } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const steps = [
   { key: "proposal", icon: FileText },
@@ -24,51 +24,68 @@ const steps = [
 
 export function ProcessStrip() {
   const t = useTranslations("process");
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    gsap.from(".process-heading > *", {
+      y: 40,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.08,
+      ease: "power3.out",
+      scrollTrigger: { trigger: ".process-heading", start: "top 85%" },
+    });
+
+    gsap.from(".process-step", {
+      y: 40,
+      opacity: 0,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: "power3.out",
+      scrollTrigger: { trigger: ".process-step", start: "top 88%" },
+    });
+
+    gsap.from(".step-connector", {
+      scaleX: 0,
+      transformOrigin: "left",
+      duration: 0.4,
+      stagger: 0.08,
+      ease: "power2.out",
+      scrollTrigger: { trigger: ".process-step", start: "top 85%" },
+    });
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-background">
+    <section ref={container} className="py-24 lg:py-32 bg-atlas-red-dark">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
+        <div className="process-heading text-center mb-16">
+          <span className="text-[13px] tracking-[0.25em] uppercase text-white/70 font-bold">
             Processus
           </span>
-          <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.75rem)] font-black text-atlas-charcoal mt-3 tracking-tight">
+          <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.75rem)] font-black text-white mt-3 tracking-tight">
             {t("title")}
           </h2>
-          <div className="w-16 h-[3px] bg-atlas-red mt-6 mx-auto" />
-        </motion.div>
+          <div className="w-16 h-[3px] bg-white mt-6 mx-auto" />
+        </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <motion.div
-                key={step.key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.07 }}
-                className="relative text-center"
-              >
-                <div className="w-16 h-16 bg-atlas-red/10 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-7 h-7 text-atlas-red" />
+              <div key={step.key} className="process-step relative text-center">
+                <div className="w-16 h-16 bg-white/15 flex items-center justify-center mx-auto mb-4">
+                  <Icon className="w-7 h-7 text-white" />
                 </div>
-                <span className="text-[11px] text-atlas-red font-bold tracking-wider uppercase">
+                <span className="text-[11px] text-white/60 font-bold tracking-wider uppercase">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <h3 className="font-[var(--font-heading)] font-bold text-[14px] text-atlas-charcoal mt-1 tracking-tight leading-snug">
+                <h3 className="font-[var(--font-heading)] font-bold text-[14px] text-white mt-1 tracking-tight leading-snug">
                   {t(`steps.${step.key}`)}
                 </h3>
                 {i < steps.length - 1 && (
-                  <ArrowRight className="hidden lg:block absolute top-8 -right-2 w-4 h-4 text-atlas-warm" />
+                  <div className="step-connector hidden lg:block absolute top-8 -right-2 w-4 h-[2px] bg-white/30" />
                 )}
-              </motion.div>
+              </div>
             );
           })}
         </div>

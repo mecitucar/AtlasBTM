@@ -2,7 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import Image from "next/image";
 import {
@@ -54,22 +55,44 @@ const services = [
 
 export function ServicesGrid() {
   const t = useTranslations("solutions");
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
 
   const featured = services.filter((s) => s.featured);
   const rest = services.filter((s) => !s.featured);
 
+  useGSAP(() => {
+    const heading = container.current?.querySelector(".services-heading");
+    if (heading) {
+      gsap.from(heading, {
+        x: -50, opacity: 0, duration: 0.7, ease: "power3.out",
+        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const featuredCards = container.current?.querySelectorAll(".featured-card");
+    if (featuredCards?.length) {
+      gsap.from(featuredCards, {
+        y: 60, opacity: 0, clipPath: "inset(8% 0% 8% 0%)", duration: 0.8, stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: { trigger: featuredCards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const restCards = container.current?.querySelectorAll(".rest-card");
+    if (restCards?.length) {
+      gsap.from(restCards, {
+        y: 30, opacity: 0, scale: 0.9, duration: 0.5, stagger: 0.07,
+        ease: "back.out(1.7)",
+        scrollTrigger: { trigger: restCards[0], start: "top 90%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
+
   return (
-    <section ref={ref} className="py-28 lg:py-36 bg-white">
+    <section ref={container} className="py-28 lg:py-36 bg-white">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
-          >
+          <div className="services-heading lg:col-span-5">
             <div className="lg:sticky lg:top-32">
               <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
                 {t("title")}
@@ -79,18 +102,13 @@ export function ServicesGrid() {
               </h2>
               <div className="w-16 h-[3px] bg-atlas-red mt-8" />
             </div>
-          </motion.div>
+          </div>
 
           <div className="lg:col-span-7 space-y-6">
-            {featured.map((service, i) => {
+            {featured.map((service) => {
               const Icon = service.icon;
               return (
-                <motion.div
-                  key={service.key}
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.15 + i * 0.12 }}
-                >
+                <div key={service.key} className="featured-card">
                   <Link
                     href="/solutions"
                     className="group block relative overflow-hidden"
@@ -123,22 +141,17 @@ export function ServicesGrid() {
                       </div>
                     </div>
                   </Link>
-                </motion.div>
+                </div>
               );
             })}
           </div>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-atlas-warm/60">
-          {rest.map((service, i) => {
+          {rest.map((service) => {
             const Icon = service.icon;
             return (
-              <motion.div
-                key={service.key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.07 }}
-              >
+              <div key={service.key} className="rest-card">
                 <Link
                   href="/solutions"
                   className="group block bg-white p-6 lg:p-7 hover:bg-atlas-charcoal transition-colors duration-300 h-full"
@@ -152,7 +165,7 @@ export function ServicesGrid() {
                   </p>
                   <ArrowUpRight className="w-4 h-4 text-atlas-slate/30 group-hover:text-atlas-red mt-4 transition-colors" />
                 </Link>
-              </motion.div>
+              </div>
             );
           })}
         </div>

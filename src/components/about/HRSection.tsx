@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Briefcase, GraduationCap, HeartHandshake, TrendingUp } from "lucide-react";
 
@@ -43,19 +44,32 @@ const hrValues = [
 export function HRSection() {
   const t = useTranslations("about.hr");
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const heading = container.current?.querySelector(".hr-heading");
+    if (heading) {
+      gsap.from(heading, {
+        x: -40, opacity: 0, duration: 0.7, ease: "power3.out",
+        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const cards = container.current?.querySelectorAll(".hr-card");
+    if (cards?.length) {
+      gsap.from(cards, {
+        y: 40, opacity: 0, scale: 0.9, rotateX: 6, duration: 0.55, stagger: 0.08,
+        ease: "back.out(1.5)",
+        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-atlas-sand/30 border-y border-atlas-warm">
+    <section ref={container} className="py-24 lg:py-32 bg-atlas-sand/30 border-y border-atlas-warm">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
-          >
+          <div className="hr-heading lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <div className="flex items-center gap-3 mb-4">
                 <Briefcase className="w-5 h-5 text-atlas-green" />
@@ -73,18 +87,15 @@ export function HRSection() {
                   : "Atlas Batiment Modulaire offers a stimulating work environment between our sites in France and Germany. Join an international team dedicated to excellence in modular construction."}
               </p>
             </div>
-          </motion.div>
+          </div>
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
             {hrValues.map((item, i) => {
               const Icon = item.icon;
               return (
-                <motion.div
+                <div
                   key={i}
-                  initial={{ opacity: 0, y: 24 }}
-                  animate={isInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: 0.15 + i * 0.08 }}
-                  className="bg-white border border-atlas-warm/60 p-6 rounded-sm"
+                  className="hr-card bg-white border border-atlas-warm/60 p-6 rounded-sm"
                 >
                   <div className="w-10 h-10 bg-atlas-green/10 rounded-sm flex items-center justify-center mb-4">
                     <Icon className="w-5 h-5 text-atlas-green" />
@@ -95,7 +106,7 @@ export function HRSection() {
                   <p className="text-[14px] text-atlas-slate leading-relaxed">
                     {item.desc[locale]}
                   </p>
-                </motion.div>
+                </div>
               );
             })}
           </div>

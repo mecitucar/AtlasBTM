@@ -1,7 +1,8 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import {
   Award,
@@ -29,18 +30,31 @@ const differentiators = [
 
 export function WhyAtlas() {
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const heading = container.current!.querySelector(".why-heading");
+    if (heading) {
+      gsap.from(heading, {
+        x: -40, opacity: 0, duration: 0.7, ease: "power3.out",
+        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const cards = container.current!.querySelectorAll(".why-card");
+    if (cards?.length) {
+      gsap.from(cards, {
+        y: 30, opacity: 0, scale: 0.95, rotateX: 8, duration: 0.5, stagger: 0.05,
+        ease: "back.out(1.4)",
+        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-atlas-charcoal">
+    <section ref={container} className="py-24 lg:py-32 bg-atlas-charcoal">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
+        <div className="why-heading mb-16">
           <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
             {locale === "fr" ? "Pourquoi Atlas" : "Why Atlas"}
           </span>
@@ -50,18 +64,15 @@ export function WhyAtlas() {
               : "Our difference, your advantage"}
           </h2>
           <div className="w-16 h-[3px] bg-atlas-red mt-6" />
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {differentiators.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
+              <div
                 key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
-                className="flex items-start gap-4 bg-white/5 p-6 hover:bg-white/8 transition-colors"
+                className="why-card flex items-start gap-4 bg-white/5 p-6 hover:bg-white/8 transition-colors"
               >
                 <div className="w-10 h-10 bg-atlas-red/15 flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-atlas-red" />
@@ -69,7 +80,7 @@ export function WhyAtlas() {
                 <p className="text-[15px] text-white/70 leading-relaxed">
                   {item[locale]}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

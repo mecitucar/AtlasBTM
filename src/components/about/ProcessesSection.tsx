@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   FileText,
@@ -11,6 +10,8 @@ import {
   Wrench,
   HeadphonesIcon,
 } from "lucide-react";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 const steps = [
   {
@@ -54,18 +55,65 @@ const steps = [
 export function ProcessesSection() {
   const t = useTranslations("process");
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const heading = container.current!.querySelector(".section-heading");
+    if (heading) {
+      gsap.from(heading, {
+        y: 50,
+        opacity: 0,
+        duration: 0.7,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: heading,
+          start: "top 85%",
+          toggleActions: "play none none none",
+        },
+      });
+    }
+
+    const cards = container.current!.querySelectorAll(".process-card");
+    if (cards) {
+      cards.forEach((card, i) => {
+        const row = Math.floor(i / 3);
+        gsap.from(card, {
+          y: 60,
+          opacity: 0,
+          rotateX: -10,
+          duration: 0.7,
+          delay: (i % 3) * 0.12,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cards[row * 3] || card,
+            start: "top 88%",
+            toggleActions: "play none none none",
+          },
+        });
+
+        const number = card.querySelector(".card-number");
+        if (number) {
+          gsap.from(number, {
+            scale: 3,
+            opacity: 0,
+            duration: 0.5,
+            delay: (i % 3) * 0.12 + 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: cards[row * 3] || card,
+              start: "top 88%",
+              toggleActions: "play none none none",
+            },
+          });
+        }
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-background">
+    <section ref={container} className="py-24 lg:py-32 bg-background">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
-        >
+        <div className="section-heading text-center mb-20">
           <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
             {locale === "fr" ? "Processus" : "Processes"}
           </span>
@@ -78,25 +126,22 @@ export function ProcessesSection() {
               ? "Atlas respecte strictement le delai de livraison determine avec une tres bonne planification, sans aucune perturbation."
               : "Atlas strictly complies with the delivery time determined with very good planning, without any disruption."}
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {steps.map((step, i) => {
             const Icon = step.icon;
             return (
-              <motion.div
+              <div
                 key={step.key}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.08 }}
-                className="bg-white border border-atlas-warm/40 p-8 hover:border-atlas-red/20 hover:shadow-lg transition-all"
+                className="process-card bg-white border border-atlas-warm/40 p-8 hover:border-atlas-red/20 hover:shadow-lg transition-all"
               >
                 <div className="flex items-center gap-4 mb-5">
                   <div className="w-12 h-12 bg-atlas-red/10 flex items-center justify-center shrink-0">
                     <Icon className="w-6 h-6 text-atlas-red" />
                   </div>
                   <div>
-                    <span className="text-[12px] text-atlas-red font-bold tracking-wider uppercase">
+                    <span className="card-number text-[12px] text-atlas-red font-bold tracking-wider uppercase">
                       {String(i + 1).padStart(2, "0")}
                     </span>
                     <h3 className="font-[var(--font-heading)] font-bold text-[17px] text-atlas-charcoal tracking-tight">
@@ -107,7 +152,7 @@ export function ProcessesSection() {
                 <p className="text-[14px] text-atlas-slate leading-relaxed">
                   {step[locale]}
                 </p>
-              </motion.div>
+              </div>
             );
           })}
         </div>

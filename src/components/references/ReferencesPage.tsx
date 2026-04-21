@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import { MapPin, Calendar, ExternalLink } from "lucide-react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
@@ -76,8 +77,8 @@ const categories = [
 export function ReferencesPage() {
   const t = useTranslations("references");
   const locale = useLocale() as "fr" | "en";
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const heroRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null);
   const [activeCategory, setActiveCategory] = useState("all");
 
   const filtered =
@@ -85,17 +86,33 @@ export function ReferencesPage() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
+  useGSAP(() => {
+    const hero = heroRef.current?.querySelector(".ref-hero");
+    if (hero) {
+      gsap.from(hero, {
+        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
+      });
+    }
+  }, { scope: heroRef });
+
+  useGSAP(() => {
+    const cards = container.current?.querySelectorAll(".ref-card");
+    if (cards?.length) {
+      gsap.from(cards, {
+        y: 50, opacity: 0, scale: 0.92, duration: 0.6, stagger: 0.07,
+        ease: "back.out(1.4)",
+        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container, dependencies: [activeCategory], revertOnUpdate: true });
+
   return (
     <>
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
+      <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
         <div className="absolute inset-0 gradient-atlas" />
         <LogoWatermark className="top-1/2 right-0 -translate-y-1/2 translate-x-1/3 text-white" />
         <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7 }}
-          >
+          <div className="ref-hero">
             <span className="text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium">
               {t("title")}
             </span>
@@ -103,11 +120,11 @@ export function ReferencesPage() {
               {t("subtitle")}
             </h1>
             <div className="w-16 h-[2px] bg-white/30 mt-8" />
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      <section ref={ref} className="py-24 lg:py-32 bg-background">
+      <section ref={container} className="py-24 lg:py-32 bg-background">
         <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
           <div className="flex flex-wrap gap-2 mb-12">
             {categories.map((cat) => (
@@ -127,12 +144,9 @@ export function ReferencesPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filtered.map((project, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.07 }}
-                className="group bg-white border border-atlas-warm/60 rounded-sm overflow-hidden hover:shadow-lg hover:border-atlas-navy/10 transition-all"
+              <div
+                key={`${project.category}-${i}`}
+                className="ref-card group bg-white border border-atlas-warm/60 rounded-sm overflow-hidden hover:shadow-lg hover:border-atlas-navy/10 transition-all"
               >
                 <div className="aspect-[16/10] bg-atlas-sand border-b border-atlas-warm relative overflow-hidden">
                   <Image
@@ -167,7 +181,7 @@ export function ReferencesPage() {
                     </span>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>

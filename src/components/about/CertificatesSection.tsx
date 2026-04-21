@@ -1,7 +1,8 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useInView } from "framer-motion";
+import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { ShieldCheck, Award, CheckCircle, FileCheck, BadgeCheck, Scale } from "lucide-react";
 
@@ -16,18 +17,31 @@ const certificates = [
 
 export function CertificatesSection() {
   const t = useTranslations("about.certificates");
-  const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const heading = container.current?.querySelector(".certs-heading");
+    if (heading) {
+      gsap.from(heading, {
+        y: 30, opacity: 0, duration: 0.7, ease: "back.out(1.4)",
+        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+
+    const cards = container.current?.querySelectorAll(".cert-card");
+    if (cards?.length) {
+      gsap.from(cards, {
+        y: 40, opacity: 0, scale: 0.88, rotateY: -8, duration: 0.6, stagger: 0.06,
+        ease: "back.out(1.6)",
+        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
+      });
+    }
+  }, { scope: container });
 
   return (
-    <section ref={ref} className="py-24 lg:py-32 bg-white">
+    <section ref={container} className="py-24 lg:py-32 bg-white">
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16"
-        >
+        <div className="certs-heading mb-16">
           <span className="text-[13px] tracking-[0.2em] uppercase text-atlas-green font-semibold">
             {t("title")}
           </span>
@@ -35,18 +49,15 @@ export function CertificatesSection() {
             {t("subtitle")}
           </h2>
           <div className="w-16 h-[2px] bg-atlas-navy mt-6" />
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {certificates.map((cert, i) => {
+          {certificates.map((cert) => {
             const Icon = cert.icon;
             return (
-              <motion.div
+              <div
                 key={cert.name}
-                initial={{ opacity: 0, y: 24 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 + i * 0.06 }}
-                className="bg-atlas-sand/40 border border-atlas-warm/60 p-6 rounded-sm flex items-start gap-4"
+                className="cert-card bg-atlas-sand/40 border border-atlas-warm/60 p-6 rounded-sm flex items-start gap-4"
               >
                 <div className="w-10 h-10 bg-white border border-atlas-warm rounded-sm flex items-center justify-center shrink-0">
                   <Icon className="w-5 h-5 text-atlas-navy" />
@@ -59,7 +70,7 @@ export function CertificatesSection() {
                     {cert.desc}
                   </p>
                 </div>
-              </motion.div>
+              </div>
             );
           })}
         </div>

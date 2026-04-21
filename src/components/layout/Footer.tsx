@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
+import Image from "next/image";
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -52,20 +53,14 @@ export function Footer() {
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
         <div className="py-14 lg:py-20 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
           <div className="col-span-2 lg:col-span-2">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 bg-white/10 rounded-sm flex items-center justify-center">
-                <span className="text-white font-[var(--font-heading)] font-bold text-lg">
-                  A
-                </span>
-              </div>
-              <div>
-                <div className="font-[var(--font-heading)] font-semibold text-[16px] tracking-tight text-white">
-                  ATLAS
-                </div>
-                <div className="text-[10px] tracking-[0.2em] uppercase text-white/50">
-                  Batiment Modulaire
-                </div>
-              </div>
+            <div className="mb-6">
+              <Image
+                src="/images/logo-transparent.png"
+                alt="Atlas Batiment Modulaire"
+                width={200}
+                height={56}
+                className="h-12 w-auto"
+              />
             </div>
             <p className="text-[15px] leading-relaxed text-white/55 max-w-[340px] mb-8">
               {t("description")}
