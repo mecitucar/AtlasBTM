@@ -1,0 +1,186 @@
+{
+  "meta": {
+    "title": "Atlas Batiment Modulaire | Containers & Modular Solutions",
+    "description": "Local mastery, guaranteed excellence. Modular construction solutions, prefabricated containers and steel structures. Fast delivery."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "Corporate",
+    "products": "Products",
+    "solutions": "Solutions",
+    "projects": "Projects",
+    "contact": "Contact"
+  },
+  "hero": {
+    "slogan": "Local Mastery, Guaranteed Excellence",
+    "subtitle": "Easy solutions in difficult conditions. High capacity production infrastructure, material quality and technical possibilities on your sites.",
+    "cta": "Our Solutions",
+    "ctaSecondary": "Our Products",
+    "fastDelivery": "Fast Delivery Guaranteed"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Modular solutions for every need",
+    "prefab": {
+      "title": "Prefabricated",
+      "desc": "Time-saving and economical building solutions produced in facility and shipped unassembled to construction sites for quick installation.",
+      "features": [
+        "Time-saving and economic solution",
+        "Maximum 5% loss during relocation",
+        "Turnkey service from concrete to finishing",
+        "Weather-independent installation"
+      ]
+    },
+    "container": {
+      "title": "Living Container",
+      "desc": "Ready-to-use modular container buildings ideal for short-term occupancy in construction sites and temporary camps.",
+      "features": [
+        "Ideal living space for short-term use",
+        "Maximum 2% loss during relocation",
+        "Can stack up to 4 stories",
+        "Buyback guarantee 60% (0-1 years)"
+      ]
+    },
+    "lightsteel": {
+      "title": "Light Gauge Steel",
+      "desc": "Cold-formed, galvanized steel construction system emphasizing speed, sustainability and flexibility with reduced building weight.",
+      "features": [
+        "Long lasting, permanent and aesthetic building system",
+        "Recyclable and environmentally friendly",
+        "Energy-efficient production",
+        "Strong design infrastructure"
+      ]
+    },
+    "structural": {
+      "title": "Structural Steel",
+      "desc": "Large-span steel structures completed primarily at production facility for precision assembly without site mismatches.",
+      "features": [
+        "Integrated project-production-assembly approach",
+        "Dedicated sand blasting plant",
+        "High construction speed and cost efficiency"
+      ]
+    }
+  },
+  "solutions": {
+    "title": "Our Sectors",
+    "subtitle": "Modular solutions tailored to every industry sector",
+    "prefab": {
+      "title": "Prefabricated Container",
+      "desc": "Modular prefabricated containers for fast and durable construction. Fast delivery guaranteed."
+    },
+    "mining": {
+      "title": "Mining Camps",
+      "desc": "Modular camps for mining sites, rapidly deployable on any terrain."
+    },
+    "construction": {
+      "title": "Construction Camps",
+      "desc": "Modular installations for construction sites and large-scale projects."
+    },
+    "defense": {
+      "title": "Defense Industry",
+      "desc": "Specialized structures for defense sector requirements."
+    },
+    "energy": {
+      "title": "Energy Projects",
+      "desc": "Modular installations for the energy industry and infrastructure projects."
+    },
+    "worksite": {
+      "title": "Worksite and Camp Buildings",
+      "desc": "Buildings used for mobilization of all kinds of construction sites."
+    },
+    "multipurpose": {
+      "title": "Multi-Purpose Buildings",
+      "desc": "Used by public institutions, municipalities and investors for various purposes."
+    }
+  },
+  "about": {
+    "title": "Corporate",
+    "subtitle": "Local Mastery, Guaranteed Excellence",
+    "intro": "Atlas Batiment Modulaire offers high-quality modular solutions with high capacity production infrastructure. We design, manufacture and install prefabricated containers for industrial, mining, energy and civil sectors.",
+    "difference": {
+      "title": "Our Difference",
+      "subtitle": "What sets us apart"
+    },
+    "processes": {
+      "title": "Processes",
+      "subtitle": "Planning, Management and Satisfaction",
+      "steps": ["Proposal and Contract", "Project Design", "Production", "Logistics", "Assembly", "After Sales"]
+    },
+    "plant": {
+      "title": "Production Plant",
+      "subtitle": "Modern production infrastructure"
+    }
+  },
+  "projects": {
+    "title": "Projects",
+    "subtitle": "Our completed projects around the world",
+    "viewProject": "View project",
+    "allProjects": "All projects",
+    "categories": {
+      "all": "All",
+      "worksite": "Worksite & Camp",
+      "multipurpose": "Multi-Purpose",
+      "mining": "Mining",
+      "energy": "Energy"
+    }
+  },
+  "capacity": {
+    "title": "Production Capacity",
+    "prefab": "Prefabricated",
+    "lightsteel": "Light Gauge Steel",
+    "containers": "Containers",
+    "structural": "Structural Steel",
+    "facility": "Modern production facility with fully automatic production lines"
+  },
+  "process": {
+    "title": "Planning, Management and Satisfaction",
+    "steps": {
+      "proposal": "Proposal and Contract",
+      "design": "Project Design",
+      "production": "Production",
+      "logistics": "Logistics",
+      "assembly": "Assembly",
+      "aftersales": "After Sales"
+    }
+  },
+  "contact": {
+    "title": "Contact",
+    "subtitle": "Get in touch with our teams",
+    "writeToUs": "Write To Us",
+    "getQuote": "Get A Quote",
+    "form": {
+      "name": "Name / Surname",
+      "email": "Email",
+      "phone": "Phone",
+      "company": "Company Name",
+      "subject": "Subject",
+      "message": "Your message",
+      "description": "Description",
+      "attachFiles": "Attach files (up to 5)",
+      "send": "Send",
+      "sendQuote": "Send Request"
+    },
+    "info": {
+      "phone": "Phone",
+      "email": "Email",
+      "address": "Address",
+      "headOffice": "Head Office",
+      "factory": "Factory"
+    }
+  },
+  "footer": {
+    "description": "High-quality modular construction and prefabricated container solutions. Fast delivery guaranteed.",
+    "quickLinks": "Quick Links",
+    "ourSolutions": "Our Sectors",
+    "ourProducts": "Our Products",
+    "contactUs": "Contact Us",
+    "rights": "All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions"
+  },
+  "cta": {
+    "whatsapp": "Contact us on WhatsApp",
+    "quote": "Request a quote",
+    "details": "Details"
+  }
+}

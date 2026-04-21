@@ -1,0 +1,162 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/navigation";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import Image from "next/image";
+import {
+  Container,
+  Pickaxe,
+  HardHat,
+  Shield,
+  Zap,
+  ArrowUpRight,
+} from "lucide-react";
+
+const services = [
+  {
+    key: "prefab",
+    icon: Container,
+    image: "/images/containers/finished-1.webp",
+    altText: "Conteneurs prefabriques modulaires - livraison rapide",
+    featured: true,
+  },
+  {
+    key: "mining",
+    icon: Pickaxe,
+    image: "/images/containers/site-aerial-2.webp",
+    altText: "Camps modulaires pour sites miniers",
+    featured: true,
+  },
+  {
+    key: "construction",
+    icon: HardHat,
+    image: "/images/containers/camp-1.webp",
+    altText: "Camps construction modulaires pour chantiers",
+    featured: false,
+  },
+  {
+    key: "defense",
+    icon: Shield,
+    image: "/images/containers/finished-2.webp",
+    altText: "Structures modulaires pour industrie de la defense",
+    featured: false,
+  },
+  {
+    key: "energy",
+    icon: Zap,
+    image: "/images/containers/port-containers.webp",
+    altText: "Installations modulaires pour projets energetiques",
+    featured: false,
+  },
+] as const;
+
+export function ServicesGrid() {
+  const t = useTranslations("solutions");
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-40px" });
+
+  const featured = services.filter((s) => s.featured);
+  const rest = services.filter((s) => !s.featured);
+
+  return (
+    <section ref={ref} className="py-28 lg:py-36 bg-white">
+      <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-20 items-start mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-5"
+          >
+            <div className="lg:sticky lg:top-32">
+              <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
+                {t("title")}
+              </span>
+              <h2 className="font-[var(--font-heading)] text-[clamp(2rem,3.5vw,3.2rem)] font-black text-atlas-charcoal mt-4 leading-[1.05] tracking-tight">
+                {t("subtitle")}
+              </h2>
+              <div className="w-16 h-[3px] bg-atlas-red mt-8" />
+            </div>
+          </motion.div>
+
+          <div className="lg:col-span-7 space-y-6">
+            {featured.map((service, i) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.key}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.6, delay: 0.15 + i * 0.12 }}
+                >
+                  <Link
+                    href="/solutions"
+                    className="group block relative overflow-hidden"
+                  >
+                    <div className="aspect-[21/9] relative overflow-hidden">
+                      <Image
+                        src={service.image}
+                        alt={service.altText}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        sizes="(max-width: 1024px) 100vw, 58vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                      <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 flex items-end justify-between">
+                        <div>
+                          <div className="flex items-center gap-3 mb-2">
+                            <Icon className="w-5 h-5 text-atlas-red" />
+                            <h3 className="font-[var(--font-heading)] font-bold text-[20px] lg:text-[24px] text-white tracking-tight">
+                              {t(`${service.key}.title`)}
+                            </h3>
+                          </div>
+                          <p className="text-[14px] text-white/55 max-w-[400px] hidden sm:block">
+                            {t(`${service.key}.desc`)}
+                          </p>
+                        </div>
+                        <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0 group-hover:bg-atlas-red-dark transition-colors">
+                          <ArrowUpRight className="w-5 h-5 text-white group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-px bg-atlas-warm/60">
+          {rest.map((service, i) => {
+            const Icon = service.icon;
+            return (
+              <motion.div
+                key={service.key}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 + i * 0.07 }}
+              >
+                <Link
+                  href="/solutions"
+                  className="group block bg-white p-6 lg:p-7 hover:bg-atlas-charcoal transition-colors duration-300 h-full"
+                >
+                  <Icon className="w-6 h-6 text-atlas-red mb-5 group-hover:text-atlas-red-light transition-colors" />
+                  <h3 className="font-[var(--font-heading)] font-bold text-[16px] text-atlas-charcoal group-hover:text-white mb-2 transition-colors tracking-tight">
+                    {t(`${service.key}.title`)}
+                  </h3>
+                  <p className="text-[13px] text-atlas-slate group-hover:text-white/50 leading-relaxed transition-colors">
+                    {t(`${service.key}.desc`)}
+                  </p>
+                  <ArrowUpRight className="w-4 h-4 text-atlas-slate/30 group-hover:text-atlas-red mt-4 transition-colors" />
+                </Link>
+              </motion.div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
