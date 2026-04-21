@@ -1,11 +1,13 @@
 import { setRequestLocale } from "next-intl/server";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ProductsGrid } from "@/components/home/ProductsGrid";
-import { WhyAtlas } from "@/components/home/WhyAtlas";
-import { SectorsSection } from "@/components/home/SectorsSection";
+import { AboutSection } from "@/components/home/AboutSection";
+import { SolutionsPreview } from "@/components/home/SolutionsPreview";
 import { LatestProjects } from "@/components/home/LatestProjects";
 import { ProductionCapacity } from "@/components/home/ProductionCapacity";
+import { ProductionPlant } from "@/components/home/ProductionPlant";
 import { ProcessStrip } from "@/components/home/ProcessStrip";
+import { SustainabilityStrip } from "@/components/home/SustainabilityStrip";
 import { CTASection } from "@/components/home/CTASection";
 
 export default async function HomePage({
@@ -20,11 +22,13 @@ export default async function HomePage({
     <>
       <HeroSection />
       <ProductsGrid />
-      <WhyAtlas />
-      <SectorsSection />
+      <AboutSection />
+      <SolutionsPreview />
       <LatestProjects />
       <ProductionCapacity />
+      <ProductionPlant />
       <ProcessStrip />
+      <SustainabilityStrip />
       <CTASection />
     </>
   );
