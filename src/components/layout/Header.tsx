@@ -121,11 +121,9 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
-        isSectorsPage
-          ? "bg-atlas-red shadow-[0_1px_0_0_rgba(0,0,0,0.15)]"
-          : scrolled
-            ? "bg-atlas-charcoal/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.2)]"
-            : "bg-transparent"
+        scrolled
+          ? "bg-atlas-charcoal/95 backdrop-blur-md border-b-[3px] border-atlas-red"
+          : "bg-transparent border-b-[3px] border-transparent"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -201,7 +199,7 @@ export function Header() {
                 >
                   {t(link.key)}
                   {isActive && (
-                    <span className={`absolute bottom-0 left-4 right-4 h-[2px] ${isSectorsPage ? "bg-white" : "bg-atlas-red"}`} />
+                    <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-atlas-red" />
                   )}
                 </Link>
               );
@@ -246,11 +244,7 @@ export function Header() {
 
             <Link
               href="/contact"
-              className={`text-[13px] font-bold tracking-wide uppercase px-6 py-2.5 transition-colors ${
-                isSectorsPage
-                  ? "bg-white text-atlas-red hover:bg-white/90"
-                  : "bg-atlas-red hover:bg-atlas-red-dark text-white"
-              }`}
+              className="bg-atlas-red hover:bg-atlas-red-dark text-white text-[13px] font-bold tracking-wide uppercase px-6 py-2.5 transition-colors"
             >
               {t("contact")}
             </Link>

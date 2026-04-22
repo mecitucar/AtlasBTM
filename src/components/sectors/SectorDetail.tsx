@@ -4,7 +4,7 @@ import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import Image from "next/image";
-import { ArrowRight, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronRight, Phone, Mail } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -404,27 +404,58 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
       {/* ── CTA ── */}
       <section className="relative py-28 lg:py-36 overflow-hidden">
         <div className="absolute inset-0">
-          <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-atlas-red/85" />
+          <Image src="/images/cta-bg.webp" alt="Atlas Batiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" />
+          <div className="absolute inset-0 bg-atlas-red/40" />
         </div>
         <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="max-w-[600px]">
-            <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white tracking-tight leading-[1.05]">
-              {locale === "fr" ? "Parlons de votre projet" : "Let's talk about your project"}
-            </h2>
-            <div className="w-16 h-[3px] bg-white mt-8 mb-8" />
-            <p className="text-[17px] text-white/70 leading-relaxed mb-10">
-              {locale === "fr"
-                ? "Nos experts sont a votre disposition pour etudier vos besoins et vous proposer une solution sur mesure."
-                : "Our experts are available to study your needs and propose a tailored solution."}
-            </p>
-            <Link
-              href="/contact"
-              className="group inline-flex items-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-10 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
-            >
-              {nav("contact")}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-            </Link>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div>
+              <span className="text-[12px] tracking-[0.3em] uppercase text-white/70 font-bold block">
+                {locale === "fr" ? "Votre Projet" : "Your Project"}
+              </span>
+              <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight leading-[1.05]">
+                {locale === "fr" ? "Parlons de votre projet" : "Let's talk about your project"}
+              </h2>
+              <div className="w-16 h-[3px] bg-white mt-8 mb-8" />
+              <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[480px]">
+                {locale === "fr"
+                  ? "Nos experts sont a votre disposition pour etudier vos besoins et vous proposer une solution sur mesure."
+                  : "Our experts are available to study your needs and propose a tailored solution."}
+              </p>
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
+              >
+                {locale === "fr" ? "Demander un Devis" : "Request a Quote"}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+            </div>
+            <div className="space-y-5">
+              <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                  <Phone className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
+                    {locale === "fr" ? "Telephone" : "Phone"}
+                  </span>
+                  <span className="text-[18px] text-white font-bold">+32 490 XX XX XX</span>
+                </div>
+              </div>
+              <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                  <Mail className="w-5 h-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
+                    Email
+                  </span>
+                  <a href="mailto:atlasbatimodulaire@gmail.com" className="text-[18px] text-white font-bold hover:text-white/80 transition-colors">
+                    atlasbatimodulaire@gmail.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

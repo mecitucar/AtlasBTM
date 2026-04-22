@@ -203,19 +203,19 @@ export function ProductsGrid() {
               className="object-cover"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-14">
-              <span className="text-[12px] tracking-[0.2em] uppercase text-atlas-red font-bold bg-white px-3 py-1 inline-block mb-4">
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
+              <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold bg-white px-4 py-1.5 inline-block mb-5">
                 {t("title")}
               </span>
-              <h3 className="font-[var(--font-heading)] font-black text-[clamp(1.5rem,3.5vw,3rem)] text-white tracking-tight mb-3">
+              <h3 className="font-[var(--font-heading)] font-black text-[clamp(2rem,5vw,4rem)] text-white tracking-tighter mb-4 leading-[0.95]">
                 {t(`${product.key}.title`)}
               </h3>
-              <p className="text-[15px] text-white/60 max-w-[500px] leading-relaxed mb-6">
-                {t(`${product.key}.desc`).slice(0, 140)}...
+              <p className="text-[17px] text-white/70 max-w-[550px] leading-relaxed mb-8">
+                {t(`${product.key}.desc`).slice(0, 160)}...
               </p>
-              <span className="inline-flex items-center gap-2 text-[14px] text-white font-bold uppercase tracking-wide group-hover:gap-3 transition-all">
-                {t("title")} <ArrowRight className="w-4 h-4" />
+              <span className="inline-flex items-center gap-3 text-[15px] text-white font-bold uppercase tracking-wider group-hover:gap-4 transition-all">
+                {t("title")} <ArrowRight className="w-5 h-5" />
               </span>
             </div>
           </Link>

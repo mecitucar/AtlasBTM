@@ -139,3 +139,37 @@
   from { transform: scaleX(0); transform-origin: left; }
   to { transform: scaleX(1); transform-origin: left; }
 }
+
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes border-rotate {
+  to { --border-angle: 360deg; }
+}
+
+.spinning-border {
+  position: relative;
+  overflow: hidden;
+}
+.spinning-border::before {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  background: conic-gradient(from var(--border-angle), transparent 60%, #bf0a28 80%, transparent 100%);
+  animation: border-rotate 6s linear infinite;
+  z-index: 0;
+}
+.spinning-border::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: inherit;
+  z-index: 0;
+}
+.spinning-border > * {
+  position: relative;
+  z-index: 1;
+}

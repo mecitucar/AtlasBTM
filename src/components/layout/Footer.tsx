@@ -89,7 +89,7 @@ export function Footer() {
               {t("quickLinks")}
             </h4>
             <ul className="space-y-3">
-              {(["home", "about", "products", "solutions", "projects", "contact"] as const).map(
+              {(["home", "about", "products", "projects", "contact"] as const).map(
                 (key) => (
                   <li key={key}>
                     <Link
@@ -106,22 +106,22 @@ export function Footer() {
 
           <div>
             <h4 className="font-[var(--font-heading)] font-semibold text-[13px] tracking-[0.15em] uppercase text-white mb-6">
-              {t("ourSolutions")}
+              {nav("solutions")}
             </h4>
             <ul className="space-y-3">
               {[
-                "Container Prefabrique",
-                "Camps Miniere",
-                "Camps Construction",
-                "L'industrie De La Defence",
-                "Project l'Energetique",
+                { label: "Container Prefabrique", href: "/sectors/prefab" },
+                { label: "Camps Miniere", href: "/sectors/mining" },
+                { label: "Camps Construction", href: "/sectors/construction" },
+                { label: "L'industrie De La Defence", href: "/sectors/defense" },
+                { label: "Project l'Energetique", href: "/sectors/energy" },
               ].map((item) => (
-                <li key={item}>
+                <li key={item.href}>
                   <Link
-                    href="/sectors"
+                    href={item.href as any}
                     className="text-[14px] text-white/50 hover:text-white transition-colors"
                   >
-                    {item}
+                    {item.label}
                   </Link>
                 </li>
               ))}

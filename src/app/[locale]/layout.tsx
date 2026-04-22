@@ -6,6 +6,7 @@ import { Archivo, Be_Vietnam_Pro } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppButton } from "@/components/layout/WhatsAppButton";
+import { RedLineFill } from "@/components/ui/RedLineFill";
 import type { Metadata } from "next";
 
 const archivo = Archivo({
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main className="flex-1">{children}</main>
+          <RedLineFill />
           <Footer />
           <WhatsAppButton />
         </NextIntlClientProvider>

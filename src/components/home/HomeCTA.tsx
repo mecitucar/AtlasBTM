@@ -34,25 +34,26 @@ export function HomeCTA() {
         <BlueprintGrid opacity={0.04} />
         <div className="absolute inset-0">
           <Image
-            src="/images/containers/site-aerial-1.webp"
-            alt="Atlas Batiment Modulaire - projet modulaire"
+            src="/images/cta-bg.webp"
+            alt="Atlas Batiment Modulaire - conception projet modulaire"
             fill
-            className="object-cover opacity-20"
+            className="object-cover"
             sizes="100vw"
           />
+          <div className="absolute inset-0 bg-atlas-red/40" />
         </div>
         <div className="relative z-10 py-14 lg:py-20 flex items-center" style={{ minHeight: "calc(100vh - 280px)" }}>
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
             <div className="hcta-content grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
-                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                <span className="text-[12px] tracking-[0.3em] uppercase text-white/70 font-bold">
                   {locale === "fr" ? "Votre Projet" : "Your Project"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.25rem)] font-black text-white mt-4 tracking-tight leading-[1.05]">
                   {t("quote")}
                 </h2>
-                <div className="w-16 h-[3px] bg-atlas-red mt-6 mb-8" />
-                <p className="text-[17px] text-white/50 leading-relaxed mb-10 max-w-[480px]">
+                <div className="w-16 h-[3px] bg-white mt-6 mb-8" />
+                <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[480px]">
                   {locale === "fr"
                     ? "Decrivez-nous votre besoin et recevez une proposition detaillee sous 48h. Nos experts vous accompagnent de la conception a la livraison."
                     : "Describe your needs and receive a detailed proposal within 48h. Our experts support you from design to delivery."}
@@ -60,30 +61,34 @@ export function HomeCTA() {
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/contact"
-                    className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
+                    className="group inline-flex items-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
                   >
                     {locale === "fr" ? "Demander un Devis" : "Request a Quote"}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                   </Link>
                 </div>
               </div>
-              <div className="space-y-6">
-                <div className="flex items-start gap-4 p-6 bg-white/5 border border-white/10">
-                  <Phone className="w-5 h-5 text-atlas-red mt-1 shrink-0" />
+              <div className="space-y-5">
+                <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-white" />
+                  </div>
                   <div>
-                    <span className="text-[13px] text-white/40 uppercase tracking-wider font-medium block mb-1">
+                    <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
                       {locale === "fr" ? "Telephone" : "Phone"}
                     </span>
-                    <span className="text-[17px] text-white font-medium">+32 490 XX XX XX</span>
+                    <span className="text-[18px] text-white font-bold">+32 490 XX XX XX</span>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 p-6 bg-white/5 border border-white/10">
-                  <Mail className="w-5 h-5 text-atlas-red mt-1 shrink-0" />
+                <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                  <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-white" />
+                  </div>
                   <div>
-                    <span className="text-[13px] text-white/40 uppercase tracking-wider font-medium block mb-1">
+                    <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
                       Email
                     </span>
-                    <a href="mailto:atlasbatimodulaire@gmail.com" className="text-[17px] text-white font-medium hover:text-atlas-red transition-colors">
+                    <a href="mailto:atlasbatimodulaire@gmail.com" className="text-[18px] text-white font-bold hover:text-white/80 transition-colors">
                       atlasbatimodulaire@gmail.com
                     </a>
                   </div>

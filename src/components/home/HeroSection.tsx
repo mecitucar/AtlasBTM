@@ -10,13 +10,13 @@ import { useGSAP } from "@gsap/react";
 
 const slides = [
   {
-    src: "/images/containers/site-aerial-1.webp",
-    alt: "Vue aerienne chantier modulaire Atlas Batiment Modulaire",
+    src: "/images/hero-slide-1.webp",
+    alt: "Atlas Batiment Modulaire - conteneurs prefabriques haute qualite",
     layout: "left" as const,
   },
   {
-    src: "/images/containers/finished-1.webp",
-    alt: "Conteneurs prefabriques modulaires livres sur site",
+    src: "/images/hero-slide-2.webp",
+    alt: "Construction modulaire Atlas - solutions cle en main",
     layout: "center" as const,
   },
   {

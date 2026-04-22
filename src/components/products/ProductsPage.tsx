@@ -122,7 +122,7 @@ export function ProductsPage() {
             </div>
             <div className="relative z-10 h-full flex items-end pb-10 lg:pb-14">
               <div className="w-full px-5 sm:px-8 lg:px-16 xl:px-24">
-                <div className="bg-white/95 backdrop-blur-sm px-8 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
+                <div className="spinning-border bg-white/95 backdrop-blur-sm px-8 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
                   <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-16 items-center">
                     <div>
                       <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3.5vw,2.75rem)] font-black text-atlas-charcoal tracking-tight mb-4">
