@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
-import { LogoWatermark } from "@/components/ui/LogoWatermark";
+import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 
@@ -12,34 +12,39 @@ export function AboutHero() {
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-    const el = (s: string) => container.current!.querySelector(s);
-
-    tl.from(el(".hero-label")!, { y: 30, opacity: 0, duration: 0.6 }, 0.2);
-    tl.from(el(".hero-title")!, { y: 40, opacity: 0, clipPath: "inset(100% 0% 0% 0%)", duration: 0.8 }, 0.35);
-    tl.from(el(".hero-line")!, { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
-    tl.from(el(".hero-intro")!, { y: 30, opacity: 0, duration: 0.7 }, 0.8);
+    tl.from(".ah-label", { y: 30, opacity: 0, duration: 0.6 }, 0.2);
+    tl.from(".ah-title", { y: 50, opacity: 0, duration: 0.9 }, 0.3);
+    tl.from(".ah-line", { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
+    tl.from(".ah-intro", { y: 20, opacity: 0, duration: 0.7 }, 0.9);
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-      <div className="absolute inset-0 gradient-atlas" />
-      <LogoWatermark className="top-1/2 right-0 -translate-y-1/2 translate-x-1/3 text-white" />
-
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 lg:px-12">
-        <div>
-          <span className="hero-label text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium block">
+    <section ref={container} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
+      <div className="absolute inset-0">
+        <Image
+          src="/images/about-hero.webp"
+          alt="Atlas Batiment Modulaire - wireframe batiment modulaire"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+      </div>
+      <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
+        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
+          <span className="ah-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
             {t("title")}
           </span>
-          <h1 className="hero-title font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-bold text-white mt-4 leading-tight max-w-[600px]">
+          <h1 className="ah-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white mt-5 leading-[0.95] tracking-tighter max-w-[700px]">
             {t("subtitle")}
           </h1>
-          <div className="hero-line w-16 h-[2px] bg-white/30 mt-8" />
+          <div className="ah-line w-20 h-[3px] bg-atlas-red mt-8 mb-8" />
+          <p className="ah-intro text-[19px] text-white/50 leading-relaxed max-w-[550px]">
+            {t("intro")}
+          </p>
         </div>
-
-        <p className="hero-intro mt-8 text-[18px] text-white/60 leading-relaxed max-w-[640px]">
-          {t("intro")}
-        </p>
       </div>
     </section>
   );

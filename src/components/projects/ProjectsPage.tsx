@@ -109,18 +109,21 @@ export function ProjectsPage() {
 
   return (
     <>
-      <section ref={heroRef} className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden">
-        <div className="absolute inset-0 gradient-atlas" />
-        <LogoWatermark className="top-1/2 right-0 -translate-y-1/2 translate-x-1/3 text-white" />
-        <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div>
-            <span className="hero-label text-[13px] tracking-[0.2em] uppercase text-white/50 font-medium block">
+      <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+        </div>
+        <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
+            <span className="hero-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
               {t("title")}
             </span>
-            <h1 className="hero-title font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 leading-tight max-w-[600px]">
+            <h1 className="hero-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white mt-5 leading-[0.95] tracking-tighter max-w-[700px]">
               {t("subtitle")}
             </h1>
-            <div className="hero-line w-16 h-[3px] bg-atlas-red mt-8" />
+            <div className="hero-line w-20 h-[3px] bg-atlas-red mt-8" />
           </div>
         </div>
       </section>

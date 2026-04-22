@@ -6,6 +6,7 @@ import { useRef, useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";
+import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 const products = [
   { key: "prefab", image: "/images/containers/finished-1.webp", alt: "Batiments prefabriques modulaires Atlas" },
@@ -24,7 +25,7 @@ export function ProductsGrid() {
   const [released, setReleased] = useState(false);
   const animating = useRef(false);
   const pinned = useRef(false);
-  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const dotsRef = useRef<(HTMLButtonElement | null)[]>([]);
 
   function updateDots(s: number) {
     dotsRef.current.forEach((dot, i) => {
@@ -110,7 +111,10 @@ export function ProductsGrid() {
       }
 
       if (next < 0) {
+        e.preventDefault();
         pinned.current = false;
+        const prev = container.current?.previousElementSibling as HTMLElement;
+        if (prev) prev.scrollIntoView({ behavior: "smooth" });
         return;
       }
 
@@ -142,7 +146,10 @@ export function ProductsGrid() {
         return;
       }
       if (next < 0) {
+        e.preventDefault();
         pinned.current = false;
+        const prev = container.current?.previousElementSibling as HTMLElement;
+        if (prev) prev.scrollIntoView({ behavior: "smooth" });
         return;
       }
 
@@ -168,6 +175,8 @@ export function ProductsGrid() {
       className="relative h-screen bg-atlas-red overflow-hidden"
       style={{ position: released ? "relative" : "sticky", top: released ? "auto" : 0, zIndex: 30 }}
     >
+      <BlueprintGrid opacity={0.55} />
+
       {/* Baslik */}
       <div className="products-heading absolute inset-0 z-10 flex flex-col items-center justify-center px-6 pointer-events-none">
         <span className="text-[13px] tracking-[0.25em] uppercase text-white/70 font-bold">

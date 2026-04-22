@@ -122,9 +122,7 @@ export function Header() {
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
         isSectorsPage
-          ? scrolled
-            ? "bg-atlas-red shadow-[0_1px_0_0_rgba(0,0,0,0.15)]"
-            : "bg-atlas-red/0"
+          ? "bg-atlas-red shadow-[0_1px_0_0_rgba(0,0,0,0.15)]"
           : scrolled
             ? "bg-atlas-charcoal/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.2)]"
             : "bg-transparent"

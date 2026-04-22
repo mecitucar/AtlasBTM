@@ -7,6 +7,7 @@ import { ArrowRight, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 export function HomeCTA() {
   const nav = useTranslations("nav");
@@ -30,6 +31,7 @@ export function HomeCTA() {
     >
       {/* CTA area */}
       <div className="relative overflow-hidden" style={{ minHeight: "calc(100vh - 280px)" }}>
+        <BlueprintGrid opacity={0.04} />
         <div className="absolute inset-0">
           <Image
             src="/images/containers/site-aerial-1.webp"
