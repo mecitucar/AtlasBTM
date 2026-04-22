@@ -5,10 +5,6 @@ import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
 import {
-  Container,
-  Building2,
-  Layers,
-  Wrench,
   Check,
   ArrowRight,
 } from "lucide-react";
@@ -17,25 +13,21 @@ import { Footer } from "@/components/layout/Footer";
 const products = [
   {
     key: "prefab",
-    icon: Building2,
     image: "/images/containers/finished-1.webp",
     altText: "Batiments prefabriques modulaires - production en usine livraison rapide",
   },
   {
     key: "container",
-    icon: Container,
     image: "/images/containers/production-1.webp",
     altText: "Living containers modulaires prets a l'emploi",
   },
   {
     key: "lightsteel",
-    icon: Layers,
     image: "/images/containers/assembly-1.webp",
     altText: "Construction acier leger galvanise durable",
   },
   {
     key: "structural",
-    icon: Wrench,
     image: "/images/containers/factory-1.webp",
     altText: "Structures acier grande portee assemblage precis",
   },
@@ -118,48 +110,43 @@ export function ProductsPage() {
 
       {/* Urun panelleri */}
       {products.map((product, i) => {
-        const Icon = product.icon;
-        const isEven = i % 2 === 0;
         return (
           <section
             key={product.key}
-            className={`snap-section h-screen ${isEven ? "bg-white" : "bg-atlas-charcoal"}`}
+            className="snap-section relative h-screen"
             style={{ scrollSnapAlign: "start" }}
           >
-            <div className="relative h-[50vh] overflow-hidden">
+            <div className="absolute inset-0">
               <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" />
-              <div className={`absolute bottom-0 left-0 right-0 h-[30%] ${isEven ? "bg-gradient-to-t from-white to-transparent" : "bg-gradient-to-t from-atlas-charcoal to-transparent"}`} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
-            <div className="h-[50vh] flex items-center">
-              <div className="w-full px-8 sm:px-12 lg:px-20 xl:px-28">
-                <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr] gap-10 lg:gap-24 items-start">
-                  <div>
-                    <div className="flex items-center gap-4 mb-5">
-                      <div className={`w-14 h-14 ${isEven ? "bg-atlas-red/10" : "bg-white/10"} flex items-center justify-center`}>
-                        <Icon className="w-7 h-7 text-atlas-red" />
-                      </div>
-                      <h2 className={`font-[var(--font-heading)] text-[clamp(1.75rem,3.5vw,2.75rem)] font-black ${isEven ? "text-atlas-charcoal" : "text-white"} tracking-tight`}>
+            <div className="relative z-10 h-full flex items-end pb-10 lg:pb-14">
+              <div className="w-full px-5 sm:px-8 lg:px-16 xl:px-24">
+                <div className="bg-white/95 backdrop-blur-sm px-8 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-16 items-center">
+                    <div>
+                      <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3.5vw,2.75rem)] font-black text-atlas-charcoal tracking-tight mb-4">
                         {t(`${product.key}.title`)}
                       </h2>
+                      <p className="text-[16px] text-atlas-slate leading-relaxed mb-6 max-w-[520px]">
+                        {t(`${product.key}.desc`)}
+                      </p>
+                      <Link href="/contact" className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-colors">
+                        {t("title")}
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </div>
-                    <p className={`text-[17px] ${isEven ? "text-atlas-slate" : "text-white/60"} leading-relaxed mb-8`}>
-                      {t(`${product.key}.desc`)}
-                    </p>
-                    <Link href="/contact" className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-colors">
-                      {t("title")}
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                    </Link>
+                    <ul className="space-y-4">
+                      {(t.raw(`${product.key}.features`) as string[]).map((feature: string, fi: number) => (
+                        <li key={fi} className="flex items-start gap-3">
+                          <div className="w-6 h-6 bg-atlas-red flex items-center justify-center shrink-0 mt-0.5">
+                            <Check className="w-3.5 h-3.5 text-white" />
+                          </div>
+                          <span className="text-[16px] text-atlas-charcoal leading-relaxed">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-4 lg:pt-2">
-                    {(t.raw(`${product.key}.features`) as string[]).map((feature: string, fi: number) => (
-                      <li key={fi} className="flex items-start gap-4">
-                        <div className="w-6 h-6 bg-atlas-red flex items-center justify-center shrink-0 mt-0.5">
-                          <Check className="w-3.5 h-3.5 text-white" />
-                        </div>
-                        <span className={`text-[16px] ${isEven ? "text-atlas-charcoal" : "text-white/90"} leading-relaxed`}>{feature}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
               </div>
             </div>

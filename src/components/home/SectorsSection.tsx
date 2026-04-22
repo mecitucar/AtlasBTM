@@ -57,7 +57,7 @@ export function SectorsSection() {
             return (
               <div key={sector.key} className="sector-card">
                 <Link
-                  href="/solutions"
+                  href="/sectors"
                   className="group block bg-white border border-atlas-warm/60 p-7 hover:border-atlas-red/30 hover:shadow-lg transition-all h-full"
                 >
                   <Icon className="w-7 h-7 text-atlas-red mb-5" />

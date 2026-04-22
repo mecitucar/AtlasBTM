@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import { useLocale } from "next-intl";
@@ -14,13 +14,16 @@ const navLinks = [
   { href: "/", key: "home" },
   { href: "/about", key: "about" },
   { href: "/products", key: "products" },
-  { href: "/solutions", key: "solutions" },
+  { href: "/sectors", key: "solutions", hasDropdown: true },
   { href: "/projects", key: "projects" },
   { href: "/contact", key: "contact" },
 ] as const;
 
+const sectorKeys = ["prefab", "mining", "construction", "defense", "energy"] as const;
+
 export function Header() {
   const t = useTranslations("nav");
+  const ts = useTranslations("solutions");
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -28,9 +31,22 @@ export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [sectorsOpen, setSectorsOpen] = useState(false);
+  const [mobileSectorsOpen, setMobileSectorsOpen] = useState(false);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const langDropRef = useRef<HTMLDivElement>(null);
+  const sectorsDropRef = useRef<HTMLDivElement>(null);
+  const sectorsTimeout = useRef<ReturnType<typeof setTimeout>>(undefined);
   const lastScroll = useRef(0);
+
+  const openSectors = useCallback(() => {
+    clearTimeout(sectorsTimeout.current);
+    setSectorsOpen(true);
+  }, []);
+
+  const closeSectors = useCallback(() => {
+    sectorsTimeout.current = setTimeout(() => setSectorsOpen(false), 150);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,6 +87,20 @@ export function Header() {
   }, [mobileOpen]);
 
   useEffect(() => {
+    if (!sectorsDropRef.current) return;
+    if (sectorsOpen) {
+      gsap.fromTo(sectorsDropRef.current,
+        { opacity: 0, y: -8 },
+        { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }
+      );
+    } else {
+      gsap.to(sectorsDropRef.current,
+        { opacity: 0, y: -8, duration: 0.15, ease: "power2.in" }
+      );
+    }
+  }, [sectorsOpen]);
+
+  useEffect(() => {
     if (!langDropRef.current) return;
     if (langOpen) {
       gsap.fromTo(langDropRef.current,
@@ -84,14 +114,20 @@ export function Header() {
     }
   }, [langOpen]);
 
+  const isSectorsPage = pathname.startsWith("/sectors");
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
-        scrolled
-          ? "bg-atlas-charcoal/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.2)]"
-          : "bg-transparent"
+        isSectorsPage
+          ? scrolled
+            ? "bg-atlas-red shadow-[0_1px_0_0_rgba(0,0,0,0.15)]"
+            : "bg-atlas-red/0"
+          : scrolled
+            ? "bg-atlas-charcoal/95 backdrop-blur-md shadow-[0_1px_0_0_rgba(0,0,0,0.2)]"
+            : "bg-transparent"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -112,19 +148,62 @@ export function Header() {
               const isActive =
                 pathname === link.href ||
                 (link.href !== "/" && pathname.startsWith(link.href));
+
+              if ("hasDropdown" in link && link.hasDropdown) {
+                return (
+                  <div
+                    key={link.key}
+                    className="relative"
+                    onMouseEnter={openSectors}
+                    onMouseLeave={closeSectors}
+                  >
+                    <button
+                      onClick={() => setSectorsOpen(!sectorsOpen)}
+                      className={`relative flex items-center gap-1 px-4 py-2 text-[13px] font-medium tracking-wide uppercase transition-colors cursor-pointer ${
+                        isActive ? "text-white" : "text-white/70 hover:text-white"
+                      }`}
+                    >
+                      {t(link.key)}
+                      <ChevronDown className={`w-3 h-3 transition-transform ${sectorsOpen ? "rotate-180" : ""}`} />
+                      {isActive && (
+                        <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-white" />
+                      )}
+                    </button>
+                    <div
+                      ref={sectorsDropRef}
+                      className={`absolute top-full left-0 mt-1 bg-white shadow-xl border border-atlas-warm overflow-hidden min-w-[260px] ${
+                        sectorsOpen ? "pointer-events-auto" : "pointer-events-none"
+                      }`}
+                      style={{ opacity: 0 }}
+                    >
+                      <div className="py-2">
+                        {sectorKeys.map((sk) => (
+                          <Link
+                            key={sk}
+                            href={`/sectors/${sk}` as any}
+                            onClick={() => setSectorsOpen(false)}
+                            className="block px-5 py-3 text-[14px] font-medium text-atlas-charcoal hover:text-white hover:bg-atlas-red transition-colors tracking-wide"
+                          >
+                            {ts(`${sk}.title`)}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+
               return (
                 <Link
                   key={link.key}
                   href={link.href}
                   className={`relative px-4 py-2 text-[13px] font-medium tracking-wide uppercase transition-colors ${
-                    isActive
-                      ? "text-white"
-                      : "text-white/70 hover:text-white"
+                    isActive ? "text-white" : "text-white/70 hover:text-white"
                   }`}
                 >
                   {t(link.key)}
                   {isActive && (
-                    <span className="absolute bottom-0 left-4 right-4 h-[2px] bg-atlas-red" />
+                    <span className={`absolute bottom-0 left-4 right-4 h-[2px] ${isSectorsPage ? "bg-white" : "bg-atlas-red"}`} />
                   )}
                 </Link>
               );
@@ -169,7 +248,11 @@ export function Header() {
 
             <Link
               href="/contact"
-              className="bg-atlas-red hover:bg-atlas-red-dark text-white text-[13px] font-bold tracking-wide uppercase px-6 py-2.5 transition-colors"
+              className={`text-[13px] font-bold tracking-wide uppercase px-6 py-2.5 transition-colors ${
+                isSectorsPage
+                  ? "bg-white text-atlas-red hover:bg-white/90"
+                  : "bg-atlas-red hover:bg-atlas-red-dark text-white"
+              }`}
             >
               {t("contact")}
             </Link>
@@ -195,6 +278,39 @@ export function Header() {
             const isActive =
               pathname === link.href ||
               (link.href !== "/" && pathname.startsWith(link.href));
+
+            if ("hasDropdown" in link && link.hasDropdown) {
+              return (
+                <div key={link.key}>
+                  <button
+                    onClick={() => setMobileSectorsOpen(!mobileSectorsOpen)}
+                    className={`mobile-link w-full flex items-center justify-between px-4 py-3 text-[14px] font-medium tracking-wide uppercase transition-colors rounded-sm ${
+                      isActive
+                        ? "text-atlas-navy bg-atlas-sand"
+                        : "text-atlas-slate hover:text-atlas-navy hover:bg-atlas-sand/50"
+                    }`}
+                  >
+                    {t(link.key)}
+                    <ChevronDown className={`w-4 h-4 transition-transform ${mobileSectorsOpen ? "rotate-180" : ""}`} />
+                  </button>
+                  {mobileSectorsOpen && (
+                    <div className="ml-4 border-l-2 border-atlas-red/20 pl-2 space-y-0.5 mt-1 mb-2">
+                      {sectorKeys.map((sk) => (
+                        <Link
+                          key={sk}
+                          href={`/sectors/${sk}` as any}
+                          onClick={() => setMobileOpen(false)}
+                          className="block px-4 py-2.5 text-[13px] font-medium text-atlas-slate hover:text-atlas-red transition-colors"
+                        >
+                          {ts(`${sk}.title`)}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            }
+
             return (
               <Link
                 key={link.key}

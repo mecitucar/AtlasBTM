@@ -20,88 +20,62 @@ const TOTAL_STEPS = 5;
 export function ProductsGrid() {
   const t = useTranslations("products");
   const container = useRef<HTMLDivElement>(null);
-  const [step, setStep] = useState(-1);
+  const step = useRef(-1);
+  const [released, setReleased] = useState(false);
   const animating = useRef(false);
   const pinned = useRef(false);
+  const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
+
+  function updateDots(s: number) {
+    dotsRef.current.forEach((dot, i) => {
+      if (!dot) return;
+      dot.style.width = i === s ? "32px" : "12px";
+      dot.style.backgroundColor = i === s ? "#fff" : "rgba(255,255,255,0.3)";
+    });
+  }
 
   const goTo = useCallback((newStep: number) => {
     if (animating.current) return;
-    if (newStep < -1 || newStep > products.length) return;
+    if (newStep < 0 || newStep > products.length) return;
 
+    const prevStep = step.current;
+    if (newStep === prevStep) return;
     animating.current = true;
-    const prevStep = step;
 
     if (newStep === products.length) {
-      // Son karttan sonra - pinned birak
       pinned.current = false;
       animating.current = false;
-      setStep(newStep);
-      return;
-    }
-
-    if (newStep === -1) {
-      // Basliga geri don
-      pinned.current = true;
-      if (prevStep >= 0 && prevStep < products.length) {
-        gsap.to(`.pcard-${prevStep}`, {
-          xPercent: 100,
-          duration: 0.5,
-          ease: "power3.inOut",
-          onComplete: () => {
-            gsap.to(".products-heading", { opacity: 1, scale: 1, duration: 0.3 });
-            animating.current = false;
-          },
-        });
-      } else {
-        animating.current = false;
-      }
-      setStep(newStep);
-      return;
-    }
-
-    // Basliktan ilk karta
-    if (prevStep === -1 && newStep === 0) {
-      gsap.to(".products-heading", {
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.3,
-        onComplete: () => {
-          gsap.fromTo(`.pcard-0`, { xPercent: 100 }, {
-            xPercent: 0,
-            duration: 0.5,
-            ease: "power3.inOut",
-            onComplete: () => { animating.current = false; },
-          });
-        },
+      step.current = newStep;
+      setReleased(true);
+      requestAnimationFrame(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
       });
-      setStep(newStep);
       return;
     }
 
-    // Ileri: onceki sola, yeni sagdan
+    step.current = newStep;
+    updateDots(newStep);
+
     if (newStep > prevStep) {
       const tl = gsap.timeline({ onComplete: () => { animating.current = false; } });
       if (prevStep >= 0) {
         tl.to(`.pcard-${prevStep}`, { xPercent: -100, duration: 0.5, ease: "power3.inOut" });
       }
       tl.fromTo(`.pcard-${newStep}`, { xPercent: 100 }, { xPercent: 0, duration: 0.5, ease: "power3.inOut" }, "<");
-      setStep(newStep);
       return;
     }
 
-    // Geri: onceki saga, yeni soldan
     if (newStep < prevStep) {
       const tl = gsap.timeline({ onComplete: () => { animating.current = false; } });
       if (prevStep >= 0 && prevStep < products.length) {
         tl.to(`.pcard-${prevStep}`, { xPercent: 100, duration: 0.5, ease: "power3.inOut" });
       }
       tl.fromTo(`.pcard-${newStep}`, { xPercent: -100 }, { xPercent: 0, duration: 0.5, ease: "power3.inOut" }, "<");
-      setStep(newStep);
       return;
     }
 
     animating.current = false;
-  }, [step]);
+  }, []);
 
   useEffect(() => {
     const el = container.current;
@@ -110,29 +84,33 @@ export function ProductsGrid() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         pinned.current = entry.isIntersecting;
+        if (entry.isIntersecting && step.current === -1) {
+          setTimeout(() => goTo(0), 400);
+        }
       },
       { threshold: 0.5 }
     );
     observer.observe(el);
 
     const onWheel = (e: WheelEvent) => {
-      if (!pinned.current) return;
+      if (step.current >= products.length) return;
+
+      const rect = el.getBoundingClientRect();
+      const visible = rect.top > -10 && rect.top < window.innerHeight * 0.5;
+      if (!visible && !pinned.current) return;
+      if (visible) pinned.current = true;
 
       const dir = e.deltaY > 0 ? 1 : -1;
-      const currentStep = step;
-      const next = currentStep + dir;
+      const next = step.current + dir;
 
-      // Son karttayken asagi scroll -> birak devam etsin
       if (next >= products.length) {
-        pinned.current = false;
+        e.preventDefault();
+        goTo(next);
         return;
       }
 
-      // Basliktayken yukari scroll -> Hero'ya geri don
-      if (next < -1) {
+      if (next < 0) {
         pinned.current = false;
-        const hero = container.current?.previousElementSibling as HTMLElement;
-        if (hero) hero.scrollIntoView({ behavior: "smooth" });
         return;
       }
 
@@ -145,21 +123,26 @@ export function ProductsGrid() {
       touchStartY = e.touches[0].clientY;
     };
     const onTouchEnd = (e: TouchEvent) => {
-      if (!pinned.current) return;
+      if (step.current >= products.length) return;
+
+      const rect = el.getBoundingClientRect();
+      const visible = rect.top > -10 && rect.top < window.innerHeight * 0.5;
+      if (!visible && !pinned.current) return;
+      if (visible) pinned.current = true;
+
       const diff = touchStartY - e.changedTouches[0].clientY;
       if (Math.abs(diff) < 30) return;
 
       const dir = diff > 0 ? 1 : -1;
-      const next = step + dir;
+      const next = step.current + dir;
 
       if (next >= products.length) {
-        pinned.current = false;
+        e.preventDefault();
+        goTo(next);
         return;
       }
-      if (next < -1) {
+      if (next < 0) {
         pinned.current = false;
-        const hero = container.current?.previousElementSibling as HTMLElement;
-        if (hero) hero.scrollIntoView({ behavior: "smooth" });
         return;
       }
 
@@ -177,13 +160,13 @@ export function ProductsGrid() {
       window.removeEventListener("touchstart", onTouchStart);
       window.removeEventListener("touchend", onTouchEnd);
     };
-  }, [step, goTo]);
+  }, [goTo]);
 
   return (
     <section
       ref={container}
       className="relative h-screen bg-atlas-red overflow-hidden"
-      style={{ position: "sticky", top: 0, zIndex: 30 }}
+      style={{ position: released ? "relative" : "sticky", top: released ? "auto" : 0, zIndex: 30 }}
     >
       {/* Baslik */}
       <div className="products-heading absolute inset-0 z-10 flex flex-col items-center justify-center px-6 pointer-events-none">
@@ -233,11 +216,13 @@ export function ProductsGrid() {
       {/* Step indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-2">
         {products.map((_, i) => (
-          <div
+          <button
             key={i}
-            className={`h-[3px] transition-all duration-300 ${
-              step === i ? "w-8 bg-white" : "w-3 bg-white/30"
-            }`}
+            ref={(el) => { dotsRef.current[i] = el; }}
+            onClick={() => goTo(i)}
+            className="h-[3px] transition-all duration-300 cursor-pointer"
+            style={{ width: "12px", backgroundColor: "rgba(255,255,255,0.3)" }}
+            aria-label={`Slide ${i + 1}`}
           />
         ))}
       </div>

@@ -51,7 +51,7 @@ export function Footer() {
   return (
     <footer className="bg-atlas-navy text-white/80">
       <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-        <div className="py-14 lg:py-20 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
+        <div className="py-8 lg:py-10 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-8">
           <div className="col-span-2 lg:col-span-2">
             <div className="mb-6">
               <Image
@@ -118,7 +118,7 @@ export function Footer() {
               ].map((item) => (
                 <li key={item}>
                   <Link
-                    href="/solutions"
+                    href="/sectors"
                     className="text-[14px] text-white/50 hover:text-white transition-colors"
                   >
                     {item}

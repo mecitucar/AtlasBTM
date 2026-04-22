@@ -110,7 +110,7 @@ export function ServicesGrid() {
               return (
                 <div key={service.key} className="featured-card">
                   <Link
-                    href="/solutions"
+                    href="/sectors"
                     className="group block relative overflow-hidden"
                   >
                     <div className="aspect-[21/9] relative overflow-hidden">
@@ -153,7 +153,7 @@ export function ServicesGrid() {
             return (
               <div key={service.key} className="rest-card">
                 <Link
-                  href="/solutions"
+                  href="/sectors"
                   className="group block bg-white p-6 lg:p-7 hover:bg-atlas-charcoal transition-colors duration-300 h-full"
                 >
                   <Icon className="w-6 h-6 text-atlas-red mb-5 group-hover:text-atlas-red-light transition-colors" />

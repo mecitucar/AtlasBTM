@@ -77,7 +77,7 @@ export function SolutionsPreview() {
           {solutions.map((sol) => (
             <div key={sol.key} className="sol-card">
               <Link
-                href="/solutions"
+                href="/sectors"
                 className="group block bg-white border border-atlas-warm/60 overflow-hidden hover:shadow-xl hover:border-atlas-red/20 transition-all duration-500"
               >
                 <div className="aspect-[16/9] overflow-hidden relative">
