@@ -10,7 +10,7 @@ import { useGSAP } from "@gsap/react";
 
 const slides = [
   {
-    src: "/images/hero-slide-2.webp",
+    src: "/images/hero-container.webp",
     alt: "Construction modulaire Atlas - conteneurs prefabriques",
     layout: "left" as const,
   },
