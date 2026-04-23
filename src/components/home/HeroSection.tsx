@@ -10,34 +10,28 @@ import { useGSAP } from "@gsap/react";
 
 const slides = [
   {
-    src: "/images/hero-slide-1.webp",
-    alt: "Atlas Batiment Modulaire - conteneurs prefabriques haute qualite",
-    layout: "left" as const,
-  },
-  {
     src: "/images/hero-slide-2.webp",
-    alt: "Construction modulaire Atlas - solutions cle en main",
-    layout: "center" as const,
+    alt: "Construction modulaire Atlas - conteneurs prefabriques",
+    layout: "left" as const,
   },
   {
     src: "/images/containers/port-containers.webp",
     alt: "Conteneurs modulaires au port - expedition internationale",
     layout: "right" as const,
   },
+  {
+    src: "/images/hero-slide-1.webp",
+    alt: "Atlas Batiment Modulaire - excellence garantie",
+    layout: "center" as const,
+  },
 ];
 
 const slideContent = {
   fr: [
     {
-      title: "Maitre Locale,\nExcellence Garantie",
-      subtitle: "Solutions modulaires de haute qualite pour vos projets les plus ambitieux en Europe et dans le monde.",
-      cta: "Nos Solutions",
-      ctaLink: "/solutions" as const,
-    },
-    {
-      title: "Conteneurs &\nPrefabriques",
-      subtitle: "Production automatisee, materiaux superieurs, normes internationales les plus elevees.",
-      cta: "Nos Produits",
+      title: "Conteneurs\nModulaires",
+      subtitle: "Production automatisee, materiaux superieurs, normes internationales les plus elevees. Solutions cle en main pour tous vos projets.",
+      cta: "Decouvrir nos Conteneurs",
       ctaLink: "/products" as const,
     },
     {
@@ -46,18 +40,18 @@ const slideContent = {
       cta: "Nos Projets",
       ctaLink: "/projects" as const,
     },
+    {
+      title: "Maitrise Locale,\nExcellence Garantie",
+      subtitle: "Solutions modulaires de haute qualite pour vos projets les plus ambitieux en Europe et dans le monde.",
+      cta: "Nos Solutions",
+      ctaLink: "/solutions" as const,
+    },
   ],
   en: [
     {
-      title: "Local Master,\nGuaranteed Excellence",
-      subtitle: "High-quality modular solutions for your most ambitious projects in Europe and worldwide.",
-      cta: "Our Solutions",
-      ctaLink: "/solutions" as const,
-    },
-    {
-      title: "Containers &\nPrefabricated",
-      subtitle: "Automated production, superior materials, highest international standards.",
-      cta: "Our Products",
+      title: "Modular\nContainers",
+      subtitle: "Automated production, superior materials, highest international standards. Turnkey solutions for all your projects.",
+      cta: "Discover our Containers",
       ctaLink: "/products" as const,
     },
     {
@@ -65,6 +59,12 @@ const slideContent = {
       subtitle: "From design to installation, we manage every step with precision and quality commitment.",
       cta: "Our Projects",
       ctaLink: "/projects" as const,
+    },
+    {
+      title: "Local Mastery,\nGuaranteed Excellence",
+      subtitle: "High-quality modular solutions for your most ambitious projects in Europe and worldwide.",
+      cta: "Our Solutions",
+      ctaLink: "/solutions" as const,
     },
   ],
 };

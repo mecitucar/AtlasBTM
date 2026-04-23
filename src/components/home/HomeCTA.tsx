@@ -47,23 +47,32 @@ export function HomeCTA() {
             <div className="hcta-content grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               <div>
                 <span className="text-[12px] tracking-[0.3em] uppercase text-white/70 font-bold">
-                  {locale === "fr" ? "Votre Projet" : "Your Project"}
+                  {locale === "fr" ? "Votre Projet Conteneur" : "Your Container Project"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.25rem)] font-black text-white mt-4 tracking-tight leading-[1.05]">
-                  {t("quote")}
+                  {locale === "fr"
+                    ? "Besoin de conteneurs modulaires ?"
+                    : "Need modular containers?"}
                 </h2>
                 <div className="w-16 h-[3px] bg-white mt-6 mb-8" />
                 <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[480px]">
                   {locale === "fr"
-                    ? "Decrivez-nous votre besoin et recevez une proposition detaillee sous 48h. Nos experts vous accompagnent de la conception a la livraison."
-                    : "Describe your needs and receive a detailed proposal within 48h. Our experts support you from design to delivery."}
+                    ? "Decrivez-nous votre besoin en conteneurs et recevez une proposition detaillee sous 48h. Nos experts vous accompagnent de la conception a la livraison."
+                    : "Describe your container needs and receive a detailed proposal within 48h. Our experts support you from design to delivery."}
                 </p>
                 <div className="flex flex-wrap gap-4">
                   <Link
                     href="/contact"
                     className="group inline-flex items-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
                   >
-                    {locale === "fr" ? "Demander un Devis" : "Request a Quote"}
+                    {locale === "fr" ? "Devis Conteneur" : "Container Quote"}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                  <Link
+                    href="/products"
+                    className="group inline-flex items-center gap-3 border-2 border-white/25 text-white hover:bg-white/10 px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-all"
+                  >
+                    {locale === "fr" ? "Nos Conteneurs" : "Our Containers"}
                     <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
                   </Link>
                 </div>
