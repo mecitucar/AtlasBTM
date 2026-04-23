@@ -33,6 +33,13 @@ export function SloganStrip() {
       ease: "power2.out",
       scrollTrigger: { trigger: container.current, start: "top 85%" },
     });
+    gsap.from(".guinea-map", {
+      scale: 0.7,
+      opacity: 0,
+      duration: 1.5,
+      ease: "power2.out",
+      scrollTrigger: { trigger: container.current, start: "top 85%" },
+    });
   }, { scope: container });
 
   useEffect(() => {
@@ -86,13 +93,13 @@ export function SloganStrip() {
 
   return (
     <section ref={container} className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.15] pointer-events-none">
+      <div className="guinea-map absolute inset-0 opacity-[0.12] pointer-events-none flex items-center justify-center">
         <Image
-          src="/images/wireframe-container.webp"
-          alt="Wireframe conteneur modulaire"
-          fill
-          className="object-contain"
-          sizes="100vw"
+          src="/images/guinea-map.png"
+          alt="Guinea - Republique de Guinee"
+          width={900}
+          height={677}
+          className="object-contain max-h-[80vh] w-auto"
         />
       </div>
       <div className="relative z-10 text-center px-6 max-w-[900px]">
