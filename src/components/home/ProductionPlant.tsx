@@ -72,7 +72,7 @@ export function ProductionPlant() {
 
           <div className="plant-image overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
             <Image
-              src="/images/containers/production-1.webp"
+              src="/images/showcase/49.webp"
               alt="Centre de production Atlas - lignes automatiques de fabrication modulaire"
               width={700}
               height={525}

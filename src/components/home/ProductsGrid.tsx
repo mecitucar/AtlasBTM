@@ -9,7 +9,7 @@ import { gsap } from "@/lib/gsap";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 const products = [
-  { key: "container", image: "/images/containers/production-1.webp", alt: "Conteneurs modulaires en production" },
+  { key: "container", image: "/images/showcase/49.webp", alt: "Conteneurs modulaires en production" },
   { key: "prefab", image: "/images/containers/finished-1.webp", alt: "Batiments prefabriques modulaires Atlas" },
   { key: "lightsteel", image: "/images/containers/assembly-1.webp", alt: "Construction acier leger galvanise" },
   { key: "structural", image: "/images/containers/factory-1.webp", alt: "Structures acier grande portee" },

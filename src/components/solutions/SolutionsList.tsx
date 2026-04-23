@@ -22,7 +22,7 @@ const solutions = [
     gradient: "from-atlas-charcoal to-atlas-navy",
     mainImage: "/images/containers/finished-1.webp",
     altText: "Container prefabrique modulaire - livraison rapide garantie",
-    gallery: ["/images/containers/finished-2.webp", "/images/containers/assembly-1.webp", "/images/containers/production-1.webp"],
+    gallery: ["/images/containers/finished-2.webp", "/images/containers/assembly-1.webp", "/images/showcase/49.webp"],
     galleryAlts: ["Conteneurs prefabriques assembles sur site", "Assemblage de conteneur modulaire", "Production de conteneurs en usine"],
   },
   {
@@ -49,7 +49,7 @@ const solutions = [
     gradient: "from-atlas-navy to-atlas-slate",
     mainImage: "/images/containers/finished-2.webp",
     altText: "Structures modulaires pour industrie de la defense",
-    gallery: ["/images/containers/port-containers.webp", "/images/containers/factory-1.webp", "/images/containers/production-1.webp"],
+    gallery: ["/images/containers/port-containers.webp", "/images/containers/factory-1.webp", "/images/showcase/49.webp"],
     galleryAlts: ["Conteneurs defense au port", "Production en usine pour la defense", "Fabrication structures defense"],
   },
   {

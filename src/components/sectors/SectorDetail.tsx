@@ -27,7 +27,7 @@ const sectors: Record<string, SectorContent> = {
     heroImage: "/images/containers/finished-1.webp",
     heroAlt: "Container prefabrique modulaire Atlas Batiment Modulaire",
     images: [
-      { src: "/images/prefab/exterior-1.webp", alt: "Conteneur prefabrique - vue exterieure" },
+      { src: "/images/showcase/07.webp", alt: "Conteneur prefabrique - vue exterieure" },
       { src: "/images/prefab/exterior-2.webp", alt: "Batiment modulaire prefabrique Atlas" },
       { src: "/images/prefab/exterior-3.webp", alt: "Conteneurs modulaires sur site" },
       { src: "/images/prefab/exterior-4.webp", alt: "Installation conteneurs prefabriques" },

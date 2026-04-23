@@ -18,7 +18,7 @@ const products = [
   },
   {
     key: "container",
-    image: "/images/containers/production-1.webp",
+    image: "/images/showcase/49.webp",
     altText: "Living containers modulaires prets a l'emploi",
   },
   {

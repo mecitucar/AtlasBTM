@@ -4,12 +4,13 @@ import { useTranslations } from "next-intl";
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X } from "lucide-react";
 import { gsap } from "@/lib/gsap";
+import { useGSAP } from "@gsap/react";
 
 export function WhatsAppButton() {
   const t = useTranslations("cta");
   const [tooltipVisible, setTooltipVisible] = useState(false);
   const tooltipRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLAnchorElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const whatsappNumber = "33XXXXXXXXX";
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
@@ -28,19 +29,17 @@ export function WhatsAppButton() {
     }
   }, [tooltipVisible]);
 
-  useEffect(() => {
-    if (!buttonRef.current) return;
-    gsap.from(buttonRef.current, {
-      scale: 0,
-      rotation: -180,
-      duration: 0.6,
-      delay: 1.5,
-      ease: "back.out(2)",
-    });
-  }, []);
+  useGSAP(() => {
+    const btn = containerRef.current?.querySelector(".wa-btn");
+    if (!btn) return;
+    gsap.fromTo(btn,
+      { scale: 0, rotation: -180 },
+      { scale: 1, rotation: 0, duration: 0.6, delay: 1.5, ease: "back.out(2)" }
+    );
+  }, { scope: containerRef });
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div ref={containerRef} className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
       <div
         ref={tooltipRef}
         className={`bg-white shadow-xl rounded-lg px-4 py-3 mr-1 max-w-[220px] border border-atlas-warm ${
@@ -59,13 +58,13 @@ export function WhatsAppButton() {
         </p>
       </div>
       <a
-        ref={buttonRef}
         href={whatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
         onMouseEnter={() => setTooltipVisible(true)}
         onMouseLeave={() => setTooltipVisible(false)}
-        className="group w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        className="wa-btn group w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-105"
+        style={{ transform: "scale(0)" }}
         aria-label="WhatsApp"
       >
         <MessageCircle className="w-6 h-6 text-white" />
