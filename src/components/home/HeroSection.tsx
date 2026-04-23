@@ -200,23 +200,19 @@ export function HeroSection() {
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
           <div
             ref={contentRef}
-            className={`${
-              layout === "center" ? "max-w-[800px] mx-auto text-center" :
-              layout === "right" ? "max-w-[650px] ml-auto text-right" :
-              "max-w-[700px]"
-            }`}
+            className="max-w-[700px]"
           >
             <h1 className="slide-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white leading-[0.98] tracking-tighter mb-7 whitespace-pre-line">
               {currentContent.title}
             </h1>
 
-            <div className={`slide-line w-20 h-[3px] bg-atlas-red mb-7 ${layout === "center" ? "mx-auto" : layout === "right" ? "ml-auto" : ""}`} />
+            <div className="slide-line w-20 h-[3px] bg-atlas-red mb-7" />
 
-            <p className={`slide-sub text-[18px] lg:text-[20px] text-white/60 leading-relaxed mb-10 ${layout === "center" ? "max-w-[560px] mx-auto" : "max-w-[520px]"} ${layout === "right" ? "ml-auto" : ""}`}>
+            <p className="slide-sub text-[18px] lg:text-[20px] text-white/60 leading-relaxed mb-10 max-w-[520px]">
               {currentContent.subtitle}
             </p>
 
-            <div className={`slide-cta flex flex-row gap-3 sm:gap-4 ${layout === "center" ? "justify-center" : layout === "right" ? "justify-end" : ""}`}>
+            <div className="slide-cta flex flex-row gap-3 sm:gap-4">
               <a
                 href="tel:+32490XXXXXX"
                 className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
