@@ -120,29 +120,29 @@ export function ProductsPage() {
               <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
-            <div className="relative z-10 h-full flex items-end pb-10 lg:pb-14">
-              <div className="w-full px-5 sm:px-8 lg:px-16 xl:px-24">
-                <div className="spinning-border bg-white/95 backdrop-blur-sm px-8 py-8 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
-                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-8 lg:gap-16 items-center">
+            <div className="relative z-10 h-full flex items-end pb-4 sm:pb-10 lg:pb-14">
+              <div className="w-full px-3 sm:px-8 lg:px-16 xl:px-24">
+                <div className="spinning-border bg-white/95 backdrop-blur-sm px-5 py-5 sm:px-10 sm:py-9 lg:px-14 lg:py-10">
+                  <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-4 sm:gap-8 lg:gap-16 items-center">
                     <div>
-                      <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3.5vw,2.75rem)] font-black text-atlas-charcoal tracking-tight mb-4">
+                      <h2 className="font-[var(--font-heading)] text-[clamp(1.25rem,3.5vw,2.75rem)] font-black text-atlas-charcoal tracking-tight mb-2 sm:mb-4">
                         {t(`${product.key}.title`)}
                       </h2>
-                      <p className="text-[16px] text-atlas-slate leading-relaxed mb-6 max-w-[520px]">
+                      <p className="text-[13px] sm:text-[16px] text-atlas-slate leading-relaxed mb-4 sm:mb-6 max-w-[520px]">
                         {t(`${product.key}.desc`)}
                       </p>
-                      <Link href="/contact" className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-colors">
+                      <Link href="/contact" className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-5 py-3 sm:px-8 sm:py-4 text-[12px] sm:text-[15px] font-bold tracking-wider uppercase transition-colors">
                         {t("title")}
-                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                       </Link>
                     </div>
-                    <ul className="space-y-4">
+                    <ul className="space-y-2 sm:space-y-4">
                       {(t.raw(`${product.key}.features`) as string[]).map((feature: string, fi: number) => (
-                        <li key={fi} className="flex items-start gap-3">
-                          <div className="w-6 h-6 bg-atlas-red flex items-center justify-center shrink-0 mt-0.5">
-                            <Check className="w-3.5 h-3.5 text-white" />
+                        <li key={fi} className="flex items-start gap-2 sm:gap-3">
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-atlas-red flex items-center justify-center shrink-0 mt-0.5">
+                            <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white" />
                           </div>
-                          <span className="text-[16px] text-atlas-charcoal leading-relaxed">{feature}</span>
+                          <span className="text-[13px] sm:text-[16px] text-atlas-charcoal leading-snug sm:leading-relaxed">{feature}</span>
                         </li>
                       ))}
                     </ul>
@@ -160,7 +160,7 @@ export function ProductsPage() {
       </div>
 
       {/* Step indicator */}
-      <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50 flex flex-col items-center gap-2 pointer-events-none">
+      <div className="hidden sm:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-2 pointer-events-none">
         {products.map((_, i) => (
           <div
             key={i}

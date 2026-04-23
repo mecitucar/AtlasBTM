@@ -235,17 +235,17 @@ export function HeroSection() {
               {currentContent.subtitle}
             </p>
 
-            <div className={`slide-cta flex gap-4 ${layout === "center" ? "justify-center" : layout === "right" ? "justify-end" : ""}`}>
+            <div className={`slide-cta flex flex-col sm:flex-row gap-3 sm:gap-4 ${layout === "center" ? "sm:justify-center" : layout === "right" ? "sm:justify-end" : ""}`}>
               <Link
                 href={currentContent.ctaLink}
-                className="group inline-flex items-center justify-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-colors"
+                className="group inline-flex items-center justify-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-6 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-colors"
               >
                 {currentContent.cta}
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </Link>
               <Link
                 href="/contact"
-                className="group inline-flex items-center justify-center gap-3 border-2 border-white/25 text-white hover:bg-white/10 px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-all"
+                className="group inline-flex items-center justify-center gap-3 border-2 border-white/25 text-white hover:bg-white/10 px-6 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-all"
               >
                 {locale === "fr" ? "Contact" : "Contact"}
               </Link>

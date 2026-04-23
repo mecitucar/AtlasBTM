@@ -49,7 +49,10 @@ export function ProductsGrid() {
       step.current = newStep;
       setReleased(true);
       requestAnimationFrame(() => {
-        window.scrollTo({ top: document.body.scrollHeight, behavior: "smooth" });
+        const next = container.current?.nextElementSibling as HTMLElement;
+        if (next) {
+          next.scrollIntoView({ behavior: "smooth" });
+        }
       });
       return;
     }

@@ -130,23 +130,23 @@ export function ContainerShowcase() {
   return (
     <section
       ref={container}
-      className="relative h-screen bg-atlas-charcoal overflow-hidden"
+      className="relative min-h-screen lg:h-screen bg-atlas-charcoal overflow-hidden"
       style={{ position: released ? "relative" : "sticky", top: released ? "auto" : 0, zIndex: 25 }}
     >
-      <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
+      {/* Desktop: side-by-side grid */}
+      <div className="hidden lg:grid grid-cols-2 h-full">
         <div className="relative cs-image">
           <Image
             src="/images/containers/finished-1.webp"
             alt="Atlas Batiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            sizes="50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-atlas-charcoal/80 hidden lg:block" />
-          <div className="absolute inset-0 bg-gradient-to-t from-atlas-charcoal via-atlas-charcoal/40 to-transparent lg:hidden" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-atlas-charcoal/80" />
         </div>
 
-        <div className="relative z-10 flex flex-col justify-center py-16 lg:py-24 px-6 sm:px-10 lg:px-16">
+        <div className="relative z-10 flex flex-col justify-center py-24 px-16">
           <div className="cs-heading">
             <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
               {locale === "fr" ? "Produit Phare" : "Featured Product"}
@@ -162,7 +162,7 @@ export function ContainerShowcase() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
+          <div className="grid grid-cols-2 gap-4 mb-12">
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
@@ -186,6 +186,61 @@ export function ContainerShowcase() {
             >
               {locale === "fr" ? "Voir les Conteneurs" : "View Containers"}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile: background image + overlay content */}
+      <div className="lg:hidden relative min-h-screen flex flex-col">
+        <div className="absolute inset-0 cs-image">
+          <Image
+            src="/images/containers/finished-1.webp"
+            alt="Atlas Batiment Modulaire - conteneurs modulaires"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/65" />
+        </div>
+
+        <div className="relative z-10 flex flex-col justify-center flex-1 py-6 px-5 sm:px-8">
+          <div className="cs-heading">
+            <span className="text-[11px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+              {locale === "fr" ? "Produit Phare" : "Featured Product"}
+            </span>
+            <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,7vw,2.5rem)] font-black text-white mt-2 tracking-tight leading-[1.05]">
+              Living Container
+            </h2>
+            <div className="w-12 h-[3px] bg-atlas-red mt-3 mb-4" />
+            <p className="text-[14px] text-white/60 leading-relaxed mb-5">
+              {locale === "fr"
+                ? "Batiments modulaires en conteneur prets a l'emploi, ideals pour une occupation a court terme sur les chantiers et les camps temporaires."
+                : "Ready-to-use modular container buildings ideal for short-term occupancy in construction sites and temporary camps."}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-2 mb-5">
+            {items.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <div key={i} className="cs-card flex items-center gap-2.5 p-2.5 bg-atlas-charcoal border border-white/[0.08]">
+                  <div className="w-7 h-7 bg-atlas-red/20 flex items-center justify-center shrink-0">
+                    <Icon className="w-3.5 h-3.5 text-atlas-red" />
+                  </div>
+                  <span className="text-[11px] font-bold text-white leading-tight">{item.title}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <div className="cs-heading">
+            <Link
+              href="/products"
+              className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-7 py-3.5 text-[13px] font-bold tracking-wider uppercase transition-colors"
+            >
+              {locale === "fr" ? "Voir les Conteneurs" : "View Containers"}
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
             </Link>
           </div>
         </div>

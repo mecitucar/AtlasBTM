@@ -236,7 +236,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
     // Kapi acilma animasyonu
     if (container.current?.querySelector(".s-door-section")) {
       const doorTl = gsap.timeline({
-        scrollTrigger: { trigger: ".s-door-section", start: "top 60%" },
+        scrollTrigger: { trigger: ".s-door-section", start: "top 85%" },
       });
       doorTl.from(".s-door-line", { scaleX: 0, transformOrigin: "center", duration: 0.5 });
       doorTl.from(".s-door-title", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.2);
@@ -428,11 +428,16 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
           {/* Ic mekan galeri */}
           <section className="s-interior bg-atlas-charcoal">
             <div className="grid grid-cols-2 lg:grid-cols-5" style={{ gap: 0 }}>
-              {data.interiorImages.slice(2).map((img, i) => (
-                <div key={i} className="s-int-item relative aspect-square overflow-hidden group">
-                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
-                </div>
-              ))}
+              {data.interiorImages.slice(2).map((img, i) => {
+                const remaining = data.interiorImages.length - 2;
+                const isLast = i === remaining - 1;
+                const isOdd = remaining % 2 !== 0;
+                return (
+                  <div key={i} className={`s-int-item relative aspect-square overflow-hidden group ${isLast && isOdd ? "col-span-2 lg:col-span-1" : ""}`}>
+                    <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
+                  </div>
+                );
+              })}
             </div>
           </section>
         </>
