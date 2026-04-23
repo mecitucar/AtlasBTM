@@ -87,6 +87,7 @@ export function SolutionsPreview() {
                     fill
                     className="sol-img object-cover group-hover:scale-105 transition-transform duration-700"
                     sizes="(max-width: 768px) 100vw, 50vw"
+                    quality={90}
                   />
                 </div>
                 <div className="p-8">

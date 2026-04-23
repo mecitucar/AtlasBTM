@@ -42,7 +42,7 @@ export function ContactPage() {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
-          <Image src="/images/contact-hero.jpg" alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
+          <Image src="/images/contact-hero.jpg" alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -55,7 +55,7 @@ export function ContactPage() {
             <div className="ch-line w-20 h-[3px] bg-atlas-red mt-8 mb-8" />
             <p className="ch-desc text-[19px] text-white/50 leading-relaxed max-w-[500px]">
               {locale === "fr"
-                ? "Decrivez votre projet et nos experts vous repondront sous 24 heures."
+                ? "Décrivez votre projet et nos experts vous répondront sous 24 heures."
                 : "Describe your project and our experts will respond within 24 hours."}
             </p>
           </div>
@@ -198,7 +198,7 @@ export function ContactPage() {
                 </span>
                 <h3 className="font-[var(--font-heading)] text-[clamp(1.25rem,2vw,1.75rem)] font-black text-white mt-3 tracking-tight leading-tight">
                   {locale === "fr"
-                    ? "Des solutions modulaires adaptees a chaque projet"
+                    ? "Des solutions modulaires adaptées à chaque projet"
                     : "Modular solutions adapted to every project"}
                 </h3>
                 <div className="w-12 h-[3px] bg-atlas-red mt-5 mb-8" />
@@ -208,7 +208,7 @@ export function ContactPage() {
                     <span className="text-[14px] font-[var(--font-heading)] font-bold text-atlas-red shrink-0 mt-0.5">01</span>
                     <p className="text-[15px] text-white/60 leading-relaxed">
                       {locale === "fr"
-                        ? "Offres detaillees sous 24 heures avec une communication transparente"
+                        ? "Offres détaillées sous 24 heures avec une communication transparente"
                         : "Detailed offers within 24 hours with transparent communication"}
                     </p>
                   </div>
@@ -216,7 +216,7 @@ export function ContactPage() {
                     <span className="text-[14px] font-[var(--font-heading)] font-bold text-atlas-red shrink-0 mt-0.5">02</span>
                     <p className="text-[15px] text-white/60 leading-relaxed">
                       {locale === "fr"
-                        ? "Conception personnalisee selon vos specifications exactes"
+                        ? "Conception personnalisée selon vos spécifications exactes"
                         : "Custom design according to your exact specifications"}
                     </p>
                   </div>
@@ -224,7 +224,7 @@ export function ContactPage() {
                     <span className="text-[14px] font-[var(--font-heading)] font-bold text-atlas-red shrink-0 mt-0.5">03</span>
                     <p className="text-[15px] text-white/60 leading-relaxed">
                       {locale === "fr"
-                        ? "Production en usine avec controle qualite et livraison rapide"
+                        ? "Production en usine avec contrôle qualité et livraison rapide"
                         : "Factory production with quality control and fast delivery"}
                     </p>
                   </div>
@@ -232,7 +232,7 @@ export function ContactPage() {
                     <span className="text-[14px] font-[var(--font-heading)] font-bold text-atlas-red shrink-0 mt-0.5">04</span>
                     <p className="text-[15px] text-white/60 leading-relaxed">
                       {locale === "fr"
-                        ? "Service apres-vente et documentation complete inclus"
+                        ? "Service après-vente et documentation complète inclus"
                         : "After-sales service and comprehensive documentation included"}
                     </p>
                   </div>

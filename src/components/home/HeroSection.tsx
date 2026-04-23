@@ -11,12 +11,12 @@ import { useGSAP } from "@gsap/react";
 const slides = [
   {
     src: "/images/hero-container.webp",
-    alt: "Construction modulaire Atlas - conteneurs prefabriques",
+    alt: "Construction modulaire Atlas - conteneurs préfabriqués",
     layout: "left" as const,
   },
   {
     src: "/images/containers/port-containers.webp",
-    alt: "Conteneurs modulaires au port - expedition internationale",
+    alt: "Conteneurs modulaires au port - expédition internationale",
     layout: "left" as const,
   },
 ];
@@ -25,13 +25,13 @@ const slideContent = {
   fr: [
     {
       title: "Conteneurs\nModulaires",
-      subtitle: "Production automatisee, materiaux superieurs, normes internationales les plus elevees. Solutions cle en main pour tous vos projets.",
-      cta: "Decouvrir nos Conteneurs",
+      subtitle: "Production automatisée, matériaux supérieurs, normes internationales les plus élevées. Solutions clé en main pour tous vos projets.",
+      cta: "Découvrir nos Conteneurs",
       ctaLink: "/products" as const,
     },
     {
-      title: "Du Projet a\nla Livraison",
-      subtitle: "De la conception a l'installation, nous gerons chaque etape avec precision et engagement qualite.",
+      title: "Du Projet à\nla Livraison",
+      subtitle: "De la conception à l'installation, nous gérons chaque étape avec précision et engagement qualité.",
       cta: "Nos Projets",
       ctaLink: "/projects" as const,
     },
@@ -186,6 +186,7 @@ export function HeroSection() {
             fill
             className="object-cover"
             sizes="100vw"
+            quality={90}
             priority={i === 0}
           />
         </div>
@@ -220,7 +221,7 @@ export function HeroSection() {
                 <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />
                 <div>
                   <span className="block text-[10px] sm:text-[11px] text-white/70 uppercase tracking-widest font-medium leading-none mb-1.5">
-                    {locale === "fr" ? "Telephone" : "Phone"}
+                    {locale === "fr" ? "Téléphone" : "Phone"}
                   </span>
                   <span className="block text-[15px] sm:text-[18px] text-white font-bold leading-none">
                     {locale === "fr" ? "Appelez-nous" : "Call Us"}
@@ -237,7 +238,7 @@ export function HeroSection() {
                     Email
                   </span>
                   <span className="block text-[15px] sm:text-[18px] text-atlas-charcoal font-bold leading-none">
-                    {locale === "fr" ? "Ecrivez-nous" : "Write Us"}
+                    {locale === "fr" ? "Écrivez-nous" : "Write Us"}
                   </span>
                 </div>
               </a>

@@ -13,13 +13,13 @@ import { Footer } from "@/components/layout/Footer";
 const products = [
   {
     key: "prefab",
-    image: "/images/containers/finished-1.webp",
-    altText: "Batiments prefabriques modulaires - production en usine livraison rapide",
+    image: "/images/containers/prefab-new.webp",
+    altText: "Bâtiments préfabriqués modulaires - production en usine livraison rapide",
   },
   {
     key: "container",
     image: "/images/showcase/49.webp",
-    altText: "Living containers modulaires prets a l'emploi",
+    altText: "Living containers modulaires prêts à l'emploi",
   },
   {
     key: "lightsteel",
@@ -87,10 +87,11 @@ export function ProductsPage() {
         <div className="absolute inset-0">
           <Image
             src="/images/hero-container.webp"
-            alt="Atlas Batiment Modulaire - conteneurs modulaires"
+            alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
             sizes="100vw"
+            quality={90}
             priority
           />
         </div>
@@ -119,7 +120,7 @@ export function ProductsPage() {
             style={{ scrollSnapAlign: "start" }}
           >
             <div className="absolute inset-0">
-              <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" />
+              <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" quality={90} />
             </div>
             <div className="relative z-10 h-full flex items-end pb-4 sm:pb-10 lg:pb-14">
               <div className="w-full px-3 sm:px-8 lg:px-16 xl:px-24">

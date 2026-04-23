@@ -152,6 +152,7 @@ export function SolutionsList() {
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 66vw"
+                  quality={90}
                 />
               </div>
 
@@ -192,6 +193,7 @@ export function SolutionsList() {
                       fill
                       className="object-cover hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 1024px) 33vw, 22vw"
+                      quality={90}
                     />
                   </div>
                 ))}

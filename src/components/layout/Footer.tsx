@@ -17,7 +17,7 @@ export function Footer() {
           <div className="col-span-2 lg:col-span-1">
             <Image
               src="/images/logo-transparent.png"
-              alt="Atlas Batiment Modulaire"
+              alt="Atlas Bâtiment Modulaire"
               width={200}
               height={56}
               className="h-10 sm:h-11 w-auto mb-4"
@@ -55,11 +55,11 @@ export function Footer() {
             </h4>
             <ul className="space-y-2 sm:space-y-2.5">
               {[
-                { label: "Container Prefabrique", href: "/sectors/prefab" },
-                { label: "Camps Miniere", href: "/sectors/mining" },
+                { label: "Container Préfabriqué", href: "/sectors/prefab" },
+                { label: "Camps Minière", href: "/sectors/mining" },
                 { label: "Camps Construction", href: "/sectors/construction" },
-                { label: "Industrie Defence", href: "/sectors/defense" },
-                { label: "Project Energetique", href: "/sectors/energy" },
+                { label: "Industrie Défense", href: "/sectors/defense" },
+                { label: "Project Énergétique", href: "/sectors/energy" },
               ].map((item) => (
                 <li key={item.href}>
                   <Link
@@ -103,7 +103,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/10 py-4 sm:py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[12px] text-white/40">
-            &copy; {new Date().getFullYear()} Atlas Batiment Modulaire. {t("rights")}
+            &copy; {new Date().getFullYear()} Atlas Bâtiment Modulaire. {t("rights")}
           </p>
           <div className="flex items-center gap-4 sm:gap-6">
             <Link href="/contact" className="text-[12px] text-white/40 hover:text-white/70 transition-colors">

@@ -10,27 +10,27 @@ import { useGSAP } from "@gsap/react";
 
 const values = [
   {
-    fr: "Experience client unique et service personnalise",
+    fr: "Expérience client unique et service personnalisé",
     en: "Unique customer experience and personalized service",
   },
   {
-    fr: "Designs modernes avec des equipes hautement competentes",
+    fr: "Designs modernes avec des équipes hautement compétentes",
     en: "Modern designs with highly competent teams",
   },
   {
-    fr: "Garantie qualite et satisfaction client assuree",
+    fr: "Garantie qualité et satisfaction client assurée",
     en: "Quality guarantee and ensured customer satisfaction",
   },
   {
-    fr: "Livraison a temps avec une planification rigoureuse",
+    fr: "Livraison à temps avec une planification rigoureuse",
     en: "On-time delivery with rigorous planning",
   },
   {
-    fr: "Priorite a la durabilite et au respect de l'environnement",
+    fr: "Priorité à la durabilité et au respect de l'environnement",
     en: "Priority on sustainability and environmental respect",
   },
   {
-    fr: "Solutions deployables a l'echelle mondiale",
+    fr: "Solutions déployables à l'échelle mondiale",
     en: "Globally deployable solutions",
   },
 ];
@@ -69,18 +69,19 @@ export function DifferenceSection() {
                 alt="Production de conteneurs modulaires Atlas"
                 fill
                 className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 42vw"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                quality={90}
               />
             </div>
           </div>
           <div className="lg:col-span-7 lg:pl-12">
             <div className="diff-text">
               <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                {locale === "fr" ? "Notre Difference" : "Our Difference"}
+                {locale === "fr" ? "Notre Différence" : "Our Difference"}
               </span>
               <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.75rem)] font-black text-atlas-charcoal mt-4 tracking-tight leading-tight max-w-[540px]">
                 {locale === "fr"
-                  ? "Une gestion de processus qui elimine les problemes des le depart"
+                  ? "Une gestion de processus qui élimine les problèmes dès le départ"
                   : "Process management that eliminates problems from the start"}
               </h2>
               <div className="w-16 h-[3px] bg-atlas-red mt-7 mb-10" />

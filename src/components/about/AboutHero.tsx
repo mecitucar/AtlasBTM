@@ -27,6 +27,7 @@ export function AboutHero() {
           fill
           className="object-cover"
           sizes="100vw"
+          quality={90}
           priority
         />
       </div>

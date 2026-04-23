@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Atlas Batiment Modulaire | Conteneurs & Solutions Modulaires",
-    "description": "Maitrise locale, excellence garantie. Solutions de construction modulaire, conteneurs prefabriques et structures en acier. Livraison rapide."
+    "title": "Atlas Bâtiment Modulaire | Conteneurs & Solutions Modulaires",
+    "description": "Maîtrise locale, excellence garantie. Solutions de construction modulaire, conteneurs préfabriqués et structures en acier. Livraison rapide."
   },
   "nav": {
     "home": "Accueil",
@@ -12,8 +12,8 @@
     "contact": "Contact"
   },
   "hero": {
-    "slogan": "Maitrise locale, excellence garantie",
-    "subtitle": "Des solutions simples dans des conditions difficiles. Infrastructure de production a haute capacite, qualite des materiaux et possibilites techniques sur vos sites.",
+    "slogan": "Maîtrise locale, excellence garantie",
+    "subtitle": "Des solutions simples dans des conditions difficiles. Infrastructure de production à haute capacité, qualité des matériaux et possibilités techniques sur vos sites.",
     "cta": "Nos Solutions",
     "ctaSecondary": "Nos Produits",
     "fastDelivery": "Livraison Rapide Garantie"
@@ -22,89 +22,89 @@
     "title": "Nos Produits",
     "subtitle": "Solutions modulaires pour chaque besoin",
     "prefab": {
-      "title": "Prefabrique",
-      "desc": "Solutions de construction economiques et rapides, produites en usine et expedites demontees sur les chantiers pour une installation rapide.",
+      "title": "Préfabriqué",
+      "desc": "Solutions de construction économiques et rapides, produites en usine et expédiées démontées sur les chantiers pour une installation rapide.",
       "features": [
-        "Solution economique et gain de temps",
-        "Maximum 5% de perte lors du deplacement",
-        "Service cle en main du beton a la finition",
-        "Installation independante des conditions meteorologiques"
+        "Solution économique et gain de temps",
+        "Maximum 5% de perte lors du déplacement",
+        "Service clé en main du béton à la finition",
+        "Installation indépendante des conditions météorologiques"
       ]
     },
     "container": {
       "title": "Living Container",
-      "desc": "Batiments modulaires en conteneur prets a l'emploi, ideals pour une occupation a court terme sur les chantiers et les camps temporaires.",
+      "desc": "Bâtiments modulaires en conteneur prêts à l'emploi, idéals pour une occupation à court terme sur les chantiers et les camps temporaires.",
       "features": [
-        "Espace de vie ideal pour une utilisation a court terme",
-        "Maximum 2% de perte lors du deplacement",
-        "Empilable jusqu'a 4 etages",
+        "Espace de vie idéal pour une utilisation à court terme",
+        "Maximum 2% de perte lors du déplacement",
+        "Empilable jusqu'à 4 étages",
         "Garantie de rachat 60% (0-1 an)"
       ]
     },
     "lightsteel": {
-      "title": "Acier Leger",
-      "desc": "Systeme de construction en acier galvanise forme a froid, mettant l'accent sur la vitesse, la durabilite et la flexibilite.",
+      "title": "Acier Léger",
+      "desc": "Système de construction en acier galvanisé formé à froid, mettant l'accent sur la vitesse, la durabilité et la flexibilité.",
       "features": [
-        "Systeme de construction durable et esthetique",
+        "Système de construction durable et esthétique",
         "Recyclable et respectueux de l'environnement",
-        "Production econome en energie",
+        "Production économe en énergie",
         "Infrastructure de conception solide"
       ]
     },
     "structural": {
       "title": "Acier Structurel",
-      "desc": "Structures en acier a grande portee realisees principalement en usine pour un assemblage precis sans deformations.",
+      "desc": "Structures en acier à grande portée réalisées principalement en usine pour un assemblage précis sans déformations.",
       "features": [
-        "Approche integree projet-production-assemblage",
-        "Installation de sablage dediee",
-        "Vitesse de construction et rentabilite elevees"
+        "Approche intégrée projet-production-assemblage",
+        "Installation de sablage dédiée",
+        "Vitesse de construction et rentabilité élevées"
       ]
     }
   },
   "solutions": {
     "title": "Nos Secteurs",
-    "subtitle": "Des solutions modulaires adaptees a chaque secteur d'activite",
+    "subtitle": "Des solutions modulaires adaptées à chaque secteur d'activité",
     "prefab": {
-      "title": "Container Prefabrique",
-      "desc": "Conteneurs prefabriques modulaires pour une construction rapide et durable. Livraison rapide garantie."
+      "title": "Container Préfabriqué",
+      "desc": "Conteneurs préfabriqués modulaires pour une construction rapide et durable. Livraison rapide garantie."
     },
     "mining": {
-      "title": "Camps Miniere",
-      "desc": "Camps modulaires pour les sites miniers, deployables rapidement sur tout terrain."
+      "title": "Camps Minière",
+      "desc": "Camps modulaires pour les sites miniers, déployables rapidement sur tout terrain."
     },
     "construction": {
       "title": "Camps Construction",
       "desc": "Installations modulaires pour les chantiers de construction et grands projets."
     },
     "defense": {
-      "title": "L'industrie De La Defence",
-      "desc": "Structures specialisees pour les besoins du secteur de la defense."
+      "title": "L'industrie De La Défense",
+      "desc": "Structures spécialisées pour les besoins du secteur de la défense."
     },
     "energy": {
-      "title": "Project l'Energetique",
-      "desc": "Installations modulaires pour l'industrie energetique et les projets d'infrastructure."
+      "title": "Projet l'Énergétique",
+      "desc": "Installations modulaires pour l'industrie énergétique et les projets d'infrastructure."
     },
     "worksite": {
-      "title": "Batiments de Chantier et Camp",
-      "desc": "Batiments utilises pour la mobilisation de tous types de chantiers de construction."
+      "title": "Bâtiments de Chantier et Camp",
+      "desc": "Bâtiments utilisés pour la mobilisation de tous types de chantiers de construction."
     },
     "multipurpose": {
-      "title": "Batiments Polyvalents",
-      "desc": "Utilises par les institutions publiques, municipalites et investisseurs pour divers usages."
+      "title": "Bâtiments Polyvalents",
+      "desc": "Utilisés par les institutions publiques, municipalités et investisseurs pour divers usages."
     }
   },
   "about": {
     "title": "Corporate",
-    "subtitle": "Maitrise locale, excellence garantie",
-    "intro": "Atlas Batiment Modulaire propose des solutions modulaires de haute qualite avec une infrastructure de production a haute capacite. Nous concevons, fabriquons et installons des conteneurs prefabriques pour les secteurs industriel, minier, energetique et civil.",
+    "subtitle": "Maîtrise locale, excellence garantie",
+    "intro": "Atlas Bâtiment Modulaire propose des solutions modulaires de haute qualité avec une infrastructure de production à haute capacité. Nous concevons, fabriquons et installons des conteneurs préfabriqués pour les secteurs industriel, minier, énergétique et civil.",
     "difference": {
-      "title": "Notre Difference",
+      "title": "Notre Différence",
       "subtitle": "Ce qui nous distingue"
     },
     "processes": {
       "title": "Processus",
       "subtitle": "Planification, Gestion et Satisfaction",
-      "steps": ["Proposition et Contrat", "Conception du Projet", "Production", "Logistique", "Assemblage", "Service Apres-Vente"]
+      "steps": ["Proposition et Contrat", "Conception du Projet", "Production", "Logistique", "Assemblage", "Service Après-Vente"]
     },
     "plant": {
       "title": "Usine de Production",
@@ -113,7 +113,7 @@
   },
   "projects": {
     "title": "Projets",
-    "subtitle": "Nos realisations a travers le monde",
+    "subtitle": "Nos réalisations à travers le monde",
     "viewProject": "Voir le projet",
     "allProjects": "Tous les projets",
     "categories": {
@@ -121,13 +121,13 @@
       "worksite": "Chantier et Camp",
       "multipurpose": "Polyvalent",
       "mining": "Minier",
-      "energy": "Energetique"
+      "energy": "Énergétique"
     }
   },
   "capacity": {
-    "title": "Capacite de Production",
-    "prefab": "Prefabrique",
-    "lightsteel": "Acier Leger",
+    "title": "Capacité de Production",
+    "prefab": "Préfabriqué",
+    "lightsteel": "Acier Léger",
     "containers": "Conteneurs",
     "structural": "Acier Structurel",
     "facility": "Installation de production moderne avec des lignes de production automatiques"
@@ -140,19 +140,19 @@
       "production": "Production",
       "logistics": "Logistique",
       "assembly": "Assemblage",
-      "aftersales": "Service Apres-Vente"
+      "aftersales": "Service Après-Vente"
     }
   },
   "contact": {
     "title": "Contact",
-    "subtitle": "Prenez contact avec nos equipes",
-    "writeToUs": "Ecrivez-nous",
+    "subtitle": "Prenez contact avec nos équipes",
+    "writeToUs": "Écrivez-nous",
     "getQuote": "Demander un Devis",
     "form": {
-      "name": "Nom / Prenom",
+      "name": "Nom / Prénom",
       "email": "E-mail",
-      "phone": "Telephone",
-      "company": "Societe",
+      "phone": "Téléphone",
+      "company": "Société",
       "subject": "Sujet",
       "message": "Votre message",
       "description": "Description",
@@ -161,26 +161,26 @@
       "sendQuote": "Envoyer la demande"
     },
     "info": {
-      "phone": "Telephone",
+      "phone": "Téléphone",
       "email": "E-mail",
       "address": "Adresse",
-      "headOffice": "Siege Social",
+      "headOffice": "Siège Social",
       "factory": "Usine"
     }
   },
   "footer": {
-    "description": "Solutions de construction modulaire et conteneurs prefabriques de haute qualite. Livraison rapide garantie.",
+    "description": "Solutions de construction modulaire et conteneurs préfabriqués de haute qualité. Livraison rapide garantie.",
     "quickLinks": "Liens Rapides",
     "ourSolutions": "Nos Secteurs",
     "ourProducts": "Nos Produits",
     "contactUs": "Contactez-nous",
-    "rights": "Tous droits reserves.",
-    "privacy": "Politique de confidentialite",
-    "terms": "Conditions generales"
+    "rights": "Tous droits réservés.",
+    "privacy": "Politique de confidentialité",
+    "terms": "Conditions générales"
   },
   "cta": {
     "whatsapp": "Contactez-nous sur WhatsApp",
     "quote": "Demander un devis",
-    "details": "Details"
+    "details": "Détails"
   }
 }

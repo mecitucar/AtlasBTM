@@ -96,7 +96,7 @@ export function SloganStrip() {
       <div className="guinea-map absolute inset-0 opacity-[0.25] pointer-events-none flex items-center justify-center">
         <Image
           src="/images/guinea-map.png"
-          alt="Guinea - Republique de Guinee"
+          alt="Guinea - République de Guinée"
           width={1400}
           height={1054}
           className="object-contain max-h-[90vh] w-auto"
@@ -108,7 +108,7 @@ export function SloganStrip() {
           className="slogan-text font-[var(--font-heading)] text-[clamp(2.75rem,6vw,5.5rem)] font-black text-atlas-charcoal tracking-tighter leading-[1.02]"
           style={{ textShadow: "0 2px 20px rgba(255,255,255,0.8)" }}
         >
-          {locale === "fr" ? "Maitrise Locale," : "Local Mastery,"}
+          {locale === "fr" ? "Maîtrise Locale," : "Local Mastery,"}
           <br />
           <span className="text-atlas-red" style={{ textShadow: "0 2px 20px rgba(255,255,255,0.9)" }}>
             {locale === "fr" ? "Excellence Garantie" : "Guaranteed Excellence"}
@@ -117,7 +117,7 @@ export function SloganStrip() {
         <div className="slogan-line w-20 h-[3px] bg-atlas-red mx-auto mt-12 mb-12" />
         <p className="slogan-sub text-[19px] lg:text-[22px] text-atlas-charcoal/70 leading-relaxed max-w-[680px] mx-auto font-medium">
           {locale === "fr"
-            ? "Conception, fabrication et livraison de batiments modulaires et conteneurs prefabriques aux normes internationales. Solutions cle en main pour les secteurs minier, construction, defense et energie a travers le monde."
+            ? "Conception, fabrication et livraison de bâtiments modulaires et conteneurs préfabriqués aux normes internationales. Solutions clé en main pour les secteurs minier, construction, défense et énergie à travers le monde."
             : "Design, manufacturing and delivery of modular buildings and prefabricated containers to international standards. Turnkey solutions for mining, construction, defense and energy sectors worldwide."}
         </p>
       </div>

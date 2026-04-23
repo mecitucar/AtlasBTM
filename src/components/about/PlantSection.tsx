@@ -31,10 +31,11 @@ export function PlantSection() {
             <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
               <Image
                 src="/images/containers/factory-1.webp"
-                alt="Usine de production Atlas Batiment Modulaire"
+                alt="Usine de production Atlas Bâtiment Modulaire"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"
+                quality={90}
               />
             </div>
           </div>
@@ -45,18 +46,18 @@ export function PlantSection() {
               </span>
               <h2 className="plant-reveal font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-4 tracking-tight leading-tight">
                 {locale === "fr"
-                  ? "Technologie de pointe et grande capacite"
+                  ? "Technologie de pointe et grande capacité"
                   : "Latest Technology and Large Capacity"}
               </h2>
               <div className="plant-reveal w-16 h-[3px] bg-atlas-red mt-7 mb-8" />
               <p className="plant-reveal text-[16px] text-atlas-slate leading-[1.8] mb-6">
                 {locale === "fr"
-                  ? "Atlas Batiment Modulaire fabrique des produits repondant aux normes internationales les plus elevees avec une qualite de materiaux superieure. Notre centre de production utilise des lignes de rollformage et de formage d'acier entierement automatiques."
+                  ? "Atlas Bâtiment Modulaire fabrique des produits répondant aux normes internationales les plus élevées avec une qualité de matériaux supérieure. Notre centre de production utilise des lignes de rollformage et de formage d'acier entièrement automatiques."
                   : "Atlas Batiment Modulaire manufactures products meeting the highest international standards with superior material quality. Our production center uses fully automatic rollforming and steel forming production lines."}
               </p>
               <p className="plant-reveal text-[16px] text-atlas-slate leading-[1.8] mb-8">
                 {locale === "fr"
-                  ? "Avec une capacite de production moderne et des equipements de derniere generation, nous developpons les designs les plus modernes et les productions les plus efficaces pour nos clients a travers le monde."
+                  ? "Avec une capacité de production moderne et des équipements de dernière génération, nous développons les designs les plus modernes et les productions les plus efficaces pour nos clients à travers le monde."
                   : "With modern production capacity and state-of-the-art equipment, we develop the most modern designs and efficient productions for our clients worldwide."}
               </p>
               <div className="plant-reveal flex items-center gap-3 text-atlas-slate/50 mb-10">

@@ -46,6 +46,7 @@ export function CTASection() {
           fill
           className="object-cover"
           sizes="100vw"
+          quality={90}
         />
       </div>
       <div className="absolute inset-0 bg-atlas-charcoal/75" />

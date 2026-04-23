@@ -118,7 +118,7 @@ export function SectorsSection() {
                   {t(`${sector.key}.desc`).slice(0, 55)}...
                 </p>
                 <span className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] text-atlas-red font-bold uppercase tracking-wider group-hover:gap-3 transition-all">
-                  {t("title") === "Nos Secteurs" ? "Decouvrir" : "Discover"}
+                  {t("title") === "Nos Secteurs" ? "Découvrir" : "Discover"}
                   <ArrowRight className="w-3 h-3" />
                 </span>
               </div>

@@ -10,7 +10,7 @@ import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 const products = [
   { key: "container", image: "/images/showcase/49.webp", alt: "Conteneurs modulaires en production" },
-  { key: "prefab", image: "/images/containers/finished-1.webp", alt: "Batiments prefabriques modulaires Atlas" },
+  { key: "prefab", image: "/images/containers/finished-1.webp", alt: "Bâtiments préfabriqués modulaires Atlas" },
   { key: "lightsteel", image: "/images/containers/assembly-1.webp", alt: "Construction acier leger galvanise" },
   { key: "structural", image: "/images/containers/factory-1.webp", alt: "Structures acier grande portee" },
 ];
@@ -205,6 +205,7 @@ export function ProductsGrid() {
               fill
               className="object-cover"
               sizes="100vw"
+              quality={90}
             />
             <div className="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
               <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold bg-white px-4 py-1.5 inline-block mb-5">

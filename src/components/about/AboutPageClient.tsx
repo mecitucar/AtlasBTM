@@ -11,25 +11,25 @@ import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { Footer } from "@/components/layout/Footer";
 
 const values = [
-  { fr: "Experience client unique et service personnalise", en: "Unique customer experience and personalized service" },
-  { fr: "Designs modernes avec des equipes hautement competentes", en: "Modern designs with highly competent teams" },
-  { fr: "Garantie qualite et satisfaction client assuree", en: "Quality guarantee and ensured customer satisfaction" },
-  { fr: "Livraison a temps avec une planification rigoureuse", en: "On-time delivery with rigorous planning" },
-  { fr: "Priorite a la durabilite et au respect de l'environnement", en: "Priority on sustainability and environmental respect" },
-  { fr: "Solutions deployables a l'echelle mondiale", en: "Globally deployable solutions" },
+  { fr: "Expérience client unique et service personnalisé", en: "Unique customer experience and personalized service" },
+  { fr: "Designs modernes avec des équipes hautement compétentes", en: "Modern designs with highly competent teams" },
+  { fr: "Garantie qualité et satisfaction client assurée", en: "Quality guarantee and ensured customer satisfaction" },
+  { fr: "Livraison à temps avec une planification rigoureuse", en: "On-time delivery with rigorous planning" },
+  { fr: "Priorité à la durabilité et au respect de l'environnement", en: "Priority on sustainability and environmental respect" },
+  { fr: "Solutions déployables à l'échelle mondiale", en: "Globally deployable solutions" },
 ];
 
 const steps = [
-  { fr: "L'entreprise soumet des offres dans les 24 heures, en mettant l'accent sur une communication ouverte et un service personnalise.", en: "The company submits offers within 24 hours, emphasizing open communication and personalized service." },
-  { fr: "Atlas fonctionne comme partie integrante de l'equipe du client tout au long de la phase de conception, identifiant les problemes de maniere proactive.", en: "Atlas functions as part of the client's team throughout the design phase, identifying potential issues proactively." },
-  { fr: "La fabrication combine des matieres premieres de qualite superieure avec des lignes de production entierement automatiques et des controles rigoureux.", en: "Manufacturing combines superior raw materials with fully automatic production lines and rigorous quality checks." },
-  { fr: "Chargement correct et expedition planifiee en utilisant des solutions economiques avec des listes de materiaux preparees.", en: "Correct loading and planned shipment using economical solutions with prepared material lists." },
-  { fr: "Des equipes formees et certifiees executent l'assemblage. Les operations de demontage minimisent la perte de materiaux a environ 5%.", en: "Trained and certified teams execute assembly. Disassembly operations minimize material loss to approximately 5%." },
-  { fr: "Le service continue apres la livraison avec une documentation complete, servant de guide pour les modifications futures.", en: "Service continues post-delivery with comprehensive documentation, serving as a guide for future modifications." },
+  { fr: "L'entreprise soumet des offres dans les 24 heures, en mettant l'accent sur une communication ouverte et un service personnalisé.", en: "The company submits offers within 24 hours, emphasizing open communication and personalized service." },
+  { fr: "Atlas fonctionne comme partie intégrante de l'équipe du client tout au long de la phase de conception, identifiant les problèmes de manière proactive.", en: "Atlas functions as part of the client's team throughout the design phase, identifying potential issues proactively." },
+  { fr: "La fabrication combine des matières premières de qualité supérieure avec des lignes de production entièrement automatiques et des contrôles rigoureux.", en: "Manufacturing combines superior raw materials with fully automatic production lines and rigorous quality checks." },
+  { fr: "Chargement correct et expédition planifiée en utilisant des solutions économiques avec des listes de matériaux préparées.", en: "Correct loading and planned shipment using economical solutions with prepared material lists." },
+  { fr: "Des équipes formées et certifiées exécutent l'assemblage. Les opérations de démontage minimisent la perte de matériaux à environ 5%.", en: "Trained and certified teams execute assembly. Disassembly operations minimize material loss to approximately 5%." },
+  { fr: "Le service continue après la livraison avec une documentation complète, servant de guide pour les modifications futures.", en: "Service continues post-delivery with comprehensive documentation, serving as a guide for future modifications." },
 ];
 
 const stepTitles = {
-  fr: ["Proposition", "Conception", "Production", "Logistique", "Assemblage", "Apres-Vente"],
+  fr: ["Proposition", "Conception", "Production", "Logistique", "Assemblage", "Après-Vente"],
   en: ["Proposal", "Design", "Production", "Logistics", "Assembly", "After Sales"],
 };
 
@@ -97,7 +97,7 @@ export function AboutPageClient() {
         {/* ── Hero ── */}
         <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
           <div className="absolute inset-0">
-            <Image src="/images/about-hero.webp" alt="Atlas Batiment Modulaire" fill className="object-cover" sizes="100vw" priority />
+            <Image src="/images/about-hero.webp" alt="Atlas Bâtiment Modulaire" fill className="object-cover" sizes="100vw" quality={90} priority />
           </div>
           <div className="relative z-10 pb-16 sm:pb-20 lg:pb-28 pt-32 w-full">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -122,17 +122,17 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-5">
                 <div className="diff-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src="/images/showcase/49.webp" alt="Production de conteneurs modulaires Atlas" fill className="object-cover" sizes="42vw" />
+                  <Image src="/images/showcase/49.webp" alt="Production de conteneurs modulaires Atlas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-7 lg:pl-12">
                 <div className="diff-text">
                   <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                    {locale === "fr" ? "Notre Difference" : "Our Difference"}
+                    {locale === "fr" ? "Notre Différence" : "Our Difference"}
                   </span>
                   <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.75rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight max-w-[540px]">
                     {locale === "fr"
-                      ? "Une gestion de processus qui elimine les problemes des le depart"
+                      ? "Une gestion de processus qui élimine les problèmes dès le départ"
                       : "Process management that eliminates problems from the start"}
                   </h2>
                   <div className="w-16 h-[3px] bg-atlas-red mt-5 sm:mt-7 mb-6 sm:mb-10" />
@@ -178,7 +178,7 @@ export function AboutPageClient() {
               <div className="lg:col-span-7 flex items-end">
                 <p className="text-[14px] sm:text-[17px] text-white/40 leading-relaxed max-w-[500px]">
                   {locale === "fr"
-                    ? "Atlas respecte strictement le delai de livraison avec une planification rigoureuse, sans aucune perturbation. De la proposition a l'apres-vente."
+                    ? "Atlas respecte strictement le délai de livraison avec une planification rigoureuse, sans aucune perturbation. De la proposition à l'après-vente."
                     : "Atlas strictly meets delivery deadlines with rigorous planning, without any disruption. From proposal to after-sales."}
                 </p>
               </div>
@@ -211,7 +211,7 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-7">
                 <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src="/images/containers/factory-1.webp" alt="Usine de production Atlas Batiment Modulaire" fill className="object-cover" sizes="58vw" />
+                  <Image src="/images/containers/factory-1.webp" alt="Usine de production Atlas Bâtiment Modulaire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 58vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-5 lg:pl-8">
@@ -221,18 +221,18 @@ export function AboutPageClient() {
                   </span>
                   <h2 className="plant-reveal font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight">
                     {locale === "fr"
-                      ? "Technologie de pointe et grande capacite"
+                      ? "Technologie de pointe et grande capacité"
                       : "Latest Technology and Large Capacity"}
                   </h2>
                   <div className="plant-reveal w-16 h-[3px] bg-atlas-red mt-5 sm:mt-7 mb-5 sm:mb-8" />
                   <p className="plant-reveal text-[14px] sm:text-[16px] text-atlas-slate leading-[1.7] mb-4 sm:mb-6">
                     {locale === "fr"
-                      ? "Atlas Batiment Modulaire fabrique des produits repondant aux normes internationales les plus elevees avec une qualite de materiaux superieure. Notre centre de production utilise des lignes de rollformage et de formage d'acier entierement automatiques."
+                      ? "Atlas Bâtiment Modulaire fabrique des produits répondant aux normes internationales les plus élevées avec une qualité de matériaux supérieure. Notre centre de production utilise des lignes de rollformage et de formage d'acier entièrement automatiques."
                       : "Atlas Batiment Modulaire manufactures products meeting the highest international standards with superior material quality. Our production center uses fully automatic rollforming and steel forming production lines."}
                   </p>
                   <p className="plant-reveal text-[14px] sm:text-[16px] text-atlas-slate leading-[1.7] mb-5 sm:mb-8">
                     {locale === "fr"
-                      ? "Avec une capacite de production moderne et des equipements de derniere generation, nous developpons les designs les plus modernes et les productions les plus efficaces pour nos clients a travers le monde."
+                      ? "Avec une capacité de production moderne et des équipements de dernière génération, nous développons les designs les plus modernes et les productions les plus efficaces pour nos clients à travers le monde."
                       : "With modern production capacity and state-of-the-art equipment, we develop the most modern designs and efficient productions for our clients worldwide."}
                   </p>
                   <div className="plant-reveal flex items-center gap-3 text-atlas-slate/50 mb-6 sm:mb-10">

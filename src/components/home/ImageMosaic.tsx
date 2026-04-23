@@ -96,7 +96,7 @@ function MosaicTile({ images }: { images: string[] }) {
         alt=""
         fill
         className="object-cover transition-transform duration-[5000ms] ease-out group-hover:scale-105"
-        sizes="(max-width: 768px) 50vw, 20vw"
+        sizes="(max-width: 768px) 50vw, 33vw" quality={90}
       />
       <Image
         src={pool.current[nextIdx]}
@@ -105,7 +105,7 @@ function MosaicTile({ images }: { images: string[] }) {
         className={`object-cover transition-opacity duration-[2000ms] ease-in-out ${
           showNext ? "opacity-100" : "opacity-0"
         }`}
-        sizes="(max-width: 768px) 50vw, 20vw"
+        sizes="(max-width: 768px) 50vw, 33vw" quality={90}
       />
     </div>
   );

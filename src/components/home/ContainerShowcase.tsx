@@ -10,10 +10,10 @@ import { useGSAP } from "@gsap/react";
 
 const highlights = {
   fr: [
-    { icon: Layers, title: "Empilable 4 Etages", desc: "Structures modulaires empilables jusqu'a 4 niveaux" },
-    { icon: RefreshCw, title: "Garantie Rachat 60%", desc: "Rachat garanti a 60% dans la premiere annee" },
-    { icon: Shield, title: "Normes Internationales", desc: "Production certifiee aux plus hautes normes" },
-    { icon: Truck, title: "Livraison Rapide", desc: "Pret a l'emploi, expedition et installation rapides" },
+    { icon: Layers, title: "Empilable 4 Étages", desc: "Structures modulaires empilables jusqu'à 4 niveaux" },
+    { icon: RefreshCw, title: "Garantie Rachat 60%", desc: "Rachat garanti à 60% dans la première année" },
+    { icon: Shield, title: "Normes Internationales", desc: "Production certifiée aux plus hautes normes" },
+    { icon: Truck, title: "Livraison Rapide", desc: "Prêt à l'emploi, expédition et installation rapides" },
   ],
   en: [
     { icon: Layers, title: "Stackable 4 Stories", desc: "Modular structures stackable up to 4 levels" },
@@ -138,10 +138,11 @@ export function ContainerShowcase() {
         <div className="relative cs-image">
           <Image
             src="/images/containers/finished-1.webp"
-            alt="Atlas Batiment Modulaire - conteneurs modulaires"
+            alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
             sizes="50vw"
+            quality={90}
           />
         </div>
 
@@ -156,7 +157,7 @@ export function ContainerShowcase() {
             <div className="w-16 h-[3px] bg-atlas-red mt-6 mb-8" />
             <p className="text-[17px] text-white/60 leading-relaxed max-w-[480px] mb-12">
               {locale === "fr"
-                ? "Batiments modulaires en conteneur prets a l'emploi, ideals pour une occupation a court terme sur les chantiers et les camps temporaires. Solution economique, rapide et fiable."
+                ? "Bâtiments modulaires en conteneur prêts à l'emploi, idéals pour une occupation à court terme sur les chantiers et les camps temporaires. Solution économique, rapide et fiable."
                 : "Ready-to-use modular container buildings ideal for short-term occupancy in construction sites and temporary camps. Economical, fast and reliable solution."}
             </p>
           </div>
@@ -195,10 +196,11 @@ export function ContainerShowcase() {
         <div className="absolute inset-0 cs-image">
           <Image
             src="/images/containers/finished-1.webp"
-            alt="Atlas Batiment Modulaire - conteneurs modulaires"
+            alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
             sizes="100vw"
+            quality={90}
           />
         </div>
 
@@ -213,7 +215,7 @@ export function ContainerShowcase() {
             <div className="w-12 h-[3px] bg-atlas-red mt-3 mb-4" />
             <p className="text-[14px] text-white/60 leading-relaxed mb-5">
               {locale === "fr"
-                ? "Batiments modulaires en conteneur prets a l'emploi, ideals pour une occupation a court terme sur les chantiers et les camps temporaires."
+                ? "Bâtiments modulaires en conteneur prêts à l'emploi, idéals pour une occupation à court terme sur les chantiers et les camps temporaires."
                 : "Ready-to-use modular container buildings ideal for short-term occupancy in construction sites and temporary camps."}
             </p>
           </div>

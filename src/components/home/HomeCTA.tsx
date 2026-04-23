@@ -34,10 +34,11 @@ export function HomeCTA() {
         <div className="absolute inset-0">
           <Image
             src="/images/cta-bg.webp"
-            alt="Atlas Batiment Modulaire - conception projet modulaire"
+            alt="Atlas Bâtiment Modulaire - conception projet modulaire"
             fill
             className="object-cover"
             sizes="100vw"
+            quality={90}
           />
           <div className="absolute inset-0 bg-atlas-red/40" />
         </div>
@@ -56,7 +57,7 @@ export function HomeCTA() {
                 <div className="w-12 sm:w-16 h-[3px] bg-white mt-4 sm:mt-6 mb-5 sm:mb-8" />
                 <p className="text-[14px] sm:text-[17px] text-white/70 leading-relaxed mb-6 sm:mb-10 max-w-[480px]">
                   {locale === "fr"
-                    ? "Decrivez-nous votre besoin en conteneurs et recevez une proposition detaillee sous 48h. Nos experts vous accompagnent de la conception a la livraison."
+                    ? "Décrivez-nous votre besoin en conteneurs et recevez une proposition détaillée sous 48h. Nos experts vous accompagnent de la conception à la livraison."
                     : "Describe your container needs and receive a detailed proposal within 48h. Our experts support you from design to delivery."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -83,7 +84,7 @@ export function HomeCTA() {
                   </div>
                   <div className="min-w-0">
                     <span className="text-[11px] sm:text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-0.5 sm:mb-1">
-                      {locale === "fr" ? "Telephone" : "Phone"}
+                      {locale === "fr" ? "Téléphone" : "Phone"}
                     </span>
                     <span className="text-[15px] sm:text-[18px] text-white font-bold">+32 490 10 49 05</span>
                   </div>

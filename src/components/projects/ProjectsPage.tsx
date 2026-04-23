@@ -10,11 +10,11 @@ import { useGSAP } from "@gsap/react";
 
 const projects = [
   {
-    title: { fr: "Batiments de Mobilisation", en: "Mobilization Buildings" },
+    title: { fr: "Bâtiments de Mobilisation", en: "Mobilization Buildings" },
     sector: "worksite",
     location: { fr: "Europe", en: "Europe" },
     image: "/images/containers/finished-1.webp",
-    altText: { fr: "Batiments de mobilisation modulaires sur chantier", en: "Modular mobilization buildings on construction site" },
+    altText: { fr: "Bâtiments de mobilisation modulaires sur chantier", en: "Modular mobilization buildings on construction site" },
   },
   {
     title: { fr: "Camp Minier - Site d'Extraction", en: "Mining Camp - Extraction Site" },
@@ -24,25 +24,25 @@ const projects = [
     altText: { fr: "Camp minier modulaire sur site d'extraction", en: "Modular mining camp on extraction site" },
   },
   {
-    title: { fr: "Batiments de Chantier", en: "Construction Site Buildings" },
+    title: { fr: "Bâtiments de Chantier", en: "Construction Site Buildings" },
     sector: "worksite",
     location: { fr: "Europe", en: "Europe" },
     image: "/images/containers/camp-1.webp",
-    altText: { fr: "Batiments modulaires de chantier de construction", en: "Modular construction site buildings" },
+    altText: { fr: "Bâtiments modulaires de chantier de construction", en: "Modular construction site buildings" },
   },
   {
-    title: { fr: "Batiments Polyvalents", en: "Multi-Purpose Buildings" },
+    title: { fr: "Bâtiments Polyvalents", en: "Multi-Purpose Buildings" },
     sector: "multipurpose",
     location: { fr: "Europe", en: "Europe" },
     image: "/images/containers/finished-2.webp",
-    altText: { fr: "Batiments polyvalents modulaires", en: "Multi-purpose modular buildings" },
+    altText: { fr: "Bâtiments polyvalents modulaires", en: "Multi-purpose modular buildings" },
   },
   {
-    title: { fr: "Camp Installation Energetique", en: "Energy Facility Camp" },
+    title: { fr: "Camp Installation Énergétique", en: "Energy Facility Camp" },
     sector: "energy",
     location: { fr: "Moyen-Orient", en: "Middle East" },
     image: "/images/containers/port-containers.webp",
-    altText: { fr: "Camp modulaire pour installation energetique", en: "Modular camp for energy facility" },
+    altText: { fr: "Camp modulaire pour installation énergétique", en: "Modular camp for energy facility" },
   },
   {
     title: { fr: "Installation Camp de Chantier", en: "Worksite Camp Installation" },
@@ -111,7 +111,7 @@ export function ProjectsPage() {
     <>
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
-          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
+          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -157,6 +157,7 @@ export function ProjectsPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={90}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                     <ExternalLink className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />

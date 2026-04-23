@@ -8,33 +8,33 @@ import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 const steps = [
   {
-    fr: "L'entreprise soumet des offres dans les 24 heures, en mettant l'accent sur une communication ouverte et un service personnalise.",
+    fr: "L'entreprise soumet des offres dans les 24 heures, en mettant l'accent sur une communication ouverte et un service personnalisé.",
     en: "The company submits offers within 24 hours, emphasizing open communication and personalized service.",
   },
   {
-    fr: "Atlas fonctionne comme partie integrante de l'equipe du client tout au long de la phase de conception, identifiant les problemes de maniere proactive.",
+    fr: "Atlas fonctionne comme partie intégrante de l'équipe du client tout au long de la phase de conception, identifiant les problèmes de manière proactive.",
     en: "Atlas functions as part of the client's team throughout the design phase, identifying potential issues proactively.",
   },
   {
-    fr: "La fabrication combine des matieres premieres de qualite superieure avec des lignes de production entierement automatiques et des controles rigoureux.",
+    fr: "La fabrication combine des matières premières de qualité supérieure avec des lignes de production entièrement automatiques et des contrôles rigoureux.",
     en: "Manufacturing combines superior raw materials with fully automatic production lines and rigorous quality checks.",
   },
   {
-    fr: "Chargement correct et expedition planifiee en utilisant des solutions economiques avec des listes de materiaux preparees.",
+    fr: "Chargement correct et expédition planifiée en utilisant des solutions économiques avec des listes de matériaux préparées.",
     en: "Correct loading and planned shipment using economical solutions with prepared material lists.",
   },
   {
-    fr: "Des equipes formees et certifiees executent l'assemblage. Les operations de demontage minimisent la perte de materiaux a environ 5%.",
+    fr: "Des équipes formées et certifiées exécutent l'assemblage. Les opérations de démontage minimisent la perte de matériaux à environ 5%.",
     en: "Trained and certified teams execute assembly. Disassembly operations minimize material loss to approximately 5%.",
   },
   {
-    fr: "Le service continue apres la livraison avec une documentation complete, servant de guide pour les modifications futures.",
+    fr: "Le service continue après la livraison avec une documentation complète, servant de guide pour les modifications futures.",
     en: "Service continues post-delivery with comprehensive documentation, serving as a guide for future modifications.",
   },
 ];
 
 const stepTitles = {
-  fr: ["Proposition", "Conception", "Production", "Logistique", "Assemblage", "Apres-Vente"],
+  fr: ["Proposition", "Conception", "Production", "Logistique", "Assemblage", "Après-Vente"],
   en: ["Proposal", "Design", "Production", "Logistics", "Assembly", "After Sales"],
 };
 
@@ -71,7 +71,7 @@ export function ProcessesSection() {
           <div className="lg:col-span-7 flex items-end">
             <p className="text-[17px] text-white/40 leading-relaxed max-w-[500px]">
               {locale === "fr"
-                ? "Atlas respecte strictement le delai de livraison avec une planification rigoureuse, sans aucune perturbation. De la proposition a l'apres-vente."
+                ? "Atlas respecte strictement le délai de livraison avec une planification rigoureuse, sans aucune perturbation. De la proposition à l'après-vente."
                 : "Atlas strictly meets delivery deadlines with rigorous planning, without any disruption. From proposal to after-sales."}
             </p>
           </div>

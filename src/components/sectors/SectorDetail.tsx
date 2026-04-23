@@ -24,80 +24,80 @@ interface SectorContent {
 
 const sectors: Record<string, SectorContent> = {
   prefab: {
-    heroImage: "/images/containers/finished-1.webp",
-    heroAlt: "Container prefabrique modulaire Atlas Batiment Modulaire",
+    heroImage: "/images/containers/prefab-new.webp",
+    heroAlt: "Container préfabriqué modulaire Atlas Bâtiment Modulaire",
     images: [
-      { src: "/images/showcase/07.webp", alt: "Conteneur prefabrique - vue exterieure" },
-      { src: "/images/prefab/exterior-2.webp", alt: "Batiment modulaire prefabrique Atlas" },
+      { src: "/images/showcase/07.webp", alt: "Conteneur préfabriqué - vue extérieure" },
+      { src: "/images/prefab/exterior-2.webp", alt: "Bâtiment modulaire préfabriqué Atlas" },
       { src: "/images/prefab/exterior-3.webp", alt: "Conteneurs modulaires sur site" },
-      { src: "/images/prefab/exterior-4.webp", alt: "Installation conteneurs prefabriques" },
-      { src: "/images/prefab/exterior-5.webp", alt: "Conteneurs livres sur chantier" },
-      { src: "/images/prefab/exterior-6.webp", alt: "Assemblage modulaire exterieur" },
-      { src: "/images/prefab/exterior-7.webp", alt: "Conteneur prefabrique termine" },
-      { src: "/images/prefab/exterior-8.webp", alt: "Vue exterieure camp modulaire" },
-      { src: "/images/prefab/exterior-9.webp", alt: "Conteneurs prefabriques alignes" },
-      { src: "/images/prefab/exterior-10.webp", alt: "Projet conteneur prefabrique Atlas" },
+      { src: "/images/prefab/exterior-4.webp", alt: "Installation conteneurs préfabriqués" },
+      { src: "/images/prefab/exterior-5.webp", alt: "Conteneurs livrés sur chantier" },
+      { src: "/images/prefab/exterior-6.webp", alt: "Assemblage modulaire extérieur" },
+      { src: "/images/prefab/exterior-7.webp", alt: "Conteneur préfabriqué terminé" },
+      { src: "/images/prefab/exterior-8.webp", alt: "Vue extérieure camp modulaire" },
+      { src: "/images/prefab/exterior-9.webp", alt: "Conteneurs préfabriqués alignés" },
+      { src: "/images/prefab/exterior-10.webp", alt: "Projet conteneur préfabriqué Atlas" },
     ],
     interiorImages: [
-      { src: "/images/prefab/interior-1.webp", alt: "Interieur conteneur prefabrique - amenagement" },
-      { src: "/images/prefab/interior-2.webp", alt: "Interieur conteneur - espace de vie" },
-      { src: "/images/prefab/interior-3.webp", alt: "Interieur conteneur - finitions qualite" },
-      { src: "/images/prefab/interior-4.webp", alt: "Interieur conteneur - cuisine equipee" },
-      { src: "/images/prefab/interior-5.webp", alt: "Interieur conteneur - chambre" },
-      { src: "/images/prefab/interior-6.webp", alt: "Interieur conteneur - salle de bain" },
-      { src: "/images/prefab/interior-7.webp", alt: "Interieur conteneur - details finition" },
+      { src: "/images/prefab/interior-1.webp", alt: "Intérieur conteneur préfabriqué - aménagement" },
+      { src: "/images/prefab/interior-2.webp", alt: "Intérieur conteneur - espace de vie" },
+      { src: "/images/prefab/interior-3.webp", alt: "Intérieur conteneur - finitions qualité" },
+      { src: "/images/prefab/interior-4.webp", alt: "Intérieur conteneur - cuisine équipée" },
+      { src: "/images/prefab/interior-5.webp", alt: "Intérieur conteneur - chambre" },
+      { src: "/images/prefab/interior-6.webp", alt: "Intérieur conteneur - salle de bain" },
+      { src: "/images/prefab/interior-7.webp", alt: "Intérieur conteneur - détails finition" },
     ],
     applications: [
       { fr: "Bureaux modulaires temporaires et permanents", en: "Temporary and permanent modular offices" },
       { fr: "Logements ouvriers et camps de vie", en: "Worker housing and living camps" },
-      { fr: "Cliniques et centres medicaux mobiles", en: "Mobile clinics and medical centers" },
-      { fr: "Salles de classe et batiments scolaires", en: "Classrooms and school buildings" },
+      { fr: "Cliniques et centres médicaux mobiles", en: "Mobile clinics and medical centers" },
+      { fr: "Salles de classe et bâtiments scolaires", en: "Classrooms and school buildings" },
       { fr: "Sanitaires et blocs vestiaires", en: "Sanitation blocks and changing rooms" },
-      { fr: "Refectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
+      { fr: "Réfectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
     ],
     approach: [
       { fr: "Analyse des besoins et conception sur mesure", en: "Needs analysis and custom design" },
-      { fr: "Production automatisee en environnement controle", en: "Automated production in controlled environment" },
-      { fr: "Tests qualite et conformite aux normes", en: "Quality testing and standards compliance" },
+      { fr: "Production automatisée en environnement contrôlé", en: "Automated production in controlled environment" },
+      { fr: "Tests qualité et conformité aux normes", en: "Quality testing and standards compliance" },
       { fr: "Logistique internationale et livraison sur site", en: "International logistics and on-site delivery" },
     ],
-    introFr: "Nos conteneurs prefabriques sont concus et fabriques dans notre usine de production ultramoderne. Chaque unite est assemblee avec precision sur des lignes de rollformage entierement automatiques, garantissant une qualite constante et une durabilite exceptionnelle. Du bureau de chantier au logement complet, nous livrons des solutions cle en main adaptees aux exigences les plus strictes.",
+    introFr: "Nos conteneurs préfabriqués sont conçus et fabriqués dans notre usine de production ultramoderne. Chaque unité est assemblée avec précision sur des lignes de rollformage entièrement automatiques, garantissant une qualité constante et une durabilité exceptionnelle. Du bureau de chantier au logement complet, nous livrons des solutions clé en main adaptées aux exigences les plus strictes.",
     introEn: "Our prefabricated containers are designed and manufactured in our state-of-the-art production facility. Each unit is precision-assembled on fully automatic rollforming lines, ensuring consistent quality and exceptional durability. From site offices to complete housing, we deliver turnkey solutions tailored to the most demanding requirements.",
-    challengeFr: "Les projets modernes exigent rapidite, flexibilite et qualite sans compromis. La construction traditionnelle ne peut pas toujours repondre a ces contraintes. Nos conteneurs prefabriques eliminent les aleas du chantier en transferant 90% du travail en usine.",
+    challengeFr: "Les projets modernes exigent rapidité, flexibilité et qualité sans compromis. La construction traditionnelle ne peut pas toujours répondre à ces contraintes. Nos conteneurs préfabriqués éliminent les aléas du chantier en transférant 90% du travail en usine.",
     challengeEn: "Modern projects demand speed, flexibility, and uncompromising quality. Traditional construction cannot always meet these constraints. Our prefabricated containers eliminate on-site uncertainties by transferring 90% of work to the factory.",
   },
   mining: {
     heroImage: "/images/mining/maden-hero.webp",
-    heroAlt: "Camp minier modulaire deploiement rapide Atlas",
+    heroAlt: "Camp minier modulaire déploiement rapide Atlas",
     images: [
-      { src: "/images/mining/maden1.webp", alt: "Camp minier modulaire - vue generale" },
+      { src: "/images/mining/maden1.webp", alt: "Camp minier modulaire - vue générale" },
       { src: "/images/mining/maden2.webp", alt: "Installation camp minier sur site" },
-      { src: "/images/mining/maden3.webp", alt: "Modules d'hebergement camp minier" },
+      { src: "/images/mining/maden3.webp", alt: "Modules d'hébergement camp minier" },
       { src: "/images/mining/maden5.webp", alt: "Infrastructure camp minier" },
-      { src: "/images/mining/maden6.webp", alt: "Batiments modulaires site minier" },
-      { src: "/images/mining/maden7.webp", alt: "Camp minier operationnel" },
-      { src: "/images/mining/maden8.webp", alt: "Hebergement equipes minieres" },
+      { src: "/images/mining/maden6.webp", alt: "Bâtiments modulaires site minier" },
+      { src: "/images/mining/maden7.webp", alt: "Camp minier opérationnel" },
+      { src: "/images/mining/maden8.webp", alt: "Hébergement équipes minières" },
       { src: "/images/mining/maden9.webp", alt: "Installations camp minier" },
-      { src: "/images/mining/maden10.webp", alt: "Vue aerienne camp minier" },
+      { src: "/images/mining/maden10.webp", alt: "Vue aérienne camp minier" },
       { src: "/images/mining/maden11.webp", alt: "Camp minier Atlas complet" },
     ],
     applications: [
-      { fr: "Camps d'hebergement 50 a 2000 personnes", en: "Accommodation camps for 50 to 2000 people" },
-      { fr: "Refectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
+      { fr: "Camps d'hébergement 50 à 2000 personnes", en: "Accommodation camps for 50 to 2000 people" },
+      { fr: "Réfectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
       { fr: "Infirmeries et postes de premiers secours", en: "Infirmaries and first aid stations" },
-      { fr: "Bureaux administratifs et salles de reunion", en: "Administrative offices and meeting rooms" },
+      { fr: "Bureaux administratifs et salles de réunion", en: "Administrative offices and meeting rooms" },
       { fr: "Laveries et blocs sanitaires", en: "Laundry facilities and sanitation blocks" },
-      { fr: "Zones de loisirs et espaces de detente", en: "Recreation areas and relaxation spaces" },
+      { fr: "Zones de loisirs et espaces de détente", en: "Recreation areas and relaxation spaces" },
     ],
     approach: [
-      { fr: "Etude topographique et plan d'implantation", en: "Topographic study and site plan" },
-      { fr: "Conception adaptee aux conditions climatiques locales", en: "Design adapted to local climate conditions" },
-      { fr: "Prefabrication complete en usine", en: "Complete factory prefabrication" },
-      { fr: "Deploiement rapide et mise en service operationnelle", en: "Rapid deployment and operational commissioning" },
+      { fr: "Étude topographique et plan d'implantation", en: "Topographic study and site plan" },
+      { fr: "Conception adaptée aux conditions climatiques locales", en: "Design adapted to local climate conditions" },
+      { fr: "Préfabrication complète en usine", en: "Complete factory prefabrication" },
+      { fr: "Déploiement rapide et mise en service opérationnelle", en: "Rapid deployment and operational commissioning" },
     ],
-    introFr: "L'exploitation miniere exige des infrastructures fiables dans des environnements souvent isoles et hostiles. Atlas deploie des camps modulaires complets - de l'hebergement a la restauration, des bureaux aux installations medicales - capables de fonctionner de maniere autonome dans les conditions les plus extremes. Nos solutions sont concues pour etre demontees et redeployees au fil des phases d'exploitation.",
+    introFr: "L'exploitation minière exige des infrastructures fiables dans des environnements souvent isolés et hostiles. Atlas déploie des camps modulaires complets - de l'hébergement à la restauration, des bureaux aux installations médicales - capables de fonctionner de manière autonome dans les conditions les plus extrêmes. Nos solutions sont conçues pour être démontées et redéployées au fil des phases d'exploitation.",
     introEn: "Mining operations demand reliable infrastructure in often isolated and hostile environments. Atlas deploys complete modular camps - from accommodation to catering, offices to medical facilities - capable of autonomous operation in the most extreme conditions. Our solutions are designed to be dismantled and redeployed as extraction phases evolve.",
-    challengeFr: "Les sites miniers sont souvent situes dans des zones reculees, sans infrastructure existante. Les equipes doivent etre logees, nourries et soignees sur place, dans le respect des normes de securite les plus strictes, et ce en un minimum de temps.",
+    challengeFr: "Les sites miniers sont souvent situés dans des zones reculées, sans infrastructure existante. Les équipes doivent être logées, nourries et soignées sur place, dans le respect des normes de sécurité les plus strictes, et ce en un minimum de temps.",
     challengeEn: "Mining sites are often located in remote areas with no existing infrastructure. Teams must be housed, fed, and cared for on-site, in compliance with the strictest safety standards, all within minimal timeframes.",
   },
   construction: {
@@ -105,81 +105,81 @@ const sectors: Record<string, SectorContent> = {
     heroAlt: "Camp de construction modulaire pour grands chantiers",
     images: [
       { src: "/images/containers/assembly-2.webp", alt: "Montage rapide camp de chantier" },
-      { src: "/images/containers/interior-1.webp", alt: "Interieur bureau de chantier" },
-      { src: "/images/containers/finished-2.webp", alt: "Camp construction operationnel" },
+      { src: "/images/containers/interior-1.webp", alt: "Intérieur bureau de chantier" },
+      { src: "/images/containers/finished-2.webp", alt: "Camp construction opérationnel" },
     ],
     applications: [
       { fr: "Bureaux de direction et de supervision de chantier", en: "Site management and supervision offices" },
       { fr: "Vestiaires et sanitaires aux normes BTP", en: "Changing rooms and sanitation to construction standards" },
-      { fr: "Refectoires et espaces de repos", en: "Canteens and rest areas" },
-      { fr: "Postes de garde et controle d'acces", en: "Guard posts and access control" },
+      { fr: "Réfectoires et espaces de repos", en: "Canteens and rest areas" },
+      { fr: "Postes de garde et contrôle d'accès", en: "Guard posts and access control" },
       { fr: "Ateliers et magasins de stockage", en: "Workshops and storage facilities" },
-      { fr: "Salles de formation et de briefing securite", en: "Training and safety briefing rooms" },
+      { fr: "Salles de formation et de briefing sécurité", en: "Training and safety briefing rooms" },
     ],
     approach: [
-      { fr: "Visite technique et evaluation du chantier", en: "Technical visit and site evaluation" },
-      { fr: "Plan d'amenagement optimise selon les flux", en: "Layout plan optimized for workflow" },
-      { fr: "Livraison et installation cle en main", en: "Turnkey delivery and installation" },
-      { fr: "Demontage et transfert vers le prochain chantier", en: "Dismantling and transfer to next site" },
+      { fr: "Visite technique et évaluation du chantier", en: "Technical visit and site evaluation" },
+      { fr: "Plan d'aménagement optimisé selon les flux", en: "Layout plan optimized for workflow" },
+      { fr: "Livraison et installation clé en main", en: "Turnkey delivery and installation" },
+      { fr: "Démontage et transfert vers le prochain chantier", en: "Dismantling and transfer to next site" },
     ],
-    introFr: "Les grands chantiers d'infrastructure - autoroutes, barrages, lignes ferroviaires - necessitent des bases de vie fonctionnelles des le premier jour. Atlas fournit des installations modulaires qui s'adaptent a la progression du chantier : elles se deploient rapidement, se reconfigurent selon les besoins et se demontent pour le prochain projet sans perte de valeur.",
+    introFr: "Les grands chantiers d'infrastructure - autoroutes, barrages, lignes ferroviaires - nécessitent des bases de vie fonctionnelles dès le premier jour. Atlas fournit des installations modulaires qui s'adaptent à la progression du chantier : elles se déploient rapidement, se reconfigurent selon les besoins et se démontent pour le prochain projet sans perte de valeur.",
     introEn: "Major infrastructure projects - highways, dams, railways - require functional living bases from day one. Atlas provides modular facilities that adapt to site progression: they deploy quickly, reconfigure as needed, and dismantle for the next project without loss of value.",
-    challengeFr: "Un chantier de construction evolue constamment. Les effectifs varient, les besoins changent, et les installations doivent suivre le rythme. La flexibilite et la rapidite de deploiement sont essentielles pour maintenir la productivite.",
+    challengeFr: "Un chantier de construction évolue constamment. Les effectifs varient, les besoins changent, et les installations doivent suivre le rythme. La flexibilité et la rapidité de déploiement sont essentielles pour maintenir la productivité.",
     challengeEn: "A construction site constantly evolves. Headcounts vary, needs change, and facilities must keep pace. Flexibility and speed of deployment are essential to maintaining productivity.",
   },
   defense: {
     heroImage: "/images/defense/defence-hero.webp",
-    heroAlt: "Base militaire modulaire Atlas Batiment Modulaire",
+    heroAlt: "Base militaire modulaire Atlas Bâtiment Modulaire",
     images: [
       { src: "/images/defense/defence-1.webp", alt: "Installation modulaire base militaire" },
-      { src: "/images/defense/defence-2.webp", alt: "Structures defense deployees sur site" },
-      { src: "/images/defense/defence-3.webp", alt: "Camp militaire modulaire operationnel" },
+      { src: "/images/defense/defence-2.webp", alt: "Structures défense déployées sur site" },
+      { src: "/images/defense/defence-3.webp", alt: "Camp militaire modulaire opérationnel" },
     ],
     applications: [
-      { fr: "Postes de commandement et centres operationnels", en: "Command posts and operational centers" },
-      { fr: "Casernements et quartiers d'hebergement", en: "Barracks and accommodation quarters" },
-      { fr: "Hopitaux de campagne et infirmeries", en: "Field hospitals and infirmaries" },
+      { fr: "Postes de commandement et centres opérationnels", en: "Command posts and operational centers" },
+      { fr: "Casernements et quartiers d'hébergement", en: "Barracks and accommodation quarters" },
+      { fr: "Hôpitaux de campagne et infirmeries", en: "Field hospitals and infirmaries" },
       { fr: "Centres de communication et de renseignement", en: "Communication and intelligence centers" },
-      { fr: "Depots logistiques et ateliers de maintenance", en: "Logistics depots and maintenance workshops" },
-      { fr: "Postes de controle et tours d'observation", en: "Checkpoints and observation towers" },
+      { fr: "Dépôts logistiques et ateliers de maintenance", en: "Logistics depots and maintenance workshops" },
+      { fr: "Postes de contrôle et tours d'observation", en: "Checkpoints and observation towers" },
     ],
     approach: [
       { fr: "Consultation confidentielle et cahier des charges", en: "Confidential consultation and specifications" },
-      { fr: "Conception renforcee selon specifications militaires", en: "Reinforced design per military specifications" },
-      { fr: "Production securisee et tests rigoureux", en: "Secure production and rigorous testing" },
-      { fr: "Deploiement discret et mise en service rapide", en: "Discreet deployment and rapid commissioning" },
+      { fr: "Conception renforcée selon spécifications militaires", en: "Reinforced design per military specifications" },
+      { fr: "Production sécurisée et tests rigoureux", en: "Secure production and rigorous testing" },
+      { fr: "Déploiement discret et mise en service rapide", en: "Discreet deployment and rapid commissioning" },
     ],
-    introFr: "Le secteur de la defense impose des exigences sans equivalentes : resistance structurelle, deployabilite rapide, autonomie complete et confidentialite absolue. Atlas concoit des structures modulaires renforcees qui repondent aux specifications militaires les plus strictes, tout en maintenant la flexibilite necessaire aux operations de terrain. Chaque projet est traite avec la plus haute discretion.",
+    introFr: "Le secteur de la défense impose des exigences sans équivalentes : résistance structurelle, déployabilité rapide, autonomie complète et confidentialité absolue. Atlas conçoit des structures modulaires renforcées qui répondent aux spécifications militaires les plus strictes, tout en maintenant la flexibilité nécessaire aux opérations de terrain. Chaque projet est traité avec la plus haute discrétion.",
     introEn: "The defense sector imposes unmatched requirements: structural resistance, rapid deployability, complete autonomy, and absolute confidentiality. Atlas designs reinforced modular structures meeting the strictest military specifications while maintaining the flexibility needed for field operations. Every project is handled with the highest discretion.",
-    challengeFr: "Les forces armees ont besoin d'infrastructures operationnelles en quelques heures, pas en quelques mois. Ces structures doivent resister aux conditions extremes, fonctionner de maniere autonome et pouvoir etre redeployees sans preavis.",
+    challengeFr: "Les forces armées ont besoin d'infrastructures opérationnelles en quelques heures, pas en quelques mois. Ces structures doivent résister aux conditions extrêmes, fonctionner de manière autonome et pouvoir être redéployées sans préavis.",
     challengeEn: "Armed forces need operational infrastructure in hours, not months. These structures must withstand extreme conditions, operate autonomously, and be redeployable without notice.",
   },
   energy: {
     heroImage: "/images/containers/port-containers.webp",
-    heroAlt: "Installations modulaires pour projets energetiques internationaux",
+    heroAlt: "Installations modulaires pour projets énergétiques internationaux",
     images: [
-      { src: "/images/containers/site-aerial-1.webp", alt: "Vue aerienne installations energetiques" },
+      { src: "/images/containers/site-aerial-1.webp", alt: "Vue aérienne installations énergétiques" },
       { src: "/images/containers/factory-1.webp", alt: "Production modules techniques" },
-      { src: "/images/containers/finished-1.webp", alt: "Modules energetiques termines" },
-      { src: "/images/containers/transport-1.webp", alt: "Transport installations energetiques" },
+      { src: "/images/containers/finished-1.webp", alt: "Modules énergétiques terminés" },
+      { src: "/images/containers/transport-1.webp", alt: "Transport installations énergétiques" },
     ],
     applications: [
-      { fr: "Camps pour centrales solaires et parcs eoliens", en: "Camps for solar plants and wind farms" },
+      { fr: "Camps pour centrales solaires et parcs éoliens", en: "Camps for solar plants and wind farms" },
       { fr: "Bases vie pour pipeline et raffineries", en: "Living bases for pipeline and refineries" },
-      { fr: "Laboratoires techniques et salles de controle", en: "Technical laboratories and control rooms" },
-      { fr: "Hebergement pour equipes de forage", en: "Accommodation for drilling teams" },
+      { fr: "Laboratoires techniques et salles de contrôle", en: "Technical laboratories and control rooms" },
+      { fr: "Hébergement pour équipes de forage", en: "Accommodation for drilling teams" },
       { fr: "Stations de traitement et de stockage", en: "Treatment and storage stations" },
       { fr: "Bureaux de projet et centres de formation", en: "Project offices and training centers" },
     ],
     approach: [
       { fr: "Analyse environnementale et contraintes du site", en: "Environmental analysis and site constraints" },
-      { fr: "Ingenierie adaptee aux normes du secteur energetique", en: "Engineering adapted to energy sector standards" },
-      { fr: "Fabrication et pre-assemblage en usine", en: "Factory manufacturing and pre-assembly" },
-      { fr: "Installation et raccordement sur site isole", en: "Installation and connection on remote sites" },
+      { fr: "Ingénierie adaptée aux normes du secteur énergétique", en: "Engineering adapted to energy sector standards" },
+      { fr: "Fabrication et pré-assemblage en usine", en: "Factory manufacturing and pre-assembly" },
+      { fr: "Installation et raccordement sur site isolé", en: "Installation and connection on remote sites" },
     ],
-    introFr: "Les projets energetiques - solaire, eolien, petrole, gaz - se deploient dans des zones souvent isolees et difficiles d'acces. Atlas fournit l'ensemble des infrastructures de vie et de travail necessaires au fonctionnement de ces sites : hebergement, bureaux, laboratoires, restauration. Nos modules sont concus pour resister aux environnements les plus exigeants tout en offrant un confort optimal aux equipes.",
+    introFr: "Les projets énergétiques - solaire, éolien, pétrole, gaz - se déploient dans des zones souvent isolées et difficiles d'accès. Atlas fournit l'ensemble des infrastructures de vie et de travail nécessaires au fonctionnement de ces sites : hébergement, bureaux, laboratoires, restauration. Nos modules sont conçus pour résister aux environnements les plus exigeants tout en offrant un confort optimal aux équipes.",
     introEn: "Energy projects - solar, wind, oil, gas - deploy in often isolated and hard-to-access zones. Atlas provides all the living and working infrastructure needed for these sites: accommodation, offices, laboratories, catering. Our modules are designed to withstand the most demanding environments while offering optimal comfort to teams.",
-    challengeFr: "Les sites energetiques operent souvent dans des regions ou il n'existe aucune infrastructure. Les equipes doivent disposer d'installations completes - hebergement, restauration, bureaux, soins medicaux - dans des delais tres courts et des conditions climatiques extremes.",
+    challengeFr: "Les sites énergétiques opèrent souvent dans des régions où il n'existe aucune infrastructure. Les équipes doivent disposer d'installations complètes - hébergement, restauration, bureaux, soins médicaux - dans des délais très courts et des conditions climatiques extrêmes.",
     challengeEn: "Energy sites often operate in regions with no existing infrastructure. Teams need complete facilities - accommodation, catering, offices, medical care - within very tight deadlines and extreme climate conditions.",
   },
 };
@@ -267,17 +267,17 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         {/* ── Hero ── */}
         <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
           <div className="absolute inset-0">
-            <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" priority />
+            <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" quality={90} priority />
           </div>
           <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none select-none">
             <span className="font-[var(--font-heading)] font-black text-[400px] text-white leading-none">A</span>
           </div>
           <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-              <span className="s-hero-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
+              <span className="s-hero-label text-[12px] tracking-[0.3em] uppercase text-white font-bold block" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.4)" }}>
                 {t("title")}
               </span>
-              <h1 className="s-hero-title font-[var(--font-heading)] text-[clamp(2.5rem,6vw,5.5rem)] font-black text-white mt-5 leading-[0.92] tracking-tighter max-w-[800px]">
+              <h1 className="s-hero-title font-[var(--font-heading)] text-[clamp(2.5rem,6vw,5.5rem)] font-black text-white mt-5 leading-[0.92] tracking-tighter max-w-[450px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
                 {t(`${sectorKey}.title`)}
               </h1>
               <div className="s-hero-line w-24 h-[3px] bg-atlas-red mt-8" />
@@ -292,7 +292,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
               <div className="lg:col-span-7 lg:pr-16 s-intro-text">
                 <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                  {locale === "fr" ? "Le Defi" : "The Challenge"}
+                  {locale === "fr" ? "Le Défi" : "The Challenge"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(1.25rem,2.5vw,2.25rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight">
                   {locale === "fr" ? data.challengeFr : data.challengeEn}
@@ -311,7 +311,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
               </div>
               <div className="hidden lg:block lg:col-span-5">
                 <div className="s-intro-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src={data.images[0].src} alt={data.images[0].alt} fill className="object-cover" sizes="42vw" />
+                  <Image src={data.images[0].src} alt={data.images[0].alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
                 </div>
               </div>
             </div>
@@ -319,29 +319,26 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         </section>
 
         {/* ── Applications ── */}
-        <section className="s-apps relative h-screen overflow-hidden flex items-center" style={snapStyle}>
-          <div className="absolute inset-0">
-            <Image src={data.images[1]?.src || data.images[0].src} alt="" fill className="object-cover" sizes="100vw" />
-          </div>
-          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+        <section className="s-apps relative h-screen bg-atlas-charcoal overflow-hidden flex items-center" style={snapStyle}>
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
               <div className="lg:col-span-4">
                 <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
                   {locale === "fr" ? "Applications" : "Applications"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-white mt-3 sm:mt-4 tracking-tight leading-tight">
-                  {locale === "fr" ? "Ce que nous deployons" : "What we deploy"}
+                  {locale === "fr" ? "Ce que nous déployons" : "What we deploy"}
                 </h2>
                 <div className="w-16 h-[3px] bg-atlas-red mt-4 sm:mt-6" />
               </div>
               <div className="lg:col-span-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 sm:gap-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                   {data.applications.map((app, i) => (
-                    <div key={i} className="s-app flex items-start gap-3 sm:gap-4 py-3 sm:py-4 border-b border-white/10">
+                    <div key={i} className="s-app flex items-start gap-3 sm:gap-4 p-4 sm:p-5 bg-white/[0.06] border border-white/[0.08]">
                       <span className="text-[12px] sm:text-[13px] font-[var(--font-heading)] font-bold text-atlas-red mt-0.5 shrink-0">
                         {String(i + 1).padStart(2, "0")}
                       </span>
-                      <span className="text-[14px] sm:text-[16px] text-white/80 leading-relaxed">
+                      <span className="text-[13px] sm:text-[15px] text-white leading-relaxed">
                         {app[locale]}
                       </span>
                     </div>
@@ -366,7 +363,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
           <div className={`flex-1 grid grid-cols-1 ${data.images.length <= 3 ? "sm:grid-cols-3" : data.images.length <= 4 ? "sm:grid-cols-4" : "sm:grid-cols-5"}`} style={{ gap: "2px" }}>
             {data.images.map((img, i) => (
               <div key={i} className="s-ext-item relative overflow-hidden group">
-                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 100vw, 20vw" />
+                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 100vw, 33vw" quality={90} />
               </div>
             ))}
           </div>
@@ -379,20 +376,20 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-6">
                 <div className="s-door-line w-20 h-[3px] bg-atlas-red mx-auto mb-6 sm:mb-8" />
                 <h2 className="s-door-title font-[var(--font-heading)] text-[clamp(1.75rem,5vw,4rem)] font-black text-white tracking-tighter text-center">
-                  {locale === "fr" ? "Entrez a l'interieur" : "Step inside"}
+                  {locale === "fr" ? "Entrez à l'intérieur" : "Step inside"}
                 </h2>
                 <p className="s-door-sub text-[15px] sm:text-[18px] text-white/40 mt-4 sm:mt-5 max-w-[420px] mx-auto text-center">
                   {locale === "fr"
-                    ? "Decouvrez la qualite de nos finitions interieures"
+                    ? "Découvrez la qualité de nos finitions intérieures"
                     : "Discover the quality of our interior finishes"}
                 </p>
               </div>
               <div className="s-door-left absolute top-0 left-0 w-1/2 h-full z-10 overflow-hidden">
-                <Image src={data.interiorImages![0].src} alt={data.interiorImages![0].alt} fill className="object-cover" sizes="50vw" />
+                <Image src={data.interiorImages![0].src} alt={data.interiorImages![0].alt} fill className="object-cover" sizes="50vw" quality={90} />
                 <div className="absolute inset-0 bg-black/60" />
               </div>
               <div className="s-door-right absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
-                <Image src={data.interiorImages![1].src} alt={data.interiorImages![1].alt} fill className="object-cover" sizes="50vw" />
+                <Image src={data.interiorImages![1].src} alt={data.interiorImages![1].alt} fill className="object-cover" sizes="50vw" quality={90} />
                 <div className="absolute inset-0 bg-black/60" />
               </div>
             </section>
@@ -400,7 +397,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
             <section className="s-interior relative h-screen bg-atlas-charcoal flex flex-col" style={snapStyle}>
               <div className="text-center pt-10 lg:pt-16 pb-6 lg:pb-10 shrink-0">
                 <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                  {locale === "fr" ? "Interieur" : "Interior"}
+                  {locale === "fr" ? "Intérieur" : "Interior"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-white mt-2 sm:mt-3 tracking-tight">
                   {locale === "fr" ? "Nos Finitions" : "Our Finishes"}
@@ -414,7 +411,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                   const isOdd = remaining % 2 !== 0;
                   return (
                     <div key={i} className={`s-int-item relative overflow-hidden group ${isLast && isOdd ? "col-span-2 lg:col-span-1" : ""}`}>
-                      <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
+                      <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 50vw, 33vw" quality={90} />
                     </div>
                   );
                 })}
@@ -432,12 +429,12 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                   {locale === "fr" ? "Notre Approche" : "Our Approach"}
                 </span>
                 <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight">
-                  {locale === "fr" ? "Du premier contact a la livraison" : "From first contact to delivery"}
+                  {locale === "fr" ? "Du premier contact à la livraison" : "From first contact to delivery"}
                 </h2>
                 <div className="w-16 h-[3px] bg-atlas-red mt-4 sm:mt-6 mb-5 sm:mb-8" />
                 <p className="text-[14px] sm:text-[16px] text-atlas-slate leading-relaxed">
                   {locale === "fr"
-                    ? "Chaque projet est unique. Notre processus s'adapte a vos contraintes specifiques pour garantir une livraison dans les delais et conforme a vos exigences."
+                    ? "Chaque projet est unique. Notre processus s'adapte à vos contraintes spécifiques pour garantir une livraison dans les délais et conforme à vos exigences."
                     : "Every project is unique. Our process adapts to your specific constraints to guarantee on-time delivery that meets your requirements."}
                 </p>
               </div>
@@ -471,7 +468,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         {/* ── CTA ── */}
         <section className="relative h-screen overflow-hidden flex items-center" style={snapStyle}>
           <div className="absolute inset-0">
-            <Image src="/images/cta-bg.webp" alt="Atlas Batiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" />
+            <Image src="/images/cta-bg.webp" alt="Atlas Bâtiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" quality={90} />
             <div className="absolute inset-0 bg-atlas-red/40" />
           </div>
           <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
@@ -486,7 +483,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                 <div className="w-12 sm:w-16 h-[3px] bg-white mt-5 sm:mt-8 mb-5 sm:mb-8" />
                 <p className="text-[14px] sm:text-[17px] text-white/70 leading-relaxed mb-6 sm:mb-10 max-w-[480px]">
                   {locale === "fr"
-                    ? "Nos experts sont a votre disposition pour etudier vos besoins et vous proposer une solution sur mesure."
+                    ? "Nos experts sont à votre disposition pour étudier vos besoins et vous proposer une solution sur mesure."
                     : "Our experts are available to study your needs and propose a tailored solution."}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
@@ -506,7 +503,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                   </div>
                   <div className="min-w-0">
                     <span className="text-[11px] sm:text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-0.5">
-                      {locale === "fr" ? "Telephone" : "Phone"}
+                      {locale === "fr" ? "Téléphone" : "Phone"}
                     </span>
                     <span className="text-[15px] sm:text-[18px] text-white font-bold">+32 490 10 49 05</span>
                   </div>
@@ -556,13 +553,14 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 640px) 50vw, 25vw"
+                    quality={90}
                   />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                     <h3 className="font-[var(--font-heading)] font-bold text-[14px] sm:text-[18px] text-white tracking-tight leading-snug">
                       {t(`${sk}.title`)}
                     </h3>
                     <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-[13px] text-white/50 mt-2 sm:mt-3 group-hover:text-atlas-red transition-colors font-medium uppercase tracking-wider">
-                      {locale === "fr" ? "Decouvrir" : "Discover"}
+                      {locale === "fr" ? "Découvrir" : "Discover"}
                       <ChevronRight className="w-3.5 h-3.5" />
                     </span>
                   </div>

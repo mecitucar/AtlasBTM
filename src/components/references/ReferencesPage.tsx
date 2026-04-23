@@ -10,17 +10,17 @@ import Image from "next/image";
 
 const projects = [
   {
-    title: { fr: "Container Prefabrique - Europe", en: "Prefabricated Container - Europe" },
-    sector: { fr: "Container Prefabrique", en: "Prefabricated Container" },
+    title: { fr: "Container Préfabriqué - Europe", en: "Prefabricated Container - Europe" },
+    sector: { fr: "Container Préfabriqué", en: "Prefabricated Container" },
     location: { fr: "Europe", en: "Europe" },
     year: "2025",
     category: "prefab",
     image: "/images/containers/finished-1.webp",
-    altText: { fr: "Container prefabrique modulaire installe en Europe", en: "Modular prefabricated container installed in Europe" },
+    altText: { fr: "Container préfabriqué modulaire installé en Europe", en: "Modular prefabricated container installed in Europe" },
   },
   {
     title: { fr: "Camp Minier - Site d'Extraction", en: "Mining Camp - Extraction Site" },
-    sector: { fr: "Camps Miniere", en: "Mining Camps" },
+    sector: { fr: "Camps Minière", en: "Mining Camps" },
     location: { fr: "Afrique", en: "Africa" },
     year: "2024",
     category: "mining",
@@ -37,26 +37,26 @@ const projects = [
     altText: { fr: "Camp de construction modulaire sur grand chantier", en: "Modular construction camp on large site" },
   },
   {
-    title: { fr: "Installation Defense - Site Securise", en: "Defense Installation - Secure Site" },
-    sector: { fr: "L'industrie De La Defence", en: "Defense Industry" },
+    title: { fr: "Installation Défense - Site Sécurisé", en: "Defense Installation - Secure Site" },
+    sector: { fr: "L'industrie De La Défense", en: "Defense Industry" },
     location: { fr: "Europe", en: "Europe" },
     year: "2024",
     category: "defense",
     image: "/images/containers/finished-2.webp",
-    altText: { fr: "Installation modulaire pour industrie de la defense", en: "Modular installation for defense industry" },
+    altText: { fr: "Installation modulaire pour industrie de la défense", en: "Modular installation for defense industry" },
   },
   {
-    title: { fr: "Project Energetique - Infrastructure", en: "Energy Project - Infrastructure" },
-    sector: { fr: "Project l'Energetique", en: "Energy Projects" },
+    title: { fr: "Project Énergétique - Infrastructure", en: "Energy Project - Infrastructure" },
+    sector: { fr: "Project l'Énergétique", en: "Energy Projects" },
     location: { fr: "Europe", en: "Europe" },
     year: "2023",
     category: "energy",
     image: "/images/containers/port-containers.webp",
-    altText: { fr: "Installation modulaire pour projet energetique", en: "Modular installation for energy project" },
+    altText: { fr: "Installation modulaire pour projet énergétique", en: "Modular installation for energy project" },
   },
   {
     title: { fr: "Conteneurs Modulaires - Logistique", en: "Modular Containers - Logistics" },
-    sector: { fr: "Container Prefabrique", en: "Prefabricated Container" },
+    sector: { fr: "Container Préfabriqué", en: "Prefabricated Container" },
     location: { fr: "Europe", en: "Europe" },
     year: "2023",
     category: "prefab",
@@ -67,11 +67,11 @@ const projects = [
 
 const categories = [
   { key: "all", label: { fr: "Tous", en: "All" } },
-  { key: "prefab", label: { fr: "Container Prefabrique", en: "Prefabricated Container" } },
-  { key: "mining", label: { fr: "Camps Miniere", en: "Mining Camps" } },
+  { key: "prefab", label: { fr: "Container Préfabriqué", en: "Prefabricated Container" } },
+  { key: "mining", label: { fr: "Camps Minière", en: "Mining Camps" } },
   { key: "construction", label: { fr: "Camps Construction", en: "Construction Camps" } },
-  { key: "defense", label: { fr: "Defence", en: "Defense" } },
-  { key: "energy", label: { fr: "Energetique", en: "Energy" } },
+  { key: "defense", label: { fr: "Défense", en: "Defense" } },
+  { key: "energy", label: { fr: "Énergétique", en: "Energy" } },
 ];
 
 export function ReferencesPage() {
@@ -110,7 +110,7 @@ export function ReferencesPage() {
     <>
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
-          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
+          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -158,6 +158,7 @@ export function ReferencesPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    quality={90}
                   />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center">
                     <ExternalLink className="w-6 h-6 text-white opacity-0 group-hover:opacity-100 transition-opacity" />

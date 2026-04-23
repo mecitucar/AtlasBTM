@@ -20,7 +20,7 @@ const services = [
     key: "prefab",
     icon: Container,
     image: "/images/containers/finished-1.webp",
-    altText: "Conteneurs prefabriques modulaires - livraison rapide",
+    altText: "Conteneurs préfabriqués modulaires - livraison rapide",
     featured: true,
   },
   {
@@ -41,14 +41,14 @@ const services = [
     key: "defense",
     icon: Shield,
     image: "/images/containers/finished-2.webp",
-    altText: "Structures modulaires pour industrie de la defense",
+    altText: "Structures modulaires pour industrie de la défense",
     featured: false,
   },
   {
     key: "energy",
     icon: Zap,
     image: "/images/containers/port-containers.webp",
-    altText: "Installations modulaires pour projets energetiques",
+    altText: "Installations modulaires pour projets énergétiques",
     featured: false,
   },
 ] as const;
@@ -120,6 +120,7 @@ export function ServicesGrid() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-700"
                         sizes="(max-width: 1024px) 100vw, 58vw"
+                        quality={90}
                       />
 
                       <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 flex items-end justify-between">
