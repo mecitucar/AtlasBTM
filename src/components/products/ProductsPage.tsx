@@ -81,28 +81,31 @@ export function ProductsPage() {
     >
       {/* Hero */}
       <section
-        className="snap-section relative h-screen flex items-end"
+        className="snap-section relative h-screen flex items-center"
         style={{ scrollSnapAlign: "start" }}
       >
         <div className="absolute inset-0">
           <Image
-            src={products[0].image}
-            alt={products[0].altText}
+            src="/images/hero-container.webp"
+            alt="Atlas Batiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
             sizes="100vw"
             priority
           />
         </div>
-        <div className="relative z-10 pb-16 lg:pb-24 w-full">
+        <div className="relative z-10 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-            <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold">
+            <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
               {t("title")}
             </span>
-            <h1 className="font-[var(--font-heading)] text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white mt-3 leading-[0.95] tracking-tight max-w-[700px]">
+            <h1 className="font-[var(--font-heading)] text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white mt-4 leading-[0.95] tracking-tight max-w-[700px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               {t("subtitle")}
             </h1>
-            <div className="w-20 h-[3px] bg-atlas-red mt-6" />
+            <div className="w-20 h-[3px] bg-atlas-red mt-7 mb-6" />
+            <p className="text-[16px] lg:text-[18px] text-white leading-relaxed max-w-[480px] bg-atlas-charcoal/70 px-5 py-4">
+              {t("prefab.desc")}
+            </p>
           </div>
         </div>
       </section>

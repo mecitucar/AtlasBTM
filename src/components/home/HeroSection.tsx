@@ -202,19 +202,19 @@ export function HeroSection() {
             ref={contentRef}
             className="max-w-[700px]"
           >
-            <h1 className="slide-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white leading-[0.98] tracking-tighter mb-7 whitespace-pre-line">
+            <h1 className="slide-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white leading-[0.98] tracking-tighter mb-7 whitespace-pre-line" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               {currentContent.title}
             </h1>
 
             <div className="slide-line w-20 h-[3px] bg-atlas-red mb-7" />
 
-            <p className="slide-sub text-[18px] lg:text-[20px] text-white/60 leading-relaxed mb-10 max-w-[520px]">
+            <p className="slide-sub text-[16px] lg:text-[18px] text-white leading-relaxed mb-10 max-w-[520px] bg-atlas-charcoal/70 px-5 py-4 inline-block">
               {currentContent.subtitle}
             </p>
 
             <div className="slide-cta flex flex-row gap-3 sm:gap-4">
               <a
-                href="tel:+32490XXXXXX"
+                href="tel:+32490104905"
                 className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
               >
                 <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />

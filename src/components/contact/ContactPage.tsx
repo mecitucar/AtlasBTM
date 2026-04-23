@@ -73,7 +73,7 @@ export function ContactPage() {
               </div>
               <div>
                 <span className="text-[12px] text-white/50 uppercase tracking-wider font-medium block">{t("info.phone")}</span>
-                <span className="text-[17px] text-white font-bold mt-1 block">+32 490 XX XX XX</span>
+                <span className="text-[17px] text-white font-bold mt-1 block">+32 490 10 49 05</span>
               </div>
             </div>
             <div className="flex items-center gap-5 py-8 md:px-10">

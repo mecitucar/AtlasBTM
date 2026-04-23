@@ -151,8 +151,8 @@ export function Header() {
         hidden ? "-translate-y-full" : "translate-y-0"
       } ${
         scrolled
-          ? "bg-atlas-charcoal/95 backdrop-blur-md border-b-[3px] border-atlas-red"
-          : "bg-transparent border-b-[3px] border-transparent"
+          ? "bg-atlas-charcoal border-b-[3px] border-atlas-red"
+          : "bg-atlas-charcoal/80 border-b-[3px] border-transparent"
       }`}
     >
       <div className="max-w-[1400px] mx-auto px-6 lg:px-12">
@@ -185,7 +185,7 @@ export function Header() {
                     <button
                       onClick={() => setSectorsOpen(!sectorsOpen)}
                       className={`relative flex items-center gap-1 px-4 py-2 text-[13px] font-medium tracking-wide uppercase transition-colors cursor-pointer ${
-                        isActive ? "text-white" : "text-white/70 hover:text-white"
+                        isActive ? "text-white" : "text-white hover:text-atlas-red"
                       }`}
                     >
                       {t(link.key)}
@@ -223,7 +223,7 @@ export function Header() {
                   key={link.key}
                   href={link.href}
                   className={`relative px-4 py-2 text-[13px] font-medium tracking-wide uppercase transition-colors ${
-                    isActive ? "text-white" : "text-white/70 hover:text-white"
+                    isActive ? "text-white" : "text-white hover:text-atlas-red"
                   }`}
                 >
                   {t(link.key)}
@@ -239,7 +239,7 @@ export function Header() {
             <div className="relative">
               <button
                 onClick={() => setLangOpen(!langOpen)}
-                className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium tracking-wide uppercase transition-colors rounded-sm text-white/70 hover:text-white"
+                className="flex items-center gap-1.5 px-3 py-1.5 text-[13px] font-medium tracking-wide uppercase transition-colors rounded-sm text-white hover:text-atlas-red"
               >
                 <Globe className="w-4 h-4" />
                 {locale.toUpperCase()}

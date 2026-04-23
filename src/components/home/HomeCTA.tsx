@@ -85,7 +85,7 @@ export function HomeCTA() {
                     <span className="text-[11px] sm:text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-0.5 sm:mb-1">
                       {locale === "fr" ? "Telephone" : "Phone"}
                     </span>
-                    <span className="text-[15px] sm:text-[18px] text-white font-bold">+32 490 XX XX XX</span>
+                    <span className="text-[15px] sm:text-[18px] text-white font-bold">+32 490 10 49 05</span>
                   </div>
                 </div>
                 <div className="flex items-center gap-4 sm:gap-5 p-4 sm:p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
