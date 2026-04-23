@@ -58,7 +58,7 @@ function buildDeterministicPools(): string[][] {
 function MosaicTile({ images }: { images: string[] }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [showNext, setShowNext] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>();
+  const intervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
   const pool = useRef(images);
 
   useEffect(() => {
