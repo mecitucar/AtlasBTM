@@ -206,7 +206,6 @@ export function ProductsGrid() {
               className="object-cover"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
             <div className="absolute bottom-0 left-0 right-0 p-10 lg:p-16">
               <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold bg-white px-4 py-1.5 inline-block mb-5">
                 {t("title")}

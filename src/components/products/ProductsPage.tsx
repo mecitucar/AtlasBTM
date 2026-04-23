@@ -93,8 +93,6 @@ export function ProductsPage() {
             sizes="100vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
         </div>
         <div className="relative z-10 pb-16 lg:pb-24 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -119,7 +117,6 @@ export function ProductsPage() {
           >
             <div className="absolute inset-0">
               <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
             </div>
             <div className="relative z-10 h-full flex items-end pb-4 sm:pb-10 lg:pb-14">
               <div className="w-full px-3 sm:px-8 lg:px-16 xl:px-24">

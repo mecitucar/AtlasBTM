@@ -43,8 +43,6 @@ export function ContactPage() {
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
           <Image src="/images/contact-hero.jpg" alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">

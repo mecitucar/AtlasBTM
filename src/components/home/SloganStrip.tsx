@@ -92,27 +92,30 @@ export function SloganStrip() {
   }, []);
 
   return (
-    <section ref={container} className="relative h-screen flex items-center justify-center bg-black overflow-hidden">
-      <div className="guinea-map absolute inset-0 opacity-[0.12] pointer-events-none flex items-center justify-center">
+    <section ref={container} className="relative h-screen flex items-center justify-center bg-white overflow-hidden">
+      <div className="guinea-map absolute inset-0 opacity-[0.25] pointer-events-none flex items-center justify-center">
         <Image
           src="/images/guinea-map.png"
           alt="Guinea - Republique de Guinee"
-          width={900}
-          height={677}
-          className="object-contain max-h-[80vh] w-auto"
+          width={1400}
+          height={1054}
+          className="object-contain max-h-[90vh] w-auto"
         />
       </div>
       <div className="relative z-10 text-center px-6 max-w-[900px]">
         <div className="slogan-line w-20 h-[3px] bg-atlas-red mx-auto mb-12" />
-        <h2 className="slogan-text font-[var(--font-heading)] text-[clamp(2.75rem,6vw,5.5rem)] font-black text-white tracking-tighter leading-[1.02]">
+        <h2
+          className="slogan-text font-[var(--font-heading)] text-[clamp(2.75rem,6vw,5.5rem)] font-black text-atlas-charcoal tracking-tighter leading-[1.02]"
+          style={{ textShadow: "0 2px 20px rgba(255,255,255,0.8)" }}
+        >
           {locale === "fr" ? "Maitrise Locale," : "Local Mastery,"}
           <br />
-          <span className="text-atlas-red">
+          <span className="text-atlas-red" style={{ textShadow: "0 2px 20px rgba(255,255,255,0.9)" }}>
             {locale === "fr" ? "Excellence Garantie" : "Guaranteed Excellence"}
           </span>
         </h2>
         <div className="slogan-line w-20 h-[3px] bg-atlas-red mx-auto mt-12 mb-12" />
-        <p className="slogan-sub text-[19px] lg:text-[22px] text-white/45 leading-relaxed max-w-[680px] mx-auto">
+        <p className="slogan-sub text-[19px] lg:text-[22px] text-atlas-charcoal/70 leading-relaxed max-w-[680px] mx-auto font-medium">
           {locale === "fr"
             ? "Conception, fabrication et livraison de batiments modulaires et conteneurs prefabriques aux normes internationales. Solutions cle en main pour les secteurs minier, construction, defense et energie a travers le monde."
             : "Design, manufacturing and delivery of modular buildings and prefabricated containers to international standards. Turnkey solutions for mining, construction, defense and energy sectors worldwide."}

@@ -4,6 +4,7 @@ import { SloganStrip } from "@/components/home/SloganStrip";
 import { ContainerShowcase } from "@/components/home/ContainerShowcase";
 import { ImageMosaic } from "@/components/home/ImageMosaic";
 import { ProductsGrid } from "@/components/home/ProductsGrid";
+import { SectorsSection } from "@/components/home/SectorsSection";
 import { HomeCTA } from "@/components/home/HomeCTA";
 
 export default async function HomePage({
@@ -19,6 +20,7 @@ export default async function HomePage({
       <HeroSection />
       <SloganStrip />
       <ContainerShowcase />
+      <SectorsSection />
       <ImageMosaic />
       <ProductsGrid />
       <HomeCTA />

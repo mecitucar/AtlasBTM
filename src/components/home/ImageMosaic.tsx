@@ -107,7 +107,6 @@ function MosaicTile({ images }: { images: string[] }) {
         }`}
         sizes="(max-width: 768px) 50vw, 20vw"
       />
-      <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-colors duration-500" />
     </div>
   );
 }
@@ -185,16 +184,16 @@ export function ImageMosaic() {
 
   return (
     <section ref={container} className="relative h-screen bg-atlas-charcoal flex flex-col">
-      <div className="text-center pt-8 lg:pt-10 pb-6 shrink-0">
-        <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-          {locale === "fr" ? "Notre Savoir-Faire" : "Our Expertise"}
-        </span>
-        <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3.5vw,3rem)] font-black text-white mt-3 tracking-tight">
+      <div className="text-center pt-8 lg:pt-12 pb-5 lg:pb-8 shrink-0">
+        <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,4vw,3.25rem)] font-black text-white tracking-tight">
           {locale === "fr"
             ? "Production, Livraison, Installation"
             : "Production, Delivery, Installation"}
         </h2>
-        <div className="w-16 h-[3px] bg-atlas-red mt-4 mx-auto" />
+        <div className="w-16 h-[3px] bg-atlas-red mt-4 mb-3 mx-auto" />
+        <p className="text-[12px] sm:text-[14px] text-white/40 max-w-[500px] mx-auto">
+          {locale === "fr" ? "Notre Savoir-Faire" : "Our Expertise"}
+        </p>
       </div>
 
       <div className="grid grid-cols-6 gap-[2px] flex-1" style={{ gridAutoRows: "1fr" }}>

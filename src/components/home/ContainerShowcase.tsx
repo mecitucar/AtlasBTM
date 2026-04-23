@@ -143,7 +143,6 @@ export function ContainerShowcase() {
             className="object-cover"
             sizes="50vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-atlas-charcoal/80" />
         </div>
 
         <div className="relative z-10 flex flex-col justify-center py-24 px-16">
@@ -201,7 +200,6 @@ export function ContainerShowcase() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-black/65" />
         </div>
 
         <div className="relative z-10 flex flex-col justify-center flex-1 py-6 px-5 sm:px-8">

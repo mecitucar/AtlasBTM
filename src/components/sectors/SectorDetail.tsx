@@ -268,8 +268,6 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
           <div className="absolute inset-0">
             <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" priority />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
           </div>
           <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none select-none">
             <span className="font-[var(--font-heading)] font-black text-[400px] text-white leading-none">A</span>
@@ -324,7 +322,6 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         <section className="s-apps relative h-screen overflow-hidden flex items-center" style={snapStyle}>
           <div className="absolute inset-0">
             <Image src={data.images[1]?.src || data.images[0].src} alt="" fill className="object-cover" sizes="100vw" />
-            <div className="absolute inset-0 bg-atlas-charcoal/92" />
           </div>
           <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
@@ -560,7 +557,6 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                     className="object-cover group-hover:scale-110 transition-transform duration-700"
                     sizes="(max-width: 640px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
                     <h3 className="font-[var(--font-heading)] font-bold text-[14px] sm:text-[18px] text-white tracking-tight leading-snug">
                       {t(`${sk}.title`)}

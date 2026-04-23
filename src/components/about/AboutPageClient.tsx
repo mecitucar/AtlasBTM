@@ -98,8 +98,6 @@ export function AboutPageClient() {
         <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
           <div className="absolute inset-0">
             <Image src="/images/about-hero.webp" alt="Atlas Batiment Modulaire" fill className="object-cover" sizes="100vw" priority />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
           </div>
           <div className="relative z-10 pb-16 sm:pb-20 lg:pb-28 pt-32 w-full">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">

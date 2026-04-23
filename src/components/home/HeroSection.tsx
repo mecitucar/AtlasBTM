@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -17,12 +17,7 @@ const slides = [
   {
     src: "/images/containers/port-containers.webp",
     alt: "Conteneurs modulaires au port - expedition internationale",
-    layout: "right" as const,
-  },
-  {
-    src: "/images/hero-slide-1.webp",
-    alt: "Atlas Batiment Modulaire - excellence garantie",
-    layout: "center" as const,
+    layout: "left" as const,
   },
 ];
 
@@ -40,12 +35,6 @@ const slideContent = {
       cta: "Nos Projets",
       ctaLink: "/projects" as const,
     },
-    {
-      title: "Maitrise Locale,\nExcellence Garantie",
-      subtitle: "Solutions modulaires de haute qualite pour vos projets les plus ambitieux en Europe et dans le monde.",
-      cta: "Nos Solutions",
-      ctaLink: "/solutions" as const,
-    },
   ],
   en: [
     {
@@ -59,12 +48,6 @@ const slideContent = {
       subtitle: "From design to installation, we manage every step with precision and quality commitment.",
       cta: "Our Projects",
       ctaLink: "/projects" as const,
-    },
-    {
-      title: "Local Mastery,\nGuaranteed Excellence",
-      subtitle: "High-quality modular solutions for your most ambitious projects in Europe and worldwide.",
-      cta: "Our Solutions",
-      ctaLink: "/solutions" as const,
     },
   ],
 };
@@ -132,7 +115,7 @@ export function HeroSection() {
         setIsAnimating(true);
         setCurrent((prev) => (prev + 1) % slides.length);
       }
-    }, 7000);
+    }, 10000);
     return () => clearInterval(timer);
   }, [isAnimating]);
 
@@ -208,8 +191,6 @@ export function HeroSection() {
         </div>
       ))}
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
 
       <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none select-none">
         <span className="font-[var(--font-heading)] font-black text-[500px] text-white leading-none">A</span>
@@ -235,68 +216,57 @@ export function HeroSection() {
               {currentContent.subtitle}
             </p>
 
-            <div className={`slide-cta flex flex-col sm:flex-row gap-3 sm:gap-4 ${layout === "center" ? "sm:justify-center" : layout === "right" ? "sm:justify-end" : ""}`}>
-              <Link
-                href={currentContent.ctaLink}
-                className="group inline-flex items-center justify-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-6 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-colors"
+            <div className={`slide-cta flex flex-row gap-3 sm:gap-4 ${layout === "center" ? "justify-center" : layout === "right" ? "justify-end" : ""}`}>
+              <a
+                href="tel:+32490XXXXXX"
+                className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
               >
-                {currentContent.cta}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center justify-center gap-3 border-2 border-white/25 text-white hover:bg-white/10 px-6 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-all"
+                <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />
+                <div>
+                  <span className="block text-[10px] sm:text-[11px] text-white/70 uppercase tracking-widest font-medium leading-none mb-1.5">
+                    {locale === "fr" ? "Telephone" : "Phone"}
+                  </span>
+                  <span className="block text-[15px] sm:text-[18px] text-white font-bold leading-none">
+                    {locale === "fr" ? "Appelez-nous" : "Call Us"}
+                  </span>
+                </div>
+              </a>
+              <a
+                href="mailto:atlasbatimodulaire@gmail.com"
+                className="group flex items-center gap-4 sm:gap-5 bg-white hover:bg-white/90 px-6 sm:px-10 py-4 sm:py-5 transition-colors"
               >
-                {locale === "fr" ? "Contact" : "Contact"}
-              </Link>
+                <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-atlas-red shrink-0" />
+                <div>
+                  <span className="block text-[10px] sm:text-[11px] text-atlas-charcoal/50 uppercase tracking-widest font-medium leading-none mb-1.5">
+                    Email
+                  </span>
+                  <span className="block text-[15px] sm:text-[18px] text-atlas-charcoal font-bold leading-none">
+                    {locale === "fr" ? "Ecrivez-nous" : "Write Us"}
+                  </span>
+                </div>
+              </a>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-4">
-        <button
-          onClick={() => goTo((current - 1 + slides.length) % slides.length)}
-          className="w-11 h-11 bg-white/10 hover:bg-atlas-red flex items-center justify-center transition-colors"
-          aria-label="Previous"
-        >
-          <ChevronLeft className="w-5 h-5 text-white" />
-        </button>
-
-        <div className="flex items-center gap-3">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => goTo(i)}
-              className="relative w-10 h-[3px] bg-white/20 overflow-hidden"
-              aria-label={`Slide ${i + 1}`}
-            >
-              {i === current && (
-                <div
-                  className="absolute inset-0 bg-atlas-red"
-                  style={{
-                    animation: "progress 7s linear",
-                  }}
-                />
-              )}
-              {i < current && <div className="absolute inset-0 bg-atlas-red" />}
-            </button>
-          ))}
-        </div>
-
-        <button
-          onClick={() => goTo((current + 1) % slides.length)}
-          className="w-11 h-11 bg-white/10 hover:bg-atlas-red flex items-center justify-center transition-colors"
-          aria-label="Next"
-        >
-          <ChevronRight className="w-5 h-5 text-white" />
-        </button>
-
-        <div className="hidden sm:flex items-center gap-2 ml-4 text-white/40">
-          <span className="font-[var(--font-heading)] font-bold text-white text-[18px]">{String(current + 1).padStart(2, "0")}</span>
-          <span className="text-[14px]">/</span>
-          <span className="text-[14px]">{String(slides.length).padStart(2, "0")}</span>
-        </div>
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+        {slides.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => goTo(i)}
+            className="relative w-8 h-[2px] bg-white/25 overflow-hidden"
+            aria-label={`Slide ${i + 1}`}
+          >
+            {i === current && (
+              <div
+                className="absolute inset-0 bg-atlas-red"
+                style={{ animation: "progress 13s linear" }}
+              />
+            )}
+            {i < current && <div className="absolute inset-0 bg-white/60" />}
+          </button>
+        ))}
       </div>
     </section>
   );
