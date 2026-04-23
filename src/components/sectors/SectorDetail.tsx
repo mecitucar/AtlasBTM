@@ -2,12 +2,12 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, ChevronRight, Phone, Mail } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-import { RedLineFill } from "@/components/ui/RedLineFill";
+import { Footer } from "@/components/layout/Footer";
 
 interface SectorContent {
   heroImage: string;
@@ -107,7 +107,6 @@ const sectors: Record<string, SectorContent> = {
       { src: "/images/containers/assembly-2.webp", alt: "Montage rapide camp de chantier" },
       { src: "/images/containers/interior-1.webp", alt: "Interieur bureau de chantier" },
       { src: "/images/containers/finished-2.webp", alt: "Camp construction operationnel" },
-      { src: "/images/containers/transport-1.webp", alt: "Livraison modules de chantier" },
     ],
     applications: [
       { fr: "Bureaux de direction et de supervision de chantier", en: "Site management and supervision offices" },
@@ -190,9 +189,11 @@ const allSectorKeys = ["prefab", "mining", "construction", "defense", "energy"];
 export function SectorDetail({ sectorKey }: { sectorKey: string }) {
   const t = useTranslations("solutions");
   const nav = useTranslations("nav");
+  const scrollRef = useRef<HTMLDivElement>(null);
   const container = useRef<HTMLDivElement>(null);
   const data = sectors[sectorKey];
   const locale = useLocale() as "fr" | "en";
+  const hasInterior = data.interiorImages && data.interiorImages.length > 0;
 
   useGSAP(() => {
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
@@ -202,41 +203,40 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
 
     gsap.from(".s-intro-img", {
       clipPath: "inset(0 100% 0 0)", duration: 1.2, ease: "power3.inOut",
-      scrollTrigger: { trigger: ".s-intro", start: "top 70%" },
+      scrollTrigger: { trigger: ".s-intro", start: "top 70%", scroller: scrollRef.current },
     });
     gsap.from(".s-intro-img img", {
       scale: 1.3, duration: 1.4, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-intro", start: "top 70%" },
+      scrollTrigger: { trigger: ".s-intro", start: "top 70%", scroller: scrollRef.current },
     });
     gsap.from(".s-intro-text > *", {
       y: 30, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-intro-text", start: "top 75%" },
+      scrollTrigger: { trigger: ".s-intro-text", start: "top 75%", scroller: scrollRef.current },
     });
 
     gsap.from(".s-app", {
       y: 25, opacity: 0, duration: 0.5, stagger: 0.06, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-apps", start: "top 80%" },
-    });
-
-    gsap.from(".s-step", {
-      x: -30, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-approach", start: "top 80%" },
-    });
-
-    gsap.from(".s-other", {
-      y: 30, opacity: 0, duration: 0.5, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-others", start: "top 85%" },
+      scrollTrigger: { trigger: ".s-apps", start: "top 80%", scroller: scrollRef.current },
     });
 
     gsap.from(".s-ext-item", {
       y: 40, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-exterior", start: "top 80%" },
+      scrollTrigger: { trigger: ".s-exterior", start: "top 80%", scroller: scrollRef.current },
     });
 
-    // Kapi acilma animasyonu
+    gsap.from(".s-step", {
+      x: -30, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power3.out",
+      scrollTrigger: { trigger: ".s-approach", start: "top 80%", scroller: scrollRef.current },
+    });
+
+    gsap.from(".s-other", {
+      y: 30, opacity: 0, duration: 0.5, stagger: 0.08, ease: "power3.out",
+      scrollTrigger: { trigger: ".s-others", start: "top 85%", scroller: scrollRef.current },
+    });
+
     if (container.current?.querySelector(".s-door-section")) {
       const doorTl = gsap.timeline({
-        scrollTrigger: { trigger: ".s-door-section", start: "top 85%" },
+        scrollTrigger: { trigger: ".s-door-section", start: "top 85%", scroller: scrollRef.current },
       });
       doorTl.from(".s-door-line", { scaleX: 0, transformOrigin: "center", duration: 0.5 });
       doorTl.from(".s-door-title", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.2);
@@ -246,350 +246,341 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
 
       gsap.from(".s-int-item", {
         y: 50, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
-        scrollTrigger: { trigger: ".s-interior", start: "top 80%" },
+        scrollTrigger: { trigger: ".s-interior", start: "top 80%", scroller: scrollRef.current },
       });
     }
   }, { scope: container });
 
+
   const otherSectors = allSectorKeys.filter((k) => k !== sectorKey);
 
+  const snapStyle = { scrollSnapAlign: "start" as const };
+
   return (
-    <div ref={container}>
-      {/* ── Hero ── */}
-      <section className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" priority />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-        </div>
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none select-none">
-          <span className="font-[var(--font-heading)] font-black text-[400px] text-white leading-none">A</span>
-        </div>
-        <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
-          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-            <span className="s-hero-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
-              {t("title")}
-            </span>
-            <h1 className="s-hero-title font-[var(--font-heading)] text-[clamp(3rem,6vw,5.5rem)] font-black text-white mt-5 leading-[0.92] tracking-tighter max-w-[800px]">
-              {t(`${sectorKey}.title`)}
-            </h1>
-            <div className="s-hero-line w-24 h-[3px] bg-atlas-red mt-8" />
+    <div
+      ref={scrollRef}
+      data-scroll-container
+      className="fixed inset-0 z-40 overflow-y-auto"
+      style={{ scrollSnapType: "y mandatory" }}
+    >
+      <div ref={container}>
+        {/* ── Hero ── */}
+        <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
+          <div className="absolute inset-0">
+            <Image src={data.heroImage} alt={data.heroAlt} fill className="object-cover" sizes="100vw" priority />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
           </div>
-        </div>
-      </section>
-      <RedLineFill />
-
-      {/* ── Intro - Asymmetric ── */}
-      <section className="s-intro py-24 lg:py-36 bg-white overflow-hidden">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-6 items-center">
-            <div className="lg:col-span-7 lg:pr-16 s-intro-text">
-              <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                {locale === "fr" ? "Le Defi" : "The Challenge"}
-              </span>
-              <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,2.5vw,2.25rem)] font-black text-atlas-charcoal mt-4 tracking-tight leading-tight">
-                {locale === "fr" ? data.challengeFr : data.challengeEn}
-              </h2>
-              <div className="w-16 h-[3px] bg-atlas-red mt-8 mb-8" />
-              <p className="text-[17px] text-atlas-slate leading-[1.8] mb-8">
-                {locale === "fr" ? data.introFr : data.introEn}
-              </p>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-8 py-4 text-[15px] font-bold tracking-wider uppercase transition-colors"
-              >
-                {locale === "fr" ? "Demander un devis" : "Request a quote"}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </div>
-            <div className="lg:col-span-5">
-              <div className="s-intro-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                <Image
-                  src={data.images[0].src}
-                  alt={data.images[0].alt}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                />
-              </div>
-            </div>
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/3 opacity-[0.03] pointer-events-none select-none">
+            <span className="font-[var(--font-heading)] font-black text-[400px] text-white leading-none">A</span>
           </div>
-        </div>
-      </section>
-
-      <RedLineFill />
-      {/* ── Applications ── */}
-      <section className="s-apps relative py-24 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src={data.images[1].src} alt="" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-atlas-charcoal/92" />
-        </div>
-        <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <div className="lg:col-span-4">
-              <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                {locale === "fr" ? "Applications" : "Applications"}
-              </span>
-              <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-white mt-4 tracking-tight leading-tight">
-                {locale === "fr" ? "Ce que nous deployons" : "What we deploy"}
-              </h2>
-              <div className="w-16 h-[3px] bg-atlas-red mt-6" />
-            </div>
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-6">
-                {data.applications.map((app, i) => (
-                  <div key={i} className="s-app flex items-start gap-4 py-4 border-b border-white/10">
-                    <span className="text-[13px] font-[var(--font-heading)] font-bold text-atlas-red mt-0.5 shrink-0">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="text-[16px] text-white/80 leading-relaxed">
-                      {app[locale]}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Exterior Gallery ── */}
-      <section className="s-exterior bg-white">
-        <RedLineFill />
-        <div className="text-center py-20 lg:py-24">
-          <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-            {t(`${sectorKey}.title`)}
-          </span>
-          <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-3 tracking-tight">
-            {locale === "fr" ? "Galerie" : "Gallery"}
-          </h2>
-          <div className="w-16 h-[3px] bg-atlas-red mt-6 mx-auto" />
-        </div>
-        <div className={`grid ${data.images.length <= 3 ? "grid-cols-1 lg:grid-cols-3" : "grid-cols-2 lg:grid-cols-4"}`} style={{ gap: 0 }}>
-          {data.images.slice(0, Math.min(data.images.length, 4)).map((img, i) => (
-            <div key={i} className="s-ext-item relative aspect-square overflow-hidden group">
-              <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes={data.images.length <= 3 ? "33vw" : "25vw"} />
-            </div>
-          ))}
-        </div>
-        {data.images.length > 4 && (
-          <div className="grid grid-cols-3 lg:grid-cols-6" style={{ gap: 0 }}>
-            {data.images.slice(4).map((img, i) => (
-              <div key={i} className="s-ext-item relative aspect-square overflow-hidden group">
-                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="16vw" />
-              </div>
-            ))}
-          </div>
-        )}
-      </section>
-      <RedLineFill />
-
-      {/* ── Interior Experience ── */}
-      {data.interiorImages && data.interiorImages.length > 0 && (
-        <>
-          {/* Kapi gecisi - tam ekran */}
-          <section className="s-door-section relative h-[60vh] min-h-[400px] bg-black overflow-hidden">
-            {/* Mesaj */}
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
-              <div className="s-door-line w-20 h-[3px] bg-atlas-red mx-auto mb-8" />
-              <h2 className="s-door-title font-[var(--font-heading)] text-[clamp(2rem,5vw,4rem)] font-black text-white tracking-tighter text-center">
-                {locale === "fr" ? "Entrez a l'interieur" : "Step inside"}
-              </h2>
-              <p className="s-door-sub text-[18px] text-white/40 mt-5 max-w-[420px] mx-auto text-center">
-                {locale === "fr"
-                  ? "Decouvrez la qualite de nos finitions interieures"
-                  : "Discover the quality of our interior finishes"}
-              </p>
-            </div>
-            {/* Sol kapi */}
-            <div className="s-door-left absolute top-0 left-0 w-1/2 h-full z-10 overflow-hidden">
-              <Image
-                src={data.interiorImages[0].src}
-                alt={data.interiorImages[0].alt}
-                fill
-                className="object-cover"
-                sizes="50vw"
-              />
-              <div className="absolute inset-0 bg-black/60" />
-            </div>
-            {/* Sag kapi */}
-            <div className="s-door-right absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
-              <Image
-                src={data.interiorImages[1].src}
-                alt={data.interiorImages[1].alt}
-                fill
-                className="object-cover"
-                sizes="50vw"
-              />
-              <div className="absolute inset-0 bg-black/60" />
-            </div>
-          </section>
-
-          {/* Ic mekan galeri */}
-          <section className="s-interior bg-atlas-charcoal">
-            <div className="grid grid-cols-2 lg:grid-cols-5" style={{ gap: 0 }}>
-              {data.interiorImages.slice(2).map((img, i) => {
-                const remaining = data.interiorImages.length - 2;
-                const isLast = i === remaining - 1;
-                const isOdd = remaining % 2 !== 0;
-                return (
-                  <div key={i} className={`s-int-item relative aspect-square overflow-hidden group ${isLast && isOdd ? "col-span-2 lg:col-span-1" : ""}`}>
-                    <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
-                  </div>
-                );
-              })}
-            </div>
-          </section>
-        </>
-      )}
-
-      {/* ── Approach ── */}
-      <section className="s-approach py-24 lg:py-32 bg-atlas-sand">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div className="lg:col-span-5">
-              <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
-                {locale === "fr" ? "Notre Approche" : "Our Approach"}
-              </span>
-              <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-4 tracking-tight leading-tight">
-                {locale === "fr" ? "Du premier contact a la livraison" : "From first contact to delivery"}
-              </h2>
-              <div className="w-16 h-[3px] bg-atlas-red mt-6 mb-8" />
-              <p className="text-[16px] text-atlas-slate leading-relaxed">
-                {locale === "fr"
-                  ? "Chaque projet est unique. Notre processus s'adapte a vos contraintes specifiques pour garantir une livraison dans les delais et conforme a vos exigences."
-                  : "Every project is unique. Our process adapts to your specific constraints to guarantee on-time delivery that meets your requirements."}
-              </p>
-            </div>
-            <div className="lg:col-span-7 lg:pl-8">
-              <div className="space-y-0">
-                {data.approach.map((step, i) => (
-                  <div
-                    key={i}
-                    className={`s-step flex items-start gap-6 py-7 ${
-                      i < data.approach.length - 1 ? "border-b border-atlas-charcoal/10" : ""
-                    }`}
-                  >
-                    <div className="w-14 h-14 bg-atlas-red flex items-center justify-center shrink-0">
-                      <span className="font-[var(--font-heading)] font-black text-[20px] text-white">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </div>
-                    <div className="pt-2">
-                      <span className="text-[17px] text-atlas-charcoal font-medium leading-relaxed">
-                        {step[locale]}
-                      </span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── CTA ── */}
-      <section className="relative py-28 lg:py-36 overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/cta-bg.webp" alt="Atlas Batiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" />
-          <div className="absolute inset-0 bg-atlas-red/40" />
-        </div>
-        <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
-              <span className="text-[12px] tracking-[0.3em] uppercase text-white/70 font-bold block">
-                {locale === "fr" ? "Votre Projet" : "Your Project"}
-              </span>
-              <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight leading-[1.05]">
-                {locale === "fr" ? "Parlons de votre projet" : "Let's talk about your project"}
-              </h2>
-              <div className="w-16 h-[3px] bg-white mt-8 mb-8" />
-              <p className="text-[17px] text-white/70 leading-relaxed mb-10 max-w-[480px]">
-                {locale === "fr"
-                  ? "Nos experts sont a votre disposition pour etudier vos besoins et vous proposer une solution sur mesure."
-                  : "Our experts are available to study your needs and propose a tailored solution."}
-              </p>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-9 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
-              >
-                {locale === "fr" ? "Demander un Devis" : "Request a Quote"}
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-              </Link>
-            </div>
-            <div className="space-y-5">
-              <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
-                <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
-                  <Phone className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
-                    {locale === "fr" ? "Telephone" : "Phone"}
-                  </span>
-                  <span className="text-[18px] text-white font-bold">+32 490 XX XX XX</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-5 p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
-                <div className="w-12 h-12 bg-atlas-red flex items-center justify-center shrink-0">
-                  <Mail className="w-5 h-5 text-white" />
-                </div>
-                <div>
-                  <span className="text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-1">
-                    Email
-                  </span>
-                  <a href="mailto:atlasbatimodulaire@gmail.com" className="text-[18px] text-white font-bold hover:text-white/80 transition-colors">
-                    atlasbatimodulaire@gmail.com
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Other Sectors ── */}
-      <section className="s-others py-24 lg:py-32 bg-atlas-charcoal">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="flex items-end justify-between mb-14">
-            <div>
-              <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+          <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
+            <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
+              <span className="s-hero-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
                 {t("title")}
               </span>
-              <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-white mt-3 tracking-tight">
-                {locale === "fr" ? "Autres Secteurs" : "Other Sectors"}
-              </h2>
+              <h1 className="s-hero-title font-[var(--font-heading)] text-[clamp(2.5rem,6vw,5.5rem)] font-black text-white mt-5 leading-[0.92] tracking-tighter max-w-[800px]">
+                {t(`${sectorKey}.title`)}
+              </h1>
+              <div className="s-hero-line w-24 h-[3px] bg-atlas-red mt-8" />
             </div>
-            <div className="hidden sm:block w-16 h-[3px] bg-atlas-red mb-2" />
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {otherSectors.map((sk) => (
-              <Link
-                key={sk}
-                href={`/sectors/${sk}` as any}
-                className="s-other group relative aspect-[3/4] overflow-hidden"
-              >
-                <Image
-                  src={sectors[sk].heroImage}
-                  alt={sectors[sk].heroAlt}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <h3 className="font-[var(--font-heading)] font-bold text-[18px] text-white tracking-tight leading-snug">
-                    {t(`${sk}.title`)}
-                  </h3>
-                  <span className="inline-flex items-center gap-1.5 text-[13px] text-white/50 mt-3 group-hover:text-atlas-red transition-colors font-medium uppercase tracking-wider">
-                    {locale === "fr" ? "Decouvrir" : "Discover"}
-                    <ChevronRight className="w-3.5 h-3.5" />
-                  </span>
+          <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-atlas-red" />
+        </section>
+
+        {/* ── Intro ── */}
+        <section className="s-intro relative h-screen bg-white overflow-hidden flex items-center" style={snapStyle}>
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
+              <div className="lg:col-span-7 lg:pr-16 s-intro-text">
+                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                  {locale === "fr" ? "Le Defi" : "The Challenge"}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.25rem,2.5vw,2.25rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight">
+                  {locale === "fr" ? data.challengeFr : data.challengeEn}
+                </h2>
+                <div className="w-16 h-[3px] bg-atlas-red mt-5 sm:mt-8 mb-5 sm:mb-8" />
+                <p className="text-[14px] sm:text-[17px] text-atlas-slate leading-[1.7] mb-6 sm:mb-8">
+                  {locale === "fr" ? data.introFr : data.introEn}
+                </p>
+                <Link
+                  href="/contact"
+                  className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-6 sm:px-8 py-3.5 sm:py-4 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-colors"
+                >
+                  {locale === "fr" ? "Demander un devis" : "Request a quote"}
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </Link>
+              </div>
+              <div className="hidden lg:block lg:col-span-5">
+                <div className="s-intro-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
+                  <Image src={data.images[0].src} alt={data.images[0].alt} fill className="object-cover" sizes="42vw" />
                 </div>
-              </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Applications ── */}
+        <section className="s-apps relative h-screen overflow-hidden flex items-center" style={snapStyle}>
+          <div className="absolute inset-0">
+            <Image src={data.images[1]?.src || data.images[0].src} alt="" fill className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-atlas-charcoal/92" />
+          </div>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12">
+              <div className="lg:col-span-4">
+                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                  {locale === "fr" ? "Applications" : "Applications"}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-white mt-3 sm:mt-4 tracking-tight leading-tight">
+                  {locale === "fr" ? "Ce que nous deployons" : "What we deploy"}
+                </h2>
+                <div className="w-16 h-[3px] bg-atlas-red mt-4 sm:mt-6" />
+              </div>
+              <div className="lg:col-span-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3 sm:gap-y-6">
+                  {data.applications.map((app, i) => (
+                    <div key={i} className="s-app flex items-start gap-3 sm:gap-4 py-3 sm:py-4 border-b border-white/10">
+                      <span className="text-[12px] sm:text-[13px] font-[var(--font-heading)] font-bold text-atlas-red mt-0.5 shrink-0">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                      <span className="text-[14px] sm:text-[16px] text-white/80 leading-relaxed">
+                        {app[locale]}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Exterior Gallery ── */}
+        <section className="s-exterior relative h-screen bg-white flex flex-col" style={snapStyle}>
+          <div className="text-center pt-10 lg:pt-16 pb-6 lg:pb-10 shrink-0">
+            <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+              {t(`${sectorKey}.title`)}
+            </span>
+            <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-2 sm:mt-3 tracking-tight">
+              {locale === "fr" ? "Galerie" : "Gallery"}
+            </h2>
+            <div className="w-16 h-[3px] bg-atlas-red mt-4 mx-auto" />
+          </div>
+          <div className={`flex-1 grid grid-cols-1 ${data.images.length <= 3 ? "sm:grid-cols-3" : data.images.length <= 4 ? "sm:grid-cols-4" : "sm:grid-cols-5"}`} style={{ gap: "2px" }}>
+            {data.images.map((img, i) => (
+              <div key={i} className="s-ext-item relative overflow-hidden group">
+                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 100vw, 20vw" />
+              </div>
             ))}
           </div>
+        </section>
+
+        {/* ── Interior Experience ── */}
+        {hasInterior && (
+          <>
+            <section className="s-door-section relative h-screen bg-black overflow-hidden flex items-center justify-center" style={snapStyle}>
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none px-6">
+                <div className="s-door-line w-20 h-[3px] bg-atlas-red mx-auto mb-6 sm:mb-8" />
+                <h2 className="s-door-title font-[var(--font-heading)] text-[clamp(1.75rem,5vw,4rem)] font-black text-white tracking-tighter text-center">
+                  {locale === "fr" ? "Entrez a l'interieur" : "Step inside"}
+                </h2>
+                <p className="s-door-sub text-[15px] sm:text-[18px] text-white/40 mt-4 sm:mt-5 max-w-[420px] mx-auto text-center">
+                  {locale === "fr"
+                    ? "Decouvrez la qualite de nos finitions interieures"
+                    : "Discover the quality of our interior finishes"}
+                </p>
+              </div>
+              <div className="s-door-left absolute top-0 left-0 w-1/2 h-full z-10 overflow-hidden">
+                <Image src={data.interiorImages![0].src} alt={data.interiorImages![0].alt} fill className="object-cover" sizes="50vw" />
+                <div className="absolute inset-0 bg-black/60" />
+              </div>
+              <div className="s-door-right absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
+                <Image src={data.interiorImages![1].src} alt={data.interiorImages![1].alt} fill className="object-cover" sizes="50vw" />
+                <div className="absolute inset-0 bg-black/60" />
+              </div>
+            </section>
+
+            <section className="s-interior relative h-screen bg-atlas-charcoal flex flex-col" style={snapStyle}>
+              <div className="text-center pt-10 lg:pt-16 pb-6 lg:pb-10 shrink-0">
+                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                  {locale === "fr" ? "Interieur" : "Interior"}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-white mt-2 sm:mt-3 tracking-tight">
+                  {locale === "fr" ? "Nos Finitions" : "Our Finishes"}
+                </h2>
+                <div className="w-16 h-[3px] bg-atlas-red mt-4 mx-auto" />
+              </div>
+              <div className="flex-1 grid grid-cols-2 lg:grid-cols-5" style={{ gap: "2px" }}>
+                {data.interiorImages!.slice(2).map((img, i) => {
+                  const remaining = data.interiorImages!.length - 2;
+                  const isLast = i === remaining - 1;
+                  const isOdd = remaining % 2 !== 0;
+                  return (
+                    <div key={i} className={`s-int-item relative overflow-hidden group ${isLast && isOdd ? "col-span-2 lg:col-span-1" : ""}`}>
+                      <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          </>
+        )}
+
+        {/* ── Approach ── */}
+        <section className="s-approach relative h-screen bg-atlas-sand flex items-center" style={snapStyle}>
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
+              <div className="lg:col-span-5">
+                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                  {locale === "fr" ? "Notre Approche" : "Our Approach"}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-3 sm:mt-4 tracking-tight leading-tight">
+                  {locale === "fr" ? "Du premier contact a la livraison" : "From first contact to delivery"}
+                </h2>
+                <div className="w-16 h-[3px] bg-atlas-red mt-4 sm:mt-6 mb-5 sm:mb-8" />
+                <p className="text-[14px] sm:text-[16px] text-atlas-slate leading-relaxed">
+                  {locale === "fr"
+                    ? "Chaque projet est unique. Notre processus s'adapte a vos contraintes specifiques pour garantir une livraison dans les delais et conforme a vos exigences."
+                    : "Every project is unique. Our process adapts to your specific constraints to guarantee on-time delivery that meets your requirements."}
+                </p>
+              </div>
+              <div className="lg:col-span-7 lg:pl-8">
+                <div className="space-y-0">
+                  {data.approach.map((step, i) => (
+                    <div
+                      key={i}
+                      className={`s-step flex items-start gap-4 sm:gap-6 py-5 sm:py-7 ${
+                        i < data.approach.length - 1 ? "border-b border-atlas-charcoal/10" : ""
+                      }`}
+                    >
+                      <div className="w-10 h-10 sm:w-14 sm:h-14 bg-atlas-red flex items-center justify-center shrink-0">
+                        <span className="font-[var(--font-heading)] font-black text-[16px] sm:text-[20px] text-white">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </div>
+                      <div className="pt-1 sm:pt-2">
+                        <span className="text-[14px] sm:text-[17px] text-atlas-charcoal font-medium leading-relaxed">
+                          {step[locale]}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section className="relative h-screen overflow-hidden flex items-center" style={snapStyle}>
+          <div className="absolute inset-0">
+            <Image src="/images/cta-bg.webp" alt="Atlas Batiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" />
+            <div className="absolute inset-0 bg-atlas-red/40" />
+          </div>
+          <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-center">
+              <div>
+                <span className="text-[11px] sm:text-[12px] tracking-[0.3em] uppercase text-white/70 font-bold block">
+                  {locale === "fr" ? "Votre Projet" : "Your Project"}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,4vw,3.5rem)] font-black text-white mt-3 sm:mt-4 tracking-tight leading-[1.05]">
+                  {locale === "fr" ? "Parlons de votre projet" : "Let's talk about your project"}
+                </h2>
+                <div className="w-12 sm:w-16 h-[3px] bg-white mt-5 sm:mt-8 mb-5 sm:mb-8" />
+                <p className="text-[14px] sm:text-[17px] text-white/70 leading-relaxed mb-6 sm:mb-10 max-w-[480px]">
+                  {locale === "fr"
+                    ? "Nos experts sont a votre disposition pour etudier vos besoins et vous proposer une solution sur mesure."
+                    : "Our experts are available to study your needs and propose a tailored solution."}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center justify-center gap-3 bg-white text-atlas-red hover:bg-white/90 px-6 sm:px-9 py-3.5 sm:py-5 text-[13px] sm:text-[15px] font-bold tracking-wider uppercase transition-colors"
+                  >
+                    {locale === "fr" ? "Demander un Devis" : "Request a Quote"}
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+                  </Link>
+                </div>
+              </div>
+              <div className="space-y-3 sm:space-y-5">
+                <div className="flex items-center gap-4 sm:gap-5 p-4 sm:p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                    <Phone className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[11px] sm:text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-0.5">
+                      {locale === "fr" ? "Telephone" : "Phone"}
+                    </span>
+                    <span className="text-[15px] sm:text-[18px] text-white font-bold">+32 490 XX XX XX</span>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 sm:gap-5 p-4 sm:p-6 bg-atlas-charcoal/80 backdrop-blur-sm">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-atlas-red flex items-center justify-center shrink-0">
+                    <Mail className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </div>
+                  <div className="min-w-0">
+                    <span className="text-[11px] sm:text-[12px] text-white/40 uppercase tracking-wider font-medium block mb-0.5">
+                      Email
+                    </span>
+                    <a href="mailto:atlasbatimodulaire@gmail.com" className="text-[13px] sm:text-[18px] text-white font-bold hover:text-white/80 transition-colors break-all">
+                      atlasbatimodulaire@gmail.com
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── Other Sectors ── */}
+        <section className="s-others relative h-screen bg-atlas-charcoal flex items-center" style={snapStyle}>
+          <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
+            <div className="flex items-end justify-between mb-8 sm:mb-14">
+              <div>
+                <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+                  {t("title")}
+                </span>
+                <h2 className="font-[var(--font-heading)] text-[clamp(1.5rem,3vw,2.5rem)] font-black text-white mt-3 tracking-tight">
+                  {locale === "fr" ? "Autres Secteurs" : "Other Sectors"}
+                </h2>
+              </div>
+              <div className="hidden sm:block w-16 h-[3px] bg-atlas-red mb-2" />
+            </div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+              {otherSectors.map((sk) => (
+                <Link
+                  key={sk}
+                  href={`/sectors/${sk}` as any}
+                  className="s-other group relative aspect-[3/4] overflow-hidden"
+                >
+                  <Image
+                    src={sectors[sk].heroImage}
+                    alt={sectors[sk].heroAlt}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
+                    <h3 className="font-[var(--font-heading)] font-bold text-[14px] sm:text-[18px] text-white tracking-tight leading-snug">
+                      {t(`${sk}.title`)}
+                    </h3>
+                    <span className="inline-flex items-center gap-1.5 text-[11px] sm:text-[13px] text-white/50 mt-2 sm:mt-3 group-hover:text-atlas-red transition-colors font-medium uppercase tracking-wider">
+                      {locale === "fr" ? "Decouvrir" : "Discover"}
+                      <ChevronRight className="w-3.5 h-3.5" />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <div style={snapStyle}>
+          <Footer />
         </div>
-      </section>
+      </div>
     </div>
   );
 }

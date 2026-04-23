@@ -49,8 +49,7 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const y = window.scrollY;
+    const handleScroll = (y: number) => {
       setScrolled(y > 20);
       if (y > lastScroll.current && y > 100) {
         setHidden(true);
@@ -59,8 +58,38 @@ export function Header() {
       }
       lastScroll.current = y;
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    const onWindowScroll = () => handleScroll(window.scrollY);
+
+    let currentContainer: HTMLElement | null = null;
+    let containerHandler: (() => void) | null = null;
+
+    const attachContainer = () => {
+      const el = document.querySelector("[data-scroll-container]") as HTMLElement | null;
+      if (el === currentContainer) return;
+      if (currentContainer && containerHandler) {
+        currentContainer.removeEventListener("scroll", containerHandler);
+      }
+      currentContainer = el;
+      if (el) {
+        containerHandler = () => handleScroll(el.scrollTop);
+        el.addEventListener("scroll", containerHandler, { passive: true });
+      }
+    };
+
+    window.addEventListener("scroll", onWindowScroll, { passive: true });
+    attachContainer();
+
+    const observer = new MutationObserver(attachContainer);
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      window.removeEventListener("scroll", onWindowScroll);
+      if (currentContainer && containerHandler) {
+        currentContainer.removeEventListener("scroll", containerHandler);
+      }
+      observer.disconnect();
+    };
   }, []);
 
   const switchLocale = (newLocale: "fr" | "en") => {

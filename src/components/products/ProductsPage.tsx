@@ -75,6 +75,7 @@ export function ProductsPage() {
   return (
     <div
       ref={scrollRef}
+      data-scroll-container
       className="fixed inset-0 z-40 overflow-y-auto"
       style={{ scrollSnapType: "y mandatory" }}
     >
