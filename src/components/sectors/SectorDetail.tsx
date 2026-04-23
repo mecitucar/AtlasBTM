@@ -7,11 +7,13 @@ import Image from "next/image";
 import { ArrowRight, ChevronRight, Phone, Mail } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { RedLineFill } from "@/components/ui/RedLineFill";
 
 interface SectorContent {
   heroImage: string;
   heroAlt: string;
   images: { src: string; alt: string }[];
+  interiorImages?: { src: string; alt: string }[];
   applications: { fr: string; en: string }[];
   approach: { fr: string; en: string }[];
   introFr: string;
@@ -25,10 +27,25 @@ const sectors: Record<string, SectorContent> = {
     heroImage: "/images/containers/finished-1.webp",
     heroAlt: "Container prefabrique modulaire Atlas Batiment Modulaire",
     images: [
-      { src: "/images/containers/production-1.webp", alt: "Ligne de production automatisee" },
-      { src: "/images/containers/assembly-1.webp", alt: "Assemblage modulaire en usine" },
-      { src: "/images/containers/finished-2.webp", alt: "Conteneurs termines prets a livrer" },
-      { src: "/images/containers/transport-1.webp", alt: "Transport conteneurs prefabriques" },
+      { src: "/images/prefab/exterior-1.webp", alt: "Conteneur prefabrique - vue exterieure" },
+      { src: "/images/prefab/exterior-2.webp", alt: "Batiment modulaire prefabrique Atlas" },
+      { src: "/images/prefab/exterior-3.webp", alt: "Conteneurs modulaires sur site" },
+      { src: "/images/prefab/exterior-4.webp", alt: "Installation conteneurs prefabriques" },
+      { src: "/images/prefab/exterior-5.webp", alt: "Conteneurs livres sur chantier" },
+      { src: "/images/prefab/exterior-6.webp", alt: "Assemblage modulaire exterieur" },
+      { src: "/images/prefab/exterior-7.webp", alt: "Conteneur prefabrique termine" },
+      { src: "/images/prefab/exterior-8.webp", alt: "Vue exterieure camp modulaire" },
+      { src: "/images/prefab/exterior-9.webp", alt: "Conteneurs prefabriques alignes" },
+      { src: "/images/prefab/exterior-10.webp", alt: "Projet conteneur prefabrique Atlas" },
+    ],
+    interiorImages: [
+      { src: "/images/prefab/interior-1.webp", alt: "Interieur conteneur prefabrique - amenagement" },
+      { src: "/images/prefab/interior-2.webp", alt: "Interieur conteneur - espace de vie" },
+      { src: "/images/prefab/interior-3.webp", alt: "Interieur conteneur - finitions qualite" },
+      { src: "/images/prefab/interior-4.webp", alt: "Interieur conteneur - cuisine equipee" },
+      { src: "/images/prefab/interior-5.webp", alt: "Interieur conteneur - chambre" },
+      { src: "/images/prefab/interior-6.webp", alt: "Interieur conteneur - salle de bain" },
+      { src: "/images/prefab/interior-7.webp", alt: "Interieur conteneur - details finition" },
     ],
     applications: [
       { fr: "Bureaux modulaires temporaires et permanents", en: "Temporary and permanent modular offices" },
@@ -50,13 +67,19 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Modern projects demand speed, flexibility, and uncompromising quality. Traditional construction cannot always meet these constraints. Our prefabricated containers eliminate on-site uncertainties by transferring 90% of work to the factory.",
   },
   mining: {
-    heroImage: "/images/containers/site-aerial-2.webp",
+    heroImage: "/images/mining/maden-hero.webp",
     heroAlt: "Camp minier modulaire deploiement rapide Atlas",
     images: [
-      { src: "/images/containers/site-aerial-1.webp", alt: "Vue aerienne camp minier modulaire" },
-      { src: "/images/containers/camp-1.webp", alt: "Installation camp sur site minier" },
-      { src: "/images/containers/interior-1.webp", alt: "Interieur confortable camp minier" },
-      { src: "/images/containers/finished-1.webp", alt: "Modules d'hebergement minier" },
+      { src: "/images/mining/maden1.webp", alt: "Camp minier modulaire - vue generale" },
+      { src: "/images/mining/maden2.webp", alt: "Installation camp minier sur site" },
+      { src: "/images/mining/maden3.webp", alt: "Modules d'hebergement camp minier" },
+      { src: "/images/mining/maden5.webp", alt: "Infrastructure camp minier" },
+      { src: "/images/mining/maden6.webp", alt: "Batiments modulaires site minier" },
+      { src: "/images/mining/maden7.webp", alt: "Camp minier operationnel" },
+      { src: "/images/mining/maden8.webp", alt: "Hebergement equipes minieres" },
+      { src: "/images/mining/maden9.webp", alt: "Installations camp minier" },
+      { src: "/images/mining/maden10.webp", alt: "Vue aerienne camp minier" },
+      { src: "/images/mining/maden11.webp", alt: "Camp minier Atlas complet" },
     ],
     applications: [
       { fr: "Camps d'hebergement 50 a 2000 personnes", en: "Accommodation camps for 50 to 2000 people" },
@@ -106,13 +129,12 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "A construction site constantly evolves. Headcounts vary, needs change, and facilities must keep pace. Flexibility and speed of deployment are essential to maintaining productivity.",
   },
   defense: {
-    heroImage: "/images/containers/finished-2.webp",
-    heroAlt: "Structures modulaires renforcees pour le secteur defense",
+    heroImage: "/images/defense/defence-hero.webp",
+    heroAlt: "Base militaire modulaire Atlas Batiment Modulaire",
     images: [
-      { src: "/images/containers/port-containers.webp", alt: "Conteneurs defense prets a l'expedition" },
-      { src: "/images/containers/factory-1.webp", alt: "Production structures renforcees" },
-      { src: "/images/containers/production-1.webp", alt: "Fabrication aux normes militaires" },
-      { src: "/images/containers/assembly-1.webp", alt: "Assemblage modules defense" },
+      { src: "/images/defense/defence-1.webp", alt: "Installation modulaire base militaire" },
+      { src: "/images/defense/defence-2.webp", alt: "Structures defense deployees sur site" },
+      { src: "/images/defense/defence-3.webp", alt: "Camp militaire modulaire operationnel" },
     ],
     applications: [
       { fr: "Postes de commandement et centres operationnels", en: "Command posts and operational centers" },
@@ -196,11 +218,6 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
       scrollTrigger: { trigger: ".s-apps", start: "top 80%" },
     });
 
-    gsap.from(".s-mosaic-item", {
-      y: 50, opacity: 0, duration: 0.7, stagger: 0.15, ease: "power3.out",
-      scrollTrigger: { trigger: ".s-mosaic", start: "top 80%" },
-    });
-
     gsap.from(".s-step", {
       x: -30, opacity: 0, duration: 0.5, stagger: 0.1, ease: "power3.out",
       scrollTrigger: { trigger: ".s-approach", start: "top 80%" },
@@ -210,6 +227,28 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
       y: 30, opacity: 0, duration: 0.5, stagger: 0.08, ease: "power3.out",
       scrollTrigger: { trigger: ".s-others", start: "top 85%" },
     });
+
+    gsap.from(".s-ext-item", {
+      y: 40, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
+      scrollTrigger: { trigger: ".s-exterior", start: "top 80%" },
+    });
+
+    // Kapi acilma animasyonu
+    if (container.current?.querySelector(".s-door-section")) {
+      const doorTl = gsap.timeline({
+        scrollTrigger: { trigger: ".s-door-section", start: "top 60%" },
+      });
+      doorTl.from(".s-door-line", { scaleX: 0, transformOrigin: "center", duration: 0.5 });
+      doorTl.from(".s-door-title", { y: 40, opacity: 0, duration: 0.8, ease: "power3.out" }, 0.2);
+      doorTl.from(".s-door-sub", { y: 20, opacity: 0, duration: 0.6, ease: "power3.out" }, 0.5);
+      doorTl.to(".s-door-left", { xPercent: -100, duration: 1.2, ease: "power3.inOut" }, 1.2);
+      doorTl.to(".s-door-right", { xPercent: 100, duration: 1.2, ease: "power3.inOut" }, 1.2);
+
+      gsap.from(".s-int-item", {
+        y: 50, opacity: 0, duration: 0.6, stagger: 0.08, ease: "power3.out",
+        scrollTrigger: { trigger: ".s-interior", start: "top 80%" },
+      });
+    }
   }, { scope: container });
 
   const otherSectors = allSectorKeys.filter((k) => k !== sectorKey);
@@ -238,6 +277,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
           </div>
         </div>
       </section>
+      <RedLineFill />
 
       {/* ── Intro - Asymmetric ── */}
       <section className="s-intro py-24 lg:py-36 bg-white overflow-hidden">
@@ -277,6 +317,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         </div>
       </section>
 
+      <RedLineFill />
       {/* ── Applications ── */}
       <section className="s-apps relative py-24 lg:py-32 overflow-hidden">
         <div className="absolute inset-0">
@@ -312,49 +353,90 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         </div>
       </section>
 
-      {/* ── Mosaic Gallery ── */}
-      <section className="s-mosaic py-24 lg:py-32 bg-white">
-        <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-          <div className="grid grid-cols-12 gap-4 lg:gap-6">
-            <div className="s-mosaic-item col-span-12 lg:col-span-7 relative aspect-[16/10] overflow-hidden group">
-              <Image
-                src={data.images[1].src}
-                alt={data.images[1].alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-            </div>
-            <div className="s-mosaic-item col-span-6 lg:col-span-5 relative aspect-[4/3] lg:aspect-auto overflow-hidden group">
-              <Image
-                src={data.images[2].src}
-                alt={data.images[2].alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 1024px) 50vw, 42vw"
-              />
-            </div>
-            <div className="s-mosaic-item col-span-6 lg:col-span-5 relative aspect-[4/3] lg:aspect-auto overflow-hidden group">
-              <Image
-                src={data.images[3].src}
-                alt={data.images[3].alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 1024px) 50vw, 42vw"
-              />
-            </div>
-            <div className="s-mosaic-item col-span-12 lg:col-span-7 relative aspect-[16/10] overflow-hidden group">
-              <Image
-                src={data.images[0].src}
-                alt={data.images[0].alt}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-            </div>
-          </div>
+      {/* ── Exterior Gallery ── */}
+      <section className="s-exterior bg-white">
+        <RedLineFill />
+        <div className="text-center py-20 lg:py-24">
+          <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
+            {t(`${sectorKey}.title`)}
+          </span>
+          <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,3vw,2.5rem)] font-black text-atlas-charcoal mt-3 tracking-tight">
+            {locale === "fr" ? "Galerie" : "Gallery"}
+          </h2>
+          <div className="w-16 h-[3px] bg-atlas-red mt-6 mx-auto" />
         </div>
+        <div className={`grid ${data.images.length <= 3 ? "grid-cols-1 lg:grid-cols-3" : "grid-cols-2 lg:grid-cols-4"}`} style={{ gap: 0 }}>
+          {data.images.slice(0, Math.min(data.images.length, 4)).map((img, i) => (
+            <div key={i} className="s-ext-item relative aspect-square overflow-hidden group">
+              <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes={data.images.length <= 3 ? "33vw" : "25vw"} />
+            </div>
+          ))}
+        </div>
+        {data.images.length > 4 && (
+          <div className="grid grid-cols-3 lg:grid-cols-6" style={{ gap: 0 }}>
+            {data.images.slice(4).map((img, i) => (
+              <div key={i} className="s-ext-item relative aspect-square overflow-hidden group">
+                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="16vw" />
+              </div>
+            ))}
+          </div>
+        )}
       </section>
+      <RedLineFill />
+
+      {/* ── Interior Experience ── */}
+      {data.interiorImages && data.interiorImages.length > 0 && (
+        <>
+          {/* Kapi gecisi - tam ekran */}
+          <section className="s-door-section relative h-[60vh] min-h-[400px] bg-black overflow-hidden">
+            {/* Mesaj */}
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+              <div className="s-door-line w-20 h-[3px] bg-atlas-red mx-auto mb-8" />
+              <h2 className="s-door-title font-[var(--font-heading)] text-[clamp(2rem,5vw,4rem)] font-black text-white tracking-tighter text-center">
+                {locale === "fr" ? "Entrez a l'interieur" : "Step inside"}
+              </h2>
+              <p className="s-door-sub text-[18px] text-white/40 mt-5 max-w-[420px] mx-auto text-center">
+                {locale === "fr"
+                  ? "Decouvrez la qualite de nos finitions interieures"
+                  : "Discover the quality of our interior finishes"}
+              </p>
+            </div>
+            {/* Sol kapi */}
+            <div className="s-door-left absolute top-0 left-0 w-1/2 h-full z-10 overflow-hidden">
+              <Image
+                src={data.interiorImages[0].src}
+                alt={data.interiorImages[0].alt}
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+              <div className="absolute inset-0 bg-black/60" />
+            </div>
+            {/* Sag kapi */}
+            <div className="s-door-right absolute top-0 right-0 w-1/2 h-full z-10 overflow-hidden">
+              <Image
+                src={data.interiorImages[1].src}
+                alt={data.interiorImages[1].alt}
+                fill
+                className="object-cover"
+                sizes="50vw"
+              />
+              <div className="absolute inset-0 bg-black/60" />
+            </div>
+          </section>
+
+          {/* Ic mekan galeri */}
+          <section className="s-interior bg-atlas-charcoal">
+            <div className="grid grid-cols-2 lg:grid-cols-5" style={{ gap: 0 }}>
+              {data.interiorImages.slice(2).map((img, i) => (
+                <div key={i} className="s-int-item relative aspect-square overflow-hidden group">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="20vw" />
+                </div>
+              ))}
+            </div>
+          </section>
+        </>
+      )}
 
       {/* ── Approach ── */}
       <section className="s-approach py-24 lg:py-32 bg-atlas-sand">

@@ -19,7 +19,7 @@ export function AboutHero() {
   }, { scope: container });
 
   return (
-    <section ref={container} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
+    <section ref={container} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
       <div className="absolute inset-0">
         <Image
           src="/images/about-hero.webp"

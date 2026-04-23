@@ -108,7 +108,7 @@ export function ReferencesPage() {
 
   return (
     <>
-      <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden">
+      <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
           <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" priority />
           <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent" />
