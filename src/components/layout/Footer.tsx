@@ -33,7 +33,7 @@ export function Footer() {
               {t("quickLinks")}
             </h4>
             <ul className="space-y-2 sm:space-y-2.5">
-              {(["home", "about", "products", "projects", "contact"] as const).map(
+              {(["home", "about", "products", "catalog", "projects", "contact"] as const).map(
                 (key) => (
                   <li key={key}>
                     <Link
@@ -94,7 +94,7 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <MapPin className="w-3.5 h-3.5 text-atlas-red shrink-0" />
-                <span className="text-[13px] text-white/60">Europe</span>
+                <span className="text-[13px] text-white/60">Maneah, Conakry, Guinee</span>
               </li>
             </ul>
           </div>
@@ -106,10 +106,10 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Atlas Bâtiment Modulaire. {t("rights")}
           </p>
           <div className="flex items-center gap-4 sm:gap-6">
-            <Link href="/contact" className="text-[12px] text-white/40 hover:text-white/70 transition-colors">
+            <Link href="/privacy" className="text-[12px] text-white/40 hover:text-white/70 transition-colors">
               {t("privacy")}
             </Link>
-            <Link href="/contact" className="text-[12px] text-white/40 hover:text-white/70 transition-colors">
+            <Link href="/mentions-legales" className="text-[12px] text-white/40 hover:text-white/70 transition-colors">
               {t("terms")}
             </Link>
           </div>

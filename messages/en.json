@@ -9,7 +9,8 @@
     "products": "Products",
     "solutions": "Our Sectors",
     "projects": "Projects",
-    "contact": "Contact"
+    "contact": "Contact",
+    "catalog": "Catalog"
   },
   "hero": {
     "slogan": "Local Mastery, Guaranteed Excellence",
@@ -21,6 +22,8 @@
   "products": {
     "title": "Our Products",
     "subtitle": "Modular solutions for every need",
+    "catalogCta": "Technical Catalog",
+    "catalogPages": "pages",
     "prefab": {
       "title": "Prefabricated",
       "desc": "Time-saving and economical building solutions produced in facility and shipped unassembled to construction sites for quick installation.",
@@ -147,18 +150,33 @@
     "title": "Contact",
     "subtitle": "Get in touch with our teams",
     "writeToUs": "Write To Us",
-    "getQuote": "Get A Quote",
+    "getQuote": "Request a Quote",
+    "quoteSubtitle": "Share the details of your project with us. We will quickly prepare our proposal and share it with you. A response will be sent to the email address you provide.",
     "form": {
-      "name": "Name / Surname",
-      "email": "Email",
-      "phone": "Phone",
-      "company": "Company Name",
-      "subject": "Subject",
+      "name": "Your Name and Surname",
+      "email": "Your Email Address",
+      "phone": "Your Phone Number",
+      "company": "Your Company Name",
+      "subject": "Subject of Your Request",
       "message": "Your message",
-      "description": "Description",
-      "attachFiles": "Attach files (up to 5)",
+      "description": "Description of Your Request",
+      "attachFiles": "Click to upload or drag and drop files here.",
+      "attachFilesLimit": "You can upload up to 5 files.",
+      "attachFilesNote": "You can upload technical drawings, photos, specifications, etc. related to your project here.",
+      "required": "Required fields",
       "send": "Send",
-      "sendQuote": "Send Request"
+      "sendQuote": "Send Request",
+      "successMessage": "Your request has been sent successfully!",
+      "errorMessage": "An error occurred. Please try again.",
+      "consent": "I agree that my personal data will be processed in accordance with the",
+      "consentLink": "Privacy Policy"
+    },
+    "process": {
+      "title": "Quote Process",
+      "step1": "An authorized colleague from the sales department will contact you by phone.",
+      "step2": "The approximate cost of your project will be estimated based on the information provided.",
+      "step3": "If necessary, a meeting will be requested for more detailed information.",
+      "step4": "Your quote will be prepared with all details and shared within 24 hours."
     },
     "info": {
       "phone": "Phone",
@@ -182,5 +200,88 @@
     "whatsapp": "Contact us on WhatsApp",
     "quote": "Request a quote",
     "details": "Details"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: April 2026",
+    "intro": "Atlas Batiment Modulaire is committed to protecting the privacy of its website visitors. This privacy policy explains what personal data we collect, why we collect it, how we use it, and what your rights are.",
+    "collect": {
+      "title": "What data do we collect?",
+      "content": "When you use our contact or quote request form, we collect the following data:\n- Full name\n- Email address\n- Company name\n- Subject and description of your request\n- Attached files (technical drawings, photos, specifications)"
+    },
+    "how": {
+      "title": "How do we collect your data?",
+      "content": "We only collect your data when you voluntarily provide it through our contact form. No data is automatically collected beyond technical cookies necessary for the website to function."
+    },
+    "purpose": {
+      "title": "How will we use your data?",
+      "content": "Your personal data is used exclusively to:\n- Respond to your contact or quote request\n- Provide you with the requested information about our products and services\n- Contact you by email regarding your project\n\nWe never sell, rent, or share your personal data with third parties for commercial purposes."
+    },
+    "legal": {
+      "title": "Legal basis for processing",
+      "content": "The processing of your data is based on:\n- Your explicit consent when submitting the form\n- Our legitimate interest in responding to your commercial inquiries\n\nThis processing complies with Law L/2016/037/AN on cybersecurity and personal data protection in the Republic of Guinea."
+    },
+    "storage": {
+      "title": "How do we store your data?",
+      "content": "Your data is transmitted by email via a secure server (Gmail SMTP with TLS encryption). We do not store your data in a separate database.\n\nEmails containing your information are kept for a maximum of 12 months after your request, unless a commercial relationship is established. After this period, the data is deleted."
+    },
+    "rights": {
+      "title": "What are your data protection rights?",
+      "content": "Under Guinean personal data protection legislation, you have the following rights:\n- Right of access: request a copy of your personal data\n- Right to rectification: request correction of inaccurate data\n- Right to erasure: request deletion of your data\n- Right to object to processing\n\nTo exercise these rights, contact us at: atlasbatimodulaire@gmail.com\nWe will respond to your request within 30 days."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Our website only uses technical cookies necessary for its proper functioning. No tracking or advertising cookies are used."
+    },
+    "thirdParty": {
+      "title": "Third-party websites",
+      "content": "Our website may contain links to other websites. This privacy policy applies only to our website. If you click a link to another site, we encourage you to read their privacy policy."
+    },
+    "changes": {
+      "title": "Changes to this policy",
+      "content": "We reserve the right to modify this privacy policy at any time. Any changes will be posted on this page with an updated date."
+    },
+    "contact": {
+      "title": "How to contact us",
+      "content": "For any questions about this privacy policy or your personal data:\n\nAtlas Batiment Modulaire\nAddress: Maneah, Conakry, Guinea\nEmail: atlasbatimodulaire@gmail.com\nPhone: +32 490 10 49 05"
+    },
+    "authority": {
+      "title": "Supervisory authority",
+      "content": "If you believe that the processing of your data does not comply with the applicable regulations, you have the right to lodge a complaint with the Personal Data Protection Authority (APDP) of the Republic of Guinea.\n\nAddress: Conakry, Guinea"
+    }
+  },
+  "catalog": {
+    "label": "Documentation",
+    "title": "Technical Catalog",
+    "subtitle": "Browse our technical sheets and detailed plans of our modular solutions.",
+    "download": "Download PDF",
+    "pages": "pages",
+    "page": "Page",
+    "loading": "Loading catalog...",
+    "errorTitle": "Catalog unavailable",
+    "errorDesc": "The technical catalog is not yet available. Please try again later."
+  },
+  "mentions": {
+    "title": "Legal Notice",
+    "editor": {
+      "title": "Website Publisher",
+      "content": "Atlas Batiment Modulaire\nAddress: Maneah, Conakry, Guinea\nEmail: atlasbatimodulaire@gmail.com\nPhone: +32 490 10 49 05"
+    },
+    "intellectual": {
+      "title": "Intellectual Property",
+      "content": "All content on this website (text, images, logos, graphics, photos, videos) is the exclusive property of Atlas Batiment Modulaire or its partners. Any reproduction, representation, modification, or adaptation, in whole or in part, is prohibited without prior written authorization."
+    },
+    "liability": {
+      "title": "Liability",
+      "content": "Atlas Batiment Modulaire strives to provide accurate and up-to-date information on this website. However, we cannot guarantee the accuracy, completeness, or currency of the information provided. Consequently, the user acknowledges using this information at their sole responsibility."
+    },
+    "data": {
+      "title": "Personal Data",
+      "content": "Information regarding the processing of your personal data is detailed in our Privacy Policy, accessible from the footer of the website."
+    },
+    "applicable": {
+      "title": "Applicable Law",
+      "content": "These legal notices are subject to Guinean law. In the event of a dispute, the courts of Conakry shall have sole jurisdiction."
+    }
   }
 }

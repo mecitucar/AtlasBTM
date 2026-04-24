@@ -9,7 +9,8 @@
     "products": "Produits",
     "solutions": "Nos Secteurs",
     "projects": "Projets",
-    "contact": "Contact"
+    "contact": "Contact",
+    "catalog": "Catalogue"
   },
   "hero": {
     "slogan": "Maîtrise locale, excellence garantie",
@@ -21,6 +22,8 @@
   "products": {
     "title": "Nos Produits",
     "subtitle": "Solutions modulaires pour chaque besoin",
+    "catalogCta": "Catalogue Technique",
+    "catalogPages": "pages",
     "prefab": {
       "title": "Préfabriqué",
       "desc": "Solutions de construction économiques et rapides, produites en usine et expédiées démontées sur les chantiers pour une installation rapide.",
@@ -148,17 +151,32 @@
     "subtitle": "Prenez contact avec nos équipes",
     "writeToUs": "Écrivez-nous",
     "getQuote": "Demander un Devis",
+    "quoteSubtitle": "Transmettez-nous les informations relatives à votre projet. Nous préparerons rapidement notre offre et la partagerons avec vous. Un retour vous sera adresse par e-mail à l'adresse que vous aurez indiquee.",
     "form": {
-      "name": "Nom / Prénom",
-      "email": "E-mail",
-      "phone": "Téléphone",
-      "company": "Société",
-      "subject": "Sujet",
+      "name": "Votre Nom et Prénom",
+      "email": "Votre Adresse E-mail",
+      "phone": "Votre Numéro de Téléphone",
+      "company": "Nom de Votre Société",
+      "subject": "Objet de Votre Demande",
       "message": "Votre message",
-      "description": "Description",
-      "attachFiles": "Joindre des fichiers (max 5)",
+      "description": "Description de Votre Demande",
+      "attachFiles": "Cliquez pour télécharger ou glissez vos fichiers ici.",
+      "attachFilesLimit": "Vous pouvez télécharger jusqu'à 5 fichiers.",
+      "attachFilesNote": "Vous pouvez télécharger ici vos dessins techniques, photos, cahiers des charges, etc. liés à votre projet.",
+      "required": "Champs obligatoires",
       "send": "Envoyer",
-      "sendQuote": "Envoyer la demande"
+      "sendQuote": "Envoyer la demande",
+      "successMessage": "Votre demande a bien ete envoyee !",
+      "errorMessage": "Une erreur est survenue. Veuillez reessayer.",
+      "consent": "J'accepte que mes donnees personnelles soient traitees conformement a la",
+      "consentLink": "Politique de Confidentialite"
+    },
+    "process": {
+      "title": "Processus de Devis",
+      "step1": "Un collègue autorisé du département commercial vous contactera par téléphone.",
+      "step2": "Le coût approximatif de votre projet sera estimé en fonction des informations fournies.",
+      "step3": "Si nécessaire, une réunion vous sera demandée pour obtenir des informations plus détaillées.",
+      "step4": "Votre devis sera préparé avec tous les détails et partagé dans les 24 heures."
     },
     "info": {
       "phone": "Téléphone",
@@ -182,5 +200,88 @@
     "whatsapp": "Contactez-nous sur WhatsApp",
     "quote": "Demander un devis",
     "details": "Détails"
+  },
+  "privacy": {
+    "title": "Politique de Confidentialite",
+    "lastUpdated": "Derniere mise a jour : Avril 2026",
+    "intro": "Atlas Batiment Modulaire s'engage a proteger la vie privee des visiteurs de son site web. Cette politique de confidentialite explique quelles donnees personnelles nous collectons, pourquoi nous les collectons, comment nous les utilisons et quels sont vos droits.",
+    "collect": {
+      "title": "Quelles donnees collectons-nous ?",
+      "content": "Lorsque vous utilisez notre formulaire de contact ou de demande de devis, nous collectons les donnees suivantes :\n- Nom et prenom\n- Adresse e-mail\n- Nom de la societe\n- Objet et description de votre demande\n- Fichiers joints (dessins techniques, photos, cahiers des charges)"
+    },
+    "how": {
+      "title": "Comment collectons-nous vos donnees ?",
+      "content": "Nous collectons vos donnees uniquement lorsque vous les fournissez volontairement via notre formulaire de contact. Aucune donnee n'est collectee automatiquement en dehors des cookies techniques necessaires au fonctionnement du site."
+    },
+    "purpose": {
+      "title": "Pourquoi utilisons-nous vos donnees ?",
+      "content": "Vos donnees personnelles sont utilisees exclusivement pour :\n- Repondre a votre demande de contact ou de devis\n- Vous fournir les informations demandees sur nos produits et services\n- Vous contacter par e-mail concernant votre projet\n\nNous ne vendons, ne louons et ne partageons jamais vos donnees personnelles avec des tiers a des fins commerciales."
+    },
+    "legal": {
+      "title": "Base legale du traitement",
+      "content": "Le traitement de vos donnees repose sur :\n- Votre consentement explicite lors de l'envoi du formulaire\n- Notre interet legitime a repondre a vos demandes commerciales\n\nCe traitement est conforme a la Loi L/2016/037/AN relative a la cybersecurite et la protection des donnees a caractere personnel en Republique de Guinee."
+    },
+    "storage": {
+      "title": "Comment stockons-nous vos donnees ?",
+      "content": "Vos donnees sont transmises par e-mail via un serveur securise (Gmail SMTP avec chiffrement TLS). Nous ne stockons pas vos donnees dans une base de donnees separee.\n\nLes e-mails contenant vos informations sont conserves pendant une duree maximale de 12 mois apres votre demande, sauf si une relation commerciale est etablie. Passe ce delai, les donnees sont supprimees."
+    },
+    "rights": {
+      "title": "Quels sont vos droits ?",
+      "content": "Conformement a la legislation guineenne en matiere de protection des donnees personnelles, vous disposez des droits suivants :\n- Droit d'acces : demander une copie de vos donnees personnelles\n- Droit de rectification : demander la correction de donnees inexactes\n- Droit a l'effacement : demander la suppression de vos donnees\n- Droit d'opposition au traitement\n\nPour exercer ces droits, contactez-nous a : atlasbatimodulaire@gmail.com\nNous repondrons a votre demande dans un delai de 30 jours."
+    },
+    "cookies": {
+      "title": "Cookies",
+      "content": "Notre site utilise uniquement des cookies techniques necessaires a son bon fonctionnement. Aucun cookie de suivi ou publicitaire n'est utilise."
+    },
+    "thirdParty": {
+      "title": "Sites tiers",
+      "content": "Notre site peut contenir des liens vers d'autres sites web. Cette politique de confidentialite s'applique uniquement a notre site. Si vous cliquez sur un lien vers un autre site, nous vous encourageons a lire leur politique de confidentialite."
+    },
+    "changes": {
+      "title": "Modifications de cette politique",
+      "content": "Nous nous reservons le droit de modifier cette politique de confidentialite a tout moment. Toute modification sera publiee sur cette page avec une date de mise a jour actualisee."
+    },
+    "contact": {
+      "title": "Comment nous contacter ?",
+      "content": "Pour toute question concernant cette politique de confidentialite ou vos donnees personnelles :\n\nAtlas Batiment Modulaire\nAdresse : Maneah, Conakry, Guinee\nE-mail : atlasbatimodulaire@gmail.com\nTelephone : +32 490 10 49 05"
+    },
+    "authority": {
+      "title": "Autorite de controle",
+      "content": "Si vous estimez que le traitement de vos donnees ne respecte pas la reglementation applicable, vous avez le droit d'introduire une reclamation aupres de l'Autorite de Protection des Donnees a Caractere Personnel (APDP) de la Republique de Guinee.\n\nAdresse : Conakry, Guinee"
+    }
+  },
+  "catalog": {
+    "label": "Documentation",
+    "title": "Catalogue Technique",
+    "subtitle": "Consultez nos fiches techniques et plans detailles de nos solutions modulaires.",
+    "download": "Telecharger le PDF",
+    "pages": "pages",
+    "page": "Page",
+    "loading": "Chargement du catalogue...",
+    "errorTitle": "Catalogue indisponible",
+    "errorDesc": "Le catalogue technique n'est pas encore disponible. Veuillez reessayer ulterieurement."
+  },
+  "mentions": {
+    "title": "Mentions Legales",
+    "editor": {
+      "title": "Editeur du site",
+      "content": "Atlas Batiment Modulaire\nAdresse : Maneah, Conakry, Guinee\nE-mail : atlasbatimodulaire@gmail.com\nTelephone : +32 490 10 49 05"
+    },
+    "intellectual": {
+      "title": "Propriete intellectuelle",
+      "content": "L'ensemble du contenu de ce site (textes, images, logos, graphismes, photos, videos) est la propriete exclusive d'Atlas Batiment Modulaire ou de ses partenaires. Toute reproduction, representation, modification ou adaptation, totale ou partielle, est interdite sans autorisation prealable ecrite."
+    },
+    "liability": {
+      "title": "Responsabilite",
+      "content": "Atlas Batiment Modulaire s'efforce de fournir des informations exactes et a jour sur ce site. Toutefois, nous ne pouvons garantir l'exactitude, la completude ou l'actualite des informations diffusees. En consequence, l'utilisateur reconnait utiliser ces informations sous sa responsabilite exclusive."
+    },
+    "data": {
+      "title": "Donnees personnelles",
+      "content": "Les informations relatives au traitement de vos donnees personnelles sont detaillees dans notre Politique de Confidentialite, accessible depuis le pied de page du site."
+    },
+    "applicable": {
+      "title": "Droit applicable",
+      "content": "Les presentes mentions legales sont soumises au droit guineen. En cas de litige, les tribunaux de Conakry seront seuls competents."
+    }
   }
 }

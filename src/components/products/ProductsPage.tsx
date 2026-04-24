@@ -7,6 +7,8 @@ import { Link } from "@/i18n/navigation";
 import {
   Check,
   ArrowRight,
+  Download,
+  FileText,
 } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
 
@@ -107,6 +109,20 @@ export function ProductsPage() {
             <p className="text-[16px] lg:text-[18px] text-white leading-relaxed max-w-[480px] bg-atlas-charcoal/70 px-5 py-4">
               {t("prefab.desc")}
             </p>
+            <a
+              href="/catalog/atlas-catalog.pdf"
+              download="Atlas-BTM-Catalogue.pdf"
+              className="group mt-6 inline-flex items-center gap-4 bg-atlas-red hover:bg-atlas-red-dark text-white pl-5 pr-7 py-3.5 transition-all duration-300 hover:shadow-[0_0_30px_rgba(191,10,40,0.4)]"
+            >
+              <div className="w-10 h-10 bg-white/15 flex items-center justify-center">
+                <FileText className="w-5 h-5" />
+              </div>
+              <div className="flex flex-col">
+                <span className="text-[15px] font-bold tracking-wide uppercase">{t("catalogCta")}</span>
+                <span className="text-[12px] text-white/60 font-medium">PDF &mdash; 16 {t("catalogPages")}</span>
+              </div>
+              <Download className="w-5 h-5 ml-2 group-hover:translate-y-0.5 transition-transform" />
+            </a>
           </div>
         </div>
       </section>
