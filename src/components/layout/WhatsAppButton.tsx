@@ -20,7 +20,7 @@ export function WhatsAppButton() {
   const tooltipRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const whatsappNumber = "33XXXXXXXXX";
+  const whatsappNumber = "224624241977";
   const whatsappUrl = `https://wa.me/${whatsappNumber}`;
 
   useEffect(() => {

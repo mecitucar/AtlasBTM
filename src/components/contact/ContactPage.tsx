@@ -120,7 +120,8 @@ export function ContactPage() {
               </div>
               <div>
                 <span className="text-[12px] text-white/50 uppercase tracking-wider font-medium block">{t("info.phone")}</span>
-                <span className="text-[17px] text-white font-bold mt-1 block">+32 490 10 49 05</span>
+                <span className="text-[17px] text-white font-bold mt-1 block">+224 624 24 19 77</span>
+                <span className="text-[15px] text-white/80 font-semibold block">+224 622 38 35 01</span>
               </div>
             </div>
             <div className="flex items-center gap-5 py-8 md:px-10">
@@ -141,6 +142,7 @@ export function ContactPage() {
               <div>
                 <span className="text-[12px] text-white/50 uppercase tracking-wider font-medium block">{t("info.address")}</span>
                 <span className="text-[17px] text-white font-bold mt-1 block">Maneah, Conakry, Guinee</span>
+                <span className="text-[15px] text-white/80 font-semibold block">Kankan, Guinee</span>
               </div>
             </div>
           </div>
@@ -314,22 +316,43 @@ export function ContactPage() {
                 </div>
               </div>
 
-              <div className="mt-6 border border-atlas-warm/60 overflow-hidden">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30000!2d-13.404598!3d9.711116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf1cd10f616fa64f%3A0x2a81b09c8ad67c70!2sManeah%2C%20Guinea!5e0!3m2!1sen!2s!4v1"
-                  width="100%"
-                  height="280"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Atlas BTM - Maneah, Conakry, Guinee"
-                />
-                <div className="bg-atlas-charcoal px-5 py-4 flex items-center gap-4">
-                  <MapPin className="w-4 h-4 text-atlas-red shrink-0" />
-                  <div>
-                    <span className="text-[14px] font-semibold text-white block">Atlas Batiment Modulaire</span>
-                    <span className="text-[13px] text-white/50">Maneah, Conakry, Guinee</span>
+              <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="border border-atlas-warm/60 overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30000!2d-13.404598!3d9.711116!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf1cd10f616fa64f%3A0x2a81b09c8ad67c70!2sManeah%2C%20Guinea!5e0!3m2!1sen!2s!4v1"
+                    width="100%"
+                    height="220"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Atlas BTM - Maneah, Conakry, Guinee"
+                  />
+                  <div className="bg-atlas-charcoal px-4 py-3 flex items-center gap-3">
+                    <MapPin className="w-4 h-4 text-atlas-red shrink-0" />
+                    <div>
+                      <span className="text-[13px] font-semibold text-white block">Guinee</span>
+                      <span className="text-[12px] text-white/50">Maneah, Conakry, Guinee</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="border border-atlas-warm/60 overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30000!2d-9.310239!3d10.382001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xf0c50939e60e20f%3A0x765fc481e2b1f25a!2sKankan%2C%20Guinea!5e0!3m2!1sen!2s!4v1"
+                    width="100%"
+                    height="220"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Atlas BTM - Kankan, Guinee"
+                  />
+                  <div className="bg-atlas-charcoal px-4 py-3 flex items-center gap-3">
+                    <MapPin className="w-4 h-4 text-atlas-red shrink-0" />
+                    <div>
+                      <span className="text-[13px] font-semibold text-white block">Guinee — Kankan</span>
+                      <span className="text-[12px] text-white/50">Kankan, Guinee</span>
+                    </div>
                   </div>
                 </div>
               </div>

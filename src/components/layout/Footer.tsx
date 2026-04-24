@@ -81,7 +81,10 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-3">
                 <Phone className="w-3.5 h-3.5 text-atlas-red shrink-0" />
-                <span className="text-[13px] text-white/60">+32 490 10 49 05</span>
+                <div className="text-[13px] text-white/60">
+                  <span className="block">+224 624 24 19 77</span>
+                  <span className="block">+224 622 38 35 01</span>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-3.5 h-3.5 text-atlas-red shrink-0" />
@@ -92,9 +95,12 @@ export function Footer() {
                   atlasbatimodulaire@gmail.com
                 </a>
               </li>
-              <li className="flex items-center gap-3">
-                <MapPin className="w-3.5 h-3.5 text-atlas-red shrink-0" />
-                <span className="text-[13px] text-white/60">Maneah, Conakry, Guinee</span>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-3.5 h-3.5 text-atlas-red shrink-0 mt-0.5" />
+                <div className="text-[13px] text-white/60">
+                  <span className="block">Maneah, Conakry, Guinee</span>
+                  <span className="block">Kankan, Guinee</span>
+                </div>
               </li>
             </ul>
           </div>

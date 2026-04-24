@@ -216,7 +216,7 @@ export function HeroSection() {
             <div className="slide-cta inline-flex flex-col gap-3 sm:gap-4">
               <div className="flex flex-row gap-3 sm:gap-4">
                 <a
-                  href="tel:+32490104905"
+                  href="tel:+224624241977"
                   className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
                 >
                   <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />
