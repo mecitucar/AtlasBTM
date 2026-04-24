@@ -24,7 +24,7 @@ const slides = [
 const slideContent = {
   fr: [
     {
-      title: "Conteneurs\nModulaires",
+      title: "Conteneurs\nModulaires\nen Guinée",
       subtitle: "Production automatisée, matériaux supérieurs, normes internationales les plus élevées. Solutions clé en main pour tous vos projets.",
       cta: "Découvrir nos Conteneurs",
       ctaLink: "/products" as const,
@@ -38,7 +38,7 @@ const slideContent = {
   ],
   en: [
     {
-      title: "Modular\nContainers",
+      title: "Modular\nContainers\nin Guinea",
       subtitle: "Automated production, superior materials, highest international standards. Turnkey solutions for all your projects.",
       cta: "Discover our Containers",
       ctaLink: "/products" as const,

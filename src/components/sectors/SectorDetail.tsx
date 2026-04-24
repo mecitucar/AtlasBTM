@@ -164,12 +164,12 @@ const sectors: Record<string, SectorContent> = {
       { src: "/images/containers/transport-1.webp", alt: "Transport installations énergétiques" },
     ],
     applications: [
-      { fr: "Camps pour centrales solaires et parcs éoliens", en: "Camps for solar plants and wind farms" },
-      { fr: "Bases vie pour pipeline et raffineries", en: "Living bases for pipeline and refineries" },
-      { fr: "Laboratoires techniques et salles de contrôle", en: "Technical laboratories and control rooms" },
-      { fr: "Hébergement pour équipes de forage", en: "Accommodation for drilling teams" },
-      { fr: "Stations de traitement et de stockage", en: "Treatment and storage stations" },
-      { fr: "Bureaux de projet et centres de formation", en: "Project offices and training centers" },
+      { fr: "Camps modulaires pour sites miniers et énergétiques", en: "Modular camps for mining and energy sites" },
+      { fr: "Bases vie pour projets industriels en zones isolées", en: "Living bases for industrial projects in remote areas" },
+      { fr: "Centres techniques et salles de formation", en: "Technical centers and training rooms" },
+      { fr: "Hébergement modulaire pour équipes terrain", en: "Modular accommodation for field teams" },
+      { fr: "Solutions modulaires pour logistique et stockage", en: "Modular solutions for logistics and storage" },
+      { fr: "Bureaux modulaires et centres opérationnels", en: "Modular offices and operational centers" },
     ],
     approach: [
       { fr: "Analyse environnementale et contraintes du site", en: "Environmental analysis and site constraints" },
@@ -179,7 +179,7 @@ const sectors: Record<string, SectorContent> = {
     ],
     introFr: "Les projets énergétiques - solaire, éolien, pétrole, gaz - se déploient dans des zones souvent isolées et difficiles d'accès. Atlas fournit l'ensemble des infrastructures de vie et de travail nécessaires au fonctionnement de ces sites : hébergement, bureaux, laboratoires, restauration. Nos modules sont conçus pour résister aux environnements les plus exigeants tout en offrant un confort optimal aux équipes.",
     introEn: "Energy projects - solar, wind, oil, gas - deploy in often isolated and hard-to-access zones. Atlas provides all the living and working infrastructure needed for these sites: accommodation, offices, laboratories, catering. Our modules are designed to withstand the most demanding environments while offering optimal comfort to teams.",
-    challengeFr: "Les sites énergétiques opèrent souvent dans des régions où il n'existe aucune infrastructure. Les équipes doivent disposer d'installations complètes - hébergement, restauration, bureaux, soins médicaux - dans des délais très courts et des conditions climatiques extrêmes.",
+    challengeFr: "En Guinée, les sites énergétiques et miniers sont souvent situés dans des zones isolées, sans infrastructure existante. Les équipes doivent disposer rapidement d'installations complètes – hébergement, restauration, bureaux et services médicaux – capables de résister aux conditions climatiques locales, notamment la chaleur, l'humidité et les fortes pluies.",
     challengeEn: "Energy sites often operate in regions with no existing infrastructure. Teams need complete facilities - accommodation, catering, offices, medical care - within very tight deadlines and extreme climate conditions.",
   },
 };
@@ -360,10 +360,10 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
             </h2>
             <div className="w-16 h-[3px] bg-atlas-red mt-4 mx-auto" />
           </div>
-          <div className={`flex-1 grid grid-cols-1 ${data.images.length <= 3 ? "sm:grid-cols-3" : data.images.length <= 4 ? "sm:grid-cols-4" : "sm:grid-cols-5"}`} style={{ gap: "2px" }}>
+          <div className={`flex-1 grid grid-cols-2 ${data.images.length <= 3 ? "sm:grid-cols-3" : data.images.length <= 4 ? "sm:grid-cols-4" : "sm:grid-cols-5"}`} style={{ gap: "2px" }}>
             {data.images.map((img, i) => (
-              <div key={i} className="s-ext-item relative overflow-hidden group">
-                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 100vw, 33vw" quality={90} />
+              <div key={i} className="s-ext-item relative overflow-hidden group min-h-[150px]">
+                <Image src={img.src} alt={img.alt} fill className="object-cover group-hover:scale-110 transition-transform duration-700" sizes="(max-width: 640px) 50vw, 33vw" quality={90} />
               </div>
             ))}
           </div>
@@ -434,7 +434,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
                 <div className="w-16 h-[3px] bg-atlas-red mt-4 sm:mt-6 mb-5 sm:mb-8" />
                 <p className="text-[14px] sm:text-[16px] text-atlas-slate leading-relaxed">
                   {locale === "fr"
-                    ? "Chaque projet est unique. Notre processus s'adapte à vos contraintes spécifiques pour garantir une livraison dans les délais et conforme à vos exigences."
+                    ? "Chaque projet en Afrique de l'Ouest est unique. Nous concevons des solutions modulaires adaptées aux conditions extrêmes (chaleur, humidité, terrains difficiles) pour assurer une installation rapide, durable et parfaitement conforme aux exigences des sites miniers et industriels."
                     : "Every project is unique. Our process adapts to your specific constraints to guarantee on-time delivery that meets your requirements."}
                 </p>
               </div>

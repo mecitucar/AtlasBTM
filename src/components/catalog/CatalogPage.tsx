@@ -132,6 +132,20 @@ export function CatalogPage() {
 
       <section className="py-16 lg:py-24 bg-background">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-center mb-6 lg:mb-8">
+            <div className="spinning-border w-full max-w-[700px] bg-white shadow-lg p-[3px]">
+              <div className="bg-white overflow-hidden">
+                <Image
+                  src="/images/catalog/tarification-cover.png"
+                  alt="Catalogue et Tarification Base de Container"
+                  width={700}
+                  height={900}
+                  className="w-full h-auto"
+                  quality={95}
+                />
+              </div>
+            </div>
+          </div>
           <div
             ref={gridRef}
             className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
@@ -139,7 +153,7 @@ export function CatalogPage() {
             {pages.map((page) => (
               <div
                 key={page.num}
-                className="page-card group relative bg-white border border-atlas-warm/60 overflow-hidden cursor-pointer hover:shadow-xl hover:border-atlas-red/20 transition-all duration-300"
+                className="page-card spinning-border group relative bg-white p-[3px] cursor-pointer hover:shadow-xl transition-all duration-300"
                 onClick={() => setSelectedPage(page.num)}
               >
                 <div className="relative aspect-[1195/847]">

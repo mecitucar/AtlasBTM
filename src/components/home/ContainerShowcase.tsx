@@ -11,13 +11,13 @@ import { useGSAP } from "@gsap/react";
 const highlights = {
   fr: [
     { icon: Layers, title: "Empilable 4 Étages", desc: "Structures modulaires empilables jusqu'à 4 niveaux" },
-    { icon: RefreshCw, title: "Garantie Rachat 60%", desc: "Rachat garanti à 60% dans la première année" },
+    { icon: RefreshCw, title: "Service Local", desc: "Équipe locale en Guinée pour un accompagnement de proximité" },
     { icon: Shield, title: "Normes Internationales", desc: "Production certifiée aux plus hautes normes" },
     { icon: Truck, title: "Livraison Rapide", desc: "Prêt à l'emploi, expédition et installation rapides" },
   ],
   en: [
     { icon: Layers, title: "Stackable 4 Stories", desc: "Modular structures stackable up to 4 levels" },
-    { icon: RefreshCw, title: "60% Buyback Guarantee", desc: "Guaranteed buyback at 60% within first year" },
+    { icon: RefreshCw, title: "Local Service", desc: "Local team in Guinea for close support and assistance" },
     { icon: Shield, title: "International Standards", desc: "Production certified to highest standards" },
     { icon: Truck, title: "Fast Delivery", desc: "Ready to use, rapid shipping and installation" },
   ],
@@ -151,7 +151,7 @@ export function ContainerShowcase() {
             <span className="text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold">
               {locale === "fr" ? "Produit Phare" : "Featured Product"}
             </span>
-            <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight leading-[1.05]">
+            <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight leading-[1.05]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               Living Container
             </h2>
             <div className="w-16 h-[3px] bg-atlas-red mt-6 mb-8" />
@@ -209,7 +209,7 @@ export function ContainerShowcase() {
             <span className="text-[11px] tracking-[0.3em] uppercase text-atlas-red font-bold">
               {locale === "fr" ? "Produit Phare" : "Featured Product"}
             </span>
-            <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,7vw,2.5rem)] font-black text-white mt-2 tracking-tight leading-[1.05]">
+            <h2 className="font-[var(--font-heading)] text-[clamp(1.75rem,7vw,2.5rem)] font-black text-white mt-2 tracking-tight leading-[1.05]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               Living Container
             </h2>
             <div className="w-12 h-[3px] bg-atlas-red mt-3 mb-4" />

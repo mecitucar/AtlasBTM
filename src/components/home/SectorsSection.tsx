@@ -85,7 +85,7 @@ export function SectorsSection() {
   return (
     <section ref={container} className="relative h-screen bg-atlas-charcoal flex flex-col overflow-hidden">
       <div className="text-center pt-8 lg:pt-12 pb-5 lg:pb-8 shrink-0 px-5">
-        <h2 className="sectors-title font-[var(--font-heading)] text-[clamp(1.75rem,4vw,3.25rem)] font-black text-white tracking-tight">
+        <h2 className="sectors-title font-[var(--font-heading)] text-[clamp(1.75rem,4vw,3.25rem)] font-black text-white tracking-tight" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
           {t("title")}
         </h2>
         <div className="w-16 h-[3px] bg-atlas-red mt-4 mb-3 mx-auto" />

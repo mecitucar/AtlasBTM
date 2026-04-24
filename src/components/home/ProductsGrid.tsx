@@ -185,7 +185,7 @@ export function ProductsGrid() {
         <span className="text-[13px] tracking-[0.25em] uppercase text-white/70 font-bold">
           {t("title")}
         </span>
-        <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight text-center max-w-[700px]">
+        <h2 className="font-[var(--font-heading)] text-[clamp(2rem,4vw,3.5rem)] font-black text-white mt-4 tracking-tight text-center max-w-[700px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
           {t("subtitle")}
         </h2>
         <div className="w-16 h-[3px] bg-white mt-6" />
@@ -211,7 +211,7 @@ export function ProductsGrid() {
               <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold bg-white px-4 py-1.5 inline-block mb-5">
                 {t("title")}
               </span>
-              <h3 className="font-[var(--font-heading)] font-black text-[clamp(2rem,5vw,4rem)] text-white tracking-tighter mb-4 leading-[0.95]">
+              <h3 className="font-[var(--font-heading)] font-black text-[clamp(2rem,5vw,4rem)] text-white tracking-tighter mb-4 leading-[0.95]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
                 {t(`${product.key}.title`)}
               </h3>
               <p className="text-[17px] text-white/70 max-w-[550px] leading-relaxed mb-8">
