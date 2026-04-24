@@ -91,17 +91,18 @@ export function ContactPage() {
       <section ref={heroRef} className="relative h-[calc(100vh-100px)] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
           <Image src="/images/contact-hero.jpg" alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
+          <div className="absolute inset-0 bg-atlas-charcoal/50" />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-            <span className="ch-label text-[12px] tracking-[0.3em] uppercase text-white/50 font-bold block">
+            <span className="ch-label text-[12px] tracking-[0.3em] uppercase text-atlas-red font-bold block">
               {t("title")}
             </span>
-            <h1 className="ch-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white mt-5 leading-[0.95] tracking-tighter max-w-[700px]">
+            <h1 className="ch-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white mt-5 leading-[0.95] tracking-tighter max-w-[700px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.4)" }}>
               {t("subtitle")}
             </h1>
             <div className="ch-line w-20 h-[3px] bg-atlas-red mt-8 mb-8" />
-            <p className="ch-desc text-[19px] text-white/50 leading-relaxed max-w-[500px]">
+            <p className="ch-desc text-[19px] text-white/80 leading-relaxed max-w-[500px]">
               {t("quoteSubtitle")}
             </p>
           </div>
