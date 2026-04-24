@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, FileText, Download } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -213,35 +213,46 @@ export function HeroSection() {
               {currentContent.subtitle}
             </p>
 
-            <div className="slide-cta flex flex-row gap-3 sm:gap-4">
-              <a
-                href="tel:+32490104905"
-                className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
+            <div className="slide-cta inline-flex flex-col gap-3 sm:gap-4">
+              <div className="flex flex-row gap-3 sm:gap-4">
+                <a
+                  href="tel:+32490104905"
+                  className="group flex items-center gap-4 sm:gap-5 bg-atlas-red hover:bg-atlas-red-dark px-6 sm:px-10 py-4 sm:py-5 transition-colors"
+                >
+                  <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />
+                  <div>
+                    <span className="block text-[10px] sm:text-[11px] text-white/70 uppercase tracking-widest font-medium leading-none mb-1.5">
+                      {locale === "fr" ? "Téléphone" : "Phone"}
+                    </span>
+                    <span className="block text-[15px] sm:text-[18px] text-white font-bold leading-none">
+                      {locale === "fr" ? "Appelez-nous" : "Call Us"}
+                    </span>
+                  </div>
+                </a>
+                <a
+                  href="mailto:atlasbatimodulaire@gmail.com"
+                  className="group flex items-center gap-4 sm:gap-5 bg-white hover:bg-white/90 px-6 sm:px-10 py-4 sm:py-5 transition-colors"
+                >
+                  <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-atlas-red shrink-0" />
+                  <div>
+                    <span className="block text-[10px] sm:text-[11px] text-atlas-charcoal/50 uppercase tracking-widest font-medium leading-none mb-1.5">
+                      Email
+                    </span>
+                    <span className="block text-[15px] sm:text-[18px] text-atlas-charcoal font-bold leading-none">
+                      {locale === "fr" ? "Écrivez-nous" : "Write Us"}
+                    </span>
+                  </div>
+                </a>
+              </div>
+              <Link
+                href="/catalog"
+                className="group flex items-center justify-between bg-atlas-charcoal/80 hover:bg-atlas-charcoal px-6 sm:px-8 py-3.5 sm:py-4 transition-colors"
               >
-                <Phone className="w-6 h-6 sm:w-7 sm:h-7 text-white shrink-0" />
-                <div>
-                  <span className="block text-[10px] sm:text-[11px] text-white/70 uppercase tracking-widest font-medium leading-none mb-1.5">
-                    {locale === "fr" ? "Téléphone" : "Phone"}
-                  </span>
-                  <span className="block text-[15px] sm:text-[18px] text-white font-bold leading-none">
-                    {locale === "fr" ? "Appelez-nous" : "Call Us"}
-                  </span>
-                </div>
-              </a>
-              <a
-                href="mailto:atlasbatimodulaire@gmail.com"
-                className="group flex items-center gap-4 sm:gap-5 bg-white hover:bg-white/90 px-6 sm:px-10 py-4 sm:py-5 transition-colors"
-              >
-                <Mail className="w-6 h-6 sm:w-7 sm:h-7 text-atlas-red shrink-0" />
-                <div>
-                  <span className="block text-[10px] sm:text-[11px] text-atlas-charcoal/50 uppercase tracking-widest font-medium leading-none mb-1.5">
-                    Email
-                  </span>
-                  <span className="block text-[15px] sm:text-[18px] text-atlas-charcoal font-bold leading-none">
-                    {locale === "fr" ? "Écrivez-nous" : "Write Us"}
-                  </span>
-                </div>
-              </a>
+                <span className="text-[15px] sm:text-[17px] text-white font-bold">
+                  {locale === "fr" ? "Consultez notre catalogue" : "Browse our catalog"}
+                </span>
+                <ArrowRight className="w-5 h-5 text-white/50 group-hover:translate-x-1 transition-transform" />
+              </Link>
             </div>
           </div>
         </div>

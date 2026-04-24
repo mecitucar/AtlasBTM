@@ -3,7 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Download, FileText } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -62,13 +62,24 @@ export function CTASection() {
               Contactez nos experts pour discuter de votre projet et recevoir
               une proposition personnalisee.
             </p>
-            <Link
-              href="/contact"
-              className="reveal group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-10 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
-            >
-              {nav("contact")}
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
-            </Link>
+            <div className="reveal flex flex-wrap gap-4">
+              <Link
+                href="/contact"
+                className="group inline-flex items-center gap-3 bg-atlas-red hover:bg-atlas-red-dark text-white px-10 py-5 text-[15px] font-bold tracking-wider uppercase transition-colors"
+              >
+                {nav("contact")}
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1.5 transition-transform" />
+              </Link>
+              <a
+                href="/catalog/atlas-catalog.pdf"
+                download="Atlas-BTM-Catalogue.pdf"
+                className="group inline-flex items-center gap-3 border-2 border-white/25 hover:bg-white/10 text-white px-8 py-5 text-[15px] font-bold tracking-wider uppercase transition-all"
+              >
+                <FileText className="w-5 h-5" />
+                Catalogue PDF
+                <Download className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

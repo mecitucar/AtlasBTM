@@ -3,7 +3,7 @@
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
-import { ArrowRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, Phone, Mail, FileText, Download } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
@@ -102,6 +102,24 @@ export function HomeCTA() {
                     </a>
                   </div>
                 </div>
+                <a
+                  href="/catalog/atlas-catalog.pdf"
+                  download="Atlas-BTM-Catalogue.pdf"
+                  className="group flex items-center gap-4 sm:gap-5 p-4 sm:p-6 bg-atlas-red/90 hover:bg-atlas-red backdrop-blur-sm transition-colors"
+                >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/15 flex items-center justify-center shrink-0">
+                    <FileText className="w-4 h-4 sm:w-5 sm:h-5 text-white" />
+                  </div>
+                  <div className="min-w-0 flex-1">
+                    <span className="text-[11px] sm:text-[12px] text-white/60 uppercase tracking-wider font-medium block mb-0.5 sm:mb-1">
+                      {locale === "fr" ? "Catalogue Technique" : "Technical Catalog"}
+                    </span>
+                    <span className="text-[13px] sm:text-[16px] text-white font-bold">
+                      {locale === "fr" ? "Telecharger le PDF" : "Download PDF"}
+                    </span>
+                  </div>
+                  <Download className="w-5 h-5 text-white/70 group-hover:translate-y-0.5 transition-transform shrink-0" />
+                </a>
               </div>
             </div>
           </div>
