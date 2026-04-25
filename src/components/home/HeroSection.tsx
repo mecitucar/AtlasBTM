@@ -7,15 +7,16 @@ import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, FileText, Download 
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { heroes, containers } from "@/lib/images";
 
 const slides = [
   {
-    src: "/images/hero-container.webp",
+    src: heroes.main,
     alt: "Construction modulaire Atlas - conteneurs préfabriqués",
     layout: "left" as const,
   },
   {
-    src: "/images/containers/port-containers.webp",
+    src: containers.portContainers,
     alt: "Conteneurs modulaires au port - expédition internationale",
     layout: "left" as const,
   },

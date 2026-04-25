@@ -7,14 +7,15 @@ import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 const projects = [
-  { title: { fr: "Batiments de Mobilisation", en: "Mobilization Buildings" }, location: { fr: "Europe", en: "Europe" }, image: "/images/containers/finished-1.webp", alt: "Batiments de mobilisation modulaires" },
-  { title: { fr: "Camp Minier", en: "Mining Camp" }, location: { fr: "Afrique", en: "Africa" }, image: "/images/containers/site-aerial-2.webp", alt: "Camp minier modulaire vue aerienne" },
-  { title: { fr: "Batiments de Chantier", en: "Construction Site Buildings" }, location: { fr: "Europe", en: "Europe" }, image: "/images/containers/camp-1.webp", alt: "Camp de chantier construction modulaire" },
-  { title: { fr: "Camp Installation Energetique", en: "Energy Facility Camp" }, location: { fr: "Moyen-Orient", en: "Middle East" }, image: "/images/containers/port-containers.webp", alt: "Conteneurs pour projet energetique" },
-  { title: { fr: "Batiments Polyvalents", en: "Multi-Purpose Buildings" }, location: { fr: "Europe", en: "Europe" }, image: "/images/containers/finished-2.webp", alt: "Batiments polyvalents modulaires" },
-  { title: { fr: "Conteneurs Bureau", en: "Office Containers" }, location: { fr: "Europe", en: "Europe" }, image: "/images/containers/interior-1.webp", alt: "Interieur conteneur bureau modulaire" },
+  { title: { fr: "Batiments de Mobilisation", en: "Mobilization Buildings" }, location: { fr: "Europe", en: "Europe" }, image: containers.finished1, alt: "Batiments de mobilisation modulaires" },
+  { title: { fr: "Camp Minier", en: "Mining Camp" }, location: { fr: "Afrique", en: "Africa" }, image: containers.siteAerial2, alt: "Camp minier modulaire vue aerienne" },
+  { title: { fr: "Batiments de Chantier", en: "Construction Site Buildings" }, location: { fr: "Europe", en: "Europe" }, image: containers.camp1, alt: "Camp de chantier construction modulaire" },
+  { title: { fr: "Camp Installation Energetique", en: "Energy Facility Camp" }, location: { fr: "Moyen-Orient", en: "Middle East" }, image: containers.portContainers, alt: "Conteneurs pour projet energetique" },
+  { title: { fr: "Batiments Polyvalents", en: "Multi-Purpose Buildings" }, location: { fr: "Europe", en: "Europe" }, image: containers.finished2, alt: "Batiments polyvalents modulaires" },
+  { title: { fr: "Conteneurs Bureau", en: "Office Containers" }, location: { fr: "Europe", en: "Europe" }, image: containers.interior1, alt: "Interieur conteneur bureau modulaire" },
 ];
 
 export function LatestProjects() {

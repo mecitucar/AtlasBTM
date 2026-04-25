@@ -5,15 +5,7 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-
-const allImages = [
-  "01","02","03","04","05","06","07","08","10","11",
-  "12","13","14","15","16","17","18","19","20","21",
-  "22","23","24","25","26","27","28","29","30","31",
-  "32","33","34","35","36","37","38","39","40","41",
-  "42","43","44","46","48","49","50","51","52","53",
-  "54","55","56","57",
-].map(n => `/images/showcase/${n}.webp`);
+import { showcase as allImages } from "@/lib/images";
 
 // 6 sütun, 3 satır = 18 tile, boşluk yok
 // Bazıları geniş (col-span-2) veya uzun (row-span-2) ama toplam hücre sayısı tam oturuyor
@@ -55,10 +47,9 @@ function buildDeterministicPools(): string[][] {
   return pools;
 }
 
-function MosaicTile({ images }: { images: string[] }) {
+function MosaicTile({ images, index }: { images: string[]; index: number }) {
   const [currentIdx, setCurrentIdx] = useState(0);
   const [showNext, setShowNext] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval>>(undefined);
   const pool = useRef(images);
 
   useEffect(() => {
@@ -66,26 +57,26 @@ function MosaicTile({ images }: { images: string[] }) {
   }, [images]);
 
   useEffect(() => {
-    const delay = 5000 + Math.random() * 8000;
+    const stagger = index * 2000 + 3000;
+    const cycle = TILE_COUNT * 2000;
+    let timeout: ReturnType<typeof setTimeout>;
 
     const swap = () => {
       setShowNext(true);
       setTimeout(() => {
         setCurrentIdx((prev) => (prev + 1) % pool.current.length);
         setShowNext(false);
-      }, 2000);
+      }, 1500);
+      timeout = setTimeout(swap, cycle);
     };
 
-    const startTimeout = setTimeout(() => {
-      swap();
-      intervalRef.current = setInterval(swap, 8000 + Math.random() * 7000);
-    }, delay);
+    const startTimeout = setTimeout(swap, stagger);
 
     return () => {
       clearTimeout(startTimeout);
-      if (intervalRef.current) clearInterval(intervalRef.current);
+      clearTimeout(timeout);
     };
-  }, []);
+  }, [index]);
 
   const nextIdx = (currentIdx + 1) % pool.current.length;
 
@@ -199,7 +190,7 @@ export function ImageMosaic() {
       <div className="grid grid-cols-6 gap-[2px] flex-1" style={{ gridAutoRows: "1fr" }}>
         {grid.map((span, i) => (
           <div key={i} className={`mosaic-tile ${span.col} ${span.row}`}>
-            <MosaicTile images={pools[i]} />
+            <MosaicTile images={pools[i]} index={i} />
           </div>
         ))}
       </div>

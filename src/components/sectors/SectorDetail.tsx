@@ -8,6 +8,7 @@ import { ArrowRight, ChevronRight, Phone, Mail } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { Footer } from "@/components/layout/Footer";
+import { containers, prefab, mining as miningImages, defense as defenseImages, heroes } from "@/lib/images";
 
 interface SectorContent {
   heroImage: string;
@@ -24,29 +25,37 @@ interface SectorContent {
 
 const sectors: Record<string, SectorContent> = {
   prefab: {
-    heroImage: "/images/containers/prefab-new.webp",
+    heroImage: containers.prefabNew,
     heroAlt: "Container préfabriqué modulaire Atlas Bâtiment Modulaire",
     images: [
-      { src: "/images/showcase/07.webp", alt: "Conteneur préfabriqué - vue extérieure" },
-      { src: "/images/prefab/exterior-2.webp", alt: "Bâtiment modulaire préfabriqué Atlas" },
-      { src: "/images/prefab/exterior-3.webp", alt: "Conteneurs modulaires sur site" },
-      { src: "/images/prefab/exterior-4.webp", alt: "Installation conteneurs préfabriqués" },
-      { src: "/images/prefab/exterior-5.webp", alt: "Conteneurs livrés sur chantier" },
-      { src: "/images/prefab/exterior-6.webp", alt: "Assemblage modulaire extérieur" },
-      { src: "/images/prefab/exterior-7.webp", alt: "Conteneur préfabriqué terminé" },
-      { src: "/images/prefab/exterior-8.webp", alt: "Vue extérieure camp modulaire" },
-      { src: "/images/prefab/exterior-9.webp", alt: "Conteneurs préfabriqués alignés" },
-      { src: "/images/prefab/exterior-10.webp", alt: "Projet conteneur préfabriqué Atlas" },
+      { src: "/images/home/showcase/07.webp", alt: "Conteneur préfabriqué - vue extérieure" },
+      ...prefab.exterior.slice(1).map((src, i) => ({
+        src,
+        alt: [
+          "Bâtiment modulaire préfabriqué Atlas",
+          "Conteneurs modulaires sur site",
+          "Installation conteneurs préfabriqués",
+          "Conteneurs livrés sur chantier",
+          "Assemblage modulaire extérieur",
+          "Conteneur préfabriqué terminé",
+          "Vue extérieure camp modulaire",
+          "Conteneurs préfabriqués alignés",
+          "Projet conteneur préfabriqué Atlas",
+        ][i] || "Conteneur préfabriqué Atlas",
+      })),
     ],
-    interiorImages: [
-      { src: "/images/prefab/interior-1.webp", alt: "Intérieur conteneur préfabriqué - aménagement" },
-      { src: "/images/prefab/interior-2.webp", alt: "Intérieur conteneur - espace de vie" },
-      { src: "/images/prefab/interior-3.webp", alt: "Intérieur conteneur - finitions qualité" },
-      { src: "/images/prefab/interior-4.webp", alt: "Intérieur conteneur - cuisine équipée" },
-      { src: "/images/prefab/interior-5.webp", alt: "Intérieur conteneur - chambre" },
-      { src: "/images/prefab/interior-6.webp", alt: "Intérieur conteneur - salle de bain" },
-      { src: "/images/prefab/interior-7.webp", alt: "Intérieur conteneur - détails finition" },
-    ],
+    interiorImages: prefab.interior.map((src, i) => ({
+      src,
+      alt: [
+        "Intérieur conteneur préfabriqué - aménagement",
+        "Intérieur conteneur - espace de vie",
+        "Intérieur conteneur - finitions qualité",
+        "Intérieur conteneur - cuisine équipée",
+        "Intérieur conteneur - chambre",
+        "Intérieur conteneur - salle de bain",
+        "Intérieur conteneur - détails finition",
+      ][i] || "Intérieur conteneur préfabriqué",
+    })),
     applications: [
       { fr: "Bureaux modulaires temporaires et permanents", en: "Temporary and permanent modular offices" },
       { fr: "Logements ouvriers et camps de vie", en: "Worker housing and living camps" },
@@ -67,20 +76,23 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Modern projects demand speed, flexibility, and uncompromising quality. Traditional construction cannot always meet these constraints. Our prefabricated containers eliminate on-site uncertainties by transferring 90% of work to the factory.",
   },
   mining: {
-    heroImage: "/images/mining/maden-hero.webp",
+    heroImage: miningImages.hero,
     heroAlt: "Camp minier modulaire déploiement rapide Atlas",
-    images: [
-      { src: "/images/mining/maden1.webp", alt: "Camp minier modulaire - vue générale" },
-      { src: "/images/mining/maden2.webp", alt: "Installation camp minier sur site" },
-      { src: "/images/mining/maden3.webp", alt: "Modules d'hébergement camp minier" },
-      { src: "/images/mining/maden5.webp", alt: "Infrastructure camp minier" },
-      { src: "/images/mining/maden6.webp", alt: "Bâtiments modulaires site minier" },
-      { src: "/images/mining/maden7.webp", alt: "Camp minier opérationnel" },
-      { src: "/images/mining/maden8.webp", alt: "Hébergement équipes minières" },
-      { src: "/images/mining/maden9.webp", alt: "Installations camp minier" },
-      { src: "/images/mining/maden10.webp", alt: "Vue aérienne camp minier" },
-      { src: "/images/mining/maden11.webp", alt: "Camp minier Atlas complet" },
-    ],
+    images: miningImages.gallery.map((src, i) => ({
+      src,
+      alt: [
+        "Camp minier modulaire - vue générale",
+        "Installation camp minier sur site",
+        "Modules d'hébergement camp minier",
+        "Infrastructure camp minier",
+        "Bâtiments modulaires site minier",
+        "Camp minier opérationnel",
+        "Hébergement équipes minières",
+        "Installations camp minier",
+        "Vue aérienne camp minier",
+        "Camp minier Atlas complet",
+      ][i] || "Camp minier Atlas",
+    })),
     applications: [
       { fr: "Camps d'hébergement 50 à 2000 personnes", en: "Accommodation camps for 50 to 2000 people" },
       { fr: "Réfectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
@@ -101,12 +113,12 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Mining sites are often located in remote areas with no existing infrastructure. Teams must be housed, fed, and cared for on-site, in compliance with the strictest safety standards, all within minimal timeframes.",
   },
   construction: {
-    heroImage: "/images/containers/camp-1.webp",
+    heroImage: containers.camp1,
     heroAlt: "Camp de construction modulaire pour grands chantiers",
     images: [
-      { src: "/images/containers/assembly-2.webp", alt: "Montage rapide camp de chantier" },
-      { src: "/images/containers/interior-1.webp", alt: "Intérieur bureau de chantier" },
-      { src: "/images/containers/finished-2.webp", alt: "Camp construction opérationnel" },
+      { src: containers.assembly2, alt: "Montage rapide camp de chantier" },
+      { src: containers.interior1, alt: "Intérieur bureau de chantier" },
+      { src: containers.finished2, alt: "Camp construction opérationnel" },
     ],
     applications: [
       { fr: "Bureaux de direction et de supervision de chantier", en: "Site management and supervision offices" },
@@ -128,13 +140,16 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "A construction site constantly evolves. Headcounts vary, needs change, and facilities must keep pace. Flexibility and speed of deployment are essential to maintaining productivity.",
   },
   defense: {
-    heroImage: "/images/defense/defence-hero.webp",
+    heroImage: defenseImages.hero,
     heroAlt: "Base militaire modulaire Atlas Bâtiment Modulaire",
-    images: [
-      { src: "/images/defense/defence-1.webp", alt: "Installation modulaire base militaire" },
-      { src: "/images/defense/defence-2.webp", alt: "Structures défense déployées sur site" },
-      { src: "/images/defense/defence-3.webp", alt: "Camp militaire modulaire opérationnel" },
-    ],
+    images: defenseImages.gallery.map((src, i) => ({
+      src,
+      alt: [
+        "Installation modulaire base militaire",
+        "Structures défense déployées sur site",
+        "Camp militaire modulaire opérationnel",
+      ][i] || "Installation défense Atlas",
+    })),
     applications: [
       { fr: "Postes de commandement et centres opérationnels", en: "Command posts and operational centers" },
       { fr: "Casernements et quartiers d'hébergement", en: "Barracks and accommodation quarters" },
@@ -155,13 +170,13 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Armed forces need operational infrastructure in hours, not months. These structures must withstand extreme conditions, operate autonomously, and be redeployable without notice.",
   },
   energy: {
-    heroImage: "/images/containers/port-containers.webp",
+    heroImage: containers.portContainers,
     heroAlt: "Installations modulaires pour projets énergétiques internationaux",
     images: [
-      { src: "/images/containers/site-aerial-1.webp", alt: "Vue aérienne installations énergétiques" },
-      { src: "/images/containers/factory-1.webp", alt: "Production modules techniques" },
-      { src: "/images/containers/finished-1.webp", alt: "Modules énergétiques terminés" },
-      { src: "/images/containers/transport-1.webp", alt: "Transport installations énergétiques" },
+      { src: containers.siteAerial1, alt: "Vue aérienne installations énergétiques" },
+      { src: containers.factory1, alt: "Production modules techniques" },
+      { src: containers.finished1, alt: "Modules énergétiques terminés" },
+      { src: containers.transport1, alt: "Transport installations énergétiques" },
     ],
     applications: [
       { fr: "Camps modulaires pour sites miniers et énergétiques", en: "Modular camps for mining and energy sites" },
@@ -468,7 +483,7 @@ export function SectorDetail({ sectorKey }: { sectorKey: string }) {
         {/* ── CTA ── */}
         <section className="relative h-screen overflow-hidden flex items-center" style={snapStyle}>
           <div className="absolute inset-0">
-            <Image src="/images/cta-bg.webp" alt="Atlas Bâtiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" quality={90} />
+            <Image src={heroes.cta} alt="Atlas Bâtiment Modulaire - conception projet" fill className="object-cover" sizes="100vw" quality={90} />
             <div className="absolute inset-0 bg-atlas-red/40" />
           </div>
           <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">

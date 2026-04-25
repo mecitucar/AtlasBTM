@@ -7,16 +7,17 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 const solutions = [
   {
     key: "worksite",
-    image: "/images/containers/camp-1.webp",
+    image: containers.camp1,
     alt: "Camp de chantier modulaire Atlas - deploiement rapide",
   },
   {
     key: "multipurpose",
-    image: "/images/containers/finished-2.webp",
+    image: containers.finished2,
     alt: "Batiments polyvalents modulaires Atlas",
   },
 ];

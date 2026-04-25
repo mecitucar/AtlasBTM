@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 const values = [
   {
@@ -65,7 +66,7 @@ export function DifferenceSection() {
           <div className="lg:col-span-5">
             <div className="diff-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
               <Image
-                src="/images/showcase/49.webp"
+                src="/images/shared/placeholder.webp"
                 alt="Production de conteneurs modulaires Atlas"
                 fill
                 className="object-cover"

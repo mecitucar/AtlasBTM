@@ -7,13 +7,14 @@ import { useGSAP } from "@gsap/react";
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import { containers, mining, defense } from "@/lib/images";
 
 const sectors = [
-  { key: "prefab", image: "/images/containers/finished-1.webp", href: "/sectors/prefab" },
-  { key: "mining", image: "/images/mining/maden-hero.webp", href: "/sectors/mining" },
-  { key: "construction", image: "/images/containers/camp-1.webp", href: "/sectors/construction" },
-  { key: "defense", image: "/images/defense/defence-hero.webp", href: "/sectors/defense" },
-  { key: "energy", image: "/images/containers/port-containers.webp", href: "/sectors/energy" },
+  { key: "prefab", image: containers.finished1, href: "/sectors/prefab" },
+  { key: "mining", image: mining.hero, href: "/sectors/mining" },
+  { key: "construction", image: containers.camp1, href: "/sectors/construction" },
+  { key: "defense", image: defense.hero, href: "/sectors/defense" },
+  { key: "energy", image: containers.portContainers, href: "/sectors/energy" },
 ];
 
 export function SectorsSection() {

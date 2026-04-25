@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
+import { logo } from "@/lib/images";
 
 export function Footer() {
   const t = useTranslations("footer");
@@ -16,7 +17,7 @@ export function Footer() {
           {/* Logo + description */}
           <div className="col-span-2 lg:col-span-1">
             <Image
-              src="/images/logo-transparent.png"
+              src={logo.transparent}
               alt="Atlas Bâtiment Modulaire"
               width={200}
               height={56}

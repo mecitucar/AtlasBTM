@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowRight, Layers, RefreshCw, Shield, Truck } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 const highlights = {
   fr: [
@@ -137,7 +138,7 @@ export function ContainerShowcase() {
       <div className="hidden lg:grid grid-cols-2 h-full">
         <div className="relative cs-image">
           <Image
-            src="/images/containers/finished-1.webp"
+            src={containers.finished1}
             alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"
@@ -195,7 +196,7 @@ export function ContainerShowcase() {
       <div className="lg:hidden relative min-h-screen flex flex-col">
         <div className="absolute inset-0 cs-image">
           <Image
-            src="/images/containers/finished-1.webp"
+            src={containers.finished1}
             alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"

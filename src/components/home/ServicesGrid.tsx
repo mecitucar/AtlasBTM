@@ -14,40 +14,41 @@ import {
   Zap,
   ArrowUpRight,
 } from "lucide-react";
+import { containers } from "@/lib/images";
 
 const services = [
   {
     key: "prefab",
     icon: Container,
-    image: "/images/containers/finished-1.webp",
+    image: containers.finished1,
     altText: "Conteneurs préfabriqués modulaires - livraison rapide",
     featured: true,
   },
   {
     key: "mining",
     icon: Pickaxe,
-    image: "/images/containers/site-aerial-2.webp",
+    image: containers.siteAerial2,
     altText: "Camps modulaires pour sites miniers",
     featured: true,
   },
   {
     key: "construction",
     icon: HardHat,
-    image: "/images/containers/camp-1.webp",
+    image: containers.camp1,
     altText: "Camps construction modulaires pour chantiers",
     featured: false,
   },
   {
     key: "defense",
     icon: Shield,
-    image: "/images/containers/finished-2.webp",
+    image: containers.finished2,
     altText: "Structures modulaires pour industrie de la défense",
     featured: false,
   },
   {
     key: "energy",
     icon: Zap,
-    image: "/images/containers/port-containers.webp",
+    image: containers.portContainers,
     altText: "Installations modulaires pour projets énergétiques",
     featured: false,
   },

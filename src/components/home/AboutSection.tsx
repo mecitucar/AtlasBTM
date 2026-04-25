@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 export function AboutSection() {
   const locale = useLocale() as "fr" | "en";
@@ -52,7 +53,7 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="about-image overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
             <Image
-              src="/images/containers/factory-1.webp"
+              src={containers.factory1}
               alt="Usine de production Atlas Batiment Modulaire - fabrication de conteneurs modulaires"
               width={700}
               height={525}

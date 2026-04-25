@@ -11,26 +11,27 @@ import {
   FileText,
 } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
+import { heroes, containers } from "@/lib/images";
 
 const products = [
   {
     key: "prefab",
-    image: "/images/containers/prefab-new.webp",
+    image: containers.prefabNew,
     altText: "Bâtiments préfabriqués modulaires - production en usine livraison rapide",
   },
   {
     key: "container",
-    image: "/images/showcase/49.webp",
+    image: "/images/shared/placeholder.webp",
     altText: "Living containers modulaires prêts à l'emploi",
   },
   {
     key: "lightsteel",
-    image: "/images/containers/assembly-1.webp",
+    image: containers.assembly1,
     altText: "Construction acier leger galvanise durable",
   },
   {
     key: "structural",
-    image: "/images/containers/factory-1.webp",
+    image: containers.factory1,
     altText: "Structures acier grande portee assemblage precis",
   },
 ];
@@ -88,7 +89,7 @@ export function ProductsPage() {
       >
         <div className="absolute inset-0">
           <Image
-            src="/images/hero-container.webp"
+            src={heroes.main}
             alt="Atlas Bâtiment Modulaire - conteneurs modulaires"
             fill
             className="object-cover"

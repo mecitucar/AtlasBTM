@@ -8,6 +8,7 @@ import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
+import { heroes } from "@/lib/images";
 
 export function HomeCTA() {
   const nav = useTranslations("nav");
@@ -33,7 +34,7 @@ export function HomeCTA() {
         <BlueprintGrid opacity={0.04} />
         <div className="absolute inset-0">
           <Image
-            src="/images/cta-bg.webp"
+            src={heroes.cta}
             alt="Atlas Bâtiment Modulaire - conception projet modulaire"
             fill
             className="object-cover"

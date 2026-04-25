@@ -7,6 +7,7 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 export function ProductionPlant() {
   const locale = useLocale() as "fr" | "en";
@@ -72,7 +73,7 @@ export function ProductionPlant() {
 
           <div className="plant-image overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
             <Image
-              src="/images/showcase/49.webp"
+              src="/images/shared/placeholder.webp"
               alt="Centre de production Atlas - lignes automatiques de fabrication modulaire"
               width={700}
               height={525}

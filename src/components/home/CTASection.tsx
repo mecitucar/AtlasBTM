@@ -7,6 +7,7 @@ import { ArrowRight, Download, FileText } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 export function CTASection() {
   const t = useTranslations("cta");
@@ -41,7 +42,7 @@ export function CTASection() {
     <section ref={container} className="relative h-[60vh] min-h-[400px] overflow-hidden">
       <div className="absolute inset-[-20%] cta-bg-img">
         <Image
-          src="/images/containers/site-aerial-1.webp"
+          src={containers.siteAerial1}
           alt="Projet de construction modulaire Atlas Batiment Modulaire - vue aerienne du chantier"
           fill
           className="object-cover"

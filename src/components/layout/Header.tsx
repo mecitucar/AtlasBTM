@@ -9,6 +9,7 @@ import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { logo } from "@/lib/images";
 
 const navLinks = [
   { href: "/", key: "home" },
@@ -160,7 +161,7 @@ export function Header() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="shrink-0">
             <Image
-              src="/images/logo-transparent.png"
+              src={logo.transparent}
               alt="Atlas Batiment Modulaire"
               width={180}
               height={50}

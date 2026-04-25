@@ -14,51 +14,52 @@ import {
 } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 const solutions = [
   {
     key: "prefab",
     icon: Container,
     gradient: "from-atlas-charcoal to-atlas-navy",
-    mainImage: "/images/containers/finished-1.webp",
+    mainImage: containers.finished1,
     altText: "Container prefabrique modulaire - livraison rapide garantie",
-    gallery: ["/images/containers/finished-2.webp", "/images/containers/assembly-1.webp", "/images/showcase/49.webp"],
+    gallery: [containers.finished2, containers.assembly1, "/images/shared/placeholder.webp"],
     galleryAlts: ["Conteneurs prefabriques assembles sur site", "Assemblage de conteneur modulaire", "Production de conteneurs en usine"],
   },
   {
     key: "mining",
     icon: Pickaxe,
     gradient: "from-atlas-red-dark to-atlas-red",
-    mainImage: "/images/containers/site-aerial-2.webp",
+    mainImage: containers.siteAerial2,
     altText: "Camps modulaires pour sites miniers - deploiement rapide",
-    gallery: ["/images/containers/site-aerial-1.webp", "/images/containers/camp-1.webp", "/images/containers/assembly-2.webp"],
+    gallery: [containers.siteAerial1, containers.camp1, containers.assembly2],
     galleryAlts: ["Vue aerienne camp minier modulaire", "Installation camp minier", "Montage structures pour mines"],
   },
   {
     key: "construction",
     icon: HardHat,
     gradient: "from-atlas-charcoal to-atlas-slate",
-    mainImage: "/images/containers/camp-1.webp",
+    mainImage: containers.camp1,
     altText: "Camps construction modulaires pour chantiers",
-    gallery: ["/images/containers/interior-1.webp", "/images/containers/assembly-1.webp", "/images/containers/transport-1.webp"],
+    gallery: [containers.interior1, containers.assembly1, containers.transport1],
     galleryAlts: ["Interieur camp de chantier", "Assemblage camp construction", "Transport modules construction"],
   },
   {
     key: "defense",
     icon: Shield,
     gradient: "from-atlas-navy to-atlas-slate",
-    mainImage: "/images/containers/finished-2.webp",
+    mainImage: containers.finished2,
     altText: "Structures modulaires pour industrie de la defense",
-    gallery: ["/images/containers/port-containers.webp", "/images/containers/factory-1.webp", "/images/showcase/49.webp"],
+    gallery: [containers.portContainers, containers.factory1, "/images/shared/placeholder.webp"],
     galleryAlts: ["Conteneurs defense au port", "Production en usine pour la defense", "Fabrication structures defense"],
   },
   {
     key: "energy",
     icon: Zap,
     gradient: "from-atlas-red-dark to-atlas-red-light",
-    mainImage: "/images/containers/port-containers.webp",
+    mainImage: containers.portContainers,
     altText: "Installations modulaires pour projets energetiques",
-    gallery: ["/images/containers/finished-1.webp", "/images/containers/transport-1.webp", "/images/containers/factory-1.webp"],
+    gallery: [containers.finished1, containers.transport1, containers.factory1],
     galleryAlts: ["Modules pour industrie energetique", "Transport de modules energetiques", "Production installations energetiques"],
   },
 ];

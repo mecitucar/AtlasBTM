@@ -9,6 +9,7 @@ import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { Footer } from "@/components/layout/Footer";
+import { heroes, containers } from "@/lib/images";
 
 const values = [
   { fr: "Expérience client unique et service personnalisé", en: "Unique customer experience and personalized service" },
@@ -97,7 +98,7 @@ export function AboutPageClient() {
         {/* ── Hero ── */}
         <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
           <div className="absolute inset-0">
-            <Image src="/images/about-hero.webp" alt="Atlas Bâtiment Modulaire" fill className="object-cover" sizes="100vw" quality={90} priority />
+            <Image src={heroes.about} alt="Atlas Bâtiment Modulaire" fill className="object-cover" sizes="100vw" quality={90} priority />
           </div>
           <div className="relative z-10 pb-16 sm:pb-20 lg:pb-28 pt-32 w-full">
             <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
@@ -122,7 +123,7 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-5">
                 <div className="diff-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src="/images/showcase/49.webp" alt="Production de conteneurs modulaires Atlas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
+                  <Image src="/images/shared/placeholder.webp" alt="Production de conteneurs modulaires Atlas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-7 lg:pl-12">
@@ -211,7 +212,7 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-7">
                 <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src="/images/containers/factory-1.webp" alt="Usine de production Atlas Bâtiment Modulaire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 58vw" quality={90} />
+                  <Image src={containers.factory1} alt="Usine de production Atlas Bâtiment Modulaire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 58vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-5 lg:pl-8">

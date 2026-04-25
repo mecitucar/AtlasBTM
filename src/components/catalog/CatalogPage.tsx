@@ -13,6 +13,7 @@ import {
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
+import { heroes } from "@/lib/images";
 
 const TOTAL_PAGES = 16;
 const PDF_PATH = "/catalog/atlas-catalog.pdf";
@@ -92,7 +93,7 @@ export function CatalogPage() {
         className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 overflow-hidden"
       >
         <Image
-          src="/images/hero-container.webp"
+          src={heroes.main}
           alt=""
           fill
           className="object-cover"

@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { heroes } from "@/lib/images";
 
 export function AboutHero() {
   const t = useTranslations("about");
@@ -22,7 +23,7 @@ export function AboutHero() {
     <section ref={container} className="relative min-h-screen lg:h-[85vh] lg:min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
       <div className="absolute inset-0">
         <Image
-          src="/images/about-hero.webp"
+          src={heroes.about}
           alt="Atlas Batiment Modulaire - wireframe batiment modulaire"
           fill
           className="object-cover"

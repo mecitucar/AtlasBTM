@@ -9,6 +9,7 @@ import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { sendContactForm } from "@/app/actions/contact";
+import { heroes } from "@/lib/images";
 
 export function ContactPage() {
   const t = useTranslations("contact");
@@ -90,7 +91,7 @@ export function ContactPage() {
       {/* Hero */}
       <section ref={heroRef} className="relative h-[calc(100vh-100px)] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
-          <Image src="/images/contact-hero.jpg" alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
+          <Image src={heroes.contact} alt="Vue aerienne camp modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
           <div className="absolute inset-0 bg-atlas-charcoal/50" />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">

@@ -7,6 +7,7 @@ import { useRef, useState } from "react";
 import { MapPin, Calendar, ExternalLink } from "lucide-react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
 import Image from "next/image";
+import { heroes, containers } from "@/lib/images";
 
 const projects = [
   {
@@ -15,7 +16,7 @@ const projects = [
     location: { fr: "Europe", en: "Europe" },
     year: "2025",
     category: "prefab",
-    image: "/images/containers/finished-1.webp",
+    image: containers.finished1,
     altText: { fr: "Container préfabriqué modulaire installé en Europe", en: "Modular prefabricated container installed in Europe" },
   },
   {
@@ -24,7 +25,7 @@ const projects = [
     location: { fr: "Afrique", en: "Africa" },
     year: "2024",
     category: "mining",
-    image: "/images/containers/site-aerial-2.webp",
+    image: containers.siteAerial2,
     altText: { fr: "Camp minier modulaire sur site d'extraction", en: "Modular mining camp on extraction site" },
   },
   {
@@ -33,7 +34,7 @@ const projects = [
     location: { fr: "Moyen Orient", en: "Middle East" },
     year: "2024",
     category: "construction",
-    image: "/images/containers/camp-1.webp",
+    image: containers.camp1,
     altText: { fr: "Camp de construction modulaire sur grand chantier", en: "Modular construction camp on large site" },
   },
   {
@@ -42,7 +43,7 @@ const projects = [
     location: { fr: "Europe", en: "Europe" },
     year: "2024",
     category: "defense",
-    image: "/images/containers/finished-2.webp",
+    image: containers.finished2,
     altText: { fr: "Installation modulaire pour industrie de la défense", en: "Modular installation for defense industry" },
   },
   {
@@ -51,7 +52,7 @@ const projects = [
     location: { fr: "Europe", en: "Europe" },
     year: "2023",
     category: "energy",
-    image: "/images/containers/port-containers.webp",
+    image: containers.portContainers,
     altText: { fr: "Installation modulaire pour projet énergétique", en: "Modular installation for energy project" },
   },
   {
@@ -60,7 +61,7 @@ const projects = [
     location: { fr: "Europe", en: "Europe" },
     year: "2023",
     category: "prefab",
-    image: "/images/containers/factory-1.webp",
+    image: containers.factory1,
     altText: { fr: "Conteneurs modulaires pour logistique et stockage", en: "Modular containers for logistics and storage" },
   },
 ];
@@ -110,7 +111,7 @@ export function ReferencesPage() {
     <>
       <section ref={heroRef} className="relative h-[85vh] min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">
         <div className="absolute inset-0">
-          <Image src="/images/projects-hero.jpg" alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
+          <Image src={heroes.projects} alt="Wireframe structure modulaire Atlas" fill className="object-cover" sizes="100vw" quality={90} priority />
         </div>
         <div className="relative z-10 pb-20 lg:pb-28 pt-32 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">

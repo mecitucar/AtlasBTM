@@ -7,6 +7,7 @@ import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 export function PlantSection() {
   const locale = useLocale() as "fr" | "en";
@@ -30,7 +31,7 @@ export function PlantSection() {
           <div className="lg:col-span-7">
             <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
               <Image
-                src="/images/containers/factory-1.webp"
+                src={containers.factory1}
                 alt="Usine de production Atlas Bâtiment Modulaire"
                 fill
                 className="object-cover"

@@ -5,6 +5,7 @@ import { useLocale } from "next-intl";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { heroes } from "@/lib/images";
 
 export function SloganStrip() {
   const container = useRef<HTMLDivElement>(null);
@@ -95,7 +96,7 @@ export function SloganStrip() {
     <section ref={container} className="relative h-screen flex items-center justify-center bg-white overflow-hidden">
       <div className="guinea-map absolute inset-0 opacity-[0.25] pointer-events-none flex items-center justify-center">
         <Image
-          src="/images/guinea-map.png"
+          src={heroes.guineaMap}
           alt="Guinea - République de Guinée"
           width={1400}
           height={1054}
@@ -115,10 +116,10 @@ export function SloganStrip() {
           </span>
         </h2>
         <div className="slogan-line w-20 h-[3px] bg-atlas-red mx-auto mt-12 mb-12" />
-        <p className="slogan-sub text-[19px] lg:text-[22px] text-atlas-charcoal/70 leading-relaxed max-w-[680px] mx-auto font-medium">
+        <p className="slogan-sub text-[22px] lg:text-[28px] text-atlas-charcoal/70 leading-relaxed max-w-[750px] mx-auto font-medium">
           {locale === "fr"
-            ? "Conception, fabrication et livraison de bâtiments modulaires et conteneurs préfabriqués aux normes internationales. Solutions clé en main pour les secteurs minier, construction, défense et énergie à travers le monde."
-            : "Design, manufacturing and delivery of modular buildings and prefabricated containers to international standards. Turnkey solutions for mining, construction, defense and energy sectors worldwide."}
+            ? "Expertise locale, au service de l'avenir de la Guinée avec des partenaires internationaux."
+            : "Local expertise, serving the future of Guinea with international partners."}
         </p>
       </div>
     </section>

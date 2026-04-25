@@ -7,6 +7,7 @@ import { ArrowRight, Leaf, Recycle, Zap } from "lucide-react";
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
+import { containers } from "@/lib/images";
 
 export function SustainabilityStrip() {
   const locale = useLocale() as "fr" | "en";
@@ -49,7 +50,7 @@ export function SustainabilityStrip() {
     <section ref={container} className="relative overflow-hidden">
       <div className="absolute inset-[-20%] sustain-bg-img">
         <Image
-          src="/images/containers/site-aerial-1.webp"
+          src={containers.siteAerial1}
           alt="Vue aerienne projet durable Atlas Batiment Modulaire"
           fill
           className="object-cover"
