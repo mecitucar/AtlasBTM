@@ -7,13 +7,13 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
-import { containers } from "@/lib/images";
+import { containers, heroes } from "@/lib/images";
 
 const products = [
-  { key: "container", image: "/images/shared/placeholder.webp", alt: "Conteneurs modulaires en production" },
-  { key: "prefab", image: containers.finished1, alt: "Bâtiments préfabriqués modulaires Atlas" },
-  { key: "lightsteel", image: containers.assembly1, alt: "Construction acier leger galvanise" },
-  { key: "structural", image: containers.factory1, alt: "Structures acier grande portee" },
+  { key: "container", image: heroes.livingContainerCamp, alt: "Conteneurs modulaires en production" },
+  { key: "prefab", image: heroes.prefabProduct, alt: "Bâtiments préfabriqués modulaires Atlas" },
+  { key: "lightsteel", image: heroes.lightsteelProduct, alt: "Construction acier leger galvanise" },
+  { key: "structural", image: heroes.structuralSteel, alt: "Structures acier grande portee" },
 ];
 
 // -1 = baslik, 0-3 = kartlar

@@ -66,8 +66,8 @@ export function DifferenceSection() {
           <div className="lg:col-span-5">
             <div className="diff-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
               <Image
-                src="/images/shared/placeholder.webp"
-                alt="Production de conteneurs modulaires Atlas"
+                src="/images/about/about-difference.webp"
+                alt="Camp modulaire Atlas - vue aérienne au coucher du soleil"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"

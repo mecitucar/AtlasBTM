@@ -29,7 +29,7 @@ export const containers = {
   finished1:      "/images/shared/finished-1.webp",
   finished2:      "/images/shared/finished-2.webp",
   interior1:      "/images/shared/interior-1.webp",
-  portContainers: "/images/shared/port-containers.webp",
+  portContainers: "/images/sectors/energy/energy-hero.webp",
   prefabNew:      "/images/shared/prefab-new.webp",
   siteAerial1:    "/images/shared/placeholder.webp",
   siteAerial2:    "/images/shared/placeholder.webp",
@@ -69,6 +69,13 @@ export const prefab = {
   ],
 };
 
+// --- SECTOR CARD/HERO ANA RESIMLERI (home SectorsSection + SectorDetail hero) ---
+export const sectorImages = {
+  prefab:       "/images/sectors/prefab/sector-prefab.webp",
+  mining:       "/images/sectors/mining/sector-mining.webp",
+  construction: "/images/home/living-container-camp.webp",
+};
+
 // --- SECTORS/MINING (Sektor sayfasi: /sectors/mining) ---
 export const mining = {
   hero: "/images/sectors/mining/maden-hero.webp",
@@ -94,12 +101,19 @@ export const defense = {
 
 // --- SAYFA HERO RESIMLERI ---
 export const heroes = {
-  main:       "/images/home/hero/hero-container.webp",
-  about:      "/images/about/about-hero.webp",
+  main:       "/images/home/hero/hero-slide-1-v2.webp",
+  slide2:     "/images/home/hero/hero-slide-2.webp",
+  slide3:     "/images/home/hero/hero-slide-3.webp",
+  about:      "/images/about/about-hero-v2.webp",
   contact:    "/images/contact/contact-hero.jpg",
   projects:   "/images/projects/projects-hero.jpg",
   cta:        "/images/home/cta-bg.webp",
   guineaMap:  "/images/home/guinea-map.png",
+  livingContainer: "/images/home/living-container.webp",
+  livingContainerCamp: "/images/home/living-container-camp.webp",
+  prefabProduct: "/images/home/prefab-product.webp",
+  lightsteelProduct: "/images/home/lightsteel-product.webp",
+  structuralSteel: "/images/home/structural-steel.webp",
 };
 
 // --- SITE (Logo, genel) ---

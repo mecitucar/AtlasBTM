@@ -123,7 +123,7 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-5">
                 <div className="diff-img relative aspect-[3/4] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src="/images/shared/placeholder.webp" alt="Production de conteneurs modulaires Atlas" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
+                  <Image src="/images/about/about-difference.webp" alt="Camp modulaire Atlas - vue aérienne au coucher du soleil" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 50vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-7 lg:pl-12">
@@ -212,7 +212,7 @@ export function AboutPageClient() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-7">
                 <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
-                  <Image src={containers.factory1} alt="Usine de production Atlas Bâtiment Modulaire" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 58vw" quality={90} />
+                  <Image src="/images/about/about-plant.webp" alt="Usine de production Atlas Bâtiment Modulaire - lignes de fabrication automatiques" fill className="object-cover" sizes="(max-width: 1024px) 100vw, 58vw" quality={90} />
                 </div>
               </div>
               <div className="lg:col-span-5 lg:pl-8">

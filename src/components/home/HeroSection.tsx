@@ -7,7 +7,7 @@ import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, FileText, Download 
 import Image from "next/image";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
-import { heroes, containers } from "@/lib/images";
+import { heroes } from "@/lib/images";
 
 const slides = [
   {
@@ -16,8 +16,13 @@ const slides = [
     layout: "left" as const,
   },
   {
-    src: containers.portContainers,
-    alt: "Conteneurs modulaires au port - expédition internationale",
+    src: heroes.slide2,
+    alt: "Module Atlas déployable - conteneur prêt à l'emploi",
+    layout: "left" as const,
+  },
+  {
+    src: heroes.slide3,
+    alt: "Bureau de chantier Atlas - conteneur modulaire pour sites",
     layout: "left" as const,
   },
 ];
@@ -31,9 +36,15 @@ const slideContent = {
       ctaLink: "/products" as const,
     },
     {
-      title: "Du Projet à\nla Livraison",
-      subtitle: "De la conception à l'installation, nous gérons chaque étape avec précision et engagement qualité.",
-      cta: "Nos Projets",
+      title: "Modules\nDéployables\nPartout",
+      subtitle: "Conteneurs prêts à l'emploi, livrés et installés sur tous types de terrains. Mobilité, robustesse et finitions soignées.",
+      cta: "Voir nos Solutions",
+      ctaLink: "/products" as const,
+    },
+    {
+      title: "Bureaux de\nChantier\nProfessionnels",
+      subtitle: "Espaces de travail modulaires pour vos sites : isolation, éclairage et confort pensés pour la durée de vos projets.",
+      cta: "Découvrir nos Projets",
       ctaLink: "/projects" as const,
     },
   ],
@@ -45,9 +56,15 @@ const slideContent = {
       ctaLink: "/products" as const,
     },
     {
-      title: "From Project\nto Delivery",
-      subtitle: "From design to installation, we manage every step with precision and quality commitment.",
-      cta: "Our Projects",
+      title: "Modules\nDeployable\nAnywhere",
+      subtitle: "Turnkey containers delivered and installed on any terrain. Mobility, durability and refined finishes.",
+      cta: "View our Solutions",
+      ctaLink: "/products" as const,
+    },
+    {
+      title: "Professional\nSite\nOffices",
+      subtitle: "Modular workspaces for your sites: insulation, lighting and comfort designed for the full life of your projects.",
+      cta: "Explore our Projects",
       ctaLink: "/projects" as const,
     },
   ],

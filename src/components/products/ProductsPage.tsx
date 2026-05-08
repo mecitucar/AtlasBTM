@@ -16,23 +16,23 @@ import { heroes, containers } from "@/lib/images";
 const products = [
   {
     key: "prefab",
-    image: containers.prefabNew,
-    altText: "Bâtiments préfabriqués modulaires - production en usine livraison rapide",
+    image: heroes.livingContainer,
+    altText: "Bâtiments préfabriqués modulaires deux étages - livraison clé en main",
   },
   {
     key: "container",
-    image: "/images/shared/placeholder.webp",
+    image: heroes.livingContainerCamp,
     altText: "Living containers modulaires prêts à l'emploi",
   },
   {
     key: "lightsteel",
-    image: containers.assembly1,
+    image: heroes.lightsteelProduct,
     altText: "Construction acier leger galvanise durable",
   },
   {
     key: "structural",
-    image: containers.factory1,
-    altText: "Structures acier grande portee assemblage precis",
+    image: heroes.structuralSteel,
+    altText: "Charpente acier grande portée - assemblage en usine",
   },
 ];
 
@@ -120,7 +120,7 @@ export function ProductsPage() {
               </div>
               <div className="flex flex-col">
                 <span className="text-[15px] font-bold tracking-wide uppercase">{t("catalogCta")}</span>
-                <span className="text-[12px] text-white/60 font-medium">PDF &mdash; 16 {t("catalogPages")}</span>
+                <span className="text-[12px] text-white/60 font-medium">PDF</span>
               </div>
               <Download className="w-5 h-5 ml-2 group-hover:translate-y-0.5 transition-transform" />
             </a>

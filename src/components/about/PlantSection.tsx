@@ -31,8 +31,8 @@ export function PlantSection() {
           <div className="lg:col-span-7">
             <div className="plant-img relative aspect-[16/10] overflow-hidden" style={{ clipPath: "inset(0 0 0 0)" }}>
               <Image
-                src={containers.factory1}
-                alt="Usine de production Atlas Bâtiment Modulaire"
+                src="/images/about/about-plant.webp"
+                alt="Usine de production Atlas Bâtiment Modulaire - lignes de fabrication automatiques"
                 fill
                 className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 58vw"

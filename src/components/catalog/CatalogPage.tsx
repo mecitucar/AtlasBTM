@@ -122,16 +122,13 @@ export function CatalogPage() {
                 <Download className="w-5 h-5" />
                 {t("download")}
               </a>
-              <span className="text-[14px] text-white/40">
-                {TOTAL_PAGES} {t("pages")}
-              </span>
             </div>
             <div className="w-16 h-[2px] bg-white/30 mt-8" />
           </div>
         </div>
       </section>
 
-      <section className="py-16 lg:py-24 bg-background">
+      <section className="py-16 lg:py-24 bg-atlas-warm">
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-center mb-6 lg:mb-8">
             <div className="spinning-border w-full max-w-[700px] bg-white shadow-lg p-[3px]">

@@ -8,7 +8,7 @@ import { ArrowRight, ChevronRight, Phone, Mail } from "lucide-react";
 import { gsap } from "@/lib/gsap";
 import { useGSAP } from "@gsap/react";
 import { Footer } from "@/components/layout/Footer";
-import { containers, prefab, mining as miningImages, defense as defenseImages, heroes } from "@/lib/images";
+import { containers, prefab, mining as miningImages, defense as defenseImages, heroes, sectorImages } from "@/lib/images";
 
 interface SectorContent {
   heroImage: string;
@@ -25,7 +25,7 @@ interface SectorContent {
 
 const sectors: Record<string, SectorContent> = {
   prefab: {
-    heroImage: containers.prefabNew,
+    heroImage: sectorImages.prefab,
     heroAlt: "Container préfabriqué modulaire Atlas Bâtiment Modulaire",
     images: [
       { src: "/images/home/showcase/07.webp", alt: "Conteneur préfabriqué - vue extérieure" },
@@ -76,9 +76,11 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Modern projects demand speed, flexibility, and uncompromising quality. Traditional construction cannot always meet these constraints. Our prefabricated containers eliminate on-site uncertainties by transferring 90% of work to the factory.",
   },
   mining: {
-    heroImage: miningImages.hero,
+    heroImage: sectorImages.mining,
     heroAlt: "Camp minier modulaire déploiement rapide Atlas",
-    images: miningImages.gallery.map((src, i) => ({
+    images: [
+      { src: "/images/sectors/mining/mining-challenge.webp", alt: "Camp minier Atlas - vue aérienne avec hangar et modules en montage" },
+      ...miningImages.gallery.map((src, i) => ({
       src,
       alt: [
         "Camp minier modulaire - vue générale",
@@ -92,7 +94,7 @@ const sectors: Record<string, SectorContent> = {
         "Vue aérienne camp minier",
         "Camp minier Atlas complet",
       ][i] || "Camp minier Atlas",
-    })),
+    }))],
     applications: [
       { fr: "Camps d'hébergement 50 à 2000 personnes", en: "Accommodation camps for 50 to 2000 people" },
       { fr: "Réfectoires et cuisines industrielles", en: "Canteens and industrial kitchens" },
@@ -113,7 +115,7 @@ const sectors: Record<string, SectorContent> = {
     challengeEn: "Mining sites are often located in remote areas with no existing infrastructure. Teams must be housed, fed, and cared for on-site, in compliance with the strictest safety standards, all within minimal timeframes.",
   },
   construction: {
-    heroImage: containers.camp1,
+    heroImage: sectorImages.construction,
     heroAlt: "Camp de construction modulaire pour grands chantiers",
     images: [
       { src: containers.assembly2, alt: "Montage rapide camp de chantier" },
@@ -142,14 +144,17 @@ const sectors: Record<string, SectorContent> = {
   defense: {
     heroImage: defenseImages.hero,
     heroAlt: "Base militaire modulaire Atlas Bâtiment Modulaire",
-    images: defenseImages.gallery.map((src, i) => ({
-      src,
-      alt: [
-        "Installation modulaire base militaire",
-        "Structures défense déployées sur site",
-        "Camp militaire modulaire opérationnel",
-      ][i] || "Installation défense Atlas",
-    })),
+    images: [
+      { src: "/images/sectors/defense/defense-challenge.webp", alt: "Charpente acier modulaire pour base militaire en assemblage rapide" },
+      ...defenseImages.gallery.map((src, i) => ({
+        src,
+        alt: [
+          "Installation modulaire base militaire",
+          "Structures défense déployées sur site",
+          "Camp militaire modulaire opérationnel",
+        ][i] || "Installation défense Atlas",
+      })),
+    ],
     applications: [
       { fr: "Postes de commandement et centres opérationnels", en: "Command posts and operational centers" },
       { fr: "Casernements et quartiers d'hébergement", en: "Barracks and accommodation quarters" },
@@ -173,7 +178,7 @@ const sectors: Record<string, SectorContent> = {
     heroImage: containers.portContainers,
     heroAlt: "Installations modulaires pour projets énergétiques internationaux",
     images: [
-      { src: containers.siteAerial1, alt: "Vue aérienne installations énergétiques" },
+      { src: "/images/sectors/energy/energy-challenge.webp", alt: "Camp énergétique modulaire en site isolé avec turbines éoliennes et panneaux solaires" },
       { src: containers.factory1, alt: "Production modules techniques" },
       { src: containers.finished1, alt: "Modules énergétiques terminés" },
       { src: containers.transport1, alt: "Transport installations énergétiques" },
