@@ -37,15 +37,11 @@ const products = [
 
 export function ProductsPage() {
   const t = useTranslations("products");
-  const scrollRef = useRef<HTMLDivElement>(null);
   const dotsRef = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
-    const container = scrollRef.current;
-    if (!container) return;
-
     function onScroll() {
-      const scrollTop = container!.scrollTop;
+      const scrollTop = window.scrollY;
       const vh = window.innerHeight;
       const activeIdx = Math.round(scrollTop / vh) - 1;
 
@@ -70,21 +66,16 @@ export function ProductsPage() {
       }
     }
 
-    container.addEventListener("scroll", onScroll, { passive: true });
-    return () => container.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
-    <div
-      ref={scrollRef}
-      data-scroll-container
-      className="fixed inset-0 z-40 overflow-y-auto"
-      style={{ scrollSnapType: "y mandatory" }}
-    >
+    <div className="relative z-40">
       {/* Hero */}
       <section
-        className="snap-section relative h-screen flex items-center"
-        style={{ scrollSnapAlign: "start" }}
+        className="relative min-h-screen flex items-center"
       >
         <div className="absolute inset-0">
           <Image
@@ -129,8 +120,7 @@ export function ProductsPage() {
         return (
           <section
             key={product.key}
-            className="snap-section relative h-screen"
-            style={{ scrollSnapAlign: "start" }}
+            className="relative min-h-screen"
           >
             <div className="absolute inset-0">
               <Image src={product.image} alt={product.altText} fill className="object-cover" sizes="100vw" quality={90} />
