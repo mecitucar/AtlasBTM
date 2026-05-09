@@ -196,6 +196,42 @@
     "privacy": "Politique de confidentialité",
     "terms": "Conditions générales"
   },
+  "homeSeo": {
+    "label": "Construction modulaire en Guinée",
+    "title": "Conteneurs préfabriqués, camps modulaires et bâtiments acier livrés pour la Guinée et l'Afrique de l'Ouest",
+    "intro": "Atlas Bâtiment Modulaire conçoit, fabrique et livre des bâtiments en conteneurs préfabriqués, des bases vie modulaires, des systèmes en acier léger et des structures en acier pour les entreprises opérant en Guinée. De Conakry et Maneah jusqu'à Kankan et les zones de projet isolées, nous accompagnons les opérations industrielles, minières, de défense, de BTP et d'énergie qui ont besoin d'infrastructures rapides, durables et immédiatement exploitables.",
+    "body": "Notre périmètre couvre les bureaux de chantier, l'hébergement du personnel, les camps miniers, les camps de construction, les locaux techniques, les blocs sanitaires, les réfectoires, les postes de commandement et les structures métalliques à grande portée. En combinant production en usine, qualité maîtrisée et logistique pensée pour le terrain, Atlas réduit les aléas sur site et apporte un partenaire fiable pour les bâtiments temporaires comme permanents.",
+    "keywords": {
+      "prefab": "Conteneurs Préfabriqués",
+      "camps": "Camps Modulaires",
+      "steel": "Structures Acier",
+      "guinea": "Guinée",
+      "conakry": "Conakry",
+      "kankan": "Kankan"
+    },
+    "cards": {
+      "prefab": {
+        "eyebrow": "Bâtiments Préfabriqués",
+        "title": "Conteneurs préfabriqués et bâtiments modulaires pour bureaux, hébergement et services quotidiens",
+        "body": "Nous fournissons des bâtiments modulaires prêts à l'emploi pour les bureaux de supervision, les living containers, les salles de classe, les cliniques, les vestiaires et les blocs de restauration. Ces solutions sont conçues pour une installation rapide, une maintenance simple et des redéploiements répétés sur des sites exigeants."
+      },
+      "sectors": {
+        "eyebrow": "Minier, Construction, Défense, Énergie",
+        "title": "Camps sectoriels et bases vie adaptés aux sites isolés, industriels et à forte contrainte opérationnelle",
+        "body": "Atlas développe des camps modulaires pour les opérations minières, les chantiers de construction, les installations de défense et les projets énergétiques où la vitesse de déploiement, la durabilité et la continuité opérationnelle sont décisives. Nos implantations sont pensées selon les réalités du terrain, des effectifs et de la logistique locale."
+      },
+      "steel": {
+        "eyebrow": "Acier Léger et Acier Structurel",
+        "title": "Systèmes de construction acier pour bâtiments permanents, ateliers, entrepôts et grandes portées techniques",
+        "body": "En complément des solutions conteneurisées, nous produisons des bâtiments en acier léger et en acier structurel pour les projets nécessitant de grandes portées, une précision d'ingénierie et une construction durable. Cela permet à nos clients d'avoir un seul partenaire modulaire pour les besoins temporaires comme fixes."
+      }
+    },
+    "closingLabel": "Pilotage du projet",
+    "closingTitle": "Besoin d'un partenaire modulaire capable de piloter le projet de l'usine jusqu'à l'installation ?",
+    "closing": "Si votre projet a besoin de construction modulaire en Guinée, de bureaux préfabriqués, d'hébergement pour camp minier, de bases vie pour site énergétique ou de systèmes acier livrés avec coordination locale, Atlas peut prendre en charge l'ensemble du parcours, de la conception à l'installation.",
+    "ctaKicker": "Démarrer avec votre besoin",
+    "cta": "Demander un accompagnement"
+  },
   "cta": {
     "whatsapp": "Contactez-nous sur WhatsApp",
     "quote": "Demander un devis",

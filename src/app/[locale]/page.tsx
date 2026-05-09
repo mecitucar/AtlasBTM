@@ -5,6 +5,7 @@ import { ContainerShowcase } from "@/components/home/ContainerShowcase";
 import { ImageMosaic } from "@/components/home/ImageMosaic";
 import { ProductsGrid } from "@/components/home/ProductsGrid";
 import { SectorsSection } from "@/components/home/SectorsSection";
+import { HomeSeoSection } from "@/components/home/HomeSeoSection";
 import { HomeCTA } from "@/components/home/HomeCTA";
 
 export default async function HomePage({
@@ -23,6 +24,7 @@ export default async function HomePage({
       <SectorsSection />
       <ImageMosaic />
       <ProductsGrid />
+      <HomeSeoSection />
       <HomeCTA />
     </>
   );

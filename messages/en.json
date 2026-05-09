@@ -196,6 +196,42 @@
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions"
   },
+  "homeSeo": {
+    "label": "Modular Construction in Guinea",
+    "title": "Prefabricated containers, modular camps, and steel buildings delivered for Guinea and West Africa",
+    "intro": "Atlas Batiment Modulaire designs, manufactures, and delivers prefabricated container buildings, modular living bases, light gauge steel systems, and structural steel solutions for companies operating in Guinea. From Conakry and Maneah to Kankan and remote project zones, we support industrial, mining, defense, civil works, and energy operations that need fast, durable, and ready-to-use infrastructure.",
+    "body": "Our work covers site offices, worker accommodation, mining camps, construction camps, technical rooms, sanitation blocks, canteens, command posts, and large-span steel structures. By combining factory production, controlled quality, and field-ready logistics, Atlas reduces on-site uncertainty and gives project teams a reliable modular construction partner for both temporary and permanent buildings.",
+    "keywords": {
+      "prefab": "Prefabricated Containers",
+      "camps": "Modular Camps",
+      "steel": "Steel Structures",
+      "guinea": "Guinea",
+      "conakry": "Conakry",
+      "kankan": "Kankan"
+    },
+    "cards": {
+      "prefab": {
+        "eyebrow": "Prefabricated Buildings",
+        "title": "Prefabricated containers and modular buildings for offices, accommodation, and daily-use facilities",
+        "body": "We supply ready-to-use modular buildings for site management offices, living containers, classrooms, clinics, changing rooms, and canteen blocks. These solutions are built for rapid installation, practical maintenance, and repeated use across demanding project environments."
+      },
+      "sectors": {
+        "eyebrow": "Mining, Construction, Defense, Energy",
+        "title": "Sector-specific camps and living bases adapted to remote, industrial, and high-pressure job sites",
+        "body": "Atlas develops modular camps for mining operations, construction sites, defense facilities, and energy projects where deployment speed, durability, and operational continuity matter. Our layouts are adapted to field conditions, changing workforce needs, and the realities of remote logistics."
+      },
+      "steel": {
+        "eyebrow": "Light Gauge and Structural Steel",
+        "title": "Steel building systems for permanent structures, workshops, warehouses, and technical spans",
+        "body": "Alongside container-based solutions, we produce light gauge steel and structural steel buildings for projects that require longer spans, engineered precision, and durable permanent construction. This gives clients one modular partner across both temporary and fixed infrastructure needs."
+      }
+    },
+    "closingLabel": "Project Delivery",
+    "closingTitle": "Need a modular partner that can carry the job from production to installation?",
+    "closing": "If your project needs modular construction in Guinea, prefabricated container offices, mining camp accommodation, energy site living bases, or steel building systems delivered with local coordination, Atlas can support the full path from design and production to transport and installation.",
+    "ctaKicker": "Start with your project brief",
+    "cta": "Request Project Support"
+  },
   "cta": {
     "whatsapp": "Contact us on WhatsApp",
     "quote": "Request a quote",

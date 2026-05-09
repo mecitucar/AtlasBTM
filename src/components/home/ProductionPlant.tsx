@@ -5,38 +5,11 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
-import { containers } from "@/lib/images";
 
 export function ProductionPlant() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".plant-text .reveal", {
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-
-    gsap.from(".plant-image", {
-      clipPath: "inset(0 0 0 100%)",
-      duration: 1.2,
-      ease: "power3.inOut",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-
-    gsap.from(".plant-image img", {
-      scale: 1.3,
-      duration: 1.4,
-      ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-white overflow-hidden">

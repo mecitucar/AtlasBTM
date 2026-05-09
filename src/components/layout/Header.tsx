@@ -7,8 +7,6 @@ import { useLocale } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { logo } from "@/lib/images";
 
 const navLinks = [
@@ -17,11 +15,11 @@ const navLinks = [
   { href: "/products", key: "products" },
   { href: "/catalog", key: "catalog" },
   { href: "/sectors", key: "solutions", hasDropdown: true },
-  { href: "/projects", key: "projects" },
   { href: "/contact", key: "contact" },
 ] as const;
 
 const sectorKeys = ["prefab", "mining", "construction", "defense", "energy"] as const;
+type SectorHref = `/sectors/${(typeof sectorKeys)[number]}`;
 
 export function Header() {
   const t = useTranslations("nav");
@@ -99,54 +97,6 @@ export function Header() {
     setLangOpen(false);
   };
 
-  useEffect(() => {
-    if (!mobileMenuRef.current) return;
-    if (mobileOpen) {
-      gsap.fromTo(mobileMenuRef.current,
-        { height: 0, opacity: 0 },
-        { height: "auto", opacity: 1, duration: 0.4, ease: "power3.out" }
-      );
-      const links = mobileMenuRef.current.querySelectorAll(".mobile-link");
-      gsap.from(links, {
-        x: -20, opacity: 0, duration: 0.3, stagger: 0.04, ease: "power2.out", delay: 0.1,
-      });
-    } else {
-      gsap.to(mobileMenuRef.current,
-        { height: 0, opacity: 0, duration: 0.3, ease: "power3.in" }
-      );
-    }
-  }, [mobileOpen]);
-
-  useEffect(() => {
-    if (!sectorsDropRef.current) return;
-    if (sectorsOpen) {
-      gsap.fromTo(sectorsDropRef.current,
-        { opacity: 0, y: -8 },
-        { opacity: 1, y: 0, duration: 0.25, ease: "power2.out" }
-      );
-    } else {
-      gsap.to(sectorsDropRef.current,
-        { opacity: 0, y: -8, duration: 0.15, ease: "power2.in" }
-      );
-    }
-  }, [sectorsOpen]);
-
-  useEffect(() => {
-    if (!langDropRef.current) return;
-    if (langOpen) {
-      gsap.fromTo(langDropRef.current,
-        { opacity: 0, y: -8, scale: 0.95 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.25, ease: "power2.out" }
-      );
-    } else {
-      gsap.to(langDropRef.current,
-        { opacity: 0, y: -8, scale: 0.95, duration: 0.15, ease: "power2.in" }
-      );
-    }
-  }, [langOpen]);
-
-  const isSectorsPage = pathname.startsWith("/sectors");
-
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
@@ -198,16 +148,17 @@ export function Header() {
                     </button>
                     <div
                       ref={sectorsDropRef}
-                      className={`absolute top-full left-0 mt-1 bg-white shadow-xl border border-atlas-warm overflow-hidden min-w-[260px] ${
-                        sectorsOpen ? "pointer-events-auto" : "pointer-events-none"
+                      className={`absolute top-full left-0 mt-1 min-w-[260px] overflow-hidden border border-atlas-warm bg-white shadow-xl transition-all duration-200 ${
+                        sectorsOpen
+                          ? "pointer-events-auto translate-y-0 opacity-100"
+                          : "pointer-events-none -translate-y-2 opacity-0"
                       }`}
-                      style={{ opacity: 0 }}
                     >
                       <div className="py-2">
                         {sectorKeys.map((sk) => (
                           <Link
                             key={sk}
-                            href={`/sectors/${sk}` as any}
+                            href={`/sectors/${sk}` as SectorHref}
                             onClick={() => setSectorsOpen(false)}
                             className="block px-5 py-3 text-[14px] font-medium text-atlas-charcoal hover:text-white hover:bg-atlas-red transition-colors tracking-wide"
                           >
@@ -249,10 +200,11 @@ export function Header() {
               </button>
               <div
                 ref={langDropRef}
-                className={`absolute top-full right-0 mt-1 bg-white shadow-lg rounded-sm border border-atlas-warm overflow-hidden min-w-[100px] ${
-                  langOpen ? "pointer-events-auto" : "pointer-events-none"
+                className={`absolute top-full right-0 mt-1 min-w-[100px] overflow-hidden rounded-sm border border-atlas-warm bg-white shadow-lg transition-all duration-200 ${
+                  langOpen
+                    ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+                    : "pointer-events-none -translate-y-2 scale-95 opacity-0"
                 }`}
-                style={{ opacity: 0 }}
               >
                 <button
                   onClick={() => switchLocale("fr")}
@@ -293,8 +245,9 @@ export function Header() {
 
       <div
         ref={mobileMenuRef}
-        className="lg:hidden bg-white border-t border-atlas-warm overflow-hidden"
-        style={{ height: 0, opacity: 0 }}
+        className={`lg:hidden overflow-hidden border-t border-atlas-warm bg-white transition-all duration-300 ${
+          mobileOpen ? "max-h-[80vh] opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
         <div className="px-6 py-6 space-y-1">
           {navLinks.map((link) => {
@@ -321,7 +274,7 @@ export function Header() {
                       {sectorKeys.map((sk) => (
                         <Link
                           key={sk}
-                          href={`/sectors/${sk}` as any}
+                          href={`/sectors/${sk}` as SectorHref}
                           onClick={() => setMobileOpen(false)}
                           className="block px-4 py-2.5 text-[13px] font-medium text-atlas-slate hover:text-atlas-red transition-colors"
                         >

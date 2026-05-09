@@ -5,8 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight, Download, FileText } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { containers } from "@/lib/images";
 
 export function CTASection() {
@@ -14,29 +12,6 @@ export function CTASection() {
   const nav = useTranslations("nav");
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.fromTo(".cta-bg-img", {
-      y: "-15%",
-    }, {
-      y: "5%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-
-    gsap.from(".cta-content .reveal", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.12,
-      ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="relative h-[60vh] min-h-[400px] overflow-hidden">

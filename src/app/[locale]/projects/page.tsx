@@ -1,5 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { ProjectsPage as ProjectsContent } from "@/components/projects/ProjectsPage";
+import { notFound } from "next/navigation";
 
 export default async function ProjectsPage({
   params,
@@ -9,5 +9,5 @@ export default async function ProjectsPage({
   const { locale } = await params;
   setRequestLocale(locale);
 
-  return <ProjectsContent />;
+  notFound();
 }

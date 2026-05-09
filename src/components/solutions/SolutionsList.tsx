@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import {
   Container,
@@ -12,8 +12,6 @@ import {
   ChevronRight,
   Download,
 } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { containers } from "@/lib/images";
 
 const solutions = [
@@ -69,32 +67,6 @@ export function SolutionsList() {
   const container = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
-
-  useGSAP(() => {
-    const sidebar = container.current!.querySelectorAll(".sidebar-btn");
-    if (sidebar) {
-      gsap.from(sidebar, {
-        x: -40,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: sidebar[0],
-          start: "top 85%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
-  }, { scope: container });
-
-  useEffect(() => {
-    if (!contentRef.current) return;
-    gsap.fromTo(contentRef.current,
-      { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }
-    );
-  }, [activeIndex]);
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-background">

@@ -2,8 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import Image from "next/image";
 import {
@@ -61,33 +59,6 @@ export function ServicesGrid() {
   const featured = services.filter((s) => s.featured);
   const rest = services.filter((s) => !s.featured);
 
-  useGSAP(() => {
-    const heading = container.current?.querySelector(".services-heading");
-    if (heading) {
-      gsap.from(heading, {
-        x: -50, opacity: 0, duration: 0.7, ease: "power3.out",
-        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-
-    const featuredCards = container.current?.querySelectorAll(".featured-card");
-    if (featuredCards?.length) {
-      gsap.from(featuredCards, {
-        y: 60, opacity: 0, clipPath: "inset(8% 0% 8% 0%)", duration: 0.8, stagger: 0.15,
-        ease: "power3.out",
-        scrollTrigger: { trigger: featuredCards[0], start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-
-    const restCards = container.current?.querySelectorAll(".rest-card");
-    if (restCards?.length) {
-      gsap.from(restCards, {
-        y: 30, opacity: 0, scale: 0.9, duration: 0.5, stagger: 0.07,
-        ease: "back.out(1.7)",
-        scrollTrigger: { trigger: restCards[0], start: "top 90%", toggleActions: "play none none none" },
-      });
-    }
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-28 lg:py-36 bg-white">

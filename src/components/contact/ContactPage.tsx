@@ -5,8 +5,6 @@ import { useRef, useState, useCallback, useTransition } from "react";
 import { Phone, Mail, MapPin, Send, Upload, ClipboardList, Users, FileText, X, Loader2, CheckCircle2 } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/navigation";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { sendContactForm } from "@/app/actions/contact";
 import { heroes } from "@/lib/images";
@@ -54,28 +52,7 @@ export function ContactPage() {
     });
   };
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(".ch-label", { y: 30, opacity: 0, duration: 0.6 }, 0.2);
-    tl.from(".ch-title", { y: 50, opacity: 0, duration: 0.9 }, 0.3);
-    tl.from(".ch-line", { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
-    tl.from(".ch-desc", { y: 20, opacity: 0, duration: 0.6 }, 0.9);
-  }, { scope: heroRef });
 
-  useGSAP(() => {
-    gsap.from(".cf-reveal", {
-      y: 30, opacity: 0, duration: 0.6, stagger: 0.06, ease: "power3.out",
-      scrollTrigger: { trigger: ".cf-form", start: "top 80%" },
-    });
-    gsap.from(".ci-card", {
-      y: 40, opacity: 0, duration: 0.7, ease: "power3.out",
-      scrollTrigger: { trigger: ".ci-card", start: "top 85%" },
-    });
-    gsap.from(".ci-item", {
-      x: 20, opacity: 0, duration: 0.5, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".ci-card", start: "top 80%" },
-    });
-  }, { scope: container });
 
   const inputCls = "w-full px-5 py-4 bg-white border border-atlas-charcoal/10 text-[15px] text-atlas-charcoal placeholder:text-atlas-charcoal/35 focus:outline-none focus:border-atlas-red/40 focus:ring-1 focus:ring-atlas-red/10 transition-all";
 

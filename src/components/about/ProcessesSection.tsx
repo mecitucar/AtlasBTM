@@ -2,8 +2,6 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { useRef } from "react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 
 const steps = [
@@ -43,16 +41,6 @@ export function ProcessesSection() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".proc-heading > *", {
-      y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".proc-heading", start: "top 85%" },
-    });
-    gsap.from(".proc-step", {
-      y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out",
-      scrollTrigger: { trigger: ".proc-steps", start: "top 80%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="relative py-28 lg:py-36 bg-atlas-charcoal overflow-hidden">

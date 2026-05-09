@@ -1,11 +1,8 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import { MapPin, Calendar, ExternalLink } from "lucide-react";
-import { LogoWatermark } from "@/components/ui/LogoWatermark";
 import Image from "next/image";
 import { heroes, containers } from "@/lib/images";
 
@@ -87,25 +84,7 @@ export function ReferencesPage() {
       ? projects
       : projects.filter((p) => p.category === activeCategory);
 
-  useGSAP(() => {
-    const hero = heroRef.current?.querySelector(".ref-hero");
-    if (hero) {
-      gsap.from(hero, {
-        y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-      });
-    }
-  }, { scope: heroRef });
 
-  useGSAP(() => {
-    const cards = container.current?.querySelectorAll(".ref-card");
-    if (cards?.length) {
-      gsap.from(cards, {
-        y: 50, opacity: 0, scale: 0.92, duration: 0.6, stagger: 0.07,
-        ease: "back.out(1.4)",
-        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-  }, { scope: container, dependencies: [activeCategory], revertOnUpdate: true });
 
   return (
     <>

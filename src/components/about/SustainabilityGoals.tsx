@@ -1,8 +1,6 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import { Leaf, Recycle, Sun, Droplets } from "lucide-react";
 
@@ -45,24 +43,6 @@ export function SustainabilityGoals() {
   const t = useTranslations("about.sustainability");
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const heading = container.current?.querySelector(".sustain-heading");
-    if (heading) {
-      gsap.from(heading, {
-        y: 30, opacity: 0, clipPath: "inset(0 100% 0 0)", duration: 0.8, ease: "power3.out",
-        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-
-    const cards = container.current?.querySelectorAll(".sustain-card");
-    if (cards?.length) {
-      gsap.from(cards, {
-        y: 50, opacity: 0, scale: 0.9, rotateX: 8, duration: 0.6, stagger: 0.1,
-        ease: "back.out(1.5)",
-        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-atlas-sand/30">

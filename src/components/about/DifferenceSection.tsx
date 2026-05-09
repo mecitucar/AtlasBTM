@@ -5,9 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
-import { containers } from "@/lib/images";
 
 const values = [
   {
@@ -40,24 +37,6 @@ export function DifferenceSection() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".diff-text > *", {
-      y: 35, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-text", start: "top 75%" },
-    });
-    gsap.from(".diff-img", {
-      clipPath: "inset(0 100% 0 0)", duration: 1.2, ease: "power3.inOut",
-      scrollTrigger: { trigger: ".diff-img", start: "top 75%" },
-    });
-    gsap.from(".diff-img img", {
-      scale: 1.3, duration: 1.4, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-img", start: "top 75%" },
-    });
-    gsap.from(".diff-val", {
-      y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-vals", start: "top 80%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-28 lg:py-36 bg-white overflow-hidden">

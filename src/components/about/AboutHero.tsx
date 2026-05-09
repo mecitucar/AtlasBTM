@@ -3,21 +3,12 @@
 import { useTranslations } from "next-intl";
 import { useRef } from "react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { heroes } from "@/lib/images";
 
 export function AboutHero() {
   const t = useTranslations("about");
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(".ah-label", { y: 30, opacity: 0, duration: 0.6 }, 0.2);
-    tl.from(".ah-title", { y: 50, opacity: 0, duration: 0.9 }, 0.3);
-    tl.from(".ah-line", { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
-    tl.from(".ah-intro", { y: 20, opacity: 0, duration: 0.7 }, 0.9);
-  }, { scope: container });
 
   return (
     <section ref={container} className="relative min-h-screen lg:h-[85vh] lg:min-h-[600px] flex items-end overflow-hidden border-b-[3px] border-atlas-red">

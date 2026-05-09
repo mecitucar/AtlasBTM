@@ -2,9 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
-import { useRef, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { containers, defense, sectorImages } from "@/lib/images";
@@ -15,77 +12,14 @@ const sectors = [
   { key: "construction", image: sectorImages.construction, href: "/sectors/construction" },
   { key: "defense", image: defense.hero, href: "/sectors/defense" },
   { key: "energy", image: containers.portContainers, href: "/sectors/energy" },
-];
+] as const;
 
 export function SectorsSection() {
   const t = useTranslations("solutions");
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    gsap.from(".sectors-label", {
-      y: 20, opacity: 0, duration: 0.6, ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 80%" },
-    });
-    gsap.from(".sectors-title", {
-      y: 30, opacity: 0, duration: 0.8, ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 80%" },
-    });
-    gsap.from(".sector-card", {
-      y: 60, opacity: 0, scale: 0.9, duration: 0.7, stagger: 0.1,
-      ease: "back.out(1.4)",
-      scrollTrigger: { trigger: ".sector-card", start: "top 90%" },
-    });
-  }, { scope: container });
-
-  useEffect(() => {
-    const el = container.current;
-    if (!el) return;
-    let locked = false;
-
-    const onWheel = (e: WheelEvent) => {
-      if (locked) return;
-      const rect = el.getBoundingClientRect();
-      if (rect.top < -10 || rect.top > 10) return;
-
-      e.preventDefault();
-      locked = true;
-      const target = e.deltaY > 0
-        ? el.nextElementSibling as HTMLElement
-        : el.previousElementSibling as HTMLElement;
-      if (target) target.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => { locked = false; }, 800);
-    };
-
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
-    const onTouchEnd = (e: TouchEvent) => {
-      if (locked) return;
-      const diff = touchY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 40) return;
-      const rect = el.getBoundingClientRect();
-      if (rect.top < -10 || rect.top > 10) return;
-
-      locked = true;
-      const target = diff > 0
-        ? el.nextElementSibling as HTMLElement
-        : el.previousElementSibling as HTMLElement;
-      if (target) target.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => { locked = false; }, 800);
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-    };
-  }, []);
 
   return (
-    <section ref={container} className="relative h-screen bg-atlas-charcoal flex flex-col overflow-hidden">
-      <div className="text-center pt-8 lg:pt-12 pb-5 lg:pb-8 shrink-0 px-5">
+    <section className="relative min-h-screen bg-atlas-charcoal px-0 pt-20 pb-20 overflow-hidden lg:pt-28 lg:pb-24">
+      <div className="text-center pb-8 lg:pb-12 shrink-0 px-5">
         <h2 className="sectors-title font-[var(--font-heading)] text-[clamp(1.75rem,4vw,3.25rem)] font-black text-white tracking-tight" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
           {t("title")}
         </h2>
@@ -95,11 +29,11 @@ export function SectorsSection() {
         </p>
       </div>
 
-      <div className="flex-1 grid grid-cols-2 lg:grid-cols-5 gap-[2px] px-0">
+      <div className="grid min-h-[52vh] grid-cols-2 gap-[2px] px-0 lg:grid-cols-5">
         {sectors.map((sector) => (
           <Link
             key={sector.key}
-            href={sector.href as any}
+            href={sector.href}
             className="sector-card group relative overflow-hidden"
           >
             <Image

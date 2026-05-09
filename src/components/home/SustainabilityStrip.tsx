@@ -5,46 +5,12 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight, Leaf, Recycle, Zap } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { containers } from "@/lib/images";
 
 export function SustainabilityStrip() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".sustain-text .reveal", {
-      y: 40,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.08,
-      ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-
-    gsap.from(".sustain-icon", {
-      y: 30,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.12,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".sustain-icon", start: "top 88%" },
-    });
-
-    gsap.fromTo(".sustain-bg-img", {
-      y: "-10%",
-    }, {
-      y: "10%",
-      ease: "none",
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top bottom",
-        end: "bottom top",
-        scrub: true,
-      },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="relative overflow-hidden">

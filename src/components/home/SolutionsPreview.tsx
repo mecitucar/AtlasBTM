@@ -5,8 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { containers } from "@/lib/images";
 
 const solutions = [
@@ -27,37 +25,6 @@ export function SolutionsPreview() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".sol-heading", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".sol-heading", start: "top 85%" },
-    });
-
-    const cards = container.current!.querySelectorAll(".sol-card");
-    cards.forEach((card, i) => {
-      gsap.from(card, {
-        y: 60,
-        opacity: 0,
-        duration: 0.9,
-        delay: i * 0.2,
-        ease: "power3.out",
-        scrollTrigger: { trigger: card, start: "top 88%" },
-      });
-
-      const img = card.querySelector(".sol-img");
-      if (img) {
-        gsap.from(img, {
-          scale: 1.2,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: { trigger: card, start: "top 88%" },
-        });
-      }
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-background">

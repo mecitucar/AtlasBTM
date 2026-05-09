@@ -10,8 +10,6 @@ import {
   ChevronLeft,
   ChevronRight,
 } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { LogoWatermark } from "@/components/ui/LogoWatermark";
 import { heroes } from "@/lib/images";
 
@@ -49,42 +47,7 @@ export function CatalogPage() {
     };
   }, [selectedPage]);
 
-  useGSAP(
-    () => {
-      if (!heroRef.current) return;
-      const el = heroRef.current.querySelector(".catalog-hero");
-      if (el) {
-        gsap.from(el, {
-          y: 30,
-          opacity: 0,
-          duration: 0.8,
-          ease: "power3.out",
-        });
-      }
-    },
-    { scope: heroRef }
-  );
 
-  useGSAP(
-    () => {
-      if (!gridRef.current) return;
-      const cards = gridRef.current.querySelectorAll(".page-card");
-      if (cards.length) {
-        gsap.from(cards, {
-          y: 30,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: cards[0],
-            start: "top 90%",
-            toggleActions: "play none none none",
-          },
-        });
-      }
-    },
-    { scope: gridRef }
-  );
 
   return (
     <>

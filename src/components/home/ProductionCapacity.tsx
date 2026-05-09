@@ -3,8 +3,6 @@
 import { useTranslations } from "next-intl";
 import { useRef, useEffect, useState } from "react";
 import { Building2, Container, Layers, Wrench } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 
 const capacities = [
   { key: "prefab", value: 12000, unit: "m\u00B2/", period: "month", icon: Building2 },
@@ -22,13 +20,21 @@ function CountUp({ target, active }: { target: number; active: boolean }) {
 
   useEffect(() => {
     if (!active) return;
-    const obj = { val: 0 };
-    gsap.to(obj, {
-      val: target,
-      duration: 2.5,
-      ease: "power2.out",
-      onUpdate: () => setVal(Math.round(obj.val)),
-    });
+    let frame = 0;
+    const start = performance.now();
+    const duration = 1800;
+
+    const tick = (now: number) => {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      setVal(Math.round(target * eased));
+      if (progress < 1) {
+        frame = requestAnimationFrame(tick);
+      }
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
   }, [active, target]);
 
   return <span>{formatNumber(val)}</span>;
@@ -39,28 +45,21 @@ export function ProductionCapacity() {
   const container = useRef<HTMLDivElement>(null);
   const [counting, setCounting] = useState(false);
 
-  useGSAP(() => {
-    gsap.from(".cap-heading", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".cap-heading", start: "top 85%" },
-    });
-
-    gsap.from(".cap-card", {
-      y: 60,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.12,
-      ease: "power3.out",
-      scrollTrigger: {
-        trigger: ".cap-card",
-        start: "top 88%",
-        onEnter: () => setCounting(true),
+  useEffect(() => {
+    if (!container.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setCounting(true);
+          observer.disconnect();
+        }
       },
-    });
-  }, { scope: container });
+      { threshold: 0.3 }
+    );
+
+    observer.observe(container.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-atlas-red">

@@ -3,8 +3,6 @@
 import { useLocale } from "next-intl";
 import { useRef } from "react";
 import { Building2, MapPin, Wrench, Globe } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 
 const highlights = [
   {
@@ -33,24 +31,6 @@ export function CompanyOverview() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const cards = container.current!.querySelectorAll(".overview-card");
-    if (cards) {
-      gsap.from(cards, {
-        y: 50,
-        opacity: 0,
-        scale: 0.9,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "back.out(1.2)",
-        scrollTrigger: {
-          trigger: cards[0],
-          start: "top 88%",
-          toggleActions: "play none none none",
-        },
-      });
-    }
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-white border-b border-atlas-warm">

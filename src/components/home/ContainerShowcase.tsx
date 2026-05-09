@@ -1,13 +1,10 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
 import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowRight, Layers, RefreshCw, Shield, Truck } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
-import { containers, heroes } from "@/lib/images";
+import { heroes } from "@/lib/images";
 
 const highlights = {
   fr: [
@@ -26,113 +23,12 @@ const highlights = {
 
 export function ContainerShowcase() {
   const locale = useLocale() as "fr" | "en";
-  const container = useRef<HTMLDivElement>(null);
-  const [released, setReleased] = useState(false);
   const items = highlights[locale];
-
-  useGSAP(() => {
-    gsap.from(".cs-heading > *", {
-      y: 40, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 75%" },
-    });
-    gsap.from(".cs-card", {
-      y: 50, opacity: 0, duration: 0.6, stagger: 0.1, ease: "back.out(1.4)",
-      scrollTrigger: { trigger: ".cs-card", start: "top 88%" },
-    });
-    gsap.from(".cs-image", {
-      scale: 1.1, opacity: 0, duration: 1.2, ease: "power2.out",
-      scrollTrigger: { trigger: container.current, start: "top 75%" },
-    });
-  }, { scope: container });
-
-  useEffect(() => {
-    const el = container.current;
-    if (!el) return;
-
-    let pinned = false;
-    let locked = false;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !released) {
-          pinned = true;
-        }
-      },
-      { threshold: 0.5 }
-    );
-    observer.observe(el);
-
-    const onWheel = (e: WheelEvent) => {
-      if (released || locked) return;
-      const rect = el.getBoundingClientRect();
-      const visible = rect.top > -10 && rect.top < window.innerHeight * 0.5;
-      if (!visible && !pinned) return;
-      if (visible) pinned = true;
-
-      if (!pinned) return;
-
-      if (e.deltaY > 0) {
-        e.preventDefault();
-        locked = true;
-        pinned = false;
-        setReleased(true);
-        const target = el.nextElementSibling as HTMLElement;
-        if (target) target.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { locked = false; }, 800);
-      } else if (e.deltaY < 0) {
-        e.preventDefault();
-        locked = true;
-        pinned = false;
-        const prev = el.previousElementSibling as HTMLElement;
-        if (prev) prev.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { locked = false; }, 800);
-      }
-    };
-
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
-    const onTouchEnd = (e: TouchEvent) => {
-      if (released || locked) return;
-      const diff = touchY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 40) return;
-      const rect = el.getBoundingClientRect();
-      const visible = rect.top > -10 && rect.top < window.innerHeight * 0.5;
-      if (!visible && !pinned) return;
-      if (visible) pinned = true;
-      if (!pinned) return;
-
-      if (diff > 0) {
-        locked = true;
-        pinned = false;
-        setReleased(true);
-        const target = el.nextElementSibling as HTMLElement;
-        if (target) target.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { locked = false; }, 800);
-      } else {
-        locked = true;
-        pinned = false;
-        const prev = el.previousElementSibling as HTMLElement;
-        if (prev) prev.scrollIntoView({ behavior: "smooth" });
-        setTimeout(() => { locked = false; }, 800);
-      }
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
-    return () => {
-      observer.disconnect();
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-    };
-  }, [released]);
 
   return (
     <section
-      ref={container}
       className="relative min-h-screen lg:h-screen bg-atlas-charcoal overflow-hidden"
-      style={{ position: released ? "relative" : "sticky", top: released ? "auto" : 0, zIndex: 25 }}
+      style={{ position: "relative", zIndex: 25 }}
     >
       {/* Desktop: side-by-side grid */}
       <div className="hidden lg:grid grid-cols-2 h-full">
@@ -167,13 +63,19 @@ export function ContainerShowcase() {
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="cs-card flex items-start gap-4 p-5 bg-white/[0.04] border border-white/[0.06]">
-                  <div className="w-10 h-10 bg-atlas-red/15 flex items-center justify-center shrink-0">
-                    <Icon className="w-5 h-5 text-atlas-red" />
-                  </div>
-                  <div>
-                    <span className="text-[14px] font-bold text-white block mb-1">{item.title}</span>
-                    <span className="text-[12px] text-white/40 leading-relaxed">{item.desc}</span>
+                <div key={i} className="cs-card group relative min-w-0">
+                  <div className="pointer-events-none absolute -inset-x-6 -inset-y-6 -z-10 rounded-[44px] bg-[radial-gradient(circle_at_50%_50%,rgba(196,30,58,0.16),rgba(196,30,58,0.07)_30%,transparent_72%)] opacity-0 blur-[34px] transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="relative overflow-hidden rounded-[24px] border border-white/7 bg-[#262626] px-5 py-5 shadow-[0_18px_36px_rgba(0,0,0,0.16)] transition-all duration-500 group-hover:-translate-y-1.5 group-hover:border-atlas-red/14 min-h-[114px]">
+                    <div className="relative z-10 flex items-start gap-4">
+                      <div className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-atlas-red shadow-[0_12px_24px_rgba(196,30,58,0.22)]">
+                        <div className="absolute inset-[6px] rounded-full border border-white/15" />
+                        <Icon className="relative z-10 h-4.5 w-4.5 text-white" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="text-[15px] font-bold text-white block mb-1.5 tracking-[-0.01em]">{item.title}</span>
+                        <span className="text-[13px] text-white leading-[1.75] block">{item.desc}</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
@@ -221,13 +123,13 @@ export function ContainerShowcase() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 gap-2 mb-5">
+          <div className="grid grid-cols-2 gap-2.5 mb-5">
             {items.map((item, i) => {
               const Icon = item.icon;
               return (
-                <div key={i} className="cs-card flex items-center gap-2.5 p-2.5 bg-atlas-charcoal border border-white/[0.08]">
-                  <div className="w-7 h-7 bg-atlas-red/20 flex items-center justify-center shrink-0">
-                    <Icon className="w-3.5 h-3.5 text-atlas-red" />
+                <div key={i} className="cs-card flex items-center gap-3 p-3 rounded-[20px] bg-atlas-charcoal/92 border border-white/[0.08]">
+                  <div className="w-8 h-8 rounded-full bg-atlas-red flex items-center justify-center shrink-0">
+                    <Icon className="w-4 h-4 text-white" />
                   </div>
                   <span className="text-[11px] font-bold text-white leading-tight">{item.title}</span>
                 </div>

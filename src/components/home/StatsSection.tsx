@@ -1,7 +1,5 @@
 "use client";
 
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
 const stats = [
@@ -14,16 +12,6 @@ const stats = [
 export function StatsSection() {
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const items = container.current?.querySelectorAll(".stat-item");
-    if (items?.length) {
-      gsap.from(items, {
-        y: 30, opacity: 0, scale: 0.85, duration: 0.6, stagger: 0.1,
-        ease: "back.out(2)",
-        scrollTrigger: { trigger: items[0], start: "top 90%", toggleActions: "play none none none" },
-      });
-    }
-  }, { scope: container });
 
   return (
     <section ref={container} className="bg-atlas-red">

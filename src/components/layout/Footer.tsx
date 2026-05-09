@@ -6,6 +6,14 @@ import { Phone, Mail, MapPin } from "lucide-react";
 import Image from "next/image";
 import { logo } from "@/lib/images";
 
+const footerSectorLinks = [
+  { label: "Container Préfabriqué", href: "/sectors/prefab" },
+  { label: "Camps Minière", href: "/sectors/mining" },
+  { label: "Camps Construction", href: "/sectors/construction" },
+  { label: "Industrie Défense", href: "/sectors/defense" },
+  { label: "Project Énergétique", href: "/sectors/energy" },
+] as const;
+
 export function Footer() {
   const t = useTranslations("footer");
   const nav = useTranslations("nav");
@@ -34,7 +42,7 @@ export function Footer() {
               {t("quickLinks")}
             </h4>
             <ul className="space-y-2 sm:space-y-2.5">
-              {(["home", "about", "products", "catalog", "projects", "contact"] as const).map(
+              {(["home", "about", "products", "catalog", "contact"] as const).map(
                 (key) => (
                   <li key={key}>
                     <Link
@@ -55,16 +63,10 @@ export function Footer() {
               {nav("solutions")}
             </h4>
             <ul className="space-y-2 sm:space-y-2.5">
-              {[
-                { label: "Container Préfabriqué", href: "/sectors/prefab" },
-                { label: "Camps Minière", href: "/sectors/mining" },
-                { label: "Camps Construction", href: "/sectors/construction" },
-                { label: "Industrie Défense", href: "/sectors/defense" },
-                { label: "Project Énergétique", href: "/sectors/energy" },
-              ].map((item) => (
+              {footerSectorLinks.map((item) => (
                 <li key={item.href}>
                   <Link
-                    href={item.href as any}
+                    href={item.href}
                     className="text-[13px] text-white/50 hover:text-white transition-colors"
                   >
                     {item.label}

@@ -3,45 +3,12 @@
 import { useRef, useEffect } from "react";
 import { useLocale } from "next-intl";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { heroes } from "@/lib/images";
 
 export function SloganStrip() {
   const container = useRef<HTMLDivElement>(null);
   const locale = useLocale() as "fr" | "en";
 
-  useGSAP(() => {
-    gsap.from(".slogan-text", {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 85%" },
-    });
-    gsap.from(".slogan-sub", {
-      y: 20,
-      opacity: 0,
-      duration: 0.7,
-      ease: "power3.out",
-      delay: 0.3,
-      scrollTrigger: { trigger: container.current, start: "top 85%" },
-    });
-    gsap.from(".slogan-line", {
-      scaleX: 0,
-      transformOrigin: "center",
-      duration: 0.6,
-      ease: "power2.out",
-      scrollTrigger: { trigger: container.current, start: "top 85%" },
-    });
-    gsap.from(".guinea-map", {
-      scale: 0.7,
-      opacity: 0,
-      duration: 1.5,
-      ease: "power2.out",
-      scrollTrigger: { trigger: container.current, start: "top 85%" },
-    });
-  }, { scope: container });
 
   useEffect(() => {
     let locked = false;

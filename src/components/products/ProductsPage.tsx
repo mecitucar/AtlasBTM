@@ -11,7 +11,7 @@ import {
   FileText,
 } from "lucide-react";
 import { Footer } from "@/components/layout/Footer";
-import { heroes, containers } from "@/lib/images";
+import { heroes } from "@/lib/images";
 
 const products = [
   {
@@ -100,10 +100,7 @@ export function ProductsPage() {
         </div>
         <div className="relative z-10 w-full">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12">
-            <span className="text-[13px] tracking-[0.25em] uppercase text-atlas-red font-bold" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.3)" }}>
-              {t("title")}
-            </span>
-            <h1 className="font-[var(--font-heading)] text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white mt-4 leading-[0.95] tracking-tight max-w-[700px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
+            <h1 className="font-[var(--font-heading)] text-[clamp(2.5rem,5vw,4.5rem)] font-black text-white leading-[0.95] tracking-tight max-w-[700px]" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               {t("subtitle")}
             </h1>
             <div className="w-20 h-[3px] bg-atlas-red mt-7 mb-6" />
@@ -129,7 +126,7 @@ export function ProductsPage() {
       </section>
 
       {/* Urun panelleri */}
-      {products.map((product, i) => {
+      {products.map((product) => {
         return (
           <section
             key={product.key}

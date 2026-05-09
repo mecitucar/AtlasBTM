@@ -1,28 +1,17 @@
 "use client";
 
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight, Phone, Mail, FileText, Download } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { heroes } from "@/lib/images";
 
 export function HomeCTA() {
-  const nav = useTranslations("nav");
-  const t = useTranslations("cta");
-  const ft = useTranslations("footer");
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".hcta-content > *", {
-      y: 40, opacity: 0, duration: 0.7, stagger: 0.1, ease: "power3.out",
-      scrollTrigger: { trigger: container.current, start: "top 70%" },
-    });
-  }, { scope: container });
 
   return (
     <section

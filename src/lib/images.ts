@@ -91,10 +91,10 @@ export const mining = {
 
 // --- SECTORS/DEFENSE (Sektor sayfasi: /sectors/defense) ---
 export const defense = {
-  hero: "/images/sectors/defense/defence-hero.webp",
+  hero: "/images/sectors/defense/pey.webp",
   gallery: [
-    "/images/sectors/defense/defence-1.webp",
-    "/images/sectors/defense/defence-2.webp",
+    "/images/sectors/defense/pey.webp",
+    "/images/sectors/defense/as.webp",
     "/images/sectors/defense/defence-3.webp",
   ],
 };
@@ -118,5 +118,5 @@ export const heroes = {
 
 // --- SITE (Logo, genel) ---
 export const logo = {
-  transparent: "/images/site/logo-transparent.png",
+  transparent: "/images/site/atlas-logo-2026.png",
 };

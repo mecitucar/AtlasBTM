@@ -1,8 +1,6 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 import {
   Award,
@@ -32,24 +30,6 @@ export function WhyAtlas() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    const heading = container.current!.querySelector(".why-heading");
-    if (heading) {
-      gsap.from(heading, {
-        x: -40, opacity: 0, duration: 0.7, ease: "power3.out",
-        scrollTrigger: { trigger: heading, start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-
-    const cards = container.current!.querySelectorAll(".why-card");
-    if (cards?.length) {
-      gsap.from(cards, {
-        y: 30, opacity: 0, scale: 0.95, rotateX: 8, duration: 0.5, stagger: 0.05,
-        ease: "back.out(1.4)",
-        scrollTrigger: { trigger: cards[0], start: "top 88%", toggleActions: "play none none none" },
-      });
-    }
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-atlas-charcoal">

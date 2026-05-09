@@ -1,12 +1,9 @@
 "use client";
 
 import { useTranslations, useLocale } from "next-intl";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
 import { MapPin, ExternalLink } from "lucide-react";
-import { LogoWatermark } from "@/components/ui/LogoWatermark";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { heroes, containers } from "@/lib/images";
 
 const projects = [
@@ -87,26 +84,6 @@ export function ProjectsPage() {
     activeCategory === "all"
       ? projects
       : projects.filter((p) => p.sector === activeCategory);
-
-  useGSAP(() => {
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    const label = heroRef.current!.querySelector(".hero-label");
-    const title = heroRef.current!.querySelector(".hero-title");
-    const line = heroRef.current!.querySelector(".hero-line");
-
-    tl.from(label, { y: 30, opacity: 0, duration: 0.6 }, 0.2);
-    tl.from(title, { y: 40, opacity: 0, clipPath: "inset(100% 0% 0% 0%)", duration: 0.8 }, 0.35);
-    tl.from(line, { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
-  }, { scope: heroRef });
-
-  useEffect(() => {
-    if (!gridRef.current) return;
-    const cards = gridRef.current.querySelectorAll(".project-card");
-    gsap.fromTo(cards,
-      { y: 40, opacity: 0, scale: 0.95 },
-      { y: 0, opacity: 1, scale: 1, duration: 0.5, stagger: 0.06, ease: "power3.out" }
-    );
-  }, [activeCategory]);
 
   return (
     <>

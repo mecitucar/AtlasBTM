@@ -1,12 +1,10 @@
 "use client";
 
-import { useTranslations, useLocale } from "next-intl";
+import { useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowRight, ChevronLeft, ChevronRight, Phone, Mail, FileText, Download } from "lucide-react";
+import { ArrowRight, Phone, Mail } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { heroes } from "@/lib/images";
 
 const slides = [
@@ -44,8 +42,8 @@ const slideContent = {
     {
       title: "Bureaux de\nChantier\nProfessionnels",
       subtitle: "Espaces de travail modulaires pour vos sites : isolation, éclairage et confort pensés pour la durée de vos projets.",
-      cta: "Découvrir nos Projets",
-      ctaLink: "/projects" as const,
+      cta: "Découvrir nos Produits",
+      ctaLink: "/products" as const,
     },
   ],
   en: [
@@ -64,68 +62,24 @@ const slideContent = {
     {
       title: "Professional\nSite\nOffices",
       subtitle: "Modular workspaces for your sites: insulation, lighting and comfort designed for the full life of your projects.",
-      cta: "Explore our Projects",
-      ctaLink: "/projects" as const,
+      cta: "Explore our Products",
+      ctaLink: "/products" as const,
     },
   ],
 };
 
 export function HeroSection() {
-  const t = useTranslations("hero");
   const locale = useLocale() as "fr" | "en";
   const [current, setCurrent] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const container = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
 
   const content = slideContent[locale];
 
-  const animateSlideContent = useCallback((idx: number) => {
-    if (!contentRef.current) return;
-    const els = contentRef.current;
-    const title = els.querySelector(".slide-title");
-    const line = els.querySelector(".slide-line");
-    const sub = els.querySelector(".slide-sub");
-    const cta = els.querySelector(".slide-cta");
-
-    const tl = gsap.timeline({
-      defaults: { ease: "power4.out" },
-      onComplete: () => setIsAnimating(false),
-    });
-
-    tl.fromTo([title, line, sub, cta],
-      { opacity: 0 },
-      { opacity: 0, duration: 0 }
-    );
-
-    tl.fromTo(title,
-      { y: 60, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.9 },
-      0.3
-    );
-
-    tl.fromTo(line,
-      { scaleX: 0, opacity: 1 },
-      { scaleX: 1, transformOrigin: "left", duration: 0.5 },
-      0.8
-    );
-
-    tl.fromTo(sub,
-      { y: 30, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.7 },
-      0.9
-    );
-
-    tl.fromTo(cta,
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6 },
-      1.1
-    );
-  }, []);
-
   useEffect(() => {
-    animateSlideContent(current);
-  }, [current, animateSlideContent]);
+    const timer = window.setTimeout(() => setIsAnimating(false), 800);
+    return () => window.clearTimeout(timer);
+  }, [current]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -137,60 +91,15 @@ export function HeroSection() {
     return () => clearInterval(timer);
   }, [isAnimating]);
 
-  useEffect(() => {
-    let locked = false;
-    const onWheel = (e: WheelEvent) => {
-      if (locked) return;
-      const rect = container.current?.getBoundingClientRect();
-      if (!rect || rect.top < -10) return;
-      if (e.deltaY <= 0) return;
-
-      e.preventDefault();
-      locked = true;
-      const target = container.current!.nextElementSibling as HTMLElement;
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth" });
-      }
-      setTimeout(() => { locked = false; }, 800);
-    };
-
-    let touchY = 0;
-    const onTouchStart = (e: TouchEvent) => { touchY = e.touches[0].clientY; };
-    const onTouchEnd = (e: TouchEvent) => {
-      if (locked) return;
-      const diff = touchY - e.changedTouches[0].clientY;
-      if (diff < 40) return;
-      const rect = container.current?.getBoundingClientRect();
-      if (!rect || rect.top < -10) return;
-
-      locked = true;
-      const target = container.current!.nextElementSibling as HTMLElement;
-      if (target) target.scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => { locked = false; }, 800);
-    };
-
-    window.addEventListener("wheel", onWheel, { passive: false });
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchend", onTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener("wheel", onWheel);
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchend", onTouchEnd);
-    };
-  }, []);
-
   const goTo = useCallback((idx: number) => {
     if (isAnimating || idx === current) return;
     setIsAnimating(true);
     setCurrent(idx);
   }, [isAnimating, current]);
 
-  const slide = slides[current];
   const currentContent = content[current];
-  const layout = slide.layout;
-
   return (
-    <section ref={container} className="relative h-screen overflow-hidden bg-black">
+    <section className="relative h-screen overflow-hidden bg-black">
       {slides.map((s, i) => (
         <div
           key={i}
@@ -219,7 +128,9 @@ export function HeroSection() {
         <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
           <div
             ref={contentRef}
-            className="max-w-[700px]"
+            className={`max-w-[700px] transition-all duration-700 ${
+              isAnimating ? "translate-y-4 opacity-0" : "translate-y-0 opacity-100"
+            }`}
           >
             <h1 className="slide-title font-[var(--font-heading)] text-[clamp(2.5rem,5.5vw,5rem)] font-black text-white leading-[0.98] tracking-tighter mb-7 whitespace-pre-line" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.5), 0 4px 30px rgba(0,0,0,0.3)" }}>
               {currentContent.title}

@@ -2,14 +2,11 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useRef } from "react";
 import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
 import { Footer } from "@/components/layout/Footer";
-import { heroes, containers } from "@/lib/images";
+import { heroes } from "@/lib/images";
 
 const values = [
   { fr: "Expérience client unique et service personnalisé", en: "Unique customer experience and personalized service" },
@@ -34,69 +31,15 @@ const stepTitles = {
   en: ["Proposal", "Design", "Production", "Logistics", "Assembly", "After Sales"],
 };
 
-const snapStyle = { scrollSnapAlign: "start" as const };
-
 export function AboutPageClient() {
   const t = useTranslations("about");
   const pt = useTranslations("process");
   const locale = useLocale() as "fr" | "en";
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const container = useRef<HTMLDivElement>(null);
-
-  useGSAP(() => {
-    const sc = scrollRef.current;
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.from(".ah-label", { y: 30, opacity: 0, duration: 0.6 }, 0.2);
-    tl.from(".ah-title", { y: 50, opacity: 0, duration: 0.9 }, 0.3);
-    tl.from(".ah-line", { scaleX: 0, transformOrigin: "left", duration: 0.5 }, 0.7);
-    tl.from(".ah-intro", { y: 20, opacity: 0, duration: 0.7 }, 0.9);
-
-    gsap.from(".diff-text > *", {
-      y: 35, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-text", start: "top 75%", scroller: sc },
-    });
-    gsap.from(".diff-img", {
-      clipPath: "inset(0 100% 0 0)", duration: 1.2, ease: "power3.inOut",
-      scrollTrigger: { trigger: ".diff-img", start: "top 75%", scroller: sc },
-    });
-    gsap.from(".diff-img img", {
-      scale: 1.3, duration: 1.4, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-img", start: "top 75%", scroller: sc },
-    });
-    gsap.from(".diff-val", {
-      y: 20, opacity: 0, duration: 0.5, stagger: 0.06, ease: "power3.out",
-      scrollTrigger: { trigger: ".diff-vals", start: "top 80%", scroller: sc },
-    });
-
-    gsap.from(".proc-heading > *", {
-      y: 30, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".proc-heading", start: "top 85%", scroller: sc },
-    });
-    gsap.from(".proc-step", {
-      y: 40, opacity: 0, duration: 0.6, stagger: 0.1, ease: "power3.out",
-      scrollTrigger: { trigger: ".proc-steps", start: "top 80%", scroller: sc },
-    });
-
-    gsap.from(".plant-reveal", {
-      y: 35, opacity: 0, duration: 0.7, stagger: 0.08, ease: "power3.out",
-      scrollTrigger: { trigger: ".plant-content", start: "top 75%", scroller: sc },
-    });
-    gsap.from(".plant-img", {
-      clipPath: "inset(0 0 100% 0)", duration: 1, ease: "power3.inOut",
-      scrollTrigger: { trigger: ".plant-img", start: "top 80%", scroller: sc },
-    });
-  }, { scope: container });
 
   return (
-    <div
-      ref={scrollRef}
-      data-scroll-container
-      className="fixed inset-0 z-40 overflow-y-auto"
-      style={{ scrollSnapType: "y mandatory" }}
-    >
-      <div ref={container}>
+    <div>
         {/* ── Hero ── */}
-        <section className="relative h-screen flex items-end overflow-hidden" style={snapStyle}>
+        <section className="relative min-h-screen flex items-end overflow-hidden">
           <div className="absolute inset-0">
             <Image src={heroes.about} alt="Atlas Bâtiment Modulaire" fill className="object-cover" sizes="100vw" quality={90} priority />
           </div>
@@ -118,7 +61,7 @@ export function AboutPageClient() {
         </section>
 
         {/* ── Difference ── */}
-        <section className="relative h-screen bg-white overflow-hidden flex items-center" style={snapStyle}>
+        <section className="relative min-h-screen bg-white overflow-hidden flex items-center py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-5">
@@ -163,7 +106,7 @@ export function AboutPageClient() {
         </section>
 
         {/* ── Processes ── */}
-        <section className="relative h-screen bg-atlas-charcoal overflow-hidden flex items-center" style={snapStyle}>
+        <section className="relative min-h-screen bg-atlas-charcoal overflow-hidden flex items-center py-20 lg:py-28">
           <BlueprintGrid opacity={0.06} />
           <div className="relative z-10 max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
             <div className="proc-heading grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mb-10 sm:mb-20">
@@ -207,7 +150,7 @@ export function AboutPageClient() {
         </section>
 
         {/* ── Plant ── */}
-        <section className="relative h-screen bg-white overflow-hidden flex items-center" style={snapStyle}>
+        <section className="relative min-h-screen bg-white overflow-hidden flex items-center py-20 lg:py-28">
           <div className="max-w-[1400px] mx-auto px-5 sm:px-6 lg:px-12 w-full">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
               <div className="hidden lg:block lg:col-span-7">
@@ -256,10 +199,7 @@ export function AboutPageClient() {
         </section>
 
         {/* Footer */}
-        <div style={snapStyle}>
-          <Footer />
-        </div>
-      </div>
+        <Footer />
     </div>
   );
 }

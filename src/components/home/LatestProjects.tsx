@@ -5,8 +5,6 @@ import { Link } from "@/i18n/navigation";
 import { useRef } from "react";
 import { ArrowRight, MapPin } from "lucide-react";
 import Image from "next/image";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 import { containers } from "@/lib/images";
 
 const projects = [
@@ -23,24 +21,6 @@ export function LatestProjects() {
   const locale = useLocale() as "fr" | "en";
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".projects-heading", {
-      y: 50,
-      opacity: 0,
-      duration: 0.8,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".projects-heading", start: "top 85%" },
-    });
-
-    gsap.from(".proj-card", {
-      y: 60,
-      opacity: 0,
-      duration: 0.7,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".proj-card", start: "top 90%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-white">
@@ -55,7 +35,7 @@ export function LatestProjects() {
             </h2>
             <div className="w-16 h-[3px] bg-atlas-red mt-6" />
           </div>
-          <Link href="/projects" className="hidden lg:inline-flex items-center gap-2 text-[14px] font-bold text-atlas-red uppercase tracking-wide hover:text-atlas-red-dark transition-colors">
+          <Link href="/products" className="hidden lg:inline-flex items-center gap-2 text-[14px] font-bold text-atlas-red uppercase tracking-wide hover:text-atlas-red-dark transition-colors">
             {t("allProjects")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -87,7 +67,7 @@ export function LatestProjects() {
         </div>
 
         <div className="lg:hidden mt-8 text-center">
-          <Link href="/projects" className="inline-flex items-center gap-2 text-[14px] font-bold text-atlas-red uppercase tracking-wide">
+          <Link href="/products" className="inline-flex items-center gap-2 text-[14px] font-bold text-atlas-red uppercase tracking-wide">
             {t("allProjects")} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>

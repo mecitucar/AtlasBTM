@@ -10,8 +10,6 @@ import {
   Wrench,
   HeadphonesIcon,
 } from "lucide-react";
-import { gsap } from "@/lib/gsap";
-import { useGSAP } from "@gsap/react";
 
 const steps = [
   { key: "proposal", icon: FileText },
@@ -26,34 +24,6 @@ export function ProcessStrip() {
   const t = useTranslations("process");
   const container = useRef<HTMLDivElement>(null);
 
-  useGSAP(() => {
-    gsap.from(".process-heading > *", {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.08,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".process-heading", start: "top 85%" },
-    });
-
-    gsap.from(".process-step", {
-      y: 40,
-      opacity: 0,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: "power3.out",
-      scrollTrigger: { trigger: ".process-step", start: "top 88%" },
-    });
-
-    gsap.from(".step-connector", {
-      scaleX: 0,
-      transformOrigin: "left",
-      duration: 0.4,
-      stagger: 0.08,
-      ease: "power2.out",
-      scrollTrigger: { trigger: ".process-step", start: "top 85%" },
-    });
-  }, { scope: container });
 
   return (
     <section ref={container} className="py-24 lg:py-32 bg-atlas-red-dark">
