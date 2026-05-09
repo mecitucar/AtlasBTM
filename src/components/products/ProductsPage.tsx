@@ -10,7 +10,6 @@ import {
   Download,
   FileText,
 } from "lucide-react";
-import { Footer } from "@/components/layout/Footer";
 import { heroes } from "@/lib/images";
 
 const products = [
@@ -169,12 +168,6 @@ export function ProductsPage() {
           </section>
         );
       })}
-
-      {/* Footer */}
-      <div style={{ scrollSnapAlign: "start" }}>
-        <Footer />
-      </div>
-
       {/* Step indicator */}
       <div className="hidden sm:flex fixed right-6 top-1/2 -translate-y-1/2 z-50 flex-col items-center gap-2 pointer-events-none">
         {products.map((_, i) => (

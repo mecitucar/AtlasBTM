@@ -5,7 +5,6 @@ import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { ArrowRight, MapPin } from "lucide-react";
 import { BlueprintGrid } from "@/components/ui/BlueprintGrid";
-import { Footer } from "@/components/layout/Footer";
 import { heroes } from "@/lib/images";
 
 const values = [
@@ -197,9 +196,6 @@ export function AboutPageClient() {
             </div>
           </div>
         </section>
-
-        {/* Footer */}
-        <Footer />
     </div>
   );
 }
